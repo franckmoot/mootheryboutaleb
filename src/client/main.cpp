@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 
 // Les lignes suivantes ne servent qu'à vérifier que la compilation avec SFML fonctionne
 #include <SFML/Graphics.hpp>
@@ -14,12 +15,16 @@ void testSFML() {
 using namespace std;
 using namespace state;
 
-int main(int argc,char* argv[]) 
-{
+int main(int argc,char* argv[]) {
+
+    string s;
+    s=argv[1];
     Exemple exemple;
     exemple.setX(53);
 
-    cout << "It works !" << endl;
+    if(!s.compare("hello")) {
+        cout << "Bonjour le monde !" << endl;
+    }else cout << "it workd" << endl;
 
     return 0;
 }
