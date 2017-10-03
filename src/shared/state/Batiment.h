@@ -26,6 +26,8 @@ namespace state {
     TypeId const getTypeId ();
     bool const equals (const Element& other);
     bool const isStatic ();
+    int const getCapture ();
+    void setCapture (int capture);
     // Setters and Getters
     BatimentTypeId getBatimentTypeId() const;
     void setBatimentTypeId(BatimentTypeId batimentTypeId);
