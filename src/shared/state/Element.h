@@ -7,6 +7,7 @@ namespace state {
   class ElementTab;
 }
 
+#include "TypeId.h"
 #include "ElementTab.h"
 
 namespace state {
@@ -18,7 +19,7 @@ namespace state {
   public:
     Element ( );
     ~Element ();
-    TypeId const getTypeId ();
+    virtual TypeId const getTypeId () = 0;
     bool const isStatic ();
     // Setters and Getters
   };

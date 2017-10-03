@@ -17,7 +17,8 @@ namespace state {
     // Associations
     // Operations
   public:
-    infanterie ();
+    Infanterie ();
+    ~Infanterie ();
     int diffUnite ();
     TypeId const getTypeId ();
     // Setters and Getters

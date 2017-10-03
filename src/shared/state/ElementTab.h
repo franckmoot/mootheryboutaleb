@@ -26,7 +26,7 @@ namespace state {
     size_t getWidth ();
     size_t getHeight ();
     Element* const getElement (int i, int j);
-    setElement (int i, int j, Element* e);
+    void setElement (int i, int j, Element* e);
     // Setters and Getters
   };
 

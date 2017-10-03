@@ -7,10 +7,12 @@ namespace state {
   class Element;
 }
 
+#include "Element.h"
+
 namespace state {
 
   /// class MobileElement - 
-  class MobileElement {
+  class MobileElement : public state::Element {
     // Attributes
   protected:
     int position;
@@ -20,10 +22,11 @@ namespace state {
     int attaque;
     // Operations
   public:
-    MobileElement (MobileElementTypeId id);
-    int diffUnite ();
-    bool const equals (const Element& other);
-    bool const isStatic ();
+    MobileElement ( );
+    ~MobileElement ();
+    virtual int diffUnite () = 0;
+    virtual bool const equals (const Element& other) = 0;
+    virtual bool const isStatic () = 0;
     // Setters and Getters
     int getPosition() const;
     void setPosition(int position);

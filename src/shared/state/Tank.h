@@ -18,6 +18,7 @@ namespace state {
     // Operations
   public:
     Tank ();
+    ~Tank ();
     int diffUnite ();
     TypeId const getTypeId ();
     // Setters and Getters

@@ -15,8 +15,10 @@ namespace state {
   class StaticElement : public state::Element {
     // Operations
   public:
-    bool const isStatic ();
-    int const diffMap ();
+    StaticElement ();
+    ~StaticElement ();
+    virtual bool const isStatic () = 0;
+    virtual int const diffMap () = 0;
     // Setters and Getters
   };
 

@@ -6,8 +6,8 @@
 namespace state {
 
   enum TankTypeId {
-    MVTATTENTE     = 0,
-    MVTFINI     = 1
+    MVTATTENTE2     = 0,
+    MVTFINI2     = 1
   };
 
 };

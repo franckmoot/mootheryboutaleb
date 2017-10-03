@@ -16,19 +16,21 @@ namespace state {
     // Associations
     state::BatimentTypeId* toto;
     // Attributes
-  public:
-     capture;
+  protected:
+    int capture;
     // Operations
   public:
     Batiment (BatimentTypeId id);
     ~Batiment ();
-    int diffMap ();
+    int const diffMap ();
     TypeId const getTypeId ();
     bool const equals (const Element& other);
     bool const isStatic ();
     // Setters and Getters
     BatimentTypeId getToto() const;
     void setToto(BatimentTypeId toto);
+    int getCapture() const;
+    void setCapture(int capture);
   };
 
 };

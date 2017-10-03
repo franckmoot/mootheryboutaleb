@@ -6,8 +6,8 @@
 namespace state {
 
   enum HeliTypeId {
-    MVTATTENTE     = 0,
-    MVTFINI     = 1
+    MVTATTENTE1     = 0,
+    MVTFINI1     = 1
   };
 
 };

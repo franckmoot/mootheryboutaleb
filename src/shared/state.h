@@ -2,6 +2,7 @@
 #ifndef __STATE__H
 #define __STATE__H
 
+#include "state/TypeId.h"
 #include "state/ElementTab.h"
 #include "state/Element.h"
 #include "state/StaticElement.h"
@@ -14,7 +15,6 @@
 #include "state/Infanterie.h"
 #include "state/HeliTypeId.h"
 #include "state/Heli.h"
-#include "state/TypeId.h"
 #include "state/TankTypeId.h"
 #include "state/Tank.h"
 #include "state/ElementChars.h"

@@ -18,6 +18,7 @@ namespace state {
     // Operations
   public:
     Heli ();
+    ~Heli ();
     int diffUnite ();
     TypeId const getTypeId ();
     // Setters and Getters

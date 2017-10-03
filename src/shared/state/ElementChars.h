@@ -17,8 +17,8 @@ namespace state {
     // Operations
   public:
     ElementChars ();
-    setWidth (size_t width);
-    setHeight (size_t height);
+    void setWidth (size_t width);
+    void setHeight (size_t height);
     // Setters and Getters
   };
 
