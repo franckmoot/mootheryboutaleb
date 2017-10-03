@@ -21,7 +21,7 @@ namespace state {
     // Operations
   public:
     Batiment (BatimentTypeId id);
-    ~Batiment (BatimentTypeId id);
+    ~Batiment ();
     int diffMap ();
     TypeId const getTypeId ();
     bool const equals (const Element& other);

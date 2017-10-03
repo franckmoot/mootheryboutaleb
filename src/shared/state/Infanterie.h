@@ -19,7 +19,7 @@ namespace state {
   public:
     infanterie ();
     int diffUnite ();
-    getTypeId ();
+    TypeId const getTypeId ();
     // Setters and Getters
   };
 
