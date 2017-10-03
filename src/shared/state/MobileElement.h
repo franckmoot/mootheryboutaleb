@@ -25,7 +25,6 @@ namespace state {
     MobileElement ( );
     ~MobileElement ();
     virtual int diffUnite () = 0;
-    virtual bool const equals (const Element& other) = 0;
     virtual bool const isStatic () = 0;
     // Setters and Getters
     int getPosition() const;
