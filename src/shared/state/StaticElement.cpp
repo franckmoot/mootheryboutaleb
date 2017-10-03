@@ -2,6 +2,9 @@
 
 
 namespace state {
-
     
+    const bool StaticElement::isStatic() {
+        return true;
+    }
+
 }

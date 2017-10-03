@@ -4,15 +4,16 @@
 
 
 namespace state {
-  class Element;
+  class StaticElement;
 }
 
 #include "BatimentTypeId.h"
+#include "StaticElement.h"
 
 namespace state {
 
   /// class Batiment - 
-  class Batiment {
+  class Batiment : public state::StaticElement {
     // Associations
     state::BatimentTypeId batimentTypeId;
     // Attributes
@@ -24,8 +25,6 @@ namespace state {
     ~Batiment ();
     int const diffMap ();
     TypeId const getTypeId ();
-    bool const equals (const Element& other);
-    bool const isStatic ();
     int const getCapture ();
     void setCapture (int capture);
     // Setters and Getters

@@ -4,7 +4,6 @@
 
 
 namespace state {
-  class Element;
   class StaticElement;
 }
 
@@ -23,8 +22,6 @@ namespace state {
     ~Champdebataille ();
     int const diffMap ();
     TypeId const getTypeId ();
-    bool const equals (const Element& other);
-    bool const isStatic ();
     // Setters and Getters
     ChampdebatailleTypeId getChampdeBatailleType() const;
     void setChampdeBatailleType(ChampdebatailleTypeId champdeBatailleType);
