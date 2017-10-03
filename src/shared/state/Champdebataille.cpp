@@ -2,7 +2,14 @@
 
 
 namespace state {
-        const bool Champdebataille::isChampdebataille() {
+    
+    
+    ChampdebatailleTypeId Champdebataille::getChampdeBatailleType() const {
+        return champdeBatailleType;
+    }
+
+    
+    const bool Champdebataille::isChampdebataille() {
             return true;
     }
 
