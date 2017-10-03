@@ -15,7 +15,7 @@ namespace state {
   /// class Heli - 
   class Heli : public state::MobileElement {
     // Associations
-    state::HeliTypeId* heliTypeId;
+    state::HeliTypeId heliTypeId;
     // Operations
   public:
     Heli ();

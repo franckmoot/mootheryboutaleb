@@ -14,7 +14,7 @@ namespace state {
   /// class Batiment - 
   class Batiment {
     // Associations
-    state::BatimentTypeId* batimentTypeId;
+    state::BatimentTypeId batimentTypeId;
     // Attributes
   protected:
     int capture;

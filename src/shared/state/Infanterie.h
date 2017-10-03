@@ -15,7 +15,7 @@ namespace state {
   /// class Infanterie - 
   class Infanterie : public state::MobileElement {
     // Associations
-    state::InfanterieTypeId* infanterieTypeId;
+    state::InfanterieTypeId infanterieTypeId;
     // Operations
   public:
     Infanterie ();

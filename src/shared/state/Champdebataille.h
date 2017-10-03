@@ -16,7 +16,7 @@ namespace state {
   /// class Champdebataille - 
   class Champdebataille : public state::StaticElement {
     // Associations
-    state::ChampdebatailleTypeId* champdeBatailleType;
+    state::ChampdebatailleTypeId champdeBatailleType;
     // Operations
   public:
     Champdebataille (ChampdebatailleTypeId id);

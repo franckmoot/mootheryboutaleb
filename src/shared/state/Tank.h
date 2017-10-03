@@ -15,7 +15,7 @@ namespace state {
   /// class Tank - 
   class Tank : public state::MobileElement {
     // Associations
-    state::TankTypeId* tankTypeId;
+    state::TankTypeId tankTypeId;
     // Operations
   public:
     Tank ();

@@ -15,7 +15,7 @@ namespace state {
   /// class Element - 
   class Element {
     // Associations
-    state::TypeId* typeId;
+    state::TypeId typeId;
     // Operations
   public:
     Element ( );

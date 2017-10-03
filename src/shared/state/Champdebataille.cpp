@@ -12,7 +12,7 @@ namespace state {
     }
 
     const TypeId Champdebataille::getTypeId() {
-        return ChampdebatailleTypeId;
+        return this->getChampdeBatailleType();
 
     }
     
@@ -24,7 +24,14 @@ namespace state {
    
 
     const int Champdebataille::diffMap() {
+        if(this == Champdebataille) return true;
+        else return false;
 
     }
+       
+    ChampdebatailleTypeId Champdebataille::getChampdeBatailleType() const {
+        return ChampdebatailleTypeId;
+
+    }         
 
 }
