@@ -14,7 +14,7 @@ namespace state {
   /// class Batiment - 
   class Batiment {
     // Associations
-    state::BatimentTypeId* toto;
+    state::BatimentTypeId* batimentTypeId;
     // Attributes
   protected:
     int capture;
@@ -27,8 +27,8 @@ namespace state {
     bool const equals (const Element& other);
     bool const isStatic ();
     // Setters and Getters
-    BatimentTypeId getToto() const;
-    void setToto(BatimentTypeId toto);
+    BatimentTypeId getBatimentTypeId() const;
+    void setBatimentTypeId(BatimentTypeId batimentTypeId);
     int getCapture() const;
     void setCapture(int capture);
   };

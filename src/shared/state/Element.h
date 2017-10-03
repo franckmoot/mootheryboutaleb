@@ -15,6 +15,7 @@ namespace state {
   /// class Element - 
   class Element {
     // Associations
+    state::TypeId* typeId;
     // Operations
   public:
     Element ( );
@@ -22,6 +23,7 @@ namespace state {
     virtual TypeId const getTypeId () = 0;
     bool const isStatic ();
     // Setters and Getters
+    void setTypeId(TypeId typeId);
   };
 
 };

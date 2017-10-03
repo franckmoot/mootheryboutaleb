@@ -15,6 +15,7 @@ namespace state {
   /// class Heli - 
   class Heli : public state::MobileElement {
     // Associations
+    state::HeliTypeId* heliTypeId;
     // Operations
   public:
     Heli ();
@@ -22,6 +23,8 @@ namespace state {
     int diffUnite ();
     TypeId const getTypeId ();
     // Setters and Getters
+    HeliTypeId getHeliTypeId() const;
+    void setHeliTypeId(HeliTypeId heliTypeId);
   };
 
 };

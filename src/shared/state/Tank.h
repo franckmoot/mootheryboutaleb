@@ -15,6 +15,7 @@ namespace state {
   /// class Tank - 
   class Tank : public state::MobileElement {
     // Associations
+    state::TankTypeId* tankTypeId;
     // Operations
   public:
     Tank ();
@@ -22,6 +23,8 @@ namespace state {
     int diffUnite ();
     TypeId const getTypeId ();
     // Setters and Getters
+    TankTypeId getTankTypeId() const;
+    void setTankTypeId(TankTypeId tankTypeId);
   };
 
 };

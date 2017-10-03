@@ -16,6 +16,7 @@ namespace state {
   /// class Champdebataille - 
   class Champdebataille : public state::StaticElement {
     // Associations
+    state::ChampdebatailleTypeId* champdeBatailleType;
     // Operations
   public:
     Champdebataille (ChampdebatailleTypeId id);
@@ -25,6 +26,8 @@ namespace state {
     bool const equals (const Element& other);
     bool const isStatic ();
     // Setters and Getters
+    ChampdebatailleTypeId getChampdeBatailleType() const;
+    void setChampdeBatailleType(ChampdebatailleTypeId champdeBatailleType);
   };
 
 };

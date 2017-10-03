@@ -15,6 +15,7 @@ namespace state {
   /// class Infanterie - 
   class Infanterie : public state::MobileElement {
     // Associations
+    state::InfanterieTypeId* infanterieTypeId;
     // Operations
   public:
     Infanterie ();
@@ -22,6 +23,8 @@ namespace state {
     int diffUnite ();
     TypeId const getTypeId ();
     // Setters and Getters
+    InfanterieTypeId getInfanterieTypeId() const;
+    void setInfanterieTypeId(InfanterieTypeId infanterieTypeId);
   };
 
 };
