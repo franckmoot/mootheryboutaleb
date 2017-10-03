@@ -10,10 +10,7 @@ namespace state {
         return TypeId;
     }
 
-
-    Element::~Element() {
-
-    }
+    Element::~Element() {}
 
     
 }

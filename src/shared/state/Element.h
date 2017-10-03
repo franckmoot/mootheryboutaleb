@@ -18,7 +18,7 @@ namespace state {
   public:
     Element ( );
     ~Element ();
-    TypeIdconst getTypeId ();
+    TypeId const getTypeId ();
     bool const isStatic ();
     // Setters and Getters
   };
