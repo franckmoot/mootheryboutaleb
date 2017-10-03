@@ -9,7 +9,7 @@ namespace state{
     }
 
      const TypeId Heli::getTypeId() {
-         return TypeId;
+          TypeId(2);
     }
     Heli::~Heli() {
 

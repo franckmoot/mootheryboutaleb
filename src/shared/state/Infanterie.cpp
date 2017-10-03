@@ -5,7 +5,7 @@
 
 namespace state{
     Infanterie::Infanterie(){
-    
+        
     }
 
     int Infanterie::diffUnite() {
@@ -13,7 +13,8 @@ namespace state{
     }
 
     const TypeId Infanterie::getTypeId() {
-        return TypeId;
+         TypeId(3);
+        
     }
 
     Infanterie::~Infanterie() {
