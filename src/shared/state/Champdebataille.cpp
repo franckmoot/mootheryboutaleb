@@ -3,35 +3,24 @@
 
 namespace state {
 
+    /* Constructeur */
     Champdebataille::Champdebataille(ChampdebatailleTypeId id) {
-
     }
     
+    /* Destructeur */
     Champdebataille::~Champdebataille() {
-
     }
 
-    const TypeId Champdebataille::getTypeId() {
-        return this->getChampdeBatailleType();
-
-    }
-    
+   /* Defini si c'est un static ou un mobile*/
     const bool Champdebataille::isStatic() {
         if (this == Champdebataille) return true;
         else return false;
     }
 
-   
-
+    /* Differencie si c'est un batiment avec interaction ou non  */
     const int Champdebataille::diffMap() {
         if(this == Champdebataille) return true;
         else return false;
-
     }
-       
-    ChampdebatailleTypeId Champdebataille::getChampdeBatailleType() const {
-        return ChampdebatailleTypeId;
-
-    }         
-
+            
 }

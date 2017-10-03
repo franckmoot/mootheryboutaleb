@@ -16,7 +16,7 @@ namespace state {
     // Associations
     state::BatimentTypeId batimentTypeId;
     // Attributes
-  protected:
+  private:
     int capture;
     // Operations
   public:
@@ -29,8 +29,6 @@ namespace state {
     // Setters and Getters
     BatimentTypeId getBatimentTypeId() const;
     void setBatimentTypeId(BatimentTypeId batimentTypeId);
-    int getCapture() const;
-    void setCapture(int capture);
   };
 
 };
