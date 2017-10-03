@@ -23,7 +23,7 @@ namespace state {
   public:
     Batiment (BatimentTypeId id);
     ~Batiment ();
-    int const diffMap ();
+    bool const isChampdebataille ();
     TypeId const getTypeId ();
     int const getCapture ();
     void setCapture (int capture);

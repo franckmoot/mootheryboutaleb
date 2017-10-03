@@ -2,7 +2,9 @@
 
 
 namespace state {
-    
-   
+        const bool Champdebataille::isChampdebataille() {
+            return true;
+    }
+
             
 }

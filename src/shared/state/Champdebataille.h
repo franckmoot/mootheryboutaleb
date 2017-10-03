@@ -20,7 +20,7 @@ namespace state {
   public:
     Champdebataille (ChampdebatailleTypeId id);
     ~Champdebataille ();
-    int const diffMap ();
+    bool const isChampdebataille ();
     TypeId const getTypeId ();
     // Setters and Getters
     ChampdebatailleTypeId getChampdeBatailleType() const;

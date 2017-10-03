@@ -18,7 +18,7 @@ namespace state {
     StaticElement ();
     ~StaticElement ();
     bool const isStatic ();
-    virtual int const diffMap () = 0;
+    virtual bool const isChampdebataille () = 0;
     // Setters and Getters
   };
 
