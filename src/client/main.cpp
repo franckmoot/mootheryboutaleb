@@ -17,14 +17,14 @@ using namespace state;
 
 int main(int argc,char* argv[]) {
 
-    string s;
-    s=argv[1];
-    Exemple exemple;
-    exemple.setX(53);
+    if (argc>1){
+        string s;
+        s=argv[1];
 
-    if(!s.compare("hello")) {
-        cout << "Bonjour le monde !" << endl;
-    }else cout << "it workd" << endl;
-
+        if(!s.compare("hello")) {
+            cout << "Bonjour le monde !" << endl;
+        }else cout << "it works" << endl;
+    }
+    
     return 0;
 }
