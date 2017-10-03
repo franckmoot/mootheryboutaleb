@@ -25,6 +25,7 @@ namespace state {
     int diffMap ();
     TypeId const getTypeId ();
     bool const equals (const Element& other);
+    bool const isStatic ();
     // Setters and Getters
     BatimentTypeId getToto() const;
     void setToto(BatimentTypeId toto);
