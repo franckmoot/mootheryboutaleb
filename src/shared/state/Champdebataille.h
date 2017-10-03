@@ -19,7 +19,7 @@ namespace state {
     // Operations
   public:
     Champdebataille (ChampdebatailleTypeId id);
-    ~Champdebataille (ChampdebatailleTypeId id);
+    ~Champdebataille ();
     int diffMap ();
     TypeId const getTypeId ();
     bool const equals (const Element& other);

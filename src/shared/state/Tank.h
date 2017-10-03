@@ -19,7 +19,7 @@ namespace state {
   public:
     Tank ();
     int diffUnite ();
-    getTypeId ();
+    TypeId const getTypeId ();
     // Setters and Getters
   };
 

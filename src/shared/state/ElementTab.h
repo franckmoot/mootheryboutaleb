@@ -22,10 +22,9 @@ namespace state {
     // Operations
   public:
     ElementTab (size_t width, size_t height);
-    ~ElementTab (size_t width, size_t height);
+    ~ElementTab ();
     size_t getWidth ();
     size_t getHeight ();
-    const Element& const operator (int i, int j);
     Element* const getElement (int i, int j);
     setElement (int i, int j, Element* e);
     // Setters and Getters
