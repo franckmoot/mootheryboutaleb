@@ -5,6 +5,7 @@
 
 namespace state{
     Infanterie::Infanterie(){
+        this->pdv=10;
         
     }
 

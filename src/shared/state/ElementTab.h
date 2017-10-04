@@ -20,12 +20,14 @@ namespace state {
     std::vector<Element*> list;
     // Operations
   public:
+    ElementTab ();
     ElementTab (size_t width, size_t height);
     ~ElementTab ();
     size_t getWidth ();
     size_t getHeight ();
     Element* const getElement (int i, int j);
     void setElement (int i, int j, Element* e);
+    int sizeList ();
     // Setters and Getters
   };
 

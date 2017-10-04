@@ -17,7 +17,7 @@ namespace state {
   class State {
     // Associations
     // Attributes
-  private:
+  public:
     ElementTab grid;
     ElementChars chars;
     // Operations

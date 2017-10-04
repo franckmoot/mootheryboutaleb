@@ -2,7 +2,6 @@
 #ifndef STATE__ELEMENTCHARS__H
 #define STATE__ELEMENTCHARS__H
 
-#include <stdlib.h>
 
 namespace state {
   class ElementTab;
@@ -17,8 +16,6 @@ namespace state {
     // Operations
   public:
     ElementChars ();
-    void setWidth (size_t width);
-    void setHeight (size_t height);
     // Setters and Getters
   };
 
