@@ -20,7 +20,7 @@ namespace state {
   public:
     Element ( );
     ~Element ();
-    virtual TypeId const getTypeId () = 0;
+    TypeId const getTypeId ();
     bool const isStatic ();
     // Setters and Getters
     void setTypeId(TypeId typeId);

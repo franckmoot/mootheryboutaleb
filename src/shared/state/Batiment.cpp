@@ -2,11 +2,11 @@
 
 
 namespace state {
-    
+  
     /* Constructeur */
-    Batiment::Batiment(BatimentTypeId id) {
+    /*Batiment::Batiment(BatimentTypeId id) {
 
-    }
+    }*/
 
     
     /* Getter de capture */
