@@ -4,9 +4,13 @@
 namespace state {
   
     /* Constructeur */
-    /*Batiment::Batiment(BatimentTypeId id) {
+/*Batiment::Batiment(BatimentTypeId id) {
 
     }*/
+
+    const TypeId Batiment::getTypeId() {
+        return TypeId(1);
+    }
 
     
     /* Getter de capture */

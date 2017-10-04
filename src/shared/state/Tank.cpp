@@ -12,6 +12,7 @@ namespace state{
     }
 
     const TypeId Tank::getTypeId() {
+        return TypeId(4);
 
     }
 

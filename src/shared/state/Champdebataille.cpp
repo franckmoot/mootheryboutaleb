@@ -13,6 +13,9 @@ namespace state {
             return true;
     }
 
+    const TypeId Champdebataille::getTypeId() {
+        return TypeId(0);
+    }
 
     
 

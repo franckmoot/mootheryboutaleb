@@ -13,7 +13,7 @@ namespace state{
     }
 
     const TypeId Infanterie::getTypeId() {
-         TypeId(3);
+         return TypeId(2);
         
     }
 

@@ -7,8 +7,8 @@ namespace state {
 
     Element::~Element() {}
     
-    const TypeId Element::getTypeId() {
-        return TypeId();
-    }
+    /*const TypeId Element::getTypeId() {
+        return id;
+    }*/
 
 }
