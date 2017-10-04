@@ -2,7 +2,8 @@
 
 
 namespace state {
-    
+        
+
     
    ChampdebatailleTypeId Champdebataille::getChampdeBatailleType() const {
         return champdeBatailleType;
@@ -14,7 +15,7 @@ namespace state {
     }
 
     const TypeId Champdebataille::getTypeId() {
-        return TypeId(0);
+        return TypeId::CHAMPSDEBATAILLE;
     }
 
     

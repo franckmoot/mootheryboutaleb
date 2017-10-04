@@ -7,8 +7,8 @@ namespace state {
   class StaticElement;
 }
 
-#include "BatimentTypeId.h"
 #include "StaticElement.h"
+#include "BatimentTypeId.h"
 
 namespace state {
 
@@ -21,7 +21,7 @@ namespace state {
     int capture;
     // Operations
   public:
-    Batiment (BatimentTypeId id);
+    Batiment ();
     ~Batiment ();
     bool const isChampdebataille ();
     TypeId const getTypeId ();

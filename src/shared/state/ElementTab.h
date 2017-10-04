@@ -4,7 +4,6 @@
 
 #include <stdlib.h>
 #include <vector>
-#include <memory>
 
 namespace state {
   class Element;
@@ -18,7 +17,7 @@ namespace state {
   private:
     size_t width;
     size_t height;
-    std::vector<std::unique_ptr<Element>> list;
+    std::vector<Element*> list;
     // Operations
   public:
     ElementTab (size_t width, size_t height);

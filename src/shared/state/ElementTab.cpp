@@ -4,7 +4,16 @@
 
 
 namespace state{
- 
+
+    /*void ElementTab::setElement(int i, int j, Element* e) {
+        list[i*j]=e;
+    }*/
+    
+    Element * const ElementTab::getElement(int i, int j) {
+        
+       return list[i*j];
+    }
+
 
  
     size_t ElementTab::getHeight() {
