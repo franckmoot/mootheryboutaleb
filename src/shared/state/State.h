@@ -4,12 +4,12 @@
 
 
 namespace state {
-  class ElementTab;
   class ElementChars;
+  class ElementTab;
 }
 
-#include "ElementTab.h"
 #include "ElementChars.h"
+#include "ElementTab.h"
 
 namespace state {
 
@@ -18,12 +18,14 @@ namespace state {
     // Associations
     // Attributes
   public:
-    ElementTab grid;
+    int grid;
     ElementChars chars;
     // Operations
   public:
-    ElementTab& getGrid ();
+    State ();
+    int getGrid ();
     ElementChars& getChars ();
+    void setGrid (int g);
     // Setters and Getters
   };
 

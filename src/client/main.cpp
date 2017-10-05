@@ -14,7 +14,7 @@ void testSFML() {
 #include "state.h"
 
 using namespace std;
-using namespace state;
+//using namespace state;
 
 int main(int argc,char* argv[]) {
 
@@ -31,32 +31,42 @@ int main(int argc,char* argv[]) {
         
     }
     cout << " Fabrique un etat" << endl;
-    State Etat();
-    ElementTab T(0,0);
+    state::State Etat();
+    Etat.setGrid(3);
+    //.grid = 3;
+    //ElementTab T(0,0);
     
-    ElementTab H(0,0);
+    cout << "Verifie que la liste est null" << endl;
+  //  if(Etat->grid->sizeList()==0) cout << " Ok" << endl;;
+    
+    //ElementTab H(0,0);
     
    
-    Etat.grid = H;
+    //Etat.grid = H;
     
-   /* Etat.grid=T;
+   // Etat.grid=T;
     
-    cout << " Verifie que la largeur est null" << endl;
-    if (Etat.grid.sizeList()==0) cout << " Ok" << endl;;
-    Infanterie *ptIn,*ptIn2;
+   // cout << " Verifie que la largeur est null" << endl;
+   // if (Etat.grid.sizeList()==0) cout << " Ok" << endl;;
+    /*Infanterie *ptIn = new Infanterie();
     cout << "--" << endl;
-    Element *n=NULL;*/
+    Element *n=NULL;
+    Infanterie *ptIn2;
+    ptIn->getPdv();*/
+    
     
     //ptIn->getPdv();
-   /*
-    T.setElement(0,0,ptIn);
-    cout<< T.sizeList() << endl;
-    cout << "---" << endl;
-    T.setElement(1,1,n);
-    cout << "----" << endl;
-    n=T.getElement(0,0);*/
+   
+    /*T.setElement(0,0,ptIn);
+    ptIn2=T.getElement(0,0);
+    ptIn2->getPdv();*/
+   // cout<< T.sizeList() << endl;
+   // cout << "---" << endl;
+   // T.setElement(1,1,n);
+   // cout << "----" << endl;
+   // n=T.getElement(0,0);
    // cout << n->getPdv() << endl;
-   // n.getPdv();*/
+   // n.getPdv();
     
     
     return 0;
