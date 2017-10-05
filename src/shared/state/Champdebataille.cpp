@@ -2,7 +2,15 @@
 
 
 namespace state {
+
+    Champdebataille::Champdebataille() {
+
+    }
         
+    Champdebataille::~Champdebataille() {
+
+    }
+
 
     
    ChampdebatailleTypeId Champdebataille::getChampdeBatailleType() const {

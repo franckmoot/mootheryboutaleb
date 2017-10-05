@@ -4,9 +4,9 @@
 namespace state {
   
     /* Constructeur */
-   /* Batiment::Batiment(BatimentTypeId id) {
+    Batiment::Batiment() {
         
-    }*/
+    }
 
     const TypeId Batiment::getTypeId() {
         return TypeId::BATIMENT;

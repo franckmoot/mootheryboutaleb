@@ -4,8 +4,9 @@
 
 
 namespace state{
-    
-   
+        ElementChars::ElementChars() {
+
+    }
 
   
 

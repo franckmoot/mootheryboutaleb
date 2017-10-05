@@ -7,22 +7,22 @@
 #include "State.h"
 
 namespace state{
+        
+    State::State() {
+
+    }
+
  
-    ElementChars& State::getChars() {
+    ElementChars* State::getChars() {
         return chars;
     }
 
-    int State::getGrid() {
+    ElementTab* State::getGrid() {
         return grid;
     }
 
-    void State::setGrid (int g){
-        grid = g ;
-    }
-
-    State::State() {
-        this->grid=1;
-    }
+  
+  
 
     
 }
