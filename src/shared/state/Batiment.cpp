@@ -5,7 +5,14 @@ namespace state {
   
     /* Constructeur */
     Batiment::Batiment() {
+
+    }
+
+    Batiment::Batiment(BatimentTypeId id) {
         
+        if (id == BatimentTypeId::CASERNE ) this->setType( BatimentTypeId::CASERNE);
+        if (id == BatimentTypeId::QG ) this->setType(BatimentTypeId::QG);
+                    
     }
 
     const TypeId Batiment::getTypeId() {

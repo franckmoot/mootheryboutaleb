@@ -16,12 +16,17 @@ namespace state {
   class Element {
     // Associations
     state::TypeId typeId;
+    // Attributes
+  private:
+    int type;
     // Operations
   public:
     Element ( );
     ~Element ();
     virtual TypeId const getTypeId () = 0;
     virtual bool const isStatic () = 0;
+    void setType (int type);
+    int getType ();
     // Setters and Getters
     void setTypeId(TypeId typeId);
   };

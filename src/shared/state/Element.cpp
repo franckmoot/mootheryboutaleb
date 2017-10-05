@@ -6,9 +6,13 @@ namespace state {
     Element::Element() {}
 
     Element::~Element() {}
-    
-    /*const TypeId Element::getTypeId() {
-        return id;
-    }*/
+        
+    int Element::getType() {
+        return type;
+    }
+
+    void Element::setType(int type) {
+        this->type=type;
+    }
 
 }

@@ -92,7 +92,17 @@ int main(int argc,char* argv[]) {
     cout << "Verifie que l'element ajouter est un CHAMPDEBATAILLE" << endl;
     if(S->getElement(1,1)->getTypeId()==0) cout<<"Ok" <<endl;
     
-  
+    
+    /* batiment caserne */
+    Batiment *C2=new Batiment(BatimentTypeId::CASERNE);
+    cout << "On ajoute un Element de type Heli" << endl;
+    S->setElement(0,0,C2);
+    cout << "Verifie que la liste est 3" << endl;
+    if(S->sizeList()==3) cout << "Ok" << endl;
+    cout << "Verifie que l'element ajouter est un batiment caserne" << endl;
+    if(S->getElement(1,2)->getType()==BatimentTypeId::QG) cout<<"Ok" <<endl;
+   
+    //S->getElement(1,2)->getType();
     
     return 0;
 }
