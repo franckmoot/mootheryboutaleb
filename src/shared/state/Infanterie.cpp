@@ -8,6 +8,7 @@ namespace state{
         this->pdv=10;
         
     }
+    
 
     int Infanterie::diffUnite() {
         return 0;

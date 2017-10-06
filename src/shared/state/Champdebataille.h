@@ -7,8 +7,8 @@ namespace state {
   class StaticElement;
 }
 
-#include "StaticElement.h"
 #include "ChampdebatailleTypeId.h"
+#include "StaticElement.h"
 
 namespace state {
 
@@ -19,6 +19,7 @@ namespace state {
     // Operations
   public:
     Champdebataille ();
+    Champdebataille (ChampdebatailleTypeId id);
     ~Champdebataille ();
     bool const isChampdebataille ();
     TypeId const getTypeId ();

@@ -26,8 +26,10 @@ namespace state {
     size_t getWidth ();
     size_t getHeight ();
     Element* const getElement (int i, int j);
-    void setElement (int i, int j, Element* e);
+    void setElement (Element* e);
     int sizeList ();
+    void chgList (int i, Element* e);
+    void chgList2 (int i, int j);
     // Setters and Getters
   };
 

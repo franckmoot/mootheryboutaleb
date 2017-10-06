@@ -1,5 +1,5 @@
 #include "ElementTab.h"
-
+#include <iostream>
 
 
 namespace state{
@@ -17,13 +17,16 @@ namespace state{
     }
 
     
-    void ElementTab::setElement(int i, int j, Element* e) {
+    void ElementTab::setElement( Element* e) {
         list.push_back(e);
     }
     
     Element * const ElementTab::getElement(int i, int j) {
-        
-       return list[i*j];
+        Element *n=NULL;
+       if (list[i*j]!=NULL)return list[i*j];
+       //if (list[i*j]==NULL)
+        return n;
+    
     }
     
  
@@ -38,6 +41,24 @@ namespace state{
     ElementTab::~ElementTab() {
 
     }
-
     
+    void ElementTab::chgList(int i, Element* e) {
+         
+            if(list[i]==NULL) list[i]=e;
+                       
+    }
+
+    void ElementTab::chgList2(int i, int j) {
+
+        if(int(list.size())>=i&&int(list.size())>=j){
+            if(list[i]!=NULL){
+                if(list[j]==NULL) {
+                list[j]=list[i];
+                list[i]=NULL;
+                }
+            }
+            else std::cout << "Erreur sur le deplacement !" << std::endl;
+        }
+         else std::cout << "Deplacement hors list" << std::endl;
+    }
 }
