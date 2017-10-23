@@ -29,7 +29,7 @@ namespace render {
         fichier.open("map1.csv",std::ios::in);
         std::string ligne,valeur;
        
-        int i = 0;
+       // int i = 0;
 		
         while(!fichier.eof()){
             std::getline(fichier,ligne);

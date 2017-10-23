@@ -5,16 +5,23 @@
 // Les lignes suivantes ne servent qu'à vérifier que la compilation avec SFML fonctionne
 #include <SFML/Graphics.hpp>
 
+#include <vector>
+#include <fstream>
+#include <sstream>
 void testSFML() {
     sf::Texture texture;
+    
+    
 }
 
 // Fin test SFML
 
 #include "state.h"
+#include "render.h"
 
 using namespace std;
 using namespace state;
+using namespace render;
 
 int main(int argc,char* argv[]) {
   
@@ -130,13 +137,13 @@ int main(int argc,char* argv[]) {
     // on crée la tilemap avec le niveau précédemment défini
         
 
-    Tilemap map;
+    Tilemap map1;
     /*std::vector<sf::Sprite> Map;*/
     std::vector<int> level;
     
 	
 	
-    if (!map.load("tilemap.png", sf::Vector2u(16, 16),map.lirefichiercsv(level),100 , 100))
+    if (!map1.load("tilemap.png", sf::Vector2u(16, 16),map1.lirefichiercsv(level),100 , 100))
         return -1;
 
     // on fait tourner la boucle principale
@@ -152,7 +159,7 @@ int main(int argc,char* argv[]) {
 
         // on dessine le niveau
         window.clear();
-        window.draw(map);
+        window.draw(map1);
         window.display();
     }
 
