@@ -143,8 +143,7 @@ int main(int argc,char* argv[]) {
     
 	
 	
-    if (!map1.load("tilemap.png", sf::Vector2u(16, 16),map1.lirefichiercsv(level),100 , 100))
-        return -1;
+    if (!map1.load("tilemap.png", sf::Vector2u(16, 16),map1.lirefichiercsv(level),100 , 100)) {return -1;}
 
     // on fait tourner la boucle principale
     while (window.isOpen())

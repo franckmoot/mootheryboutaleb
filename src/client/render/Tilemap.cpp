@@ -9,7 +9,8 @@
 
 namespace render {
 
-    void Tilemap::draw(sf::RenderTarget& target, sf::RenderStates states) {
+       void Tilemap::draw (sf::RenderTarget& target, sf::RenderStates states) const 
+      {
     
         // on applique la transformation
         states.transform *= getTransform();
@@ -47,7 +48,7 @@ namespace render {
     }
 
         
-bool Tilemap:: load ( const std::string& tileset, sf::Vector2u tileSize, const int* tiles, unsigned int width, unsigned int height)
+bool Tilemap:: load ( const std::string& tileset, sf::Vector2u tileSize, std::vector<int> tiles, unsigned int width, unsigned int height)
 {
     
     
