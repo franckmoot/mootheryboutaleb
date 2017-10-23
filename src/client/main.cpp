@@ -121,25 +121,22 @@ int main(int argc,char* argv[]) {
     }
     
     else if(!s.compare("render")){
-        // on crée la fenêtre
-   /* sf::RenderWindow window(sf::VideoMode(512, 256), "Tilemap");
+    // on crée la fenêtre
+    sf::RenderWindow window(sf::VideoMode(2048, 1024), "Tilemap");
 
     // on définit le niveau à l'aide de numéro de tuiles
-    const int level[] =
-    {
-        0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-        0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 2, 0, 0, 0, 0,
-        1, 1, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3,
-        0, 1, 0, 0, 2, 0, 3, 3, 3, 0, 1, 1, 1, 0, 0, 0,
-        0, 1, 1, 0, 3, 3, 3, 0, 0, 0, 1, 1, 1, 2, 0, 0,
-        0, 0, 1, 0, 3, 0, 2, 2, 0, 0, 1, 1, 1, 1, 2, 0,
-        2, 0, 1, 0, 3, 0, 2, 2, 2, 0, 1, 1, 1, 1, 1, 1,
-        0, 0, 1, 0, 3, 2, 2, 2, 0, 0, 0, 0, 1, 1, 1, 1,
-    };
+
 
     // on crée la tilemap avec le niveau précédemment défini
-    TileMap map;
-    if (!map.load("tileset.png", sf::Vector2u(32, 32), level, 16, 8))
+        
+
+    Tilemap map;
+    /*std::vector<sf::Sprite> Map;*/
+    std::vector<int> level;
+    
+	
+	
+    if (!map.load("tilemap.png", sf::Vector2u(16, 16),map.lirefichiercsv(level),100 , 100))
         return -1;
 
     // on fait tourner la boucle principale
@@ -158,7 +155,8 @@ int main(int argc,char* argv[]) {
         window.draw(map);
         window.display();
     }
-        */
+
+    return 0;
     }
     
     else cout << "it works" << endl;
