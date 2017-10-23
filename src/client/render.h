@@ -2,5 +2,5 @@
 #ifndef __RENDER__H
 #define __RENDER__H
 
-#include "render/Render.h"
+#include "render/Tilemap.h"
 #endif
