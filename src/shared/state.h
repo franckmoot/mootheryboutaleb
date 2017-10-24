@@ -19,4 +19,6 @@
 #include "state/Tank.h"
 #include "state/ElementChars.h"
 #include "state/State.h"
+#include "state/AElementAlloc.h"
+#include "state/ElementAlloc.h"
 #endif
