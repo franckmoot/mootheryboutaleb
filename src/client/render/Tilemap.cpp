@@ -7,6 +7,8 @@
 #include <string>
 #include <sstream>
 
+using namespace std;
+
 namespace render {
 
        void Tilemap::draw (sf::RenderTarget& target, sf::RenderStates states) const 
@@ -22,12 +24,14 @@ namespace render {
         target.draw(m_vertices, states);
     }
 
-   
-        std::vector<int> Tilemap::lirefichiercsv(std::vector<int> vcarte) {
+std::vector<int> Tilemap::lirefichiercsv(std::vector<int> vcarte) {
             std::ifstream fichier;
             
     	
-        fichier.open("map1.csv",std::ios::in);
+      
+            fichier.open("res/map1.csv",std::ios::in);
+            if(!fichier.good())
+                 throw std::runtime_error("Error opening!!");
         std::string ligne,valeur;
        
        // int i = 0;
@@ -48,13 +52,17 @@ namespace render {
     }
 
         
-bool Tilemap:: load ( const std::string& tileset, sf::Vector2u tileSize, std::vector<int> tiles, unsigned int width, unsigned int height)
+bool Tilemap:: load ( const std::string& tileset, sf::Vector2u tileSize, const int* tiles, unsigned int width, unsigned int height)
 {
     
     
         // on charge la texture du tileset
-        if (!m_tileset.loadFromFile(tileset));
+        if (!m_tileset.loadFromFile(tileset)) {
+            cout << "Erreur lecture " << tileset << endl;
             return false;
+        }
+            
+            //sreturn false;
 
         // on redimensionne le tableau de vertex pour qu'il puisse contenir tout le niveau
         m_vertices.setPrimitiveType(sf::Quads);
