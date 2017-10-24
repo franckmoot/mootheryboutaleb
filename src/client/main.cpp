@@ -130,7 +130,7 @@ int main(int argc,char* argv[]) {
     else if(!s.compare("render")){
  
     // on définit le niveau à l'aide de numéro de tuiles
- const int level[] =
+ std::vector<int> level =
     {
         0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
         0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 2, 0, 0, 0, 0,
