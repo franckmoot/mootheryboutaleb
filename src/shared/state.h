@@ -3,7 +3,6 @@
 #define __STATE__H
 
 #include "state/TypeId.h"
-#include "state/ElementTab.h"
 #include "state/Element.h"
 #include "state/StaticElement.h"
 #include "state/ChampdebatailleTypeId.h"
@@ -17,8 +16,10 @@
 #include "state/Heli.h"
 #include "state/TankTypeId.h"
 #include "state/Tank.h"
+#include "state/ElementTab.h"
 #include "state/ElementChars.h"
 #include "state/State.h"
 #include "state/AElementAlloc.h"
 #include "state/ElementAlloc.h"
+#include "state/ElementFactory.h"
 #endif

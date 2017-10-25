@@ -4,13 +4,24 @@
 
 
 namespace state {
+  class Element;
+}
+
+namespace state {
 
   /// class ElementAlloc - 
+  template <  class E,   typename ID>
   class ElementAlloc {
     // Attributes
-  public:
+  protected:
      id;
+    // Operations
+  public:
+    ElementAlloc (ID id);
+    Element* newInstance ();
     // Setters and Getters
+    const & getId() const;
+    void setId(const & id);
   };
 
 };

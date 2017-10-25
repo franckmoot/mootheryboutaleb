@@ -3,12 +3,7 @@
 #define STATE__ELEMENT__H
 
 
-namespace state {
-  class ElementTab;
-}
-
 #include "TypeId.h"
-#include "ElementTab.h"
 
 namespace state {
 
