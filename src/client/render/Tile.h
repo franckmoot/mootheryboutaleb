@@ -11,11 +11,10 @@ namespace render {
   protected:
     int x     = 0;
     int y     = 0;
-    int width     = 24;
-    int height     = 24;
+    int width     = 16;
+    int height     = 16;
     // Operations
   public:
-    Tile ();
     Tile (int x, int y, int w, int h);
     // Setters and Getters
     int getX() const;

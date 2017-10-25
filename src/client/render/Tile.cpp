@@ -8,14 +8,9 @@ namespace render {
         this->x=x;
         this->y=y;
         this->width=w;
-        this->height=h;
-        
-        
+        this->height=h;  
     }
-    Tile::Tile() {
-
-    }
-
+   
     int Tile::getHeight() const {
         return height;
     }

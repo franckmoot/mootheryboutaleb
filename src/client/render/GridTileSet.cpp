@@ -1,45 +1,36 @@
 #include "GridTileSet.h"
 #include "state/Champdebataille.h"
+#include "state/Batiment.h"
 
 using namespace std;
 using namespace state;
-//using namespace Champdebataille;
 
 namespace render {
 
     GridTileSet::GridTileSet() {
-        chpbataille.push_back(new Tile(0,0,16,16));
-        chpbataille.push_back(new Tile(16,0,16,16));
-        chpbataille.push_back(new Tile(32,0,16,16));
-        chpbataille.push_back(new Tile(48,0,16,16));
-        chpbataille.push_back(new Tile(64,0,16,16));
-        batiment.push_back(new Tile(0,23,16,30));
-        batiment.push_back(new Tile(18,33,16,21)); 
-    }
-    
-    int GridTileSet::getCellHeight() const {
-
         
-    }
-
-    int GridTileSet::getCellWidth() const {
-
-        
+        chpbataille.push_back(*(new Tile(0,0,16,16)));
+        chpbataille.push_back(*(new Tile(16,0,16,16)));
+        chpbataille.push_back(*(new Tile(32,0,16,16)));
+        chpbataille.push_back(*(new Tile(48,0,16,16)));
+        chpbataille.push_back(*(new Tile(64,0,16,16)));
+        batiment.push_back(*(new Tile(0,16,16,30)));
+        batiment.push_back(*(new Tile(16,32,16,16))); 
     }
     
     const std::string GridTileSet::getImageFile() const {
-        return "res/map1.csv"
+        return "res/tilemap.png";
         
     }
     
     const Tile& GridTileSet::getTile(const state::Element& e) const {
-        if((e==Champdebataille)&&(e.getType()==EAU))return chpbataille(EAU);
-        if((e==Champdebataille)&&(e.getType()==HERBE))return chpbataille(HERBE);
-        if((e==Champdebataille)&&(e.getType()==ROCHER))return chpbataille(ROCHER);
-        if((e==Champdebataille)&&(e.getType()==ROUTE))return chpbataille(ROUTE);
-        if((e==Champdebataille)&&(e.getType()==SABLE))return chpbataille(SABLE);
-        if((e==Batiment)&&(e.getType()==QG))return batiment(QG);
-        if((e==Batiment)&&(e.getType()==CASERNE))return batiment(CASERNE);        
+        if(e.isStatic());
+       /* if((e==state::Champdebataille)&&(e.getType()==state::ChampdebatailleTypeId::HERBE))return chpbataille(state::ChampdebatailleTypeId::HERBE);
+        if((e==state::Champdebataille)&&(e.getType()==state::ChampdebatailleTypeId::ROCHER))return chpbataille(state::ChampdebatailleTypeId::ROCHER);
+        if((e==state::Champdebataille)&&(e.getType()==state::ChampdebatailleTypeId::ROUTE))return chpbataille(state::ChampdebatailleTypeId::ROUTE);
+        if((e==state::Champdebataille)&&(e.getType()==state::ChampdebatailleTypeId::SABLE))return chpbataille(state::ChampdebatailleTypeId::SABLE);
+        if((e==state::Batiment)&&(e.getType()==state::BatimentTypeId::QG))return batiment(state::BatimentTypeId::QG);
+        if((e==state::Batiment)&&(e.getType()==state::BatimentTypeId::CASERNE))return batiment(state::BatimentTypeId::CASERNE);       */ 
         }
         
     }
