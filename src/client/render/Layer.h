@@ -32,7 +32,7 @@ namespace render {
     std::shared_ptr<TileSet> tileset;
     // Operations
   public:
-    void createcarte (const state::ElementChars& elemCha);
+    void createcarte(const state::ElementChars& elemCha);
     // Setters and Getters
     const std::unique_ptr<Tilemap>& getTilemap() const;
     void setTilemap(const std::unique_ptr<Tilemap>& tilemap);
