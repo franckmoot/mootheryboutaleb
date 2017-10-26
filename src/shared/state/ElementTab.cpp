@@ -1,5 +1,7 @@
 #include "ElementTab.h"
 #include "Champdebataille.h"
+#include "Batiment.h"
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -92,51 +94,42 @@ namespace state{
             }
         }
     
-    for(int i=0; i<int(carte.size()) ; i++){
-            if(carte[i]==0) {
-                Champdebataille *C=new Champdebataille(HERBE);
-                list.push_back(*C);
+        for(int i=0; i<int(carte.size()) ; i++){
+            if(carte[i]==-1) {
+                list.push_back(NULL);
             }
-            if(carte[i]==1){
-                Champdebataille *D=new Champdebataille(ROUTE);
-                list.push_back(*D);
+            if(carte[i]==0) {
+                Champdebataille *R=new Champdebataille(HERBE);
+                list.push_back(R);
+            }
+            /*if(carte[i]==1){
+                
+                list.push_back(new Champdebataille(ROUTE));
             }
             
             if(carte[i]==2){
-                Champdebataille *E=new Champdebataille(SABLE);
-                list.push_back(*E);
+                list.push_back(new Champdebataille(SABLE));
             }
             
             if(carte[i]==3){ 
-                Champdebataille *F=new Champdebataille(EAU);
-                list.push_back(*F);
+                list.push_back(new Champdebataille(EAU));
             }
             
             if(carte[i]==4){
-                Champdebataille *G=new Champdebataille(ROCHER);
-                list.push_back(*G);
+                list.push_back(new Champdebataille(ROCHER));
             }
             if(carte[i]==5){
-                Batiment *H=new Batiment(CASERNE);
-                list.push_back(*H);
+                Batiment *B=new Batiment(CASERNE);
+                list.push_back(B);
             }
             
             if(carte[i]==6){
-                Batiment *I=new Batiment(QG);
-                list.push_back(*I);
-            }
-            if(carte[i]==7){
-                Infanterie *J=new Infanterie();
-                list.push_back(*J);
-            }
-            if(carte[i]==8){
-                Heli *K=new Heli();
-                list.push_back(*K);
-            }
-            if(carte[i]==7){
-                Tank *L=new Tank();
-                list.push_back(*L);
-            }
+                list.push_back(new Batiment(QG));
+            }*/
+            else{
+                list.push_back(NULL);
+                }  
+    
     }  
     
 }
