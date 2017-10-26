@@ -39,7 +39,7 @@ std::vector<int> Tilemap::lirefichiercsv(std::vector<int> vcarte) {
         while(!fichier.eof()){
             std::getline(fichier,ligne);
             std::stringstream stream(ligne);
-            std::cout << ligne << std::endl;
+            //std::cout << ligne << std::endl;
 
 		
             while(getline(stream, valeur,',')){

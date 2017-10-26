@@ -26,11 +26,12 @@ namespace render {
     
     
         const Tile& GridTileSet::getTile(const state::Element& e) const {
-  
-       // e.isStatic();
+     
+        MobileElement* E = (MobileElement*)&e;
+        if(E->isStatic());
          
         
-        // Ground* ground = (Vehicule*)vehicule;
+         
         
         /*
         //if((e.isStatic)return chpbataille(state::ChampdebatailleTypeId::HERBE);

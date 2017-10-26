@@ -129,7 +129,7 @@ int main(int argc,char* argv[]) {
     else if(!s.compare("render")){
  
     // on définit le niveau à l'aide de numéro de tuiles
- std::vector<int> level =
+/* std::vector<int> level =
     {
         0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
         0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 2, 0, 0, 0, 0,
@@ -140,25 +140,24 @@ int main(int argc,char* argv[]) {
         2, 0, 1, 0, 3, 0, 2, 2, 2, 0, 1, 1, 1, 1, 1, 1,
         0, 0, 1, 0, 3, 2, 2, 2, 0, 0, 0, 0, 1, 1, 1, 1,
     };
-
+*/
     // on crée la tilemap avec le niveau précédemment défini
         
     // on crée la fenêtre
-    sf::RenderWindow window(sf::VideoMode(600, 400), "Tilemap");
-    Tilemap map1;
+    sf::RenderWindow window(sf::VideoMode(800, 800), "Tilemap");
+    Tilemap map;
     /*std::vector<sf::Sprite> Map;*/
-    //std::vector<int> level;
+    std::vector<int> level;
     
 	cout << "it works 1" << endl;
 	
         //auto tab = map1.lirefichiercsv(level);
         
-   // if (!map1.load("res/tilemap.png", sf::Vector2u(16, 16),level,100 , 100)) {
-   //     cout<<"allo"<<endl;
-   //     return -1;
-   // }
-        if (!map1.load("res/tilemap.png", sf::Vector2u(16, 8), level, 16, 8))
+    if (!map.load("res/tilemap.png", sf::Vector2u(16, 16),map.lirefichiercsv(level),100 , 100)) 
+      // cout<<"allo"<<endl;
         return -1;
+   
+
 
     
        
@@ -176,7 +175,7 @@ int main(int argc,char* argv[]) {
 
         // on dessine le niveau
         window.clear();
-        window.draw(map1);
+        window.draw(map);
         window.display();
         cout << "it works 2" << endl;
     }
@@ -187,6 +186,8 @@ int main(int argc,char* argv[]) {
     else cout << "it works" << endl;
     
   }
+  
+  
   
   return 0;
 }
