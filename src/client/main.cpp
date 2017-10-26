@@ -178,6 +178,7 @@ int main(int argc,char* argv[]) {
         window.draw(map);
         window.display();
         cout << "it works 2" << endl;
+        cout << HERBE<<SABLE << endl;
     }
 
     return 0;

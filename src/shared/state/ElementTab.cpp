@@ -97,8 +97,7 @@ namespace state{
                 list.push_back(NULL);
             }
             if(carte[i]==0) {
-                Champdebataille *R=new Champdebataille(HERBE);
-                list.push_back(std::unique_ptr<Element>(R));
+                list.push_back(std::unique_ptr<Element>(new Champdebataille(HERBE)));
             }
            if(carte[i]==1){
                 
