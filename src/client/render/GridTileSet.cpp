@@ -25,13 +25,15 @@ namespace render {
     
     const Tile& GridTileSet::getTile(const state::Element& e) const {
        /* if(e.isStatic());
-       /* if((e==state::Champdebataille)&&(e.getType()==state::ChampdebatailleTypeId::HERBE))return chpbataille(state::ChampdebatailleTypeId::HERBE);
+        //if((e==state::Champdebataille)&&(e.getType()==state::ChampdebatailleTypeId::HERBE))return chpbataille(state::ChampdebatailleTypeId::HERBE);
         if((e==state::Champdebataille)&&(e.getType()==state::ChampdebatailleTypeId::ROCHER))return chpbataille(state::ChampdebatailleTypeId::ROCHER);
         if((e==state::Champdebataille)&&(e.getType()==state::ChampdebatailleTypeId::ROUTE))return chpbataille(state::ChampdebatailleTypeId::ROUTE);
         if((e==state::Champdebataille)&&(e.getType()==state::ChampdebatailleTypeId::SABLE))return chpbataille(state::ChampdebatailleTypeId::SABLE);
         if((e==state::Batiment)&&(e.getType()==state::BatimentTypeId::QG))return batiment(state::BatimentTypeId::QG);
         if((e==state::Batiment)&&(e.getType()==state::BatimentTypeId::CASERNE))return batiment(state::BatimentTypeId::CASERNE);       */ 
-        }
+        
+        return *(new Tile(4,4,4,4));
+    }
         
     }
 

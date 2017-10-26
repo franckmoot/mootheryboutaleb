@@ -9,6 +9,8 @@
 #include <string>
 #include <sstream>
 
+using namespace std;
+
 namespace state{
 
     ElementTab::ElementTab() {
@@ -16,7 +18,7 @@ namespace state{
     }
     
     ElementTab::ElementTab(size_t width, size_t height) {
-            std::vector<Element*> list(width*height);
+            vector<unique_ptr<Element> > list(width*height);
     }
     
     int ElementTab::sizeList() {
@@ -25,12 +27,12 @@ namespace state{
 
     
     void ElementTab::setElement( Element* e) {
-        list.push_back(e);
+        list.push_back(unique_ptr<Element>(e));
     }
     
     Element * const ElementTab::getElement(int i, int j) {
         Element *n=NULL;
-       if (list[i*j]!=NULL)return list[i*j];
+       if (list[i*j]!=NULL)return list[i*j].get();
        //if (list[i*j]==NULL)
         return n;
     
@@ -51,7 +53,7 @@ namespace state{
     
     void ElementTab::chgList(int i, Element* e) {
          
-            if(list[i]==NULL) list[i]=e;
+            if(list[i]==NULL) list[i]=unique_ptr<Element>(e);
                        
     }
 
@@ -60,8 +62,7 @@ namespace state{
         if(int(list.size())>=i&&int(list.size())>=j){
             if(list[i]!=NULL){
                 if(list[j]==NULL) {
-                list[j]=list[i];
-                list[i]=NULL;
+                list[j].swap(list[i]);
                 }
             }
             else std::cout << "Erreur sur le deplacement !" << std::endl;
@@ -70,14 +71,14 @@ namespace state{
     }
     
     void ElementTab::createElementCsv(std::vector<int> carte){
-                    std::ifstream fichier;
+        std::ifstream fichier;
             
     	
       
             fichier.open("res/map1.csv",std::ios::in);
             if(!fichier.good())
                  throw std::runtime_error("Error opening!!");
-        std::string ligne,valeur;
+                 std::string ligne,valeur;
        
        // int i = 0;
 		
@@ -100,11 +101,11 @@ namespace state{
             }
             if(carte[i]==0) {
                 Champdebataille *R=new Champdebataille(HERBE);
-                list.push_back(R);
+                list.push_back(unique_ptr<Element>(R));
             }
            if(carte[i]==1){
                 
-                list.push_back(new Champdebataille(ROUTE));
+                list.push_back(unique_ptr<Element>(new Champdebataille(ROUTE)));
             }
             
             /*if(carte[i]==2){
@@ -126,11 +127,11 @@ namespace state{
             if(carte[i]==6){
                 list.push_back(new Batiment(QG));
             }*/
-            else{
+            /*else{
                 list.push_back(NULL);
                 }  
+    */
+        }  
     
-    }  
-    
+    }
 }
-}    

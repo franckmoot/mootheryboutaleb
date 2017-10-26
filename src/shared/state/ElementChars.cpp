@@ -15,7 +15,7 @@ namespace state{
         ElementChars::ElementChars() {
 
     }
-         void ElementTab::createElementCsv(std::vector<int> carte){
+         void ElementChars::createElementCsv(std::vector<int> carte){
                     std::ifstream fichier;
             
     	
@@ -40,7 +40,7 @@ namespace state{
             }
         
         }
-    for(int i=0; i<int(carte.size()) ; i++){
+   /*for(int i=0; i<int(carte.size()) ; i++){
             if(carte[i]==-1) {
                 list.push_back(NULL);
             }
@@ -56,7 +56,7 @@ namespace state{
             else{
                 list.push_back(NULL);
             }
-    }
+    }*/
   }           
 }
 
