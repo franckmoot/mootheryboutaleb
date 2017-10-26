@@ -14,10 +14,9 @@ namespace state {
   /// class ElementTab - 
   class ElementTab {
     // Attributes
-  private:
+  protected:
     size_t width;
     size_t height;
-  protected:
     std::vector<Element*> list;
     // Operations
   public:
@@ -32,7 +31,10 @@ namespace state {
     void chgList (int i, Element* e);
     void chgList2 (int i, int j);
     void createElementCsv (std::vector<int> carte);
+    std::vector<int> createcarteEl ();
     // Setters and Getters
+    void setWidth(const size_t& width);
+    void setHeight(const size_t& height);
     const std::vector<Element*>& getList() const;
     void setList(const std::vector<Element*>& list);
   };

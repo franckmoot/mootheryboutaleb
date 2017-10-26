@@ -13,21 +13,8 @@ using namespace state;
 
 namespace render {
     
-    void Layer::createcarte(const state::ElementChars& elemCha){
-        for (int i=0;i<elemCha.getHeight()*elemCha.getWidth();i++){
-            std::vector<int> carte;
-            if(elemCha.list[i].) {
-               
-            }
-     
-            }
+
+  }
             
-            
-        } 
-    }
-    
-    
-    
-    
-}
+
 
