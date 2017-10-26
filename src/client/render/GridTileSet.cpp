@@ -1,6 +1,7 @@
 #include "GridTileSet.h"
 #include "state/Champdebataille.h"
 #include "state/Batiment.h"
+#include "state/MobileElement.h"
 
 using namespace std;
 using namespace state;
@@ -23,9 +24,16 @@ namespace render {
         
     }
     
-    const Tile& GridTileSet::getTile(const state::Element& e) const {
-       /* if(e.isStatic());
-        //if((e==state::Champdebataille)&&(e.getType()==state::ChampdebatailleTypeId::HERBE))return chpbataille(state::ChampdebatailleTypeId::HERBE);
+    
+        const Tile& GridTileSet::getTile(const state::Element& e) const {
+  
+        e.isStatic();
+         
+        
+        // Ground* ground = (Vehicule*)vehicule;
+        
+        /*
+        //if((e.isStatic)return chpbataille(state::ChampdebatailleTypeId::HERBE);
         if((e==state::Champdebataille)&&(e.getType()==state::ChampdebatailleTypeId::ROCHER))return chpbataille(state::ChampdebatailleTypeId::ROCHER);
         if((e==state::Champdebataille)&&(e.getType()==state::ChampdebatailleTypeId::ROUTE))return chpbataille(state::ChampdebatailleTypeId::ROUTE);
         if((e==state::Champdebataille)&&(e.getType()==state::ChampdebatailleTypeId::SABLE))return chpbataille(state::ChampdebatailleTypeId::SABLE);
