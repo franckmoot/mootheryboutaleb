@@ -102,12 +102,12 @@ namespace state{
                 Champdebataille *R=new Champdebataille(HERBE);
                 list.push_back(R);
             }
-            /*if(carte[i]==1){
+           if(carte[i]==1){
                 
                 list.push_back(new Champdebataille(ROUTE));
             }
             
-            if(carte[i]==2){
+            /*if(carte[i]==2){
                 list.push_back(new Champdebataille(SABLE));
             }
             
