@@ -1,3 +1,5 @@
+#include <iostream>
+
 #include "GridTileSet.h"
 #include "state/Champdebataille.h"
 #include "state/Batiment.h"
@@ -51,8 +53,10 @@ namespace render {
 	  return chpbataille[state::ChampdebatailleTypeId::ROUTE];
 	  break;
           
+          
+          std::cout << SABLE <<std::endl;
 	case state::ChampdebatailleTypeId::SABLE:
-	  return chpbataille[state::ChampdebatailleTypeId::SABLE];
+	  return chpbataille[SABLE];
 	  break;
           
 	default:
