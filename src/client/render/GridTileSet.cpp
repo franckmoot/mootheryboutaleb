@@ -27,7 +27,7 @@ namespace render {
     
         const Tile& GridTileSet::getTile(const state::Element& e) const {
   
-        e.isStatic();
+       // e.isStatic();
          
         
         // Ground* ground = (Vehicule*)vehicule;
