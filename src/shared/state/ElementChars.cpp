@@ -1,4 +1,6 @@
 #include "ElementChars.h"
+#include "ElementTab.h"
+
 #include "Infanterie.h"
 #include "Tank.h"
 #include "Heli.h"
@@ -40,23 +42,23 @@ namespace state{
             }
         
         }
-   /*for(int i=0; i<int(carte.size()) ; i++){
+        for(int i=0; i<int(carte.size()) ; i++){
             if(carte[i]==-1) {
                 list.push_back(NULL);
             }
             if(carte[i]==7){
-                list.push_back(new Infanterie);
+                list.push_back(std::unique_ptr<Element>(new Infanterie()));
             }
             if(carte[i]==8){
-                list.push_back(new Heli);
+                list.push_back(std::unique_ptr<Element>(new Heli()));
             }
             if(carte[i]==7){
-                list.push_back(new Tank);
+                list.push_back(std::unique_ptr<Element>(new Tank()));
             }
             else{
                 list.push_back(NULL);
             }
-    }*/
+    }
   }           
 }
 

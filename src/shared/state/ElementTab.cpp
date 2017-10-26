@@ -98,37 +98,36 @@ namespace state{
             }
             if(carte[i]==0) {
                 Champdebataille *R=new Champdebataille(HERBE);
-                list.push_back(unique_ptr<Element>(R));
+                list.push_back(std::unique_ptr<Element>(R));
             }
            if(carte[i]==1){
                 
-                list.push_back(unique_ptr<Element>(new Champdebataille(ROUTE)));
+                list.push_back(std::unique_ptr<Element>(new Champdebataille(ROUTE)));
             }
             
-            /*if(carte[i]==2){
-                list.push_back(new Champdebataille(SABLE));
+            if(carte[i]==2){
+                list.push_back(std::unique_ptr<Element>(new Champdebataille(SABLE)));
             }
             
             if(carte[i]==3){ 
-                list.push_back(new Champdebataille(EAU));
+                list.push_back(std::unique_ptr<Element>(new Champdebataille(EAU)));
             }
             
             if(carte[i]==4){
-                list.push_back(new Champdebataille(ROCHER));
+                list.push_back(std::unique_ptr<Element>(new Champdebataille(ROCHER)));
             }
             if(carte[i]==5){
-                Batiment *B=new Batiment(CASERNE);
-                list.push_back(B);
+                list.push_back(std::unique_ptr<Element>(new Batiment(CASERNE)));
             }
             
             if(carte[i]==6){
-                list.push_back(new Batiment(QG));
-            }*/
-            /*else{
+                list.push_back(std::unique_ptr<Element>(new Batiment(QG)));
+            }
+            else{
                 list.push_back(NULL);
                 }  
-    */
+    
         }  
     
     }
-}
+}   
