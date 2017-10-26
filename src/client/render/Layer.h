@@ -4,13 +4,13 @@
 
 #include <memory>
 
-namespace render {
-  class Tilemap;
-  class TileSet;
-};
 namespace state {
   class ElementTab;
   class ElementChars;
+};
+namespace render {
+  class Tilemap;
+  class TileSet;
 }
 
 #include "Tilemap.h"
@@ -24,9 +24,15 @@ namespace render {
   class Layer {
     // Associations
     // Attributes
+  public:
+    state::ElementTab* CharEle;
+    state::ElementChars* TabElem;
   protected:
     std::unique_ptr<Tilemap> tilemap;
     std::shared_ptr<TileSet> tileset;
+    // Operations
+  public:
+    void createcarte (const state::ElementChars& elemCha);
     // Setters and Getters
     const std::unique_ptr<Tilemap>& getTilemap() const;
     void setTilemap(const std::unique_ptr<Tilemap>& tilemap);
