@@ -36,7 +36,6 @@ int main(int argc,char* argv[]) {
       /* Init list charactere */
       cout << "Fabrique une list de charactere" << endl;
       Infanterie *I=new Infanterie();
-      //ElementTab T(0,0);
       ElementChars *T=new ElementChars();
       
       /* Infanterie */

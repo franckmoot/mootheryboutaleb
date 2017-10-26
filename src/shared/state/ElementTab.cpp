@@ -31,11 +31,8 @@ namespace state{
     }
     
     Element * const ElementTab::getElement(int i, int j) {
-        Element *n=NULL;
-       if (list[i*j]!=NULL)return list[i*j].get();
-       //if (list[i*j]==NULL)
-        return n;
-    
+
+           return list[i*j].get();
     }
     
  
