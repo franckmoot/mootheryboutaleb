@@ -4,7 +4,6 @@
 
 #include <stdlib.h>
 #include <vector>
-#include <memory>
 
 namespace state {
   class Element;
@@ -19,7 +18,7 @@ namespace state {
     size_t width;
     size_t height;
   protected:
-    std::vector<std::unique_ptr<Element>> list;
+    std::vector<Element*> list;
     // Operations
   public:
     ElementTab ();
@@ -34,8 +33,8 @@ namespace state {
     void chgList2 (int i, int j);
     void createElementCsv (std::vector<int> carte);
     // Setters and Getters
-    const std::vector<std::unique_ptr<Element>>& getList() const;
-    void setList(const std::vector<std::unique_ptr<Element>>& list);
+    const std::vector<Element*>& getList() const;
+    void setList(const std::vector<Element*>& list);
   };
 
 };
