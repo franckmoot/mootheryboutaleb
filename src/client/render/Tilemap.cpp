@@ -27,7 +27,7 @@ namespace render {
   
   std::vector<int> Tilemap::lirefichiercsv(std::vector<int> vcarte) {
     std::ifstream fichier;
-    fichier.open("res/map1.csv",std::ios::in);
+    fichier.open("res/map2.csv",std::ios::in);
     if(!fichier.good())
       throw std::runtime_error("Error opening!!");
     std::string ligne,valeur;
@@ -97,6 +97,8 @@ namespace render {
   }
   
   void Tilemap::initQuads(int count) {
+         m_vertices.setPrimitiveType(sf::Quads);
+        m_vertices.resize(count * 4);
     
   }
   
@@ -105,7 +107,10 @@ namespace render {
   }
   
   void Tilemap::setSpriteLocation(int i, int x, int y) {
-    
+                quad[0].position = sf::Vector2f(i * tileSize.x, j * tileSize.y);
+                quad[1].position = sf::Vector2f((i + 1) * tileSize.x, j * tileSize.y);
+                quad[2].position = sf::Vector2f((i + 1) * tileSize.x, (j + 1) * tileSize.y);
+                quad[3].position = sf::Vector2f(i * tileSize.x, (j + 1) * tileSize.y);
     
     
   }

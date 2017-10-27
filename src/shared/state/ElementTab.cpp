@@ -72,7 +72,7 @@ namespace state{
             
     	
       
-            fichier.open("res/map1.csv",std::ios::in);
+            fichier.open("res/map2.csv",std::ios::in);
             if(!fichier.good())
                  throw std::runtime_error("Error opening!!");
                  std::string ligne,valeur;

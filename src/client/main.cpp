@@ -124,9 +124,23 @@ int main(int argc,char* argv[]) {
       if(S->sizeList()==3) cout << "Ok" << endl;
       cout << "Verifie que l'element ajouter est un Batiment caserne" << endl;
       if(S->getElement(1,2)->getType()==BatimentTypeId::CASERNE) cout<<"Ok" <<endl;
+      
+      
+      ElementTab *Z=new ElementTab();
+      std::vector<int> macarte;
+      Z->createElementCsv(macarte);
+      Element *V=Z->getElement(2,4);
+      Champdebataille *W=(Champdebataille *)V;
+      
+      if(W->getChampdeBatailleType()==HERBE)cout<<"OK notre element a été créé "<<endl ;
+      else cout<<"faux"<<endl;
+      
     }
     
     else if(!s.compare("render")){
+        
+        
+        
  
     // on définit le niveau à l'aide de numéro de tuiles
 /* std::vector<int> level =
@@ -152,7 +166,7 @@ int main(int argc,char* argv[]) {
 	
         //auto tab = map1.lirefichiercsv(level);
         
-    if (!map.load("res/tilemap.png", sf::Vector2u(16, 16),map.lirefichiercsv(level),100 , 100)) return -1;
+    if (!map.load("res/tilemap.png", sf::Vector2u(16, 16),map.lirefichiercsv(level),10 , 10)) return -1;
   
        
     // on fait tourner la boucle principale
