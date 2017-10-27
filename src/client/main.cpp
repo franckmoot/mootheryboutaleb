@@ -141,8 +141,7 @@ int main(int argc,char* argv[]) {
         0, 0, 1, 0, 3, 2, 2, 2, 0, 0, 0, 0, 1, 1, 1, 1,
     };
 */
-    // on crée la tilemap avec le niveau précédemment défini
-        
+    // on crée la tilemap avec le niveau précédemment défini   
     // on crée la fenêtre
     sf::RenderWindow window(sf::VideoMode(800, 800), "Tilemap");
     Tilemap map;
@@ -179,6 +178,8 @@ int main(int argc,char* argv[]) {
         window.display();
         cout << "it works 2" << endl;
         cout << HERBE<<SABLE << endl;
+        
+       
     }
 
     return 0;

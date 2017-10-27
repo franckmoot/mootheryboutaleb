@@ -4,6 +4,7 @@
 
 
 namespace state {
+  class Element;
   class ElementTab;
 }
 
@@ -16,6 +17,7 @@ namespace state {
     // Operations
   public:
     ElementChars ();
+    void ElementToCarte (const state::Element& e);
     // Setters and Getters
   };
 

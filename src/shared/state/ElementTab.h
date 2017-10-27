@@ -18,6 +18,7 @@ namespace state {
   private:
     size_t width;
     size_t height;
+  protected:
     std::vector<std::unique_ptr<Element> > list;
     // Operations
   public:
@@ -33,6 +34,8 @@ namespace state {
     void chgList2 (int i, int j);
     void  createElementCsv (std::vector<int> carte);
     // Setters and Getters
+    const std::vector<std::unique_ptr<Element> >& getList() const;
+    void setList(const std::vector<std::unique_ptr<Element> >& list);
   };
 
 };
