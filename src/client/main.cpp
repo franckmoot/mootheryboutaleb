@@ -148,23 +148,17 @@ int main(int argc,char* argv[]) {
     /*std::vector<sf::Sprite> Map;*/
     std::vector<int> level;
     
-	cout << "it works 1" << endl;
+	
 	
         //auto tab = map1.lirefichiercsv(level);
         
-    if (!map.load("res/tilemap.png", sf::Vector2u(16, 16),map.lirefichiercsv(level),100 , 100)) 
-       cout<<"allo"<<endl;
-        //return -1;
-   
-
-
-    
+    if (!map.load("res/tilemap.png", sf::Vector2u(16, 16),map.lirefichiercsv(level),100 , 100)) return -1;
+  
        
     // on fait tourner la boucle principale
    while (window.isOpen())
     {
         // on gère les évènements
-        cout << "it works 111" << endl;
         sf::Event event;
         while (window.pollEvent(event))
         {
@@ -176,16 +170,11 @@ int main(int argc,char* argv[]) {
         window.clear();
         window.draw(map);
         window.display();
-        cout << "it works 2" << endl;
-        cout << HERBE<<SABLE << endl;
-        
-       
+ 
     }
 
     return 0;
     }
-    
-    else cout << "it works" << endl;
     
   }
   
