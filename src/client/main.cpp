@@ -154,7 +154,7 @@ int main(int argc,char* argv[]) {
         //auto tab = map1.lirefichiercsv(level);
         
     if (!map.load("res/tilemap.png", sf::Vector2u(16, 16),map.lirefichiercsv(level),100 , 100)) 
-      // cout<<"allo"<<endl;
+       cout<<"allo"<<endl;
         return -1;
    
 

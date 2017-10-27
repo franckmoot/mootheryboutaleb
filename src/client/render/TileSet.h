@@ -17,7 +17,7 @@ namespace state {
 namespace render {
 
   /// class TileSet - 
-  class TileSet {
+  class TileSet : public state::Element {
     // Associations
     // Operations
   public:
