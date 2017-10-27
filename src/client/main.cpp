@@ -155,7 +155,7 @@ int main(int argc,char* argv[]) {
         
     if (!map.load("res/tilemap.png", sf::Vector2u(16, 16),map.lirefichiercsv(level),100 , 100)) 
        cout<<"allo"<<endl;
-        return -1;
+        //return -1;
    
 
 

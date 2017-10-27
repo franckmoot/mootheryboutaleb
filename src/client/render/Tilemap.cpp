@@ -27,7 +27,7 @@ namespace render {
             std::ifstream fichier;
             
     	
-        fichier.open("map1.csv",std::ios::in);
+        fichier.open("res/map1.csv",std::ios::in);
         std::string ligne,valeur;
        
        // int i = 0;
