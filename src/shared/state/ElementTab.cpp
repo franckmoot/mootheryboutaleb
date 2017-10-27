@@ -66,4 +66,70 @@ namespace state{
         }
          else std::cout << "Deplacement hors list" << std::endl;
     }
+
+       void ElementTab::createElementCsv(std::vector<int> carte){
+        std::ifstream fichier;
+            
+    	
+      
+            fichier.open("res/map1.csv",std::ios::in);
+            if(!fichier.good())
+                 throw std::runtime_error("Error opening!!");
+                 std::string ligne,valeur;
+       
+       // int i = 0;
+		
+        while(!fichier.eof()){
+            std::getline(fichier,ligne);
+            std::stringstream stream(ligne);
+            std::cout << ligne << std::endl;
+
+		
+            while(getline(stream, valeur,',')){
+			
+                carte.push_back(atoi(valeur.c_str()));
+			
+            }
+        }
+    
+        for(int i=0; i<int(carte.size()) ; i++){
+            if(carte[i]==-1) {
+                list.push_back(NULL);
+            }
+            if(carte[i]==0) {
+                list.push_back(std::unique_ptr<Element>(new Champdebataille(HERBE)));
+            }
+           if(carte[i]==1){
+                
+                list.push_back(std::unique_ptr<Element>(new Champdebataille(ROUTE)));
+            }
+            
+            if(carte[i]==2){
+                list.push_back(std::unique_ptr<Element>(new Champdebataille(SABLE)));
+            }
+            
+            if(carte[i]==3){ 
+                list.push_back(std::unique_ptr<Element>(new Champdebataille(EAU)));
+            }
+            
+            if(carte[i]==4){
+                list.push_back(std::unique_ptr<Element>(new Champdebataille(ROCHER)));
+            }
+            if(carte[i]==5){
+                list.push_back(std::unique_ptr<Element>(new Batiment(CASERNE)));
+            }
+            
+            if(carte[i]==6){
+                list.push_back(std::unique_ptr<Element>(new Batiment(QG)));
+            }
+            else{
+                list.push_back(NULL);
+                }  
+    
+        }  
+    
+    }
+
+    
 }
+

@@ -31,6 +31,7 @@ namespace state {
     int sizeList ();
     void chgList (int i, Element* e);
     void chgList2 (int i, int j);
+    void  createElementCsv (std::vector<int> carte);
     // Setters and Getters
   };
 
