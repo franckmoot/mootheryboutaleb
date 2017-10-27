@@ -1,15 +1,6 @@
 #include "ElementTab.h"
-#include "Champdebataille.h"
-#include "Batiment.h"
-
 #include <iostream>
-#include <string>
-#include <vector>
-#include <fstream>
-#include <string>
-#include <sstream>
 
-using namespace std;
 
 namespace state{
 
@@ -18,7 +9,7 @@ namespace state{
     }
     
     ElementTab::ElementTab(size_t width, size_t height) {
-            vector<unique_ptr<Element> > list(width*height);
+            std::vector<Element*> list(width*height);
     }
     
     int ElementTab::sizeList() {
@@ -27,12 +18,15 @@ namespace state{
 
     
     void ElementTab::setElement( Element* e) {
-        list.push_back(unique_ptr<Element>(e));
+        list.push_back(e);
     }
     
     Element * const ElementTab::getElement(int i, int j) {
-
-           return list[i*j].get();
+        Element *n=NULL;
+       if (list[i*j]!=NULL)return list[i*j];
+       //if (list[i*j]==NULL)
+        return n;
+    
     }
     
  
@@ -50,7 +44,7 @@ namespace state{
     
     void ElementTab::chgList(int i, Element* e) {
          
-            if(list[i]==NULL) list[i]=unique_ptr<Element>(e);
+            if(list[i]==NULL) list[i]=e;
                        
     }
 
@@ -59,74 +53,12 @@ namespace state{
         if(int(list.size())>=i&&int(list.size())>=j){
             if(list[i]!=NULL){
                 if(list[j]==NULL) {
-                list[j].swap(list[i]);
+                list[j]=list[i];
+                list[i]=NULL;
                 }
             }
             else std::cout << "Erreur sur le deplacement !" << std::endl;
         }
          else std::cout << "Deplacement hors list" << std::endl;
     }
-    
-    void ElementTab::createElementCsv(std::vector<int> carte){
-        std::ifstream fichier;
-            
-    	
-      
-            fichier.open("res/map1.csv",std::ios::in);
-            if(!fichier.good())
-                 throw std::runtime_error("Error opening!!");
-                 std::string ligne,valeur;
-       
-       // int i = 0;
-		
-        while(!fichier.eof()){
-            std::getline(fichier,ligne);
-            std::stringstream stream(ligne);
-            std::cout << ligne << std::endl;
-
-		
-            while(getline(stream, valeur,',')){
-			
-                carte.push_back(atoi(valeur.c_str()));
-			
-            }
-        }
-    
-        for(int i=0; i<int(carte.size()) ; i++){
-            if(carte[i]==-1) {
-                list.push_back(NULL);
-            }
-            if(carte[i]==0) {
-                list.push_back(std::unique_ptr<Element>(new Champdebataille(HERBE)));
-            }
-           if(carte[i]==1){
-                
-                list.push_back(std::unique_ptr<Element>(new Champdebataille(ROUTE)));
-            }
-            
-            if(carte[i]==2){
-                list.push_back(std::unique_ptr<Element>(new Champdebataille(SABLE)));
-            }
-            
-            if(carte[i]==3){ 
-                list.push_back(std::unique_ptr<Element>(new Champdebataille(EAU)));
-            }
-            
-            if(carte[i]==4){
-                list.push_back(std::unique_ptr<Element>(new Champdebataille(ROCHER)));
-            }
-            if(carte[i]==5){
-                list.push_back(std::unique_ptr<Element>(new Batiment(CASERNE)));
-            }
-            
-            if(carte[i]==6){
-                list.push_back(std::unique_ptr<Element>(new Batiment(QG)));
-            }
-            else{
-                list.push_back(NULL);
-                }  
-    
-        }  
-    
-    }
-}   
+}
