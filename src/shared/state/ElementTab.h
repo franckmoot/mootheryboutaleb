@@ -27,7 +27,7 @@ namespace state {
     ~ElementTab ();
     size_t getWidth ();
     size_t getHeight ();
-    Element* const getElement (int i, int j);
+    Element* getElement (int i, int j) const;
     void setElement (Element* e);
     int sizeList ();
     void chgList (int i, Element* e);

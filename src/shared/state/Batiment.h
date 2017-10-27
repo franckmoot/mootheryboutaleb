@@ -8,6 +8,7 @@ namespace state {
 }
 
 #include "BatimentTypeId.h"
+#include "TypeId.h"
 #include "StaticElement.h"
 
 namespace state {
@@ -24,9 +25,9 @@ namespace state {
     Batiment ();
     Batiment (BatimentTypeId id);
     ~Batiment ();
-    bool const isChampdebataille ();
-    TypeId const getTypeId ();
-    int const getCapture ();
+    bool isChampdebataille () const;
+    TypeId getTypeId () const;
+    int getCapture () const;
     void setCapture (int capture);
     // Setters and Getters
     BatimentTypeId getBatimentTypeId() const;

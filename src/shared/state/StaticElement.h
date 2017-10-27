@@ -17,8 +17,8 @@ namespace state {
   public:
     StaticElement ();
     ~StaticElement ();
-    bool const isStatic ();
-    virtual bool const isChampdebataille () = 0;
+    bool isStatic () const;
+    virtual bool isChampdebataille () const = 0;
     // Setters and Getters
   };
 

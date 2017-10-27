@@ -30,7 +30,7 @@ namespace state{
         list.push_back(unique_ptr<Element>(e));
     }
     
-    Element * const ElementTab::getElement(int i, int j) {
+    Element *  ElementTab::getElement(int i, int j) const {
 
            return list[i*j].get();
     }

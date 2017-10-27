@@ -7,6 +7,7 @@ namespace state {
   class MobileElement;
 }
 
+#include "TypeId.h"
 #include "MobileElement.h"
 #include "TankTypeId.h"
 
@@ -21,7 +22,7 @@ namespace state {
     Tank ();
     ~Tank ();
     int diffUnite ();
-    TypeId const getTypeId ();
+    TypeId getTypeId () const;
     // Setters and Getters
     TankTypeId getTankTypeId() const;
     void setTankTypeId(TankTypeId tankTypeId);

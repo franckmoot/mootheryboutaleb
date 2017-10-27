@@ -15,13 +15,15 @@ namespace state {
                     
     }
 
-    const TypeId Batiment::getTypeId() {
+
+
+    TypeId Batiment::getTypeId() const {
         return TypeId::BATIMENT;
     }
 
     
     /* Getter de capture */
-    const int Batiment::getCapture() {
+    int Batiment::getCapture() const {
             return capture;
     }
     
@@ -31,7 +33,7 @@ namespace state {
     }
 
     /* Differenci le champdebataille au batiment*/
-    const bool Batiment::isChampdebataille() {
+    bool Batiment::isChampdebataille() const {
         return false;
     }
 

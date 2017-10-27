@@ -14,5 +14,10 @@ namespace state {
     void Element::setType(int type) {
         this->type=type;
     }
+    
+    void Element::setTypeId(TypeId typeId) {
+        this->typeId=typeId;
+    }
 
+    
 }

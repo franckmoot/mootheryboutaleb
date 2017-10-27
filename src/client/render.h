@@ -7,4 +7,5 @@
 #include "render/TileSet.h"
 #include "render/GridTileSet.h"
 #include "render/Layer.h"
+#include "render/CharsTileSet.h"
 #endif

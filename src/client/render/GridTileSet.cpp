@@ -29,33 +29,31 @@ namespace render {
   
   const Tile& GridTileSet::getTile(const state::Element& e) const {
 
-    MobileElement* E = (MobileElement*)&e;
-    if(E->isStatic()){
-      Champdebataille* C=(Champdebataille*)&E;
-      if(C->isChampdebataille()){
+    if(e.isStatic()){
+      StaticElement* staticTmp = (StaticElement*)&e;
+      
+      if(staticTmp->isChampdebataille()){
+	Champdebataille* champTmp = (Champdebataille*)&e;
 	
-        
-	switch (C->getChampdeBatailleType()){
+	switch (champTmp->getChampdeBatailleType()){
 	  
-	case state::ChampdebatailleTypeId::EAU:
-	  return chpbataille[ChampdebatailleTypeId::EAU];
-	  break;
-	  
-	case state::ChampdebatailleTypeId::HERBE:     
-	  return chpbataille[state::ChampdebatailleTypeId::HERBE];
+	case EAU:
+	  return chpbataille[EAU];
 	  break;
 	  
-	case state::ChampdebatailleTypeId::ROCHER:
-	  return chpbataille[state::ChampdebatailleTypeId::ROCHER];
+	case HERBE:     
+	  return chpbataille[HERBE];
+	  break;
+	  
+	case ROCHER:
+	  return chpbataille[ROCHER];
 	  break;
           
-	case state::ChampdebatailleTypeId::ROUTE:
-	  return chpbataille[state::ChampdebatailleTypeId::ROUTE];
+	case ROUTE:
+	  return chpbataille[ROUTE];
 	  break;
           
-          
-          std::cout << SABLE <<std::endl;
-	case state::ChampdebatailleTypeId::SABLE:
+	case SABLE:
 	  return chpbataille[SABLE];
 	  break;
           
@@ -63,20 +61,18 @@ namespace render {
 	  return chpbataille[0];
 	  break;
 	}
-      }
-    }
-    else{
-      Batiment* C=(Batiment*)&E;
-      if(!C->isChampdebataille()){
+      }else if (!staticTmp->isChampdebataille()){
+        
+	Batiment* batTmp=(Batiment*)&staticTmp;
 	
-	switch (C->getBatimentTypeId()){
+	switch (batTmp->getBatimentTypeId()){
 	  
-	case state::BatimentTypeId::CASERNE:
-	  return batiment[state::BatimentTypeId::CASERNE];
+	case CASERNE:
+	  return batiment[CASERNE];
 	  break;
 	  
-	case state::BatimentTypeId::QG:    
-	  return batiment[state::BatimentTypeId::CASERNE];
+	case QG:    
+	  return batiment[CASERNE];
 	  break;
           
 	default:
@@ -86,6 +82,7 @@ namespace render {
 	
       }
     }
+    
     return chpbataille[0];
   }
 }

@@ -26,15 +26,12 @@ namespace state {
         return champdeBatailleType;
     }
 
-    
-    const bool Champdebataille::isChampdebataille() {
-            return true;
+
+    bool Champdebataille::isChampdebataille() const {
+        return true;
     }
 
-    const TypeId Champdebataille::getTypeId() {
-        return TypeId::CHAMPSDEBATAILLE;
+    TypeId Champdebataille::getTypeId() const {
+           return TypeId::CHAMPSDEBATAILLE;
     }
-
-    
-
 }

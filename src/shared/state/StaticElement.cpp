@@ -13,7 +13,7 @@ namespace state {
     }
 
     
-    const bool StaticElement::isStatic() {
+    bool StaticElement::isStatic() const {
         return true;
     }
 

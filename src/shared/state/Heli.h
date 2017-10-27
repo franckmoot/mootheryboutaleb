@@ -7,6 +7,7 @@ namespace state {
   class MobileElement;
 }
 
+#include "TypeId.h"
 #include "MobileElement.h"
 #include "HeliTypeId.h"
 
@@ -21,7 +22,7 @@ namespace state {
     Heli ();
     ~Heli ();
     int diffUnite ();
-    TypeId const getTypeId ();
+    TypeId getTypeId () const;
     // Setters and Getters
     HeliTypeId getHeliTypeId() const;
     void setHeliTypeId(HeliTypeId heliTypeId);

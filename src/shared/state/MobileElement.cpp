@@ -50,9 +50,9 @@ namespace state{
 
     }
     
-    bool const MobileElement::isStatic() {
-         return false;
+
+    bool MobileElement::isStatic() const {
+        return false;
     }
-    
-    
+
 }
