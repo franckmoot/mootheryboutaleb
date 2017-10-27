@@ -1,6 +1,15 @@
 #include "ElementTab.h"
-#include <iostream>
+#include "Champdebataille.h"
+#include "Batiment.h"
 
+#include <iostream>
+#include <string>
+#include <vector>
+#include <fstream>
+#include <string>
+#include <sstream>
+
+using namespace std;
 
 namespace state{
 
@@ -9,7 +18,7 @@ namespace state{
     }
     
     ElementTab::ElementTab(size_t width, size_t height) {
-            std::vector<Element*> list(width*height);
+            vector<unique_ptr<Element> > list(width*height);
     }
     
     int ElementTab::sizeList() {
@@ -18,15 +27,12 @@ namespace state{
 
     
     void ElementTab::setElement( Element* e) {
-        list.push_back(e);
+        list.push_back(unique_ptr<Element>(e));
     }
     
     Element * const ElementTab::getElement(int i, int j) {
-        Element *n=NULL;
-       if (list[i*j]!=NULL)return list[i*j];
-       //if (list[i*j]==NULL)
-        return n;
-    
+
+           return list[i*j].get();
     }
     
  
@@ -44,7 +50,7 @@ namespace state{
     
     void ElementTab::chgList(int i, Element* e) {
          
-            if(list[i]==NULL) list[i]=e;
+            if(list[i]==NULL) list[i]=unique_ptr<Element>(e);
                        
     }
 
@@ -53,8 +59,7 @@ namespace state{
         if(int(list.size())>=i&&int(list.size())>=j){
             if(list[i]!=NULL){
                 if(list[j]==NULL) {
-                list[j]=list[i];
-                list[i]=NULL;
+                list[j].swap(list[i]);
                 }
             }
             else std::cout << "Erreur sur le deplacement !" << std::endl;
