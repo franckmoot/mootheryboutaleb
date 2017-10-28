@@ -123,3 +123,49 @@ void testcreateelement(){
         else cout<<"Notre élement n'a pas été créé"<<endl;
       }
 }
+
+void testrender(){
+    
+    
+    
+    sf::RenderWindow window(sf::VideoMode(800, 800), "Tilemap");
+    //sf::VertexArray m_vertices(sf::Quads,4);
+    cout<<"1"<<endl;
+    
+    Tilemap surface;
+    
+    sf::Vertex* m_vertices = &(surface.m_vertices)[4];
+    //sf::VertexArray (surface->m_vertices)=new sf::VertexArray(sf::Quads,4);
+    //GridTileSet *tuile=new GridTileSet();
+    m_vertices[0].position=sf::Vector2f(5,5);
+    m_vertices[1].position=sf::Vector2f(200,5);
+    m_vertices[2].position=sf::Vector2f(200,200);
+    m_vertices[3].position=sf::Vector2f(5,200);
+    cout<<"2"<<endl;
+    surface.loadTexture("res/tilemap.png") ;
+    m_vertices[0].texCoords=sf::Vector2f(0,0);
+    m_vertices[1].texCoords=sf::Vector2f(0,80);
+    m_vertices[2].texCoords=sf::Vector2f(80,80);
+    m_vertices[3].texCoords=sf::Vector2f(80,0);
+    cout<<"4"<<endl;
+      while (window.isOpen())
+    {
+        // on gère les évènements
+        sf::Event event;
+        while (window.pollEvent(event))
+        {
+            if(event.type == sf::Event::Closed)
+                window.close();
+        }
+
+        // on dessine le niveau
+        window.clear();
+        window.draw(surface.m_vertices,&(surface.m_tileset));
+        window.display();
+ 
+    }
+    
+    
+    
+
+}

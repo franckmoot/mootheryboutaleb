@@ -33,6 +33,8 @@ using namespace render;
 void teststate ();
 void testcreateelement();
 
+void testrender();
+
 
 
 

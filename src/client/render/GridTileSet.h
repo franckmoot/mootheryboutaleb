@@ -29,8 +29,8 @@ namespace render {
     // Operations
   public:
     GridTileSet ();
-    const std::string  getImageFile () const;
-    const Tile&  getTile (const state::Element& e) const;
+    virtual const std::string  getImageFile () const;
+    virtual const Tile&  getTile (const state::Element& e) const;
     // Setters and Getters
   };
 
