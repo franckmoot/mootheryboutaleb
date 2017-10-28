@@ -41,7 +41,7 @@ int main(int argc,char* argv[]) {
     
     else if(!s.compare("render")){
         
-       // testrender();
+        testrender();
         
  
     // on définit le niveau à l'aide de numéro de tuiles

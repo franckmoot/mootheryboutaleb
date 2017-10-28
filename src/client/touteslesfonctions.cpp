@@ -123,28 +123,38 @@ void testcreateelement(){
 
 void testrender(){
     
+    sf::RenderWindow window(sf::VideoMode(600, 600), "SFML WORK!");
+
+     // on récupère un pointeur vers le quad à définir dans le tableau de vertex
+	  //sf::Vertex* quad = &m_vertices[(i + j * width) * 4];
     
-    
-    sf::RenderWindow window(sf::VideoMode(800, 800), "Tilemap");
-    //sf::VertexArray m_vertices(sf::Quads,4);
-    cout<<"1"<<endl;
-    
-    Tilemap surface;
-    
-    sf::Vertex* m_vertices = &(surface.m_vertices)[4];
-    //sf::VertexArray (surface->m_vertices)=new sf::VertexArray(sf::Quads,4);
-    //GridTileSet *tuile=new GridTileSet();
-    m_vertices[0].position=sf::Vector2f(5,5);
-    m_vertices[1].position=sf::Vector2f(200,5);
-    m_vertices[2].position=sf::Vector2f(200,200);
-    m_vertices[3].position=sf::Vector2f(5,200);
-    cout<<"2"<<endl;
-    surface.loadTexture("res/tilemap.png") ;
-    m_vertices[0].texCoords=sf::Vector2f(0,0);
-    m_vertices[1].texCoords=sf::Vector2f(0,80);
-    m_vertices[2].texCoords=sf::Vector2f(80,80);
-    m_vertices[3].texCoords=sf::Vector2f(80,0);
-    cout<<"4"<<endl;
+	//sf::VertexArray quad(sf::Quads, 4);
+        Tilemap surface;
+        surface.m_vertices.setPrimitiveType(sf::Quads);
+        surface.m_vertices.resize(4);
+         
+	surface.m_vertices[0].position = sf::Vector2f(0, 0);
+	surface.m_vertices[1].position = sf::Vector2f(160, 0);
+	surface.m_vertices[2].position = sf::Vector2f(160, 94);
+	surface.m_vertices[3].position = sf::Vector2f(0, 94);
+
+	surface.loadTexture("res/tilemap.png") ;
+
+	surface.m_vertices[0].texCoords = sf::Vector2f(0, 0);
+	surface.m_vertices[1].texCoords = sf::Vector2f(80, 0);
+	surface.m_vertices[2].texCoords = sf::Vector2f(80, 47);
+	surface.m_vertices[3].texCoords = sf::Vector2f(0, 47);
+        
+        surface.m_vertices[0].position = sf::Vector2f(160, 0);
+	surface.m_vertices[1].position = sf::Vector2f(320, 0);
+	surface.m_vertices[2].position = sf::Vector2f(320, 94);
+	surface.m_vertices[3].position = sf::Vector2f(0, 94);
+
+	surface.m_vertices[0].texCoords = sf::Vector2f(0, 0);
+	surface.m_vertices[1].texCoords = sf::Vector2f(80, 0);
+	surface.m_vertices[2].texCoords = sf::Vector2f(80, 47);
+	surface.m_vertices[3].texCoords = sf::Vector2f(0, 47);
+
       while (window.isOpen())
     {
         // on gère les évènements
@@ -156,8 +166,9 @@ void testrender(){
         }
 
         // on dessine le niveau
-        window.clear();
-        window.draw(surface.m_vertices,&(surface.m_tileset));
+        window.clear();                  
+        window.draw(surface.m_vertices, &(surface.m_tileset));
+        //window.draw(quad, &(surface.m_tileset));
         window.display();
  
     }
