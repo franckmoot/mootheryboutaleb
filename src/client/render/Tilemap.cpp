@@ -71,12 +71,12 @@ namespace render {
       for (unsigned int j = 0; j < height; ++j)
 	{
 	  // on récupère le numéro de tuile courant
-	 /* int tileNumber = tiles[i + j * width];
+	  int tileNumber = tiles[i + j * width];
 	  
 	  // on en déduit sa position dans la texture du tileset
 	  int tu = tileNumber % (m_tileset.getSize().x / tileSize.x);
 	  int tv = tileNumber / (m_tileset.getSize().x / tileSize.x);
-	  */
+	  
 	  // on récupère un pointeur vers le quad à définir dans le tableau de vertex
 	  sf::Vertex* quad = &m_vertices[(i + j * width) * 4];
 	  
