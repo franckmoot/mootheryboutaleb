@@ -107,18 +107,24 @@ void teststate (){
 
 void testcreateelement(){
     
-       ElementTab *Z=new ElementTab();
-      std::vector<int> macarte; 
-      int h=Z->createElementCsv(macarte).size();
-      cout<<h<<endl;
-      std::vector<int>carte;
-      carte=Z->createElementCsv(macarte);
-      for(int i=0 ;i<100;i++){
-        cout<<carte[i]<<endl;
-        Element *V=Z->getElement(i,2);
-        if(V->getType()==carte[i])cout<<"OK notre "<<i<<"eme element a été créé "<<endl ;
-        else cout<<"Notre élement n'a pas été créé"<<endl;
-      }
+    
+    State monde;
+    
+    std::vector<int> macarte; 
+    (monde.grid)=new ElementTab(); 
+    (monde.chars)=new ElementChars();
+    
+    macarte=monde.grid->createElementCsv(macarte);
+    cout<<"Il y a "<<monde.grid->createElementCsv(macarte).size()<<"Element dans la carte"<<endl;
+    
+    for(int i=0 ;i<50;i++){
+        cout<<macarte[i]<<endl;
+        if(monde.grid->getElement(i,2)->getTypeId()==macarte[i])cout<<"L'element de la liste est le même que celui du fichier"<<endl ;
+        else cout<<"L'Element de la liste est different"<<endl;
+       
+    
+    }
+      
 }
 
 void testrender(){
