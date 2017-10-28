@@ -70,8 +70,8 @@ int main(int argc,char* argv[]) {
 	
         //auto tab = map1.lirefichiercsv(level);
         
-    if (!map.load("res/tilemap.png", sf::Vector2u(32, 32),map.lirefichiercsv(level),10 , 10)) return -1;
-    if (!mapPlayer.load("res/player.png", sf::Vector2u(32, 32),level1,10 , 10)) return -1;
+    if (!map.load("res/tilemap.png", sf::Vector2u(16, 16),map.lirefichiercsv(level),10 , 10)) return -1;
+    if (!mapPlayer.load("res/player.png", sf::Vector2u(16, 16),level1,10 , 10)) return -1;
        
     // on fait tourner la boucle principale
    while (window.isOpen())
@@ -87,7 +87,7 @@ int main(int argc,char* argv[]) {
         // on dessine le niveau
         window.clear();
         window.draw(map);
-        //window.draw(mapPlayer);
+        window.draw(mapPlayer);
         window.display();
  
     }
