@@ -113,13 +113,10 @@ void testcreateelement(){
       cout<<h<<endl;
       std::vector<int>carte;
       carte=Z->createElementCsv(macarte);
-      for(int i=1 ;i<99;i++){
-          cout<<carte[i]<<endl;
-        Element *V=Z->getElement(i/2,2);
-        
-        Champdebataille *W=(Champdebataille *)V;
-
-        if(W->getType()==carte[i])cout<<"OK notre "<<i<<"eme element a été créé "<<endl ;
+      for(int i=0 ;i<100;i++){
+        cout<<carte[i]<<endl;
+        Element *V=Z->getElement(i,2);
+        if(V->getType()==carte[i])cout<<"OK notre "<<i<<"eme element a été créé "<<endl ;
         else cout<<"Notre élement n'a pas été créé"<<endl;
       }
 }
