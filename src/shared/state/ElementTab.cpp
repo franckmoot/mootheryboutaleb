@@ -67,7 +67,7 @@ namespace state{
          else std::cout << "Deplacement hors list" << std::endl;
     }
 
-       void ElementTab::createElementCsv(std::vector<int> carte){
+        std::vector<int> ElementTab::createElementCsv(std::vector<int> carte){
         std::ifstream fichier;
             
     	
@@ -88,10 +88,12 @@ namespace state{
             while(getline(stream, valeur,',')){
 			
                 carte.push_back(atoi(valeur.c_str()));
+                
 			
             }
+
         }
-    
+                return carte;
         for(int i=0; i<int(carte.size()) ; i++){
             if(carte[i]==-1) {
                 list.push_back(NULL);
@@ -126,7 +128,7 @@ namespace state{
                 list.push_back(NULL);
                 }  
     
-        }  
+        }
     
     }
 

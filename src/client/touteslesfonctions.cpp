@@ -108,12 +108,15 @@ void teststate (){
 void testcreateelement(){
     
     
-    ElementTab *Z=new ElementTab();
+      ElementTab *Z=new ElementTab();
       std::vector<int> macarte;
-      Z->createElementCsv(macarte);
-      Element *V=Z->getElement(2,4);
-      Champdebataille *W=(Champdebataille *)V;
-      
-      if(W->getChampdeBatailleType()==HERBE)cout<<"OK notre element a été créé "<<endl ;
-      else cout<<"Notre élement n'a pas été créé"<<endl;
+      Z->createElementCsv(macarte);  
+      int h=macarte.size();
+      cout<<h<<endl;
+      for(int i=0 ;i<100;i++){
+        Element *V=Z->getElement(1,i);
+        Champdebataille *W=(Champdebataille *)V;
+        if(W->getChampdeBatailleType()==macarte[i])cout<<"OK notre element a été créé "<<endl ;
+        else cout<<"Notre élement n'a pas été créé"<<endl;
+      }
 }
