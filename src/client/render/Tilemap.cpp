@@ -53,7 +53,7 @@ namespace render {
   bool Tilemap:: load ( const std::string& tileset, sf::Vector2u tileSize, std::vector<int> tiles, unsigned int width, unsigned int height)
   {
     
-    
+      
     // on charge la texture du tileset
     if (!m_tileset.loadFromFile(tileset)) {
       cout << "Erreur lecture " << tileset << endl;
@@ -71,12 +71,12 @@ namespace render {
       for (unsigned int j = 0; j < height; ++j)
 	{
 	  // on récupère le numéro de tuile courant
-	  int tileNumber = tiles[i + j * width];
+	 /* int tileNumber = tiles[i + j * width];
 	  
 	  // on en déduit sa position dans la texture du tileset
 	  int tu = tileNumber % (m_tileset.getSize().x / tileSize.x);
 	  int tv = tileNumber / (m_tileset.getSize().x / tileSize.x);
-	  
+	  */
 	  // on récupère un pointeur vers le quad à définir dans le tableau de vertex
 	  sf::Vertex* quad = &m_vertices[(i + j * width) * 4];
 	  
@@ -97,26 +97,34 @@ namespace render {
   }
   
   void Tilemap::initQuads(int count) {
-         m_vertices.setPrimitiveType(sf::Quads);
+        m_vertices.setPrimitiveType(sf::Quads);
         m_vertices.resize(count * 4);
     
   }
   
   void Tilemap::loadTexture(const std::string& image_file) {
     
+    // on charge la texture du tileset
+    if (!m_tileset.loadFromFile(image_file)) {
+      cout << "Erreur lecture " << image_file << endl;
+    }
+      
   }
   
   void Tilemap::setSpriteLocation(int i, int x, int y) {
-                quad[0].position = sf::Vector2f(i * tileSize.x, j * tileSize.y);
+               /* quad[0].position = sf::Vector2f(i * tileSize.x, j * tileSize.y);
                 quad[1].position = sf::Vector2f((i + 1) * tileSize.x, j * tileSize.y);
                 quad[2].position = sf::Vector2f((i + 1) * tileSize.x, (j + 1) * tileSize.y);
-                quad[3].position = sf::Vector2f(i * tileSize.x, (j + 1) * tileSize.y);
+                quad[3].position = sf::Vector2f(i * tileSize.x, (j + 1) * tileSize.y);*/
     
     
   }
   
   void Tilemap::setSpriteTexture(int i, const Tile& tex) {
     
+      
+        
+      
   }
   
   
