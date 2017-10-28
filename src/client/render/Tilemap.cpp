@@ -124,6 +124,8 @@ namespace render {
   void Tilemap::setSpriteTexture(int i, const Tile& tex) {
     
       
+      
+      
         m_vertices[0].texCoords = sf::Vector2f(tex.getX(), tex.getY());
 	 m_vertices[1].texCoords = sf::Vector2f(tex.getX()+tex.getWidth(), tex.getY());
          m_vertices[2].texCoords = sf::Vector2f(tex.getX()+tex.getWidth(), tex.getY()+tex.getHeight());
