@@ -107,21 +107,19 @@ void teststate (){
 
 void testcreateelement(){
     
-    Champdebataille *R=new Champdebataille(EAU);
-    cout<<R->getTypeId()<<endl;
-    ElementTab *Z=new ElementTab();
+       ElementTab *Z=new ElementTab();
       std::vector<int> macarte; 
       int h=Z->createElementCsv(macarte).size();
       cout<<h<<endl;
       std::vector<int>carte;
       carte=Z->createElementCsv(macarte);
-      for(int i=1 ;i<100;i++){
+      for(int i=1 ;i<99;i++){
           cout<<carte[i]<<endl;
-        Element *V=Z->getElement(8,7);
+        Element *V=Z->getElement(i/2,2);
         
         Champdebataille *W=(Champdebataille *)V;
 
-        if(W->getChampdeBatailleType()==carte[i])cout<<"OK notre "<<i<<"eme element a été créé "<<endl ;
+        if(W->getType()==carte[i])cout<<"OK notre "<<i<<"eme element a été créé "<<endl ;
         else cout<<"Notre élement n'a pas été créé"<<endl;
       }
 }

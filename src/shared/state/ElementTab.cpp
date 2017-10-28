@@ -30,12 +30,12 @@ namespace state{
         list.push_back(unique_ptr<Element>(e));
     }
     
-    Element *  ElementTab::getElement(int i, int j) const {
+    Element *  ElementTab::getElement(int i,int j) const {
 
            return list[i*j].get();
     }
     
- 
+
     size_t ElementTab::getHeight() {
         return height;
     }

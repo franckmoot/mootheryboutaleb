@@ -34,4 +34,7 @@ namespace state {
     TypeId Champdebataille::getTypeId() const {
            return TypeId::CHAMPSDEBATAILLE;
     }
+    
+    
+    
 }
