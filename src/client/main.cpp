@@ -47,21 +47,21 @@ int main(int argc,char* argv[]) {
     // on définit le niveau à l'aide de numéro de tuiles
  std::vector<int> level1 =
     {
-        3, 0, 0, 0, 0, 0, 1, 1, 1, 1,
+        3, 0, 0, 0, 0, 0, -1, -1, 1, 1,
         3, 1, 1, 1, 1, 1, 1, 0, -1, 0, 
         3, 1, 0, 0, 0, 0, 0, 0, 2, 2, 
         3, 1, 0, 0, 2, 0, 1, 2, 1, 0, 
         3, -1, -1, 0, -1, 1, 0, 0, 0, 0, 
-        3, 0, -1, 0, 2, 0, -1, 2, 0, 0,
-        3, 0, -1, 0, 0, 0, 2, -1, 2, 0, 
-        3, -1, 1, 0, 1, 2, 2, 2, 0, 0,
+        3, 0, -1, -1, -1, 0, -1, 2, 0, 0,
+        3, 0, -1, -1, 0, 0, 2, -1, 2, 0, 
+        3, -1, 1, -1, 1, 2, 2, 2, -1, -1,
         3, 0, 1, 0, 0, 2, 2, 2, 0, 0,
-        3, 0, 1, 0, 0, 2, 2, 2, 0, 0,
+        3, 0, 1, 0, 0, -1, -1, -1, 0, 0,
     };
 
     // on crée la tilemap avec le niveau précédemment défini   
     // on crée la fenêtre
-    sf::RenderWindow window(sf::VideoMode(800, 800), "Tilemap");
+    sf::RenderWindow window(sf::VideoMode(640, 640), "Tilemap");
     Tilemap map,mapPlayer;
     /*std::vector<sf::Sprite> Map;*/
     std::vector<int> level;
@@ -70,8 +70,8 @@ int main(int argc,char* argv[]) {
 	
         //auto tab = map1.lirefichiercsv(level);
         
-    if (!map.load("res/tilemap.png", sf::Vector2u(16, 16),map.lirefichiercsv(level),10 , 10)) return -1;
-    if (!mapPlayer.load("res/player.png", sf::Vector2u(16, 16),level1,10 , 10)) return -1;
+    if (!map.load("res/tile.png", sf::Vector2u(64, 64),map.lirefichiercsv(level),10 , 10)) return -1;
+    if (!mapPlayer.load("res/playe.png", sf::Vector2u(64, 64),level1,10 , 10)) return -1;
        
     // on fait tourner la boucle principale
    while (window.isOpen())
