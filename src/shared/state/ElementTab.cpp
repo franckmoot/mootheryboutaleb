@@ -1,6 +1,7 @@
 #include "ElementTab.h"
 #include "Champdebataille.h"
 #include "Batiment.h"
+#include "Element.h"
 
 #include <iostream>
 #include <string>
@@ -129,6 +130,13 @@ namespace state{
                     return carte;
     }
 
-    
+     const std::vector<int> ElementTab::Elemnttocarte (std::vector<int> carte){
+         for(int i=0;i<list.size();i++){
+             if(list[i]=NULL) carte[i]=-1;
+             else carte[i]=list[i].get()->getType();
+         }
+         return carte;
+         
+     }
 }
 
