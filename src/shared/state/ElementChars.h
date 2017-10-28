@@ -2,9 +2,9 @@
 #ifndef STATE__ELEMENTCHARS__H
 #define STATE__ELEMENTCHARS__H
 
+#include <vector>
 
 namespace state {
-  class Element;
   class ElementTab;
 }
 
@@ -17,7 +17,7 @@ namespace state {
     // Operations
   public:
     ElementChars ();
-    void ElementToCarte (const state::Element& e);
+    std::vector<int> const ElementToCarte (std::vector<int> carte);
     // Setters and Getters
   };
 
