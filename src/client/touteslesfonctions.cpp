@@ -170,10 +170,30 @@ void testrender(){
         window.draw(surface.m_vertices, &(surface.m_tileset));
         //window.draw(quad, &(surface.m_tileset));
         window.display();
- 
+      }
     }
     
-    
-    
-
-}
+       
+        void testload(){
+             
+             
+             Tilemap surface;
+             surface.loadTexture("res/tilemap.png");
+             GridTIleSet griiil;
+             
+        for (unsigned int i = 0; i < 10; ++i)
+                 for (unsigned int j = 0; j < 10; ++j)
+                        {
+                            surface.initQuads(i);
+                            surface.setSpriteLocation(i + j * 10,i,j);
+                            
+                            
+                            surface.setSpriteTexture(i,griii);
+                            
+                            
+                            
+                 }
+             
+             
+         }
+        

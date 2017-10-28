@@ -34,6 +34,7 @@ void teststate ();
 void testcreateelement();
 
 void testrender();
+void testload();
 
 
 

@@ -72,26 +72,26 @@ namespace render {
       for (unsigned int j = 0; j < height; ++j)
 	{
 	  // on récupère le numéro de tuile courant
-	  int tileNumber = tiles[i + j * width];
+	//  int tileNumber = tiles[i + j * width];
 	  
 	  // on en déduit sa position dans la texture du tileset
-	  int tu = tileNumber % (m_tileset.getSize().x / tileSize.x);
-	  int tv = tileNumber / (m_tileset.getSize().x / tileSize.x);
+	 // int tu = tileNumber % (m_tileset.getSize().x / tileSize.x);
+	 // int tv = tileNumber / (m_tileset.getSize().x / tileSize.x);
 	  
 	  // on récupère un pointeur vers le quad à définir dans le tableau de vertex
 	  sf::Vertex* quad = &m_vertices[(i + j * width) * 4];
 	  
 	  // on définit ses quatre coins
-	  quad[0].position = sf::Vector2f(i * tileSize.x, j * tileSize.y);
-	  quad[1].position = sf::Vector2f((i + 1) * tileSize.x, j * tileSize.y);
-	  quad[2].position = sf::Vector2f((i + 1) * tileSize.x, (j + 1) * tileSize.y);
-	  quad[3].position = sf::Vector2f(i * tileSize.x, (j + 1) * tileSize.y);
+	  quad[0].position = sf::Vector2f(i * 16, j * 16);
+	  quad[1].position = sf::Vector2f((i + 1) * 16, j * 16);
+	  quad[2].position = sf::Vector2f((i + 1) * 16, (j + 1) * 16);
+	  quad[3].position = sf::Vector2f(i * 16, (j + 1) * 16);
 	  
 	  // on définit ses quatre coordonnées de texture
-	  quad[0].texCoords = sf::Vector2f(tu * 16, tv * 16);
-	  quad[1].texCoords = sf::Vector2f((tu + 1) * 16, tv * 16);
-	  quad[2].texCoords = sf::Vector2f((tu + 1) * 16, (tv + 1) * 16);
-	  quad[3].texCoords = sf::Vector2f(tu * 16, (tv + 1) * 16);
+	  quad[0].texCoords = sf::Vector2f(0, 0);
+	  quad[1].texCoords = sf::Vector2f(32, 0);
+	  quad[2].texCoords = sf::Vector2f(32, 32);
+	  quad[3].texCoords = sf::Vector2f(0, 32);
 	}
     
     return true;
@@ -113,23 +113,27 @@ namespace render {
   }
   
   void Tilemap::setSpriteLocation(int i, int x, int y) {
-               /* quad[0].position = sf::Vector2f(i * tileSize.x, j * tileSize.y);
-                quad[1].position = sf::Vector2f((i + 1) * tileSize.x, j * tileSize.y);
-                quad[2].position = sf::Vector2f((i + 1) * tileSize.x, (j + 1) * tileSize.y);
-                quad[3].position = sf::Vector2f(i * tileSize.x, (j + 1) * tileSize.y);*/
+          sf::Vertex* quad = &m_vertices[(i) * 4];
+      //sf::Vertex* quad = &m_vertices[(x + y * 10) * 4];
+                // on définit ses quatre coins
+	  quad[0].position = sf::Vector2f(x * 16, y * 16);
+	  quad[1].position = sf::Vector2f((x + 1) * 16, y * 16);
+	  quad[2].position = sf::Vector2f((x + 1) * 16, (y + 1) * 16);
+	  quad[3].position = sf::Vector2f(x * 16, (y + 1) * 16);
     
     
   }
   
   void Tilemap::setSpriteTexture(int i, const Tile& tex) {
     
-      
-      
-      
-        m_vertices[0].texCoords = sf::Vector2f(tex.getX(), tex.getY());
-	 m_vertices[1].texCoords = sf::Vector2f(tex.getX()+tex.getWidth(), tex.getY());
-         m_vertices[2].texCoords = sf::Vector2f(tex.getX()+tex.getWidth(), tex.getY()+tex.getHeight());
-         m_vertices[3].texCoords = sf::Vector2f(tex.getX(), tex.getY()+tex.getHeight());
+          //i + j * width
+          sf::Vertex* quad = &m_vertices[(i) * 4];
+      // on définit ses quatre coordonnées de texture
+	  quad[0].texCoords = sf::Vector2f(tex.getX(), tex.getY());
+	  quad[1].texCoords = sf::Vector2f(tex.getX()+tex.getWidth(), tex.getY());
+	  quad[2].texCoords = sf::Vector2f(tex.getX()+tex.getWidth(), tex.getY()+tex.getHeight());
+	  quad[3].texCoords = sf::Vector2f(tex.getX(), tex.getY()+tex.getHeight());
+        
       
   }
   

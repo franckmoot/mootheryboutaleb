@@ -41,7 +41,7 @@ int main(int argc,char* argv[]) {
     
     else if(!s.compare("render")){
         
-        testrender();
+       // testrender();
         
  
     // on définit le niveau à l'aide de numéro de tuiles
@@ -62,11 +62,11 @@ int main(int argc,char* argv[]) {
     sf::RenderWindow window(sf::VideoMode(800, 800), "Tilemap");
     Tilemap map;
     /*std::vector<sf::Sprite> Map;*/
-   /* std::vector<int> level;
+    std::vector<int> level;
     
-	*/
 	
-  /*      //auto tab = map1.lirefichiercsv(level);
+	
+        //auto tab = map1.lirefichiercsv(level);
         
     if (!map.load("res/tilemap.png", sf::Vector2u(16, 16),map.lirefichiercsv(level),10 , 10)) return -1;
   
@@ -87,7 +87,7 @@ int main(int argc,char* argv[]) {
         window.draw(map);
         window.display();
  
-    }*/
+    }
 
     return 0;
     }
