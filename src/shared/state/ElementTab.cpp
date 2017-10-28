@@ -67,11 +67,8 @@ namespace state{
          else std::cout << "Deplacement hors list" << std::endl;
     }
 
-        std::vector<int> ElementTab::createElementCsv(std::vector<int> carte){
-        std::ifstream fichier;
-            
-    	
-      
+        const std::vector<int> ElementTab::createElementCsv( std::vector<int> carte){
+            std::ifstream fichier;
             fichier.open("res/map2.csv",std::ios::in);
             if(!fichier.good())
                  throw std::runtime_error("Error opening!!");
@@ -79,21 +76,21 @@ namespace state{
        
        // int i = 0;
 		
-        while(!fichier.eof()){
-            std::getline(fichier,ligne);
-            std::stringstream stream(ligne);
-            std::cout << ligne << std::endl;
+            while(!fichier.eof()){
+                std::getline(fichier,ligne);
+                std::stringstream stream(ligne);
+                std::cout << ligne << std::endl;
 
 		
-            while(getline(stream, valeur,',')){
+                while(getline(stream, valeur,',')){
 			
-                carte.push_back(atoi(valeur.c_str()));
+                    carte.push_back(atoi(valeur.c_str()));
                 
 			
+                }
+
             }
 
-        }
-                return carte;
         for(int i=0; i<int(carte.size()) ; i++){
             if(carte[i]==-1) {
                 list.push_back(NULL);
@@ -129,7 +126,7 @@ namespace state{
                 }  
     
         }
-    
+                    return carte;
     }
 
     
