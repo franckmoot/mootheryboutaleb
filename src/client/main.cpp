@@ -45,22 +45,24 @@ int main(int argc,char* argv[]) {
         
  
     // on définit le niveau à l'aide de numéro de tuiles
-/* std::vector<int> level =
+ std::vector<int> level1 =
     {
-        0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-        0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 2, 0, 0, 0, 0,
-        1, 1, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3,
-        0, 1, 0, 0, 2, 0, 3, 3, 3, 0, 1, 1, 1, 0, 0, 0,
-        0, 1, 1, 0, 3, 3, 3, 0, 0, 0, 1, 1, 1, 2, 0, 0,
-        0, 0, 1, 0, 3, 0, 2, 2, 0, 0, 1, 1, 1, 1, 2, 0,
-        2, 0, 1, 0, 3, 0, 2, 2, 2, 0, 1, 1, 1, 1, 1, 1,
-        0, 0, 1, 0, 3, 2, 2, 2, 0, 0, 0, 0, 1, 1, 1, 1,
+        0, 0, 0, 0, 0, 0, 1, 1, 1, 1,
+        0, 1, 1, 1, 1, 1, 1, 0, -1, 0, 
+        1, 1, 0, 0, 0, 0, 0, 0, 2, 2, 
+        0, 1, 0, 0, 2, 0, 1, 2, 1, 0, 
+        0, -1, -1, 0, -1, 1, 0, 0, 0, 0, 
+        0, 0, -1, 0, 2, 0, -1, 2, 0, 0,
+        2, 0, -1, 0, 0, 0, 2, -1, 2, 0, 
+        0, -1, 1, 0, 1, 2, 2, 2, 0, 0,
+        0, 0, 1, 0, 0, 2, 2, 2, 0, 0,
+        0, 0, 1, 0, 0, 2, 2, 2, 0, 0,
     };
-*/
+
     // on crée la tilemap avec le niveau précédemment défini   
     // on crée la fenêtre
     sf::RenderWindow window(sf::VideoMode(800, 800), "Tilemap");
-    Tilemap map;
+    Tilemap map,mapPlayer;
     /*std::vector<sf::Sprite> Map;*/
     std::vector<int> level;
     
@@ -68,8 +70,8 @@ int main(int argc,char* argv[]) {
 	
         //auto tab = map1.lirefichiercsv(level);
         
-    if (!map.load("res/tilemap.png", sf::Vector2u(16, 16),map.lirefichiercsv(level),10 , 10)) return -1;
-  
+    if (!map.load("res/tilemap.png", sf::Vector2u(32, 32),map.lirefichiercsv(level),10 , 10)) return -1;
+    if (!mapPlayer.load("res/player.png", sf::Vector2u(32, 32),level1,10 , 10)) return -1;
        
     // on fait tourner la boucle principale
    while (window.isOpen())
@@ -85,6 +87,7 @@ int main(int argc,char* argv[]) {
         // on dessine le niveau
         window.clear();
         window.draw(map);
+        //window.draw(mapPlayer);
         window.display();
  
     }
