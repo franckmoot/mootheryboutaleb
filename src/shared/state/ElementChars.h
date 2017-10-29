@@ -20,6 +20,7 @@ namespace state {
     ElementChars ();
     std::vector<int> const ElementToCarte (std::vector<int> carte);
     ElementChars (size_t width, size_t height);
+    std::vector<int> createElementCharsCsv () const;
     // Setters and Getters
   };
 

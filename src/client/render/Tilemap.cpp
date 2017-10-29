@@ -28,7 +28,7 @@ namespace render {
   
   std::vector<int> Tilemap::lirefichiercsv(std::vector<int> vcarte) {
     std::ifstream fichier;
-    fichier.open("res/map5.csv",std::ios::in);
+    fichier.open("res/map.csv",std::ios::in);
     if(!fichier.good())
       throw std::runtime_error("Error opening!!");
     std::string ligne,valeur;

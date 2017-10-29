@@ -35,8 +35,8 @@ int main(int argc,char* argv[]) {
     }
     else if(!s.compare("state")){
        
-      // teststate();
-      testcreateelement();
+      teststate();
+      
     }
     
     else if(!s.compare("render")){

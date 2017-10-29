@@ -105,11 +105,18 @@ namespace state{
 	this->setElement(new Champdebataille(SABLE));
 	break;
         
+      case 5:
+	this->setElement(new Batiment(QG));
+	break;
+        
+      case 6:
+	this->setElement(new Batiment(CASERNE));
+	break;
+        
       default:
 	this->setElement(NULL);
 	break; 
       }
-      cout<<"La liste fait "<<this->list.size()<<" et le numero de de lelement est  "<<list[i]->getTypeId()<<endl;
     }
     return carte;
   }

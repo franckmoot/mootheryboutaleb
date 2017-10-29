@@ -35,7 +35,7 @@ void teststate (){
   cout << "Verifie que l'element ajouter est un Tank" << endl;
   if(monde.chars->getElement(1,1)->getTypeId()==4) cout<<"Ok" <<endl;
   
-      
+  
   /* Heli */
   Heli *H=new Heli();
   cout << "On ajoute un Element de type Heli" << endl;
@@ -105,78 +105,32 @@ void teststate (){
 }
 
 
-void testcreateelement(){
-   
-  State monde;
-    
-  std::vector<int> macarte; 
-  (monde.grid)=new ElementTab(); 
-  (monde.chars)=new ElementChars(10,10);
-  cout<<"La liste de chars fait : "<<monde.chars->sizeList()<<endl;
-  
-  
-  for(int i=0;i<10;i++){
-    monde.chars->setElement(NULL);
-  }
-  Heli *H=new Heli();
-  Infanterie *I=new Infanterie();
-  Tank *T=new Tank();
-  Heli *He=new Heli();
-  Infanterie *In=new Infanterie();
-  Tank *Ta=new Tank();
-  
-  monde.chars->chgList(2,H);
-  
-  monde.chars->chgList(13,T);
-  monde.chars->chgList(17,I);
-  monde.chars->chgList(29,He);
-  monde.chars->chgList(50,Ta);
-  monde.chars->chgList(98,In); 
-  cout<<monde.chars->sizeList()<<endl;
-  std::vector<int> carte;
-  
-  carte=monde.chars->ElementToCarte(carte);
-  
-  
-    
-}
-     
- 
 void testrender(){
-    
-    sf::RenderWindow window(sf::VideoMode(640, 640), "Advance wars");
-    
-    Layer layer1;
-    layer1.initRandMap();
-    
-    while (window.isOpen())
+  
+  sf::RenderWindow window(sf::VideoMode(640, 640), "Advance wars");
+  
+  Layer layer1,layer2;
+  layer1.initmap();
+  layer2.displayChars();
+  while (window.isOpen())
+    {
+      // on gère les évènements
+      sf::Event event;
+      while (window.pollEvent(event))
 	{
-	  // on gère les évènements
-	  sf::Event event;
-	  while (window.pollEvent(event))
-	    {
-	      if(event.type == sf::Event::Closed)
-                window.close();
-	    }
-	  
-	  // on dessine le niveau
-	  window.clear();
-	  //window.draw(map);
-	  window.draw(*(layer1.getTilemap().get()));
-	  window.display();
-	  
+	  if(event.type == sf::Event::Closed)
+	    window.close();
 	}
-    
-    
-    
-    
+      
+      // on dessine le niveau
+      window.clear();
+      window.draw(*(layer1.getTilemap().get()));
+      window.draw(*(layer2.getTilemap().get()));
+      window.display();
+      
+    }
+
 }
 
 
-void testload(){
-  
-  
-  
-  
-}
 
