@@ -147,7 +147,7 @@ void testrender(){
     sf::RenderWindow window(sf::VideoMode(640, 640), "Advance wars");
     
     Layer layer1;
-    layer1.initmap();
+    layer1.initRandMap();
     
     while (window.isOpen())
 	{
