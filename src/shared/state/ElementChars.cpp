@@ -40,7 +40,7 @@ namespace state{
     
     for(int k=0;k<(int)this->sizeList();k++){
         cout<<carte[k]<<",";
-        if(k%10==0)cout<<" "<<endl;
+        if(k!=0 && (k+1)%10==0)cout<<" "<<endl;
         
     }
     
