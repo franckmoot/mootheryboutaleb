@@ -115,14 +115,14 @@ void testcreateelement(){
     (monde.chars)=new ElementChars();
     
     macarte=monde.grid->createElementCsv(macarte);
-    cout<<"Il y a "<<monde.grid->createElementCsv(macarte).size()<<"Element dans la carte"<<endl;
+    cout<<"Il y a "<<macarte.size()<<"Element dans la carte"<<endl;
     
-    for(int i=0 ;i<50;i++){
+    for(int i=0 ;i<100;i++){
         cout<<macarte[i]<<endl;
-        if(monde.grid->getElement(i,2)->getTypeId()==macarte[i])cout<<"L'element de la liste est le même que celui du fichier"<<endl ;
-        else cout<<"L'Element de la liste est different"<<endl;
-       
-    
+      //  cout<<"L'Element de la liste est : "<<monde.grid->getElement(i,1)->getTypeId()<<endl;
+      //  cout<<"L'Element de la carte est : "<<macarte[i]<<endl;
+        if(monde.grid->getElement(i,1)->getType()==macarte[i])cout<<"L'element "<<i<<"de la liste est le même que celui du fichier "<<i<<endl ;
+        else cout<<"L'Element "<<i<<" de la liste est different"<< endl;
     }
       
 }

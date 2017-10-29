@@ -35,7 +35,14 @@ int main(int argc,char* argv[]) {
     }
     else if(!s.compare("state")){
       
-        teststate();
+        State monde;
+        monde.grid= new ElementTab();
+        monde.grid->setElement(new Batiment());
+        if(monde.grid->getElement(0,1)->getTypeId()==BATIMENT) cout << "batiment est 1er" << endl;
+        
+        
+        
+       // teststate();
         testcreateelement();
     }
     

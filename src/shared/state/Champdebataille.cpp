@@ -1,5 +1,10 @@
 #include "Champdebataille.h"
-
+#include <iostream>
+#include <string>
+#include <vector>
+#include <fstream>
+#include <string>
+#include <sstream>
 
 namespace state {
 
@@ -8,12 +13,32 @@ namespace state {
     }
     
     Champdebataille::Champdebataille(ChampdebatailleTypeId id) {
-
-        if (id == ChampdebatailleTypeId::EAU ) this->setType( ChampdebatailleTypeId::EAU );
-        if (id == ChampdebatailleTypeId::HERBE ) this->setType( ChampdebatailleTypeId::HERBE );
-        if (id == ChampdebatailleTypeId::ROCHER ) this->setType( ChampdebatailleTypeId::ROCHER );
-        if (id == ChampdebatailleTypeId::ROUTE ) this->setType( ChampdebatailleTypeId::ROUTE );
-        if (id == ChampdebatailleTypeId::SABLE ) this->setType( ChampdebatailleTypeId::SABLE );
+        //std::cout<<"AVANT : le type est "<<id<<std::endl;
+        
+        switch (id){
+	  
+	case EAU:
+	  this->setType( EAU );;
+	  break;
+	  
+	case HERBE:     
+	  this->setType( HERBE );
+	  break;
+	  
+	case ROCHER:
+	  this->setType( ROCHER );
+	  break;
+          
+	case ROUTE:
+	  this->setType( ROUTE );
+	  break;
+          
+	case SABLE:
+	  this->setType( SABLE );
+	  break;
+          
+        }
+        //std::cout<<"APRES : le type est "<<id<<std::endl;
     }
 
     Champdebataille::~Champdebataille() {
