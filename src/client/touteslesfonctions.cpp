@@ -1,5 +1,6 @@
 #include "touteslesfonctions.h"
 #include "state/ElementChars.h"
+#include "render/Layer.h"
 
 
 void teststate (){
@@ -143,7 +144,31 @@ void testcreateelement(){
  
 void testrender(){
     
-  
+    sf::RenderWindow window(sf::VideoMode(640, 640), "Advance wars");
+    
+    Layer layer1;
+    layer1.initmap();
+    
+    while (window.isOpen())
+	{
+	  // on gère les évènements
+	  sf::Event event;
+	  while (window.pollEvent(event))
+	    {
+	      if(event.type == sf::Event::Closed)
+                window.close();
+	    }
+	  
+	  // on dessine le niveau
+	  window.clear();
+	  //window.draw(map);
+	  window.draw(*(layer1.getTilemap().get()));
+	  window.display();
+	  
+	}
+    
+    
+    
     
 }
 
