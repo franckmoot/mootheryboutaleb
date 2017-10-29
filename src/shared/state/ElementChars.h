@@ -3,6 +3,7 @@
 #define STATE__ELEMENTCHARS__H
 
 #include <vector>
+#include <stdlib.h>
 
 namespace state {
   class ElementTab;
@@ -18,6 +19,7 @@ namespace state {
   public:
     ElementChars ();
     std::vector<int> const ElementToCarte (std::vector<int> carte);
+    ElementChars (size_t width, size_t height);
     // Setters and Getters
   };
 

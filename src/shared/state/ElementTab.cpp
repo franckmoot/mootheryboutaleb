@@ -20,6 +20,7 @@ namespace state{
   
   ElementTab::ElementTab(size_t width, size_t height) {
     vector<unique_ptr<Element> > list(width*height);
+
   }
   
   int ElementTab::sizeList() {

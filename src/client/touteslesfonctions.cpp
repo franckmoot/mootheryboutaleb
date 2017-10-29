@@ -1,4 +1,5 @@
 #include "touteslesfonctions.h"
+#include "state/ElementChars.h"
 
 
 void teststate (){
@@ -112,9 +113,10 @@ void testcreateelement(){
     
     std::vector<int> macarte; 
     (monde.grid)=new ElementTab(); 
-    (monde.chars)=new ElementChars();
+    (monde.chars)=new ElementChars(10,10);
+    cout<<monde.chars->sizeList()<<endl;
     
-    macarte=monde.grid->createElementCsv(macarte);
+    /*macarte=monde.grid->createElementCsv(macarte);
     cout<<"Il y a "<<macarte.size()<<"Element dans la carte"<<endl;
     
     for(int i=0 ;i<100;i++){
@@ -124,9 +126,43 @@ void testcreateelement(){
         if(monde.grid->getElement(i,1)->getType()==macarte[i])cout<<"L'element "<<i<<"de la liste est le même que celui du fichier "<<i<<endl ;
         else cout<<"L'Element "<<i<<" de la liste est different"<< endl;
     }
-      
+    */
+    
+    Heli *H=new Heli();
+    Infanterie *I=new Infanterie();
+    Tank *T=new Tank();
+     Heli *He=new Heli();
+    Infanterie *In=new Infanterie();
+    Tank *Ta=new Tank();
+
+    monde.chars->chgList(10,H);
+    monde.chars->chgList(13,T);
+    monde.chars->chgList(17,I);
+    monde.chars->chgList(29,He);
+    monde.chars->chgList(50,Ta);
+    monde.chars->chgList(75,In); 
+    cout<<monde.chars->sizeList()<<endl;
+    std::vector<int> carte;
+    
+    carte=monde.chars->ElementToCarte(carte);
+    
+    for(int k=0;k<100;k++){
+    cout<<carte[k]<<endl;
+    }
+    
+    
+    
+    
+    
+    
+    
 }
 
+    
+    
+    
+    
+ 
 void testrender(){
     
     sf::RenderWindow window(sf::VideoMode(600, 600), "SFML WORK!");
