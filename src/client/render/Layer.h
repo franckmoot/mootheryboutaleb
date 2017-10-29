@@ -27,6 +27,11 @@ namespace render {
   protected:
     std::unique_ptr<Tilemap> tilemap;
     std::shared_ptr<TileSet> tileset;
+    // Operations
+  public:
+    void initmap ();
+    void initRandMap ();
+    void displayChars ();
     // Setters and Getters
     const std::unique_ptr<Tilemap>& getTilemap() const;
     void setTilemap(const std::unique_ptr<Tilemap>& tilemap);

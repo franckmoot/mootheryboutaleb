@@ -96,44 +96,5 @@ namespace render {
     
     return true;
   }
-  
-  void Tilemap::initQuads(int count) {
-        m_vertices.setPrimitiveType(sf::Quads);
-        m_vertices.resize(count * 4);
-    
-  }
-  
-  void Tilemap::loadTexture(const std::string& image_file) {
-    
-    // on charge la texture du tileset
-    if (!m_tileset.loadFromFile(image_file)) {
-      cout << "Erreur lecture " << image_file << endl;
-    }
-      
-  }
-  
-  void Tilemap::setSpriteLocation(int i, int x, int y) {
-               /* quad[0].position = sf::Vector2f(i * tileSize.x, j * tileSize.y);
-                quad[1].position = sf::Vector2f((i + 1) * tileSize.x, j * tileSize.y);
-                quad[2].position = sf::Vector2f((i + 1) * tileSize.x, (j + 1) * tileSize.y);
-                quad[3].position = sf::Vector2f(i * tileSize.x, (j + 1) * tileSize.y);*/
-    
-    
-  }
-  
-  void Tilemap::setSpriteTexture(int i, const Tile& tex) {
-    
-      
-      
-      /*
-        m_vertices[0].texCoords = sf::Vector2f(tex.getX(), tex.getY());
-	 m_vertices[1].texCoords = sf::Vector2f(tex.getX()+tex.getWidth(), tex.getY());
-         m_vertices[2].texCoords = sf::Vector2f(tex.getX()+tex.getWidth(), tex.getY()+tex.getHeight());
-         m_vertices[3].texCoords = sf::Vector2f(tex.getX(), tex.getY()+tex.getHeight());*/
-      
-  }
-  
-  
-  
-  
+
 }

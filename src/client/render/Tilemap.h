@@ -6,9 +6,6 @@
 #include <string>
 #include <vector>
 
-namespace render {
-  class Tile;
-};
 namespace sf {
   class Transformable;
   class Drawable;
@@ -28,10 +25,6 @@ namespace render {
     bool load (const std::string& tileset, sf::Vector2u tileSize, std::vector<int> tiles, unsigned int width, unsigned int height);
     std::vector<int> lirefichiercsv (std::vector<int> carte);
     virtual void draw (sf::RenderTarget& target, sf::RenderStates states) const;
-    void loadTexture (const std::string& image_file);
-    void initQuads (int count);
-    void setSpriteLocation (int i, int x, int y);
-    void setSpriteTexture (int i, const Tile& tex);
     // Setters and Getters
   };
 
