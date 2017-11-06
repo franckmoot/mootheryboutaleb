@@ -12,13 +12,13 @@ namespace render {
   
   GridTileSet::GridTileSet() {
     
-    chpbataille.push_back(*(new Tile(0,0,16,16)));
-    chpbataille.push_back(*(new Tile(16,0,16,16)));
-    chpbataille.push_back(*(new Tile(32,0,16,16)));
-    chpbataille.push_back(*(new Tile(48,0,16,16)));
-    chpbataille.push_back(*(new Tile(64,0,16,16)));
-    batiment.push_back(*(new Tile(0,16,16,30)));
-    batiment.push_back(*(new Tile(16,32,16,16))); 
+    chpbataille.push_back( Tile(0,0,16,16));
+    chpbataille.push_back( Tile(16,0,16,16));
+    chpbataille.push_back( Tile(32,0,16,16));
+    chpbataille.push_back( Tile(48,0,16,16));
+    chpbataille.push_back( Tile(64,0,16,16));
+    batiment.push_back( Tile(0,16,16,30));
+    batiment.push_back(Tile(16,32,16,16)); 
   }
   
   
