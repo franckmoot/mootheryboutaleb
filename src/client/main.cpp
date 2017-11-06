@@ -40,6 +40,7 @@ int main(int argc,char* argv[]) {
     }
     
     else if(!s.compare("render")){
+        
       
        testrender();
  

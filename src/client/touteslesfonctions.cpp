@@ -111,8 +111,30 @@ void testrender(){
   
   Layer layer1,layer2;
   layer1.initmap();
-  layer2.displayChars();
-  while (window.isOpen())
+
+      
+     ElementChars *elementChars= new ElementChars(9,11); 
+    cout<<"La liste de chars fait : "<<elementChars->sizeList()<<endl;
+     
+    Heli *H=new Heli();
+    Infanterie *I=new Infanterie();
+    Tank *T=new Tank();
+    Heli *He=new Heli();
+    Infanterie *In=new Infanterie();
+    Tank *Ta=new Tank();
+    Tank *Tan=new Tank();
+    
+    elementChars->chgList(2,H);
+    
+    elementChars->chgList(13,T);
+    elementChars->chgList(17,I);
+    elementChars->chgList(29,He);
+    elementChars->chgList(50,Ta);
+    elementChars->chgList(98,In);
+    elementChars->setElement(Tan);
+    cout<<elementChars->sizeList()<<endl;
+      layer2.displayChars(elementChars);
+   while (window.isOpen())
     {
       // on gère les évènements
       sf::Event event;
@@ -126,7 +148,7 @@ void testrender(){
       window.clear();
       window.draw(*(layer1.getTilemap().get()));
       window.draw(*(layer2.getTilemap().get()));
-      window.display();
+      window.display();   
       
     }
 

@@ -26,6 +26,8 @@ namespace state{
 
   }
   
+
+  
   
   const std::vector<int> ElementChars::ElementToCarte (std::vector<int> carte){
     for(int i=0;i<(int)this->sizeList();i++){     
