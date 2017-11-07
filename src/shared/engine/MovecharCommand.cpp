@@ -12,9 +12,12 @@ using namespace std;
 namespace engine{
     
     
-   MovecharCommand :: MoveCharCommand (state::State& state, int i, int j){
-       //if(state.getGrid()->getElement(j)->getTypeId()
-      // if(state.getChars()->getElement(i)->getTypeId()==;
+   void MovecharCommand :: MoveCharCommand (state::State& state, int i, int j){
+       
+      if(state.getChars()->getElement(j)->isStatic()==true){
+          cout<<"On ne peut pas se deplacer ici "<<endl;
+      }
+
        
        
        

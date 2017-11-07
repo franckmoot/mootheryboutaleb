@@ -18,7 +18,7 @@ namespace engine {
   class Loadcommand : public engine::Command {
     // Operations
   public:
-    commandTypeId const getTypeId ();
+    CommandTypeId const getTypeId ();
     void execute (state::State& state);
     // Setters and Getters
   };

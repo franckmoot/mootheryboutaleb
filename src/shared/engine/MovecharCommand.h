@@ -18,9 +18,9 @@ namespace engine {
   class MovecharCommand : public engine::Command {
     // Operations
   public:
-    commandTypeId const getTypeId ();
+    CommandTypeId const getTypeId ();
     void execute (state::State& state);
-    MoveCharCommand (state::State& state, int i, int j);
+    void MoveCharCommand (state::State& state, int i, int j);
     // Setters and Getters
   };
 

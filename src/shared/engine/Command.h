@@ -16,7 +16,7 @@ namespace engine {
     // Operations
   public:
     Command ();
-    commandTypeId const getTypeId ();
+    CommandTypeId const getTypeId ();
     void execute (state::State& state);
     // Setters and Getters
   };

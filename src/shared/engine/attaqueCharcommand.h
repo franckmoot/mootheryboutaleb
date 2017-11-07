@@ -15,7 +15,7 @@ namespace engine {
   class attaqueCharcommand : public engine::Command {
     // Operations
   public:
-    commandTypeId const getTypeId ();
+    CommandTypeId const getTypeId ();
     void execute (state::state& state);
     // Setters and Getters
   };
