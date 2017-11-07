@@ -6,10 +6,6 @@
 namespace engine {
 
   enum CommandTypeId {
-    LOAD     = 1,
-    CAPTUR     = 2,
-    MOVE     = 3,
-    ATTAQUE     = 4
   };
 
 };

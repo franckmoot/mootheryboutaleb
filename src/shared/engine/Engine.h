@@ -2,7 +2,7 @@
 #ifndef ENGINE__ENGINE__H
 #define ENGINE__ENGINE__H
 
-#include <map>
+#include <vector>
 #include <memory>
 
 namespace state {
@@ -23,12 +23,13 @@ namespace engine {
     // Attributes
   public:
     state::State currentState;
-    std::map<int ,std::unique_ptr<Command>> currentCommands;
+    std::vector<std::unique_ptr<Command> > currentCommands;
     // Operations
   public:
     Engine ();
-    addCommand (int priority, command* cmd);
+    void addCommand (Command* cmd);
     void update ();
+    const state::State getState () const;
     // Setters and Getters
   };
 
