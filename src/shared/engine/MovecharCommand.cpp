@@ -12,17 +12,16 @@ using namespace std;
 namespace engine{
     
     
-   void MovecharCommand :: MoveCharCommand (state::State& state, int i, int j){
+   //void MovecharCommand :: MoveCharCommand (state::State& state, int i, int j, ){
        
-      if(state.getChars()->getElement(j)->isStatic()==true){
-          cout<<"On ne peut pas se deplacer ici "<<endl;
-      }
+      //if(state.getChars()->getElement(j)->isStatic()==true){
+        //  cout<<"On ne peut pas se deplacer ici "<<endl;
+      
 
        
        
        
-   }
-    
+  
    
     
     

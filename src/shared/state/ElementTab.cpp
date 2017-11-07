@@ -33,9 +33,6 @@ namespace state{
   Element *  ElementTab::getElement(int i,int j) const {  
     return list[i*j].get();
   }
-  Element* ElementTab::getElement(int i){
-      return list[i].get();  
-  }
   
   
   size_t ElementTab::getHeight() {
