@@ -32,8 +32,9 @@ namespace state {
     int sizeList ();
     void chgList (int i, Element* e);
     void chgList2 (int i, int j);
-    std::vector<int> const createElementCsv (std::vector<int>  carte);
+    std::vector<int> const createElementCsv (const std::vector<int> & carte);
     std::vector<int> const Elemnttocarte (std::vector<int> carte);
+    Element* const getElement (int i);
     // Setters and Getters
     const std::vector<std::unique_ptr<Element> >& getList() const;
     void setList(const std::vector<std::unique_ptr<Element> >& list);

@@ -20,7 +20,7 @@ namespace engine {
   public:
     commandTypeId const getTypeId ();
     void execute (state::State& state);
-    MoveCharCommand ();
+    MoveCharCommand (state::State& state, int i, int j);
     // Setters and Getters
   };
 
