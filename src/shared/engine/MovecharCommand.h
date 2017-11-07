@@ -21,7 +21,7 @@ namespace engine {
   public:
     CommandTypeId getTypeId () const;
     void execute (state::State& state);
-    void MoveCharCommand (state::State& state, int i, int j);
+    void bouger (state::State& state, int i1, int j1, int i2, int j2);
     // Setters and Getters
   };
 
