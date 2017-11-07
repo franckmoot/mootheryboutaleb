@@ -35,6 +35,7 @@ void testcreateelement();
 
 void testrender();
 void testload();
+void testcommande();
 
 
 
