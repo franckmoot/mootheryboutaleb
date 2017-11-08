@@ -21,6 +21,7 @@
 #include "state/Heli.h"
 #include "state/State.h"
 #include "MovecharCommand.h"
+#include "CommandTypeId.h"
 
 using namespace std;
 using namespace state;
@@ -54,9 +55,23 @@ namespace engine{
         
         
     }
+    
+    
+    
+    void MovecharCommand::execute(state::State& state){
+        
+    }
        
-           
+     CommandTypeId MovecharCommand::getTypeId() const{
+        return CommandTypeId::MOVE ;
+         
+     }  
+
+
+
 }
+
+
   
    
     
