@@ -1,4 +1,5 @@
 #include <string>
+#include <iostream>
 #include "AttaqueCharCommand.h"
 #include "state/State.h"
 #include "state/Element.h"
@@ -15,7 +16,7 @@ namespace engine{
     
     void AttaqueCharCommand::execute(state::State& state) {
 
-        if((state.chars->getElement(i,1)!=NULL)&&(state.chars->getElement(j,1)!=NULL){
+        if((state.chars->getElement(i,1)!=NULL)&&(state.chars->getElement(j,1)!=NULL)){
          if((!state.chars->getElement(i,1)->isStatic())&&!state.chars->getElement(j,1)->isStatic()){
           
                 //state::MobileElement* mobileTmpi = (state::MobileElement*)&(state.chars->getElement(i,1));
@@ -32,7 +33,7 @@ namespace engine{
     }
          
     
-
+    }
     
 
 
