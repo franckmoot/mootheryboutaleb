@@ -3,6 +3,9 @@
 #define ENGINE__ATTAQUECHARCOMMAND__H
 
 
+namespace state {
+  class State;
+};
 namespace engine {
   class Command;
 }
@@ -12,12 +15,12 @@ namespace engine {
 
 namespace engine {
 
-  /// class attaqueCharcommand - 
-  class attaqueCharcommand : public engine::Command {
+  /// class AttaqueCharcommand - 
+  class AttaqueCharcommand : public engine::Command {
     // Operations
   public:
     CommandTypeId getTypeId () const;
-    void execute (state::state& state);
+    void execute (state::State& state);
     // Setters and Getters
   };
 

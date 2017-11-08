@@ -6,7 +6,7 @@
 #include "engine/Command.h"
 #include "engine/Loadcommand.h"
 #include "engine/MovecharCommand.h"
-#include "engine/attaqueCharcommand.h"
+#include "engine/AttaqueCharcommand.h"
 #include "engine/Engine.h"
 #include "engine/CapturCharcommande.h"
 #endif
