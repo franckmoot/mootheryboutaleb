@@ -111,6 +111,8 @@ void testrender(){
   State monde;
   
   (monde.grid)=new ElementTab(); 
+  std::vector<int> carte;
+  monde.grid->createElementCsv(carte);
   (monde.chars)=new ElementChars(9,11);
   sf::RenderWindow window(sf::VideoMode(640, 640), "Advance wars");
   
@@ -136,16 +138,19 @@ void testrender(){
     monde.chars->chgList(29,He);
     monde.chars->chgList(50,Ta);
     monde.chars->chgList(98,In);
+    //monde.chars->chgList2(2,7);
     monde.chars->setElement(Tan);
     cout<<monde.chars->sizeList()<<endl;
-      layer2.displayChars(monde.chars);
       
-      
-    //  engine::Engine i;
-    //i.addCommand(new engine::MoveCharCommand(2,30));
-   // i.update();
-      engine::MoveCharCommand aa(2,3);
+    engine::MoveCharCommand aa(17,50);
     aa.execute(monde);
+    layer2.displayChars(monde.chars);
+      
+      
+    // engine::Engine i;
+   // i.addCommand(new engine::MoveCharCommand(2,30));
+   // i.update();
+      
    while (window.isOpen())
     {
       // on gère les évènements
