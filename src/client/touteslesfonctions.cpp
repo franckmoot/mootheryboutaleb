@@ -142,7 +142,7 @@ void testrender(){
     monde.chars->setElement(Tan);
     cout<<monde.chars->sizeList()<<endl;
       
-    engine::MoveCharCommand aa(17,50);
+    engine::MoveCharCommand aa(17,54);
     aa.execute(monde);
     layer2.displayChars(monde.chars);
       

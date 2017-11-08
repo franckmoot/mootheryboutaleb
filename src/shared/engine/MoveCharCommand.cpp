@@ -43,6 +43,10 @@ namespace engine{
         
        if(state.getChars()->getElement(j,1)!=NULL & state.getChars()->getElement(i,1)==NULL ) cout<< "c'est impossible "<<endl;
         else{
+           std::vector<int> carte;
+           carte=state.grid->createElementCsv(carte);
+           
+           cout<<carte[25]<<endl;
             cout<<"je segmente1"<<endl;
             if(state.getChars()->getElement(i,1)->getTypeId()==3){
                 cout<<"je segmente2"<<endl;
@@ -51,7 +55,7 @@ namespace engine{
             }
             else if (state.getChars()->getElement(i,1)->getTypeId()==4){
                 cout<<"je segmente4"<<endl;
-               if(state.getGrid()->getElement(j,1)->getType()==BatimentTypeId::CASERNE  || state.getGrid()->getElement(j,1)->getType()==BatimentTypeId::QG || state.getGrid()->getElement(j,1)->getType()==ChampdebatailleTypeId::EAU){
+               if(carte[i]==4 || carte[i]==5 ||carte[i]==6 ||carte[i]==3 ){
                    cout<< "c'est impossible de mettre un element mobile sur ces elments static"<<endl;
                }  
                else {
@@ -59,7 +63,7 @@ namespace engine{
                }
             }
             else if (state.getChars()->getElement(i,1)->getTypeId()==2){
-               if(state.getGrid()->getElement(j,1)->getType()==BatimentTypeId::CASERNE  || state.getGrid()->getElement(j,1)->getType()==BatimentTypeId::QG || state.getGrid()->getElement(j,1)->getType()==ChampdebatailleTypeId::EAU || state.getGrid()->getElement(j,1)->getType()==ChampdebatailleTypeId::ROCHER){
+               if(  carte[i]==5 ||carte[i]==6 ||carte[i]==3  ){
                    cout<< "c'est impossible de mettre un element mobile sur cette elments static"<<endl;
                }  
                else {
