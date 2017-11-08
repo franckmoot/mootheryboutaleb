@@ -19,6 +19,7 @@ namespace state {
     // Attributes
   private:
     int type;
+    int joueur;
     // Operations
   public:
     Element ( );
@@ -27,6 +28,8 @@ namespace state {
     virtual bool isStatic () const = 0;
     void setType (int type);
     int getType ();
+    int getjoueur ();
+    void setjoueur (int joueur);
     // Setters and Getters
     void setTypeId(TypeId typeId);
   };
