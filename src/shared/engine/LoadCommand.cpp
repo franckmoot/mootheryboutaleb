@@ -1,7 +1,7 @@
 #include <fstream>
 #include <iostream>
 #include <string>
-#include "Loadcommand.h"
+#include "LoadCommand.h"
 #include "state/State.h"
 #include "state/Element.h"
 
@@ -9,13 +9,12 @@
 using namespace std;
 namespace engine{
 
-    void Loadcommand::execute(state::State& state) {
+    void LoadCommand::execute(state::State& state) {
 
     }
     
-    CommandTypeId Loadcommand::getTypeId() const {
-        CommandTypeId i;
-        return i;
+    CommandTypeId LoadCommand::getTypeId() const {
+        return CommandTypeId::LOAD;
     }
    
 }

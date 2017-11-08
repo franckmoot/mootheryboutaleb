@@ -27,12 +27,12 @@ namespace engine{
     
     void Engine::update() {
        
-        
-      for ( auto& command : currentCommands ) {
-        command->execute(currentState);
+      cout<<"dsf"<<endl;  
+      //for ( auto& command : currentCommands ) {
+        currentCommands[0]->execute(currentState);
 
-        }
-
+      //  }
+cout<<"dsdf"<<endl;  
     }
         const state::State Engine::getState() const {
             return currentState;

@@ -19,10 +19,13 @@ void testSFML() {
 
 #include "state.h"
 #include "render.h"
+#include "engine.h"
+
 
 using namespace std;
 using namespace state;
 using namespace render;
+using namespace engine;
 
 int main(int argc,char* argv[]) {
   
@@ -41,7 +44,7 @@ int main(int argc,char* argv[]) {
     
     else if(!s.compare("render")){
         
-      
+     /// testcommande();
        testrender();
  
       return 0;

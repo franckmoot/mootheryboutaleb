@@ -1,7 +1,9 @@
 #include "touteslesfonctions.h"
 #include "state/ElementChars.h"
 #include "render/Layer.h"
-
+#include "engine/Engine.h"
+#include "engine/MoveCharCommand.h"
+#include "engine/Engine.h"
 
 void teststate (){
   
@@ -106,7 +108,10 @@ void teststate (){
 
 
 void testrender(){
+  State monde;
   
+  (monde.grid)=new ElementTab(); 
+  (monde.chars)=new ElementChars(9,11);
   sf::RenderWindow window(sf::VideoMode(640, 640), "Advance wars");
   
   Layer layer1,layer2;
@@ -124,16 +129,23 @@ void testrender(){
     Tank *Ta=new Tank();
     Tank *Tan=new Tank();
     
-    elementChars->chgList(2,H);
+    monde.chars->chgList(2,H);
     
-    elementChars->chgList(13,T);
-    elementChars->chgList(17,I);
-    elementChars->chgList(29,He);
-    elementChars->chgList(50,Ta);
-    elementChars->chgList(98,In);
-    elementChars->setElement(Tan);
-    cout<<elementChars->sizeList()<<endl;
-      layer2.displayChars(elementChars);
+    monde.chars->chgList(0,T);
+    monde.chars->chgList(17,I);
+    monde.chars->chgList(29,He);
+    monde.chars->chgList(50,Ta);
+    monde.chars->chgList(98,In);
+    monde.chars->setElement(Tan);
+    cout<<monde.chars->sizeList()<<endl;
+      layer2.displayChars(monde.chars);
+      
+      
+    //  engine::Engine i;
+    //i.addCommand(new engine::MoveCharCommand(2,30));
+   // i.update();
+      engine::MoveCharCommand aa(2,3);
+    aa.execute(monde);
    while (window.isOpen())
     {
       // on gère les évènements
@@ -156,10 +168,10 @@ void testrender(){
 
 
 void testcommande(){
-    
-    
-    
-    
-    
-    
+    //engine::Engine i;
+    //i.addCommand(new engine::MoveCharCommand(2,30));
+    //i.update();
+
+    //engine::MoveCharCommand aa(1,2);
+   // aa.execute(monde);
 }

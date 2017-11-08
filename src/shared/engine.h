@@ -4,9 +4,9 @@
 
 #include "engine/CommandTypeId.h"
 #include "engine/Command.h"
-#include "engine/Loadcommand.h"
-#include "engine/MovecharCommand.h"
-#include "engine/AttaqueCharcommand.h"
+#include "engine/LoadCommand.h"
+#include "engine/MoveCharCommand.h"
+#include "engine/AttaqueCharCommand.h"
 #include "engine/Engine.h"
-#include "engine/CapturCharcommande.h"
+#include "engine/CapturCharCommand.h"
 #endif

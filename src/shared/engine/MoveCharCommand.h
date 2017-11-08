@@ -15,13 +15,17 @@ namespace engine {
 
 namespace engine {
 
-  /// class MovecharCommand - 
-  class MovecharCommand : public engine::Command {
+  /// class MoveCharCommand - 
+  class MoveCharCommand : public engine::Command {
+    // Attributes
+  public:
+    int i;
+    int j;
     // Operations
   public:
     CommandTypeId getTypeId () const;
     void execute (state::State& state);
-    void bouger (state::State& state, int i1, int j1, int i2, int j2);
+    MoveCharCommand (int i, int j);
     // Setters and Getters
   };
 

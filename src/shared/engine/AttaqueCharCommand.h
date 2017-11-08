@@ -15,12 +15,16 @@ namespace engine {
 
 namespace engine {
 
-  /// class AttaqueCharcommand - 
-  class AttaqueCharcommand : public engine::Command {
+  /// class AttaqueCharCommand - 
+  class AttaqueCharCommand : public engine::Command {
+    // Attributes
+  public:
+    int i;
+    int j;
     // Operations
   public:
     CommandTypeId getTypeId () const;
-    void execute (state::State& state, int i, int j);
+    void execute (state::State& state);
     // Setters and Getters
   };
 
