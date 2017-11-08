@@ -26,7 +26,9 @@ namespace engine{
     }
     
     void Engine::update() {
-        for ( auto& command : currentCommands ) {
+       
+        
+      for ( auto& command : currentCommands ) {
         command->execute(currentState);
 
         }
