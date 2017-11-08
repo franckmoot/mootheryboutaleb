@@ -2,6 +2,7 @@
 #ifndef ENGINE__LOADCOMMAND__H
 #define ENGINE__LOADCOMMAND__H
 
+#include <string>
 
 namespace state {
   class State;
@@ -17,11 +18,17 @@ namespace engine {
 
   /// class LoadCommand - 
   class LoadCommand : public engine::Command {
+    // Attributes
+  protected:
+    std::string filename;
     // Operations
   public:
     CommandTypeId getTypeId () const;
     void execute (state::State& state);
+    LoadCommand (const char* f);
     // Setters and Getters
+    const std::string& getFilename() const;
+    void setFilename(const std::string& filename);
   };
 
 };
