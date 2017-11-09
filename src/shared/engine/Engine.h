@@ -26,7 +26,7 @@ namespace engine {
     std::vector<std::unique_ptr<Command> > currentCommands;
     // Operations
   public:
-    Engine ();
+    Engine (state::State* currentState);
     void addCommand (Command* cmd);
     void update ();
     const state::State getState () const;

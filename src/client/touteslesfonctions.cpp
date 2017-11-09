@@ -152,13 +152,13 @@ void testrender(){
     engine::AttaqueCharCommand bb(3,29);
     bb.execute(monde);*/
     
-   /*  engine::Engine i;
+     engine::Engine i(&monde);
     i.addCommand(new engine::MoveCharCommand(2,30));
-    i.update();*/
+    i.update();
     
     
-      engine::MoveCharCommand aa(17,56);
-      engine::AttaqueCharCommand bb(3,29);
+     // engine::MoveCharCommand aa(17,56);
+     // engine::AttaqueCharCommand bb(3,29);
     //layer2.displayChars(monde.chars);
       
    while (window.isOpen())
@@ -179,9 +179,9 @@ void testrender(){
       window.draw(*(layer2.getTilemap().get()));
       window.display(); 
       getchar();
-      aa.execute(monde);
+      //aa.execute(monde);
         
-        bb.execute(monde);
+        //bb.execute(monde);
     }
 
 }
