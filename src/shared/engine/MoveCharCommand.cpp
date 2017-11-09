@@ -5,8 +5,16 @@
 #include "state/Element.h"
 #include "state/State.h"
 #include "MoveCharCommand.h"
-#include "CommandTypeId.h"
-#include "Command.h"
+#include "state/State.h"
+#include "state/Element.h"
+#include "state/Champdebataille.h"
+#include "state/Batiment.h"
+#include "state/MobileElement.h"
+#include "state/Infanterie.h"
+#include "state/Tank.h"
+#include "state/Heli.h"
+#include "state/ChampdebatailleTypeId.h"
+#include "state/BatimentTypeId.h"
 
 using namespace std;
 using namespace state;
@@ -26,42 +34,43 @@ namespace engine{
        
         
        if(state.getChars()->getElement(j,1)!=NULL & state.getChars()->getElement(i,1)==NULL ) cout<< "c'est impossible "<<endl;
-        else{
-           std::vector<int> carte;
-           carte=state.grid->createElementCsv(carte);
-           
-           cout<<carte[25]<<endl;
-            cout<<"je segmente1"<<endl;
+       else{
+
             if(state.getChars()->getElement(i,1)->getTypeId()==3){
-                cout<<"je segmente2"<<endl;
                 state.getChars()->chgList2(i,j);
-                cout<<"je segmente3"<<endl;
             }
             else if (state.getChars()->getElement(i,1)->getTypeId()==4){
-                cout<<"je segmente4"<<endl;
-               if(carte[i]==4 || carte[i]==5 ||carte[i]==6 ||carte[i]==3 ){
-                   cout<< "c'est impossible de mettre un element mobile sur ces elments static"<<endl;
-               }  
-               else {
-                   state.getChars()->chgList2(i,j);
-               }
-            }
-            else if (state.getChars()->getElement(i,1)->getTypeId()==2){
-               if(  carte[i]==5 ||carte[i]==6 ||carte[i]==3  ){
-                   cout<< "c'est impossible de mettre un element mobile sur cette elments static"<<endl;
-               }  
-               else {
-                   state.getChars()->chgList2(i,j);
-                        
+                if(state.getGrid()->getElement(j,1)->getTypeId()==0){
+                    state::Champdebataille* eletmp2 = (state::Champdebataille*)(state.grid->getElement(j,1));
+                    if(eletmp2->getType()==3|| eletmp2->getType()==4 ){
+                        cout<< "c'est impossible de mettre un element mobile sur ces elments static"<<endl;
+                    }   
+                    else {
+                        state.getChars()->chgList2(i,j);
                     }
-            }
-            
+                }
+                else if(state.getGrid()->getElement(j,1)->getTypeId()==1){
+                    cout<< "c'est impossible de mettre un element mobile sur ces elments static"<<endl;
+                }
+                    
+             }
+            else if (state.getChars()->getElement(i,1)->getTypeId()==2){
+                if(state.getGrid()->getElement(j,1)->getTypeId()==0){               
+                    state::Champdebataille* eletmp2 = (state::Champdebataille*)(state.grid->getElement(j,1));
+                    if(eletmp2->getType()==3 ){
+                        cout<< "c'est impossible de mettre un element mobile sur ces elments static"<<endl;
+                    }
+                    
+                    else state.getChars()->chgList2(i,j);
+                }
+                else if(state.getGrid()->getElement(j,1)->getTypeId()==1) cout<< "c'est impossible de mettre un element mobile sur ces elments static"<<endl;
+             }
+                    
+             }
         }
+            
         
-        
-    }
-    
-    
+   
     
      CommandTypeId MoveCharCommand::getTypeId() const{
         return CommandTypeId::MOVE ;
