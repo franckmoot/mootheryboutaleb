@@ -9,7 +9,8 @@ namespace engine {
     LOAD     = 1,
     MOVE     = 2,
     ATTAQUE     = 3,
-    CAPTUR     = 4
+    CAPTUR     = 4,
+    CREATE     = 5
   };
 
 };
