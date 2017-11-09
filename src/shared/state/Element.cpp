@@ -18,11 +18,11 @@ namespace state {
     void Element::setTypeId(TypeId typeId) {
         this->typeId=typeId;
     }
-     int Element::getjoueur() {
+     int Element::getJoueur() {
         return joueur;
     }
 
-    void Element::setjoueur(int joueur) {
+    void Element::setJoueur(int joueur) {
         this->joueur=joueur;
     }
 

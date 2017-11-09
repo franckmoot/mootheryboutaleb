@@ -7,8 +7,6 @@ namespace state{
     Infanterie::Infanterie(){
         this->pdv=10;
         this->attaque=10;
-        this->mouvement=1;
-        this->joueur;
         
     }
     

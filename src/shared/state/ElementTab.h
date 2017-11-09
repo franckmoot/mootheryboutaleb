@@ -34,6 +34,7 @@ namespace state {
     void chgList2 (int i, int j);
     std::vector<int> const createElementCsv (std::vector<int>  carte);
     std::vector<int> const Elemnttocarte (std::vector<int> carte);
+    void killElement (int i);
     // Setters and Getters
     const std::vector<std::unique_ptr<Element> >& getList() const;
     void setList(const std::vector<std::unique_ptr<Element> >& list);

@@ -5,7 +5,7 @@ namespace state {
   
     /* Constructeur */
     Batiment::Batiment() {
-
+        this->pdv=50;
     }
 
     Batiment::Batiment(BatimentTypeId id) {

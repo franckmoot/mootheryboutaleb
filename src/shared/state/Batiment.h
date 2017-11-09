@@ -20,6 +20,8 @@ namespace state {
     // Attributes
   private:
     int capture;
+  protected:
+    int pdv;
     // Operations
   public:
     Batiment ();
@@ -32,6 +34,8 @@ namespace state {
     // Setters and Getters
     BatimentTypeId getBatimentTypeId() const;
     void setBatimentTypeId(BatimentTypeId batimentTypeId);
+    int getPdv() const;
+    void setPdv(int pdv);
   };
 
 };

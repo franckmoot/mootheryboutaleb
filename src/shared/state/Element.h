@@ -29,12 +29,10 @@ namespace state {
     virtual bool isStatic () const = 0;
     void setType (int type);
     int getType ();
-    int getjoueur ();
-    void setjoueur (int joueur);
+    int getJoueur ();
+    void setJoueur (int joueur);
     // Setters and Getters
     void setTypeId(TypeId typeId);
-    int getJoueur() const;
-    void setJoueur(int joueur);
   };
 
 };

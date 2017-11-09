@@ -129,5 +129,15 @@ namespace state{
     return carte;
     
   }
+  
+  void ElementTab::killElement(int i){
+      list[i]=NULL;
+      
+      
+  }
+  
+  
+  
+  
 }
 

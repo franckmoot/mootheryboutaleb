@@ -25,56 +25,90 @@ namespace engine{
     
     void AttaqueCharCommand::execute(state::State& state) {
 
-        if(state.chars->getElement(i,1)!=NULL & state.chars->getElement(j,1)!=NULL ){
+        if((state.chars->getElement(i,1)!=NULL) && (state.chars->getElement(j,1)!=NULL) ){
             
-         if(state.chars->getElement(i,1)->getjoueur()!=state.chars->getElement(j,1)->getjoueur()){
+         if(state.chars->getElement(i,1)->getJoueur()!=state.chars->getElement(j,1)->getJoueur()){
 
           if(state.chars->getElement(i,1)->getTypeId()==2){
             state::Infanterie* eletmp = (state::Infanterie*)(state.chars->getElement(i,1));
                 if(state.chars->getElement(j,1)->getTypeId()==2){
                     state::Infanterie* eletmp2 = (state::Infanterie*)(state.chars->getElement(j,1));
-                    eletmp2->setPdv(eletmp->getPdv()-eletmp2->getPdv());
-                    
+                    eletmp2->setPdv(eletmp2->getPdv()-eletmp->getAttaque());
+                    if(eletmp2->getPdv()<=0){
+                        state.chars->killElement(j);
+                        cout<<"notre element" <<j<< "est mort"<<endl;
+                    }
                 }
                 else if(state.chars->getElement(j,1)->getTypeId()==3){
                     state::Heli* eletmp2 = (state::Heli*)(state.chars->getElement(j,1));
-                     eletmp2->setPdv(eletmp->getPdv()-eletmp2->getPdv());
+                    eletmp2->setPdv(eletmp2->getPdv()-eletmp->getAttaque());
+                    if(eletmp2->getPdv()<=0){
+                        state.chars->killElement(j);
+                        cout<<"notre element" <<j<< "est mort"<<endl;
+                    }
                  }
                 else if(state.chars->getElement(j,1)->getTypeId()==4){
                     state::Tank* eletmp2 = (state::Tank*)(state.chars->getElement(j,1));
-                     eletmp2->setPdv(eletmp->getPdv()-eletmp2->getPdv());
+                    eletmp2->setPdv(eletmp2->getPdv()-eletmp->getAttaque());
+                    if(eletmp2->getPdv()<=0){
+                        state.chars->killElement(j);
+                        cout<<"notre element" <<j<< "est mort"<<endl;
+                    }
                 }
             }
            else if(state.chars->getElement(i,1)->getTypeId()==3){
               state::Infanterie* eletmp = (state::Infanterie*)(state.chars->getElement(i,1));
                 if(state.chars->getElement(j,1)->getTypeId()==2){
                     state::Infanterie* eletmp2 = (state::Infanterie*)(state.chars->getElement(j,1));
-                    eletmp2->setPdv(eletmp->getPdv()-eletmp2->getPdv());
-                    
+                    eletmp2->setPdv(eletmp2->getPdv()-eletmp->getAttaque());
+                    if(eletmp2->getPdv()<=0){
+                        state.chars->killElement(j);
+                        cout<<"notre element" <<j<< "est mort"<<endl;
+                    }
                 }
                 else if(state.chars->getElement(j,1)->getTypeId()==3){
                     state::Heli* eletmp2 = (state::Heli*)(state.chars->getElement(j,1));
-                     eletmp2->setPdv(eletmp->getPdv()-eletmp2->getPdv());
+                    eletmp2->setPdv(eletmp2->getPdv()-eletmp->getAttaque());
+                    if(eletmp2->getPdv()<=0){
+                        state.chars->killElement(j);
+                        cout<<"notre element" <<j<< "est mort"<<endl;
+                    }
                  }
                 else if(state.chars->getElement(j,1)->getTypeId()==4){
                     state::Tank* eletmp2 = (state::Tank*)(state.chars->getElement(j,1));
-                     eletmp2->setPdv(eletmp->getPdv()-eletmp2->getPdv());
+                    eletmp2->setPdv(eletmp2->getPdv()-eletmp->getAttaque());
+                    if(eletmp2->getPdv()<=0){
+                        state.chars->killElement(j);
+                        cout<<"notre element" <<j<< "est mort"<<endl;
+                    }
                 }
             }
             else if(state.chars->getElement(i,1)->getTypeId()==4){
                state::Infanterie* eletmp = (state::Infanterie*)(state.chars->getElement(i,1));
                 if(state.chars->getElement(j,1)->getTypeId()==2){
                     state::Infanterie* eletmp2 = (state::Infanterie*)(state.chars->getElement(j,1));
-                    eletmp2->setPdv(eletmp->getPdv()-eletmp2->getPdv());
-                    
+                    eletmp2->setPdv(eletmp2->getPdv()-eletmp->getAttaque());
+                    if(eletmp2->getPdv()<=0){
+                        state.chars->killElement(j);
+                        cout<<"notre element" <<j<< "est mort"<<endl;
+                    }    
                 }
                 else if(state.chars->getElement(j,1)->getTypeId()==3){
                     state::Heli* eletmp2 = (state::Heli*)(state.chars->getElement(j,1));
-                     eletmp2->setPdv(eletmp->getPdv()-eletmp2->getPdv());
+                    eletmp2->setPdv(eletmp2->getPdv()-eletmp->getAttaque());
+                    if(eletmp2->getPdv()<=0){
+                        state.chars->killElement(j);
+                        cout<<"notre element" <<j<< "est mort"<<endl;
+                    }
                  }
+          
                 else if(state.chars->getElement(j,1)->getTypeId()==4){
                     state::Tank* eletmp2 = (state::Tank*)(state.chars->getElement(j,1));
-                     eletmp2->setPdv(eletmp->getPdv()-eletmp2->getPdv());
+                    eletmp2->setPdv(eletmp2->getPdv()-eletmp->getAttaque());
+                    if(eletmp2->getPdv()<=0){
+                        state.chars->killElement(j);
+                        cout<<"notre element" <<j<< "est mort"<<endl;
+                    }
                 }
             }
         }
@@ -90,4 +124,5 @@ namespace engine{
 
 }
 }
+    
     

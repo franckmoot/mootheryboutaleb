@@ -33,7 +33,7 @@ namespace engine{
       
        
         
-       if(state.getChars()->getElement(j,1)!=NULL & state.getChars()->getElement(i,1)==NULL ) cout<< "c'est impossible "<<endl;
+       if((state.getChars()->getElement(j,1)!=NULL) && (state.getChars()->getElement(i,1)==NULL) ) cout<< "c'est impossible "<<endl;
        else{
 
             if(state.getChars()->getElement(i,1)->getTypeId()==3){

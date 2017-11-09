@@ -4,7 +4,8 @@
 
 namespace state{
     Heli::Heli() {
-        
+        this->pdv=30;
+        this->attaque=30;
     
     }
 
