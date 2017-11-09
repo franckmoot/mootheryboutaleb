@@ -151,7 +151,7 @@ void testrender(){
     cout<<monde.chars->sizeList()<<endl;
       
     engine::MoveCharCommand aa(17,56);
-     engine::CreateCharCommand creerinfanteri(15,HELI,2); 
+     engine::CreateCharCommand creerinfanteri(15,HELI,2);
      creerinfanteri.execute(monde);
     aa.execute(monde);
     engine::AttaqueCharCommand bb(3,29);

@@ -58,7 +58,7 @@ int main(int argc,char* argv[]) {
   a.execute(monde);
   (monde.chars)=new ElementChars(9,11);
      
-    Infanterie *I=new Infanterie();
+    /*Infanterie *I=new Infanterie();
     I->setJoueur(1);
     Heli *H=new Heli();
     H->setJoueur(1);
@@ -79,10 +79,28 @@ int main(int argc,char* argv[]) {
     monde.chars->chgList(30,I2);
     monde.chars->chgList(40,H2);
     monde.chars->chgList(50,T2);
+    */
     
+     engine::CreateCharCommand infanteriejoueur1(0,INFANTERIE,1);
+     infanteriejoueur1.execute(monde);
     
+        engine::CreateCharCommand infanteriejoueur2(30,INFANTERIE,2);
+    infanteriejoueur2.execute(monde);
    
-    
+        engine::CreateCharCommand Helijoueur1(10,HELI,1);
+     Helijoueur1.execute(monde);
+     
+         engine::CreateCharCommand Helijoueur2(40,HELI,2);
+     Helijoueur2.execute(monde);
+     
+         engine::CreateCharCommand Tankjoueur1(20,TANK,1);
+     Tankjoueur1.execute(monde);
+     
+         engine::CreateCharCommand Tankjoueur2(50,TANK,2);
+     Tankjoueur2.execute(monde);
+     
+     
+     
    
     if(monde.chars->getElement(0,1)->getTypeId()==2) cout<<"L'infanterie est en position 0 " <<endl;
     engine::MoveCharCommand deplacementinfanterie(0,1);
