@@ -24,43 +24,39 @@ using namespace engine;
 namespace engine{
     
 
-    Engine::Engine(state::State *currentState) {
-        this->currentState=currentState;
+    Engine::Engine() {
+        
     }
     
     void Engine::addCommand( Command* cmd) {
         currentCommands.push_back( unique_ptr<Command>  (cmd ) ) ;
     }
     
-    void Engine::update() {
+    
+    
+    void Engine::update(state::State& state) {
        
         for (int i=0;i<int(currentCommands.size());i++){
-            cout<<"1"<<endl;
-            //Batiment* batTmp=(Batiment*)&staticTmp;
+
            if(currentCommands[i]->getTypeId()==LOAD){
-               cout<<"2"<<endl;
 	   LoadCommand * tmp=(LoadCommand *)&currentCommands[i];
-           tmp->execute(currentState);
+           tmp->execute(state);
            }
-           else if(currentCommands[i]->getTypeId()==MOVE){
-            cout<<"3"<<endl;
-               MoveCharCommand * tmp=(MoveCharCommand *)&currentCommands[i];
-           cout<<"1"<<endl;
-               tmp->execute(currentState);
-           cout<<"1"<<endl;
+           else if(currentCommands[i]->getTypeId()==MOVE){           
+               MoveCharCommand * tmp=(MoveCharCommand *)&currentCommands[i];         
+               tmp->execute(state);         
            }
-           else if(currentCommands[i]->getTypeId()==CAPTUR){
-               cout<<"4"<<endl;
+           else if(currentCommands[i]->getTypeId()==CAPTUR){             
                CapturCharCommand * tmp=(CapturCharCommand *)&currentCommands[i];
-           tmp->execute(currentState);
+           tmp->execute(state);
            }
-           else if(currentCommands[i]->getTypeId()==ATTAQUE){
-               cout<<"5"<<endl;
+           else if(currentCommands[i]->getTypeId()==ATTAQUE){      
                AttaqueCharCommand * tmp=(AttaqueCharCommand *)&currentCommands[i];
-           tmp->execute(currentState);
+           tmp->execute(state);
            }
         }           
     }
+    
         const state::State Engine::getState() const {
             return currentState;
     }

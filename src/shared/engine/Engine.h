@@ -26,9 +26,9 @@ namespace engine {
     std::vector<std::unique_ptr<Command> > currentCommands;
     // Operations
   public:
-    Engine (state::State* currentState);
+    Engine ();
     void addCommand (Command* cmd);
-    void update ();
+    void update (state::State& state);
     const state::State getState () const;
     // Setters and Getters
   };

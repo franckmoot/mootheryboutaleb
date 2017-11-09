@@ -147,14 +147,14 @@ void testrender(){
     monde.chars->setElement(Tan);
     cout<<monde.chars->sizeList()<<endl;
       
-    /*engine::MoveCharCommand aa(17,56);
+    engine::MoveCharCommand aa(17,56);
     aa.execute(monde);
     engine::AttaqueCharCommand bb(3,29);
-    bb.execute(monde);*/
+    bb.execute(monde);
     
-     engine::Engine i(&monde);
-    i.addCommand(new engine::MoveCharCommand(2,30));
-    i.update();
+     //engine::Engine i;
+       // i.addCommand(new engine::MoveCharCommand(2,30));
+       // i.update(monde);
     
     
      // engine::MoveCharCommand aa(17,56);
