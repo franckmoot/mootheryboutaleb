@@ -19,6 +19,7 @@ namespace state {
     // Attributes
   private:
     int type;
+  protected:
     int joueur;
     // Operations
   public:
@@ -32,6 +33,8 @@ namespace state {
     void setjoueur (int joueur);
     // Setters and Getters
     void setTypeId(TypeId typeId);
+    int getJoueur() const;
+    void setJoueur(int joueur);
   };
 
 };

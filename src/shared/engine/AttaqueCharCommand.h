@@ -25,6 +25,7 @@ namespace engine {
   public:
     CommandTypeId getTypeId () const;
     void execute (state::State& state);
+    AttaqueCharCommand (int i, int j);
     // Setters and Getters
   };
 

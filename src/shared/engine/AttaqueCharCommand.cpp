@@ -11,6 +11,11 @@
 using namespace std;
 using namespace state;
 namespace engine{
+    AttaqueCharCommand::AttaqueCharCommand(int i, int j) {
+            this->i=i;
+            this->j=j;
+    }
+
         
     CommandTypeId AttaqueCharCommand::getTypeId() const {
         return CommandTypeId::ATTAQUE;
@@ -20,29 +25,35 @@ namespace engine{
     
     void AttaqueCharCommand::execute(state::State& state) {
 
-        if((state.chars->getElement(i,1)!=NULL)&&(state.chars->getElement(j,1)!=NULL)){
-         if((!state.chars->getElement(i,1)->isStatic())&&!state.chars->getElement(j,1)->isStatic()){
-          
-            
-	  state::Infanterie* infanterieTmpj = (state::Infanterie*)(state.chars->getElement(j,1));
-	 
-                //= (state::MobileElement*)&(state.chars->getElement(i,1));
-                //state::MobileElement* mobileTmpj = (state::MobileElement*)&(state.chars->getElement(j,1));
-                
-         }else{
-             
-             cout<<"i ou j n'est pas mobileELement"<<endl;
-         }
+        if(state.chars->getElement(i,1)!=NULL){
+
+          if(state.chars->getElement(i,1)->getTypeId()==2){
+            state::Infanterie* eletmp = (state::Infanterie*)(state.chars->getElement(i,1));
+                if(state.chars->getElement(j,1)->getTypeId()==2){
+                    state::Infanterie* eletmp2 = (state::Infanterie*)(state.chars->getElement(j,1));
+                    
+                }
+                else if(state.chars->getElement(j,1)->getTypeId()==3){
+                    state::Heli* eletmp2 = (state::Heli*)(state.chars->getElement(j,1));
+                 }
+                else if(state.chars->getElement(j,1)->getTypeId()==4){
+                    state::Tank* eletmp2 = (state::Tank*)(state.chars->getElement(j,1));
+                }
+            }
+            /*else if(state.chars->getElement(i,1)->getTypeId()==3){
+             state::Heli* eletmp = (state::Heli*)(state.chars->getElement(i,1));
+            }
+            else if(state.chars->getElement(i,1)->getTypeId()==4){
+             state::Tank* eletmp = (state::Tank*)(state.chars->getElement(i,1));
+            }*/
+        }
+    else{cout<<"i ou j est null"<<endl;}
         
-    }else{
-             cout<<"i ou j est null"<<endl;
-             
-    }
-         
     
-    }
+   
     
 
 
+}
 }
     

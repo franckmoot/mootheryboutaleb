@@ -4,6 +4,8 @@
 #include "engine/Engine.h"
 #include "engine/MoveCharCommand.h"
 #include "engine/Engine.h"
+#include "engine/LoadCommand.h"
+#include "engine/AttaqueCharCommand.h"
 
 void teststate (){
   
@@ -112,7 +114,8 @@ void testrender(){
   
   (monde.grid)=new ElementTab(); 
   std::vector<int> carte;
-  monde.grid->createElementCsv(carte);
+  engine::LoadCommand a("res/map.csv");
+  a.execute(monde);
   (monde.chars)=new ElementChars(9,11);
   sf::RenderWindow window(sf::VideoMode(640, 640), "Advance wars");
   
@@ -131,19 +134,23 @@ void testrender(){
     Tank *Ta=new Tank();
     Tank *Tan=new Tank();
     
-    monde.chars->chgList(2,H);
-    
+    monde.chars->chgList(2,H);//ajoute des elements
+   
     monde.chars->chgList(0,T);
     monde.chars->chgList(17,I);
     monde.chars->chgList(29,He);
     monde.chars->chgList(50,Ta);
     monde.chars->chgList(98,In);
+    
     //monde.chars->chgList2(2,7);
     monde.chars->setElement(Tan);
     cout<<monde.chars->sizeList()<<endl;
       
-    engine::MoveCharCommand aa(0,44);
+    engine::MoveCharCommand aa(17,56);
     aa.execute(monde);
+    engine::AttaqueCharCommand bb(3,29);
+    bb.execute(monde);
+    
     layer2.displayChars(monde.chars);
       
       

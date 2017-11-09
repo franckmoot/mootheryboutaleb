@@ -18,5 +18,6 @@
 #include "state/TankTypeId.h"
 #include "state/Tank.h"
 #include "state/ElementChars.h"
+#include "state/Joueur.h"
 #include "state/State.h"
 #endif

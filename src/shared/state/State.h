@@ -6,8 +6,10 @@
 namespace state {
   class ElementTab;
   class ElementChars;
+  class Joueur;
 }
 
+#include "Joueur.h"
 #include "ElementTab.h"
 #include "ElementChars.h"
 
@@ -20,6 +22,8 @@ namespace state {
   public:
     ElementTab* grid;
     ElementChars* chars;
+    Joueur*  joueur1;
+    Joueur* joueur2;
     // Operations
   public:
     State ();
