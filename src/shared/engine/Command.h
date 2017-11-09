@@ -8,6 +8,7 @@ namespace state {
 }
 
 #include "CommandTypeId.h"
+#include "state/State.h"
 
 namespace engine {
 

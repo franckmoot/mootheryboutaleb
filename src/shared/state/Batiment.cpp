@@ -42,7 +42,11 @@ namespace state {
     BatimentTypeId Batiment::getBatimentTypeId() const {
         return batimentTypeId;
     }
-
-    
+     int Batiment::getPdv() const {
+        return pdv;
+    }
+        void Batiment::setPdv(int pdv) {
+         this ->pdv=pdv;
+    }
     
 }

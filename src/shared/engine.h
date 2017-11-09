@@ -9,4 +9,5 @@
 #include "engine/AttaqueCharCommand.h"
 #include "engine/Engine.h"
 #include "engine/CapturCharCommand.h"
+#include "engine/CreateCharCommand.h"
 #endif
