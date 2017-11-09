@@ -12,51 +12,28 @@
 #include "Engine.h"
 #include "state/State.h"
 #include "state/Element.h"
-#include "engine/LoadCommand.h"
-#include "Command.h"
-#include "CapturCharCommand.h"
-#include "AttaqueCharCommand.h"
-#include "CommandTypeId.h"
-#include "MoveCharCommand.h"
+
 
 using namespace std;
-using namespace engine;
 namespace engine{
     
-
     Engine::Engine() {
-        
+
     }
     
     void Engine::addCommand( Command* cmd) {
         currentCommands.push_back( unique_ptr<Command>  (cmd ) ) ;
     }
     
-    
-    
-    void Engine::update(state::State& state) {
+    void Engine::update() {
        
-        for (int i=0;i<int(currentCommands.size());i++){
-
-           if(currentCommands[i]->getTypeId()==LOAD){
-	   LoadCommand * tmp=(LoadCommand *)&currentCommands[i];
-           tmp->execute(state);
-           }
-           else if(currentCommands[i]->getTypeId()==MOVE){           
-               MoveCharCommand * tmp=(MoveCharCommand *)&currentCommands[i];         
-               tmp->execute(state);         
-           }
-           else if(currentCommands[i]->getTypeId()==CAPTUR){             
-               CapturCharCommand * tmp=(CapturCharCommand *)&currentCommands[i];
-           tmp->execute(state);
-           }
-           else if(currentCommands[i]->getTypeId()==ATTAQUE){      
-               AttaqueCharCommand * tmp=(AttaqueCharCommand *)&currentCommands[i];
-           tmp->execute(state);
-           }
-        }           
+       
+     /* for ( auto& command : currentCommands ) {
+          
+          command.->execute(currentState);
+          //command->execute(currentCommands);
+        }  */
     }
-    
         const state::State Engine::getState() const {
             return currentState;
     }

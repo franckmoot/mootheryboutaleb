@@ -28,7 +28,7 @@ namespace engine {
   public:
     Engine ();
     void addCommand (Command* cmd);
-    void update (state::State& state);
+    void update ();
     const state::State getState () const;
     // Setters and Getters
   };

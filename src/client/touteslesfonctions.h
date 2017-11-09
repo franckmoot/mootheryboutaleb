@@ -20,6 +20,11 @@
 #include "state/Tank.h"
 #include "state/Heli.h"
 #include "state/State.h"
+#include "engine/Command.h"
+#include "engine/AttaqueCharCommand.h"
+#include "engine/LoadCommand.h"
+#include "engine/MoveCharCommand.h"
+#include "engine/CreateCharCommand.h"
 
 using namespace std;
 using namespace state;
@@ -35,7 +40,7 @@ void testcreateelement();
 
 void testrender();
 void testload();
-void testcommande();
+void testengine();
 
 
 
