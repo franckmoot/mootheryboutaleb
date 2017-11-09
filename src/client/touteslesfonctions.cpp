@@ -6,6 +6,9 @@
 #include "engine/Engine.h"
 #include "engine/LoadCommand.h"
 #include "engine/AttaqueCharCommand.h"
+#include "engine/CapturCharCommand.h"
+#include "engine/CreateCharCommand.h"
+
 
 void teststate (){
   
@@ -148,6 +151,8 @@ void testrender(){
     cout<<monde.chars->sizeList()<<endl;
       
     engine::MoveCharCommand aa(17,56);
+     engine::CreateCharCommand creerinfanteri(15,HELI,2); 
+     creerinfanteri.execute(monde);
     aa.execute(monde);
     engine::AttaqueCharCommand bb(3,29);
     bb.execute(monde);

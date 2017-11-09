@@ -23,11 +23,12 @@ namespace engine {
   public:
     int i;
     state::TypeId d;
+    int joueur;
     // Operations
   public:
     CommandTypeId getTypeId () const;
     void execute (state::State& state);
-    CreateCharCommand (int i, state::TypeId d);
+    CreateCharCommand (int i, state::TypeId d, int joueur);
     // Setters and Getters
   };
 

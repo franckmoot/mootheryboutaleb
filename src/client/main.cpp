@@ -80,6 +80,9 @@ int main(int argc,char* argv[]) {
     monde.chars->chgList(40,H2);
     monde.chars->chgList(50,T2);
     
+    
+   
+    
    
     if(monde.chars->getElement(0,1)->getTypeId()==2) cout<<"L'infanterie est en position 0 " <<endl;
     engine::MoveCharCommand deplacementinfanterie(0,1);
