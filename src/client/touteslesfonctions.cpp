@@ -116,6 +116,7 @@ void testrender(){
   std::vector<int> carte;
   engine::LoadCommand a("res/map.csv");
   a.execute(monde);
+  a.execute(monde);
   (monde.chars)=new ElementChars(9,11);
   sf::RenderWindow window(sf::VideoMode(640, 640), "Advance wars");
   
@@ -146,17 +147,19 @@ void testrender(){
     monde.chars->setElement(Tan);
     cout<<monde.chars->sizeList()<<endl;
       
-    engine::MoveCharCommand aa(17,56);
+    /*engine::MoveCharCommand aa(17,56);
     aa.execute(monde);
     engine::AttaqueCharCommand bb(3,29);
-    bb.execute(monde);
+    bb.execute(monde);*/
     
-    layer2.displayChars(monde.chars);
-      
-      
-    // engine::Engine i;
-   // i.addCommand(new engine::MoveCharCommand(2,30));
-   // i.update();
+   /*  engine::Engine i;
+    i.addCommand(new engine::MoveCharCommand(2,30));
+    i.update();*/
+    
+    
+      engine::MoveCharCommand aa(17,56);
+      engine::AttaqueCharCommand bb(3,29);
+    //layer2.displayChars(monde.chars);
       
    while (window.isOpen())
     {
@@ -167,13 +170,18 @@ void testrender(){
 	  if(event.type == sf::Event::Closed)
 	    window.close();
 	}
-      
+       
+        layer2.displayChars(monde.chars);
+        
       // on dessine le niveau
       window.clear();
       window.draw(*(layer1.getTilemap().get()));
       window.draw(*(layer2.getTilemap().get()));
-      window.display();   
-      
+      window.display(); 
+      getchar();
+      aa.execute(monde);
+        
+        bb.execute(monde);
     }
 
 }

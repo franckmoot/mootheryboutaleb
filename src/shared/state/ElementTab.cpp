@@ -82,7 +82,7 @@ namespace state{
     }
     
     for(int i=0; i<int(carte.size()) ; i++){
-      cout<<"La liste fait "<<list.size()<<" et le numero de carte est "<<carte[i]<<endl;
+     // cout<<"La liste fait "<<list.size()<<" et le numero de carte est "<<carte[i]<<endl;
       switch (carte[i]){
 	
       case EAU:
