@@ -12,13 +12,14 @@ namespace render {
   
   GridTileSet::GridTileSet() {
     
-    chpbataille.push_back( Tile(0,0,64,64)); //1 -> herbe
-    chpbataille.push_back( Tile(64,0,64,64)); //2 -> route
-    chpbataille.push_back( Tile(128,0,64,64)); //3 sable
-    chpbataille.push_back( Tile(192,0,64,64)); //4 eau
-    chpbataille.push_back( Tile(256,0,64,64)); //5 montage
-    batiment.push_back( Tile(384,0,64,64)); // 0 qg
-    batiment.push_back(Tile(320,0,64,64));  //1 caserne
+    chpbataille.push_back( Tile(0,0,32,32)); //1 -> herbe
+    chpbataille.push_back( Tile(32,0,32,32)); //2 -> route
+    chpbataille.push_back( Tile(64,0,32,32)); //3 sable haut
+    chpbataille.push_back( Tile(96,0,32,32)); //4 eau sable
+    chpbataille.push_back( Tile(128,0,32,32)); //5 eau
+    chpbataille.push_back( Tile(160,0,32,32));//6 montagne
+    batiment.push_back( Tile(192,0,32,32)); // 0 qg
+    batiment.push_back(Tile(224,0,32,32));  //1 caserne
   }
   
   
@@ -36,25 +37,29 @@ namespace render {
 	Champdebataille* champTmp = (Champdebataille*)&e;
 	
 	switch (champTmp->getChampdeBatailleType()){
-	  
+	
+        case HERBE:     
+	  return chpbataille[HERBE];
+	  break;
+        
+        case ROUTE:
+	  return chpbataille[ROUTE];
+	  break;
+          
+        case SABLE1:
+	  return chpbataille[SABLE1];
+	  break;
+          
+        case SABLE2:
+	  return chpbataille[SABLE2];
+	  break;
+          
 	case EAU:
 	  return chpbataille[EAU];
 	  break;
 	  
-	case HERBE:     
-	  return chpbataille[HERBE];
-	  break;
-	  
-	case ROCHER:
-	  return chpbataille[ROCHER];
-	  break;
-          
-	case ROUTE:
-	  return chpbataille[ROUTE];
-	  break;
-          
-	case SABLE:
-	  return chpbataille[SABLE];
+	case MONTAGNE:
+	  return chpbataille[MONTAGNE];
 	  break;
           
 	default:

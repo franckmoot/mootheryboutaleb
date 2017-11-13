@@ -52,20 +52,13 @@ namespace render {
   void Surface::setSpriteLocation(int i, int x, int y) {
     
     sf::Vertex* quad = &m_vertices[i * 4];
-    quad[0].position = sf::Vector2f(x * 64, y * 64);
-    quad[1].position = sf::Vector2f((x + 1) * 64, y * 64);
-    quad[2].position = sf::Vector2f((x + 1) * 64, (y + 1) * 64);
-    quad[3].position = sf::Vector2f(x * 64, (y + 1) * 64);
+    quad[0].position = sf::Vector2f(x * 32, y * 32);
+    quad[1].position = sf::Vector2f((x + 1) * 32, y * 32);
+    quad[2].position = sf::Vector2f((x + 1) * 32, (y + 1) * 32);
+    quad[3].position = sf::Vector2f(x * 32, (y + 1) * 32);
   }
    
   void Surface::setSpriteTexture(int i, const Tile& tile) {
-    
-    /*sf::Vertex* quad = &m_vertices[i * 4];
-    quad[0].texCoords = sf::Vector2f(i * 64, i * 64);
-    quad[1].texCoords = sf::Vector2f((i + 1) * 64, i * 64);
-    quad[2].texCoords = sf::Vector2f((i + 1) * 64, (i + 1) * 64);
-    quad[3].texCoords = sf::Vector2f(i * 64, (i + 1) * 64);*/
-    
     
     sf::Vertex* quad = &m_vertices[i * 4];
     quad[0].texCoords = sf::Vector2f(tile.getX(), tile.getY());

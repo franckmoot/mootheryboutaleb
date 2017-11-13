@@ -47,20 +47,33 @@ int main(int argc,char* argv[]) {
       
       sf::RenderWindow window(sf::VideoMode(640, 640), "Advance wars");
       
-    Batiment *B=new Batiment(QG);
-    Batiment *B2=new Batiment(CASERNE);
-    
+     State monde;
+  
+  (monde.grid)=new ElementTab(); 
+  (monde.chars)=new ElementChars();
+ 
+  std::vector<int> liste;
+  monde.grid->createElementCsv(liste);
+  cout<<"junji"<<endl;
       GridTileSet a;
 
       Surface surf;
+       cout<<"junji"<<endl;
+      for (int i=1;i<9;i++){
+          for(int j=1;j<9;j++){
+          cout<<"junji"<<endl;
       surf.loadTexture(a.getImageFile());
-      surf.initQuads(1);  
-      surf.setSpriteLocation(0,0,0);
-      surf.setSpriteTexture(0,a.getTile(*B));
-      surf.initQuads(2);  
-      surf.setSpriteLocation(1,1,0);
-      surf.setSpriteTexture(1,a.getTile(*B2));
-     // 
+       cout<<"junji"<<endl;
+      surf.initQuads(i*j);  
+       cout<<"junji"<<endl;
+      surf.setSpriteLocation(i*j,i,j);
+       cout<<"junji"<<endl;
+      surf.setSpriteTexture(i*j,a.getTile(*(monde.grid->getElement(i,j))));
+      cout<<"junji"<<endl;
+          
+          }
+      }
+     //
      // surf.setSpriteLocation(1,1,0);
      // surf.setSpriteTexture(1);
       

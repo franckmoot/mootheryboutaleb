@@ -36,6 +36,7 @@ namespace render {
     void initmap ();
     void initRandMap ();
     void displayChars (state::ElementChars* a);
+    void initSurface ();
     // Setters and Getters
     const std::unique_ptr<Tilemap>& getTilemap() const;
     void setTilemap(const std::unique_ptr<Tilemap>& tilemap);

@@ -20,14 +20,10 @@ namespace state {
         if (id == BatimentTypeId::QG ) {
             batimentTypeId=BatimentTypeId::QG;
             cout<<"JE CREER UN QG ET batimentTYpeID EST :"<<endl;
-            
-        
+
         }
-        
-                    
+              
     }
-
-
 
     TypeId Batiment::getTypeId() const {
         return TypeId::BATIMENT;

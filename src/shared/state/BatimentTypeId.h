@@ -6,8 +6,8 @@
 namespace state {
 
   enum BatimentTypeId {
-    CASERNE     = 0,
-    QG     = 1
+    CASERNE     = 1,
+    QG     = 0
   };
 
 };

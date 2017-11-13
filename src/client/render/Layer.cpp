@@ -50,19 +50,16 @@ namespace render {
     
     std::vector<int> carteChars;
     
-
-    
-    
     carteChars=a->ElementToCarte(carteChars);
     
     this->tilemap=std::unique_ptr<Tilemap>(new Tilemap());
     if (!this->tilemap->load("res/player.png", sf::Vector2u(64, 64),carteChars,10 , 10));
-    
-    
-    
+
   }
   
-  
+  void initSurface (){
+      
+  }
   
 }
 
