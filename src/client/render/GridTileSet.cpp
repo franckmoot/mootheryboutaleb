@@ -12,18 +12,18 @@ namespace render {
   
   GridTileSet::GridTileSet() {
     
-    chpbataille.push_back( Tile(0,0,16,16));
-    chpbataille.push_back( Tile(16,0,16,16));
-    chpbataille.push_back( Tile(32,0,16,16));
-    chpbataille.push_back( Tile(48,0,16,16));
-    chpbataille.push_back( Tile(64,0,16,16));
-    batiment.push_back( Tile(0,16,16,30));
-    batiment.push_back(Tile(16,32,16,16)); 
+    chpbataille.push_back( Tile(0,0,64,64)); //1 -> herbe
+    chpbataille.push_back( Tile(64,0,64,64)); //2 -> route
+    chpbataille.push_back( Tile(128,0,64,64)); //3 sable
+    chpbataille.push_back( Tile(192,0,64,64)); //4 eau
+    chpbataille.push_back( Tile(256,0,64,64)); //5 montage
+    batiment.push_back( Tile(384,0,64,64)); // 0 qg
+    batiment.push_back(Tile(320,0,64,64));  //1 caserne
   }
   
   
   const std::string GridTileSet::getImageFile() const {
-    return "res/tilemap.png";
+    return "res/tile.png";
   }
   
   
@@ -62,21 +62,22 @@ namespace render {
 	  break;
 	}
       }else if (!staticTmp->isChampdebataille()){
-        
-	Batiment* batTmp=(Batiment*)&staticTmp;
-	
+          cout<<"je suis la"<<endl;
+	Batiment* batTmp=(Batiment*)staticTmp;
+	cout<<"batimentTypeId = "<<batTmp->getBatimentTypeId()<<endl;
 	switch (batTmp->getBatimentTypeId()){
 	  
-	case CASERNE:
-	  return batiment[CASERNE];
+	case QG:
+	  return batiment[QG];
 	  break;
 	  
-	case QG:    
+	case CASERNE:    
 	  return batiment[CASERNE];
 	  break;
           
 	default:
-	  return batiment[0];
+            cout<<"IL Y A UN PROLEME"<<endl;
+	  return chpbataille[0];
 	  break;
 	}
 	

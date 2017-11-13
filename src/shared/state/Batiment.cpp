@@ -1,5 +1,7 @@
 #include "Batiment.h"
+#include <iostream>
 
+using namespace std;
 
 namespace state {
   
@@ -10,8 +12,18 @@ namespace state {
 
     Batiment::Batiment(BatimentTypeId id) {
         
-        if (id == BatimentTypeId::CASERNE ) this->setType( BatimentTypeId::CASERNE);
-        if (id == BatimentTypeId::QG ) this->setType(BatimentTypeId::QG);
+        if (id == BatimentTypeId::CASERNE ) {
+            batimentTypeId=BatimentTypeId::CASERNE;
+            cout<<"JE CREER UNE CASERNE ET batimentTYpeID EST "<<endl;
+            
+        }
+        if (id == BatimentTypeId::QG ) {
+            batimentTypeId=BatimentTypeId::QG;
+            cout<<"JE CREER UN QG ET batimentTYpeID EST :"<<endl;
+            
+        
+        }
+        
                     
     }
 
