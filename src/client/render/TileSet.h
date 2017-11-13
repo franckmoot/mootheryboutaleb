@@ -17,10 +17,11 @@ namespace state {
 namespace render {
 
   /// class TileSet - 
-  class TileSet : public state::Element {
+  class TileSet {
     // Associations
     // Operations
   public:
+    TileSet ();
     virtual const std::string  getImageFile () const = 0;
     virtual const Tile& getTile (const state::Element& e) const = 0;
     // Setters and Getters

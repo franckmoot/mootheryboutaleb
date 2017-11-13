@@ -13,13 +13,13 @@ namespace render {
   
   CharsTileSet::CharsTileSet() {
     
-    infanterie.push_back(*(new Tile(36,0,16,30)));
-    infanterie.push_back(*(new Tile(36,0,16,16)));
-    infanterie.push_back(*(new Tile(36,0,16,16)));
-    tank.push_back(*(new Tile(109,0,16,16)));
-    tank.push_back(*(new Tile(109,0,16,16)));
-    heli.push_back(*(new Tile(216,16,16,30)));
-    heli.push_back(*(new Tile(216,32,16,16))); 
+    infanterie.push_back(Tile(36,0,16,30));
+    infanterie.push_back(Tile(36,0,16,16));
+    infanterie.push_back(Tile(36,0,16,16));
+    tank.push_back(Tile(109,0,16,16));
+    tank.push_back(Tile(109,0,16,16));
+    heli.push_back(Tile(216,16,16,30));
+    heli.push_back(Tile(216,32,16,16)); 
     
   }
   

@@ -5,6 +5,7 @@
 #include <memory>
 
 namespace render {
+  class Surface;
   class Tilemap;
   class TileSet;
 };
@@ -13,6 +14,7 @@ namespace state {
   class ElementTab;
 }
 
+#include "Surface.h"
 #include "Tilemap.h"
 #include "TileSet.h"
 #include "state/ElementChars.h"
@@ -24,6 +26,8 @@ namespace render {
   class Layer {
     // Associations
     // Attributes
+  public:
+    std::unique_ptr<Surface> surface;
   protected:
     std::unique_ptr<Tilemap> tilemap;
     std::shared_ptr<TileSet> tileset;
