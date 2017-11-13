@@ -25,16 +25,21 @@ namespace state {
 	  this->setType( HERBE );
 	  break;
 	  
-	case ROCHER:
-	  this->setType( ROCHER );
+	case MONTAGNE:
+	  this->setType( MONTAGNE );
 	  break;
           
 	case ROUTE:
 	  this->setType( ROUTE );
 	  break;
           
-	case SABLE:
-	  this->setType( SABLE );
+	case SABLE1:
+	  this->setType( SABLE1 );
+          
+          
+        case SABLE2:
+	  this->setType( SABLE2 ); 
+          
 	  break;
           
         }

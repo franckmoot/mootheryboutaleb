@@ -51,22 +51,26 @@ namespace engine{
 	break;
 	
       case 2:
-	state.getGrid()->setElement(new state::Champdebataille(state::ChampdebatailleTypeId::SABLE));
+	state.getGrid()->setElement(new state::Champdebataille(state::ChampdebatailleTypeId::SABLE1));
 	break;
         
       case 3:
+	state.getGrid()->setElement(new state::Champdebataille(state::ChampdebatailleTypeId::SABLE2));
+	break;  
+        
+      case 4:
 	state.getGrid()->setElement(new state::Champdebataille(state::ChampdebatailleTypeId::EAU));
 	break;
         
-      case 4:
-	state.getGrid()->setElement(new state::Champdebataille(state::ChampdebatailleTypeId::ROCHER));
-	break;
-        
       case 5:
-	state.getGrid()->setElement(new state::Batiment(state::BatimentTypeId::QG));
+	state.getGrid()->setElement(new state::Champdebataille(state::ChampdebatailleTypeId::MONTAGNE));
 	break;
         
       case 6:
+	state.getGrid()->setElement(new state::Batiment(state::BatimentTypeId::QG));
+	break;
+        
+      case 7:
 	state.getGrid()->setElement(new state::Batiment(state::BatimentTypeId::CASERNE));
 	break;
         

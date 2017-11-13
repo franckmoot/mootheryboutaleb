@@ -8,9 +8,10 @@ namespace state {
   enum ChampdebatailleTypeId {
     HERBE     = 0,
     ROUTE     = 1,
-    SABLE     = 2,
-    EAU     = 3,
-    ROCHER     = 4
+    SABLE1     = 2,
+    SABLE2     = 3,
+    EAU     = 4,
+    MONTAGNE     = 5
   };
 
 };

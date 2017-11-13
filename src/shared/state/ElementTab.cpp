@@ -93,23 +93,26 @@ namespace state{
 	this->setElement(new Champdebataille(HERBE));
 	break;
 	
-      case ROCHER:
-	this->setElement(new Champdebataille(ROCHER));
+      case MONTAGNE:
+	this->setElement(new Champdebataille(MONTAGNE));
 	break;
         
       case ROUTE:
 	this->setElement(new Champdebataille(ROUTE));
 	break;
         
-      case SABLE:
-	this->setElement(new Champdebataille(SABLE));
+      case SABLE1:
+	this->setElement(new Champdebataille(SABLE1));
 	break;
+      case SABLE2:
+	this->setElement(new Champdebataille(SABLE2));
+	break; 
         
-      case 5:
+      case 6:
 	this->setElement(new Batiment(QG));
 	break;
         
-      case 6:
+      case 7:
 	this->setElement(new Batiment(CASERNE));
 	break;
         

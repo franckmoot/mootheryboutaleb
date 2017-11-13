@@ -37,7 +37,10 @@ namespace engine{
        else{
 
             if(state.getChars()->getElement(i,1)->getTypeId()==3){
-                state.getChars()->chgList2(i,j);
+                if(j<i+40||j>i-40){
+                    state.getChars()->chgList2(i,j);
+                }
+
             }
             else if (state.getChars()->getElement(i,1)->getTypeId()==4){
                 if(state.getGrid()->getElement(j,1)->getTypeId()==0){
@@ -46,28 +49,43 @@ namespace engine{
                         cout<< "c'est impossible de mettre un element mobile sur ces elments static"<<endl;
                     }   
                     else {
-                        state.getChars()->chgList2(i,j);
-                    }
+                        if(j<i+30||j>i-30){
+                            state.getChars()->chgList2(i,j);
+                        }
+                        else cout<<"c est impossible pour un Tank de partir plus loin"<<endl;
+                     }
                 }
                 else if(state.getGrid()->getElement(j,1)->getTypeId()==1){
-                    cout<< "c'est impossible de mettre un element mobile sur ces elments static"<<endl;
-                }
+                        if(j<i+30||j>i-30){
+                            state.getChars()->chgList2(i,j);
+                        }
                     
-             }
+                }
+            }       
             else if (state.getChars()->getElement(i,1)->getTypeId()==2){
                 if(state.getGrid()->getElement(j,1)->getTypeId()==0){               
                     state::Champdebataille* eletmp2 = (state::Champdebataille*)(state.grid->getElement(j,1));
                     if(eletmp2->getType()==3 ){
-                        cout<< "c'est impossible de mettre un element mobile sur ces elments static"<<endl;
+                        cout<< "c'est impossible de mettre un element mobile sur cette elments static"<<endl;
                     }
                     
-                    else state.getChars()->chgList2(i,j);
+                    else {
+                        if(j==i+1||j==i-1||j==i+10 ||j==i-10||j==i+11||j==i-11||j==i+20 ||j==i-20){
+                            state.getChars()->chgList2(i,j);
+                        }
+                        else cout<<"c est impossible pour une infanterie de partir plus loin"<<endl;
+                     }
+                }    
+                else if(state.getGrid()->getElement(j,1)->getTypeId()==1){
+                        if(j==i+1||j==i-1||j==i+10 ||j==i-10||j==i+11||j==i-11||j==i+20 ||j==i-20){
+                            state.getChars()->chgList2(i,j);
+                        }
                 }
-                else if(state.getGrid()->getElement(j,1)->getTypeId()==1) cout<< "c'est impossible de mettre un element mobile sur ces elments static"<<endl;
-             }
+            }
+       }
                     
-             }
-        }
+     }
+ 
             
         
    
