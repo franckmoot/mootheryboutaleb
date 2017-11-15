@@ -13,14 +13,10 @@ namespace render {
   
   CharsTileSet::CharsTileSet() {
     
-    infanterie.push_back(Tile(36,0,16,30));
-    infanterie.push_back(Tile(36,0,16,16));
-    infanterie.push_back(Tile(36,0,16,16));
-    tank.push_back(Tile(109,0,16,16));
-    tank.push_back(Tile(109,0,16,16));
-    heli.push_back(Tile(216,16,16,30));
-    heli.push_back(Tile(216,32,16,16)); 
-    
+    infanterie.push_back( Tile(0,0,32,32));//0 -> infanterie
+    heli.push_back( Tile(32,0,32,32));//0 -> helicoptere
+    tank.push_back( Tile(64,0,32,32));//0 tank
+    tank.push_back( Tile(96,0,32,32));//0 tank
   }
   
   
@@ -30,24 +26,31 @@ namespace render {
   
   
   const Tile& CharsTileSet::getTile(const state::Element& e) const {
-    
+     
     if(!e.isStatic()){
       MobileElement* mobileTmp = (MobileElement*)&e;
+      cout<<mobileTmp->getTypeId()<<endl;
       
-      if(mobileTmp->getTypeId()==INFANTERIE){     
-	
-	return infanterie[MVTATTENTE];
-	
-      }else if (mobileTmp->getTypeId()==TANK){
-	
-	return tank[MVTATTENTE2];
-	
-      }else if( mobileTmp->getTypeId()==HELI){
-	
-	return heli[MVTATTENTE1];
-      }
-    }
-    return infanterie[MVTATTENTE];
+      switch (mobileTmp->getTypeId()){
+	  
+	case INFANTERIE:
+	  return infanterie[0];
+	  break;
+	  
+	case TANK:    
+	  return tank[0];
+	  break;
+        
+        case HELI:    
+	  return heli[0];
+	  break;
+        
+	default:
+	  return infanterie[0];
+	  break;
+	}
+      
+    }  
+        return infanterie[0];
   }
-
 }

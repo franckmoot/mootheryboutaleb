@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <time.h>
 
 // Les lignes suivantes ne servent qu'à vérifier que la compilation avec SFML fonctionne
 #include <SFML/Graphics.hpp>
@@ -21,12 +22,14 @@ void testSFML() {
 #include "render.h"
 #include "engine.h"
 #include "state/Infanterie.h"
+#include "ai/RandomAI.h"
 
 
 using namespace std;
 using namespace state;
 using namespace render;
 using namespace engine;
+using namespace ai;
 
 int main(int argc,char* argv[]) {
   
@@ -46,19 +49,47 @@ int main(int argc,char* argv[]) {
     else if(!s.compare("render")){
       
       sf::RenderWindow window(sf::VideoMode(640, 640), "Advance wars");
-      
+      Heli *H=new Heli();
+      H->setJoueur(1);
+    Infanterie *I=new Infanterie();
+    I->setJoueur(1);
+    Tank *T=new Tank();
+    T->setJoueur(1);
+    Heli *He=new Heli();
+    He->setJoueur(1);
+    Infanterie *In=new Infanterie();
+    In->setJoueur(1);
+    Tank *Ta=new Tank();
+    Ta->setJoueur(1);
+    Tank *Tan=new Tank();
+    Tan->setJoueur(1);
      State monde;
-  
+
   (monde.grid)=new ElementTab(); 
   (monde.chars)=new ElementChars();
- 
+
+   monde.chars->chgList(1,H);//ajoute des elements
+    monde.chars->chgList(20,T);
+    monde.chars->chgList(2,I);
+    monde.chars->chgList(29,He);
+    monde.chars->chgList(50,Ta);
+    monde.chars->chgList(98,In);
+    
+    //monde.chars->chgList2(2,7);
+    monde.chars->setElement(Tan);
+ // cout<<"1"<<endl;
   std::vector<int> liste;
   monde.grid->createElementCsv(liste);
-       
+  
   Layer surf(monde);
   surf.initSurface();
+  int t;
+  RandomAI test;
+   test.run(monde,1);
+ 
     
       while (window.isOpen()){
+
 	  // on gère les évènements
 	  sf::Event event;
 	  while (window.pollEvent(event))
@@ -66,9 +97,44 @@ int main(int argc,char* argv[]) {
 	      if(event.type == sf::Event::Closed)
 		window.close();
 	    }
-	  // on dessine le niveau
-	  window.clear();  
+	  
+          if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
+    // la touche "flèche gauche" est enfoncée : on bouge le personnage
+    cout<<"jappuie"<<endl;
+   
+    //sleep(2);
+      surf.initSurface();
+} 
+        
+          
+          
+          if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){
+    // la touche "flèche gauche" est enfoncée : on bouge le personnage
+    cout<<"jappuie"<<endl;
+   monde.chars->chgList2(20,21);
+      //deplacementtank.execute(monde);
+      cout<<"Le tank se deplace " <<endl;
+   
+      surf.initSurface();
+} 
+          
+           if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){
+    // la touche "flèche gauche" est enfoncée : on bouge le personnage
+    cout<<"jappuie"<<endl;
+  engine::MoveCharCommand Helijoueur2(98,97);
+      Helijoueur2.execute(monde);
+      surf.initSurface();
+} 
+          
+          
+          /*if(event.type == sf::Event::Event::KeyEvent){
+               cout<<"jappuie"<<endl;
+	    }*/
+          
+    
+	  window.clear();     
 	  window.draw(*(surf.surface));
+          window.draw(*(surf.surfaceplayer));
 	  window.display(); 
 	  
 	}

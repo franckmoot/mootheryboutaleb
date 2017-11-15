@@ -35,9 +35,7 @@ namespace render {
       
       if(staticTmp->isChampdebataille()){
 	Champdebataille* champTmp = (Champdebataille*)&e;
-	
-        
-        cout<<champTmp->getChampdeBatailleType()<<endl;
+
 	switch (champTmp->getChampdeBatailleType()){
 	
         case HERBE:     
@@ -58,7 +56,6 @@ namespace render {
           
 	case EAU:
 	  return chpbataille[EAU];
-          cout<<"je suis la EN TANT QUE EAU"<<endl;
 	  break;
 	  
 	case MONTAGNE:
@@ -67,7 +64,6 @@ namespace render {
           
 	default:
 	  return chpbataille[0];
-          cout<<"IL Y A UN PROLEME"<<endl;
 	  break;
 	}
       }else if (!staticTmp->isChampdebataille()){

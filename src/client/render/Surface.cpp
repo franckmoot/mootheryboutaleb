@@ -63,7 +63,6 @@ namespace render {
   }
    
   void Surface::setSpriteTexture(int i, const Tile& tile) {
-    
     sf::Vertex* quad = &m_vertices[i * 4];
     quad[0].texCoords = sf::Vector2f(tile.getX(), tile.getY());
     quad[1].texCoords = sf::Vector2f(tile.getX()+tile.getWidth(), tile.getY());

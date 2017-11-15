@@ -2,6 +2,7 @@
 #include "Layer.h"
 #include "TileSet.h"
 #include "GridTileSet.h"
+#include "CharsTileSet.h"
 #include "state/ElementTab.h"
 #include "state/ElementChars.h"
 #include "state/Infanterie.h"
@@ -25,8 +26,9 @@ namespace render {
   
   Layer::Layer(const state::State& state) : state(state) {
     this->surface= unique_ptr<Surface>(new Surface());
+    this->surfaceplayer = unique_ptr<Surface>(new Surface());
     this->tileset= shared_ptr<GridTileSet>(new GridTileSet());
-    
+    this->tilesetChars= shared_ptr<CharsTileSet>(new CharsTileSet());
   }
   
   
@@ -70,15 +72,25 @@ namespace render {
       
     int x;
     int y;
-    this->surface->initQuads(400); 
+    this->surface->initQuads(400);
+    this->surfaceplayer->initQuads(400);
     for (int i=0;i<400;i++){
         x=int(i/20);
         y=i%20; 
         this->surface->loadTexture( this->tileset->getImageFile() );
 	this->surface->setSpriteLocation(i,y,x);
-	this->surface->setSpriteTexture(i,this->tileset->getTile(*(state.grid->getElement(i,1))));
-      
+	this->surface->setSpriteTexture(i,this->tileset->getTile(*(state.grid->getElement(i,1))));  
     }
+    for (int i=0;i<400;i++){
+        x=int(i/20);
+        y=i%20; 
+        this->surfaceplayer->loadTexture( this->tilesetChars->getImageFile() );
+	this->surfaceplayer->setSpriteLocation(i,y,x);
+        if(state.chars->getElement(i,1)!=NULL){
+	this->surfaceplayer->setSpriteTexture(i,this->tilesetChars->getTile(*(state.chars->getElement(i,1)))); 
+        }
+    }
+    
   }
   
 }

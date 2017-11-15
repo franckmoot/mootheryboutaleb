@@ -16,6 +16,10 @@ using namespace std;
 
 namespace state{
   ElementChars::ElementChars() {  
+      vector<unique_ptr<Element> > list(0);
+    for (size_t i=0;i<400;i++){
+      this->setElement(NULL);
+    }
   }
   
   ElementChars::ElementChars(size_t width, size_t height) {

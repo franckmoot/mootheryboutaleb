@@ -19,6 +19,8 @@ using namespace engine;
 namespace ai{
     
     void AI::listCommands (std::vector<std::unique_ptr<engine::Command> > &list, const state::State& state ,int caractere){
+     
+        
         for(int i=0;i<state.chars->sizeList();i++){
             if(state.chars->getElement(i,1)->getTypeId()==2){
                 list.push_back(unique_ptr<Command>(new AttaqueCharCommand(i,i+1)));
