@@ -89,10 +89,13 @@ namespace render {
         if(state.chars->getElement(i,1)!=NULL){
 	this->surfaceplayer->setSpriteTexture(i,this->tilesetChars->getTile(*(state.chars->getElement(i,1)))); 
         }
+        else {
+       // Tile tmp = new Tile(0,0,0,32);
+        this->surfaceplayer->setSpriteTexture(i,Tile(0,0,0,32));
     }
-    
+      
   }
-  
+  }
 }
 
 
