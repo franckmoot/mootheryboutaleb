@@ -113,7 +113,7 @@ void teststate (){
 
 
 void testrender(){
-  State monde;
+  /*State monde;
   
   (monde.grid)=new ElementTab(); 
   std::vector<int> carte;
@@ -187,7 +187,7 @@ void testrender(){
       //aa.execute(monde);
         
         //bb.execute(monde);
-    }
+    }*/
 
 }
 

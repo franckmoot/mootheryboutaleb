@@ -6,6 +6,7 @@
 #include <string>
 #include <sstream>
 
+using namespace std;
 namespace state {
 
     Champdebataille::Champdebataille() {
@@ -14,36 +15,37 @@ namespace state {
     
     Champdebataille::Champdebataille(ChampdebatailleTypeId id) {
         //std::cout<<"AVANT : le type est "<<id<<std::endl;
-        
-        switch (id){
-	  
-	case EAU:
-	  this->setType( EAU );;
-	  break;
-	  
-	case HERBE:     
-	  this->setType( HERBE );
-	  break;
-	  
-	case MONTAGNE:
-	  this->setType( MONTAGNE );
-	  break;
-          
-	case ROUTE:
-	  this->setType( ROUTE );
-	  break;
-          
-	case SABLE1:
-	  this->setType( SABLE1 );
-          
-          
-        case SABLE2:
-	  this->setType( SABLE2 ); 
-          
-	  break;
-          
+        if (id == ChampdebatailleTypeId::EAU ) {
+            champdeBatailleType=ChampdebatailleTypeId::EAU;
+            //cout<<"JE CREER UNE EAU ET batimentTYpeID EST "<<endl;
+            
         }
-        //std::cout<<"APRES : le type est "<<id<<std::endl;
+        if (id == ChampdebatailleTypeId::HERBE ) {
+            champdeBatailleType=ChampdebatailleTypeId::HERBE;
+           // cout<<"JE CREER UN HERBE ET batimentTYpeID EST :"<<endl;
+
+        }
+        
+        if (id == ChampdebatailleTypeId::MONTAGNE ) {
+            champdeBatailleType=ChampdebatailleTypeId::MONTAGNE;
+           // cout<<"JE CREER UN MONTAGE ET batimentTYpeID EST :"<<endl;
+
+        }
+        if (id == ChampdebatailleTypeId::ROUTE ) {
+            champdeBatailleType=ChampdebatailleTypeId::ROUTE;
+           // cout<<"JE CREER UN ROUTE ET batimentTYpeID EST :"<<endl;
+
+        }
+        if (id == ChampdebatailleTypeId::SABLE1 ) {
+            champdeBatailleType=ChampdebatailleTypeId::SABLE1;
+           // cout<<"JE CREER UN SABLE1 ET batimentTYpeID EST :"<<endl;
+
+        }
+        if (id == ChampdebatailleTypeId::SABLE2 ) {
+            champdeBatailleType=ChampdebatailleTypeId::SABLE2;
+           // cout<<"JE CREER UN SABLE2 ET batimentTYpeID EST :"<<endl;
+
+        }
     }
 
     Champdebataille::~Champdebataille() {

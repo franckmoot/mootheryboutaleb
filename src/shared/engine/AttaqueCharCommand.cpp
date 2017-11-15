@@ -33,7 +33,7 @@ namespace engine{
             state::Infanterie* eletmp = (state::Infanterie*)(state.chars->getElement(i,1));
                 if(state.chars->getElement(j,1)->getTypeId()==2){
                     state::Infanterie* eletmp2 = (state::Infanterie*)(state.chars->getElement(j,1));
-                    if(j==i+1||j==i-1||j==i+10 ||j==i-10||j==i+11||j==i-11||j==i+20 ||j==i-20){
+                    if(j==i+1||j==i-1||j==i+20 ||j==i-20||j==i+21||j==i-21||j==i+40 ||j==i-40){
                         eletmp2->setPdv(eletmp2->getPdv()-eletmp->getAttaque());
                         if(eletmp2->getPdv()<=0){
                             state.chars->killElement(j);
@@ -44,7 +44,7 @@ namespace engine{
                 }
                 else if(state.chars->getElement(j,1)->getTypeId()==3){
                     state::Heli* eletmp2 = (state::Heli*)(state.chars->getElement(j,1));
-                    if(j==i+1||j==i-1||j==i+10 ||j==i-10||j==i+11||j==i-11||j==i+20 ||j==i-20){
+                    if(j==i+1||j==i-1||j==i+20 ||j==i-20||j==i+21||j==i-21||j==i+40 ||j==i-40){
                         eletmp2->setPdv(eletmp2->getPdv()-eletmp->getAttaque());
                         if(eletmp2->getPdv()<=0){
                             state.chars->killElement(j);
@@ -55,7 +55,7 @@ namespace engine{
                  }
                 else if(state.chars->getElement(j,1)->getTypeId()==4){
                     state::Tank* eletmp2 = (state::Tank*)(state.chars->getElement(j,1));
-                    if(j==i+1||j==i-1||j==i+10 ||j==i-10||j==i+11||j==i-11||j==i+20 ||j==i-20){
+                    if(j==i+1||j==i-1||j==i+20 ||j==i-20||j==i+21||j==i-21||j==i+40 ||j==i-40){
                         eletmp2->setPdv(eletmp2->getPdv()-eletmp->getAttaque());
                         if(eletmp2->getPdv()<=0){
                             state.chars->killElement(j);
@@ -69,7 +69,7 @@ namespace engine{
               state::Infanterie* eletmp = (state::Infanterie*)(state.chars->getElement(i,1));
                 if(state.chars->getElement(j,1)->getTypeId()==2){
                     state::Infanterie* eletmp2 = (state::Infanterie*)(state.chars->getElement(j,1));
-                    if(j<i+40 || j>i-40){
+                    if(j<i+80 || j>i-80){
                         eletmp2->setPdv(eletmp2->getPdv()-eletmp->getAttaque());
                         if(eletmp2->getPdv()<=0){
                             state.chars->killElement(j);
@@ -80,7 +80,7 @@ namespace engine{
                 }    
                 else if(state.chars->getElement(j,1)->getTypeId()==3){
                     state::Heli* eletmp2 = (state::Heli*)(state.chars->getElement(j,1));
-                    if(j<i+40 || j>i-40){
+                    if(j<i+80 || j>i-80){
                         eletmp2->setPdv(eletmp2->getPdv()-eletmp->getAttaque());
                         if(eletmp2->getPdv()<=0){
                             state.chars->killElement(j);
@@ -92,7 +92,7 @@ namespace engine{
 
                 else if(state.chars->getElement(j,1)->getTypeId()==4){
                     state::Tank* eletmp2 = (state::Tank*)(state.chars->getElement(j,1));
-                    if(j<i+40 || j>i-40){
+                    if(j<i+80 || j>i-80){
                         eletmp2->setPdv(eletmp2->getPdv()-eletmp->getAttaque());
                         if(eletmp2->getPdv()<=0){
                             state.chars->killElement(j);
@@ -106,7 +106,7 @@ namespace engine{
                state::Infanterie* eletmp = (state::Infanterie*)(state.chars->getElement(i,1));
                 if(state.chars->getElement(j,1)->getTypeId()==2){
                     state::Infanterie* eletmp2 = (state::Infanterie*)(state.chars->getElement(j,1));
-                    if(j<i+30 || j>i-30){
+                    if(j<i+40 || j>i-40){
                         eletmp2->setPdv(eletmp2->getPdv()-eletmp->getAttaque());
                         if(eletmp2->getPdv()<=0){
                             state.chars->killElement(j);
@@ -117,7 +117,7 @@ namespace engine{
                 } 
                 else if(state.chars->getElement(j,1)->getTypeId()==3){
                     state::Heli* eletmp2 = (state::Heli*)(state.chars->getElement(j,1));
-                    if(j<i+30 || j>i-30){
+                    if(j<i+40 || j>i-40){
                         eletmp2->setPdv(eletmp2->getPdv()-eletmp->getAttaque());
                         if(eletmp2->getPdv()<=0){
                             state.chars->killElement(j);
@@ -128,7 +128,7 @@ namespace engine{
                 } 
                 else if(state.chars->getElement(j,1)->getTypeId()==4){
                     state::Tank* eletmp2 = (state::Tank*)(state.chars->getElement(j,1));
-                    if(j<i+30 || j>i-30){
+                    if(j<i+40 || j>i-40){
                         eletmp2->setPdv(eletmp2->getPdv()-eletmp->getAttaque());
                         if(eletmp2->getPdv()<=0){
                             state.chars->killElement(j);

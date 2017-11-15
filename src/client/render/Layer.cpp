@@ -1,11 +1,13 @@
 #include "Tilemap.h"
 #include "Layer.h"
 #include "TileSet.h"
+#include "GridTileSet.h"
 #include "state/ElementTab.h"
 #include "state/ElementChars.h"
 #include "state/Infanterie.h"
 #include "state/Tank.h"
 #include "state/Heli.h"
+#include "state/State.h"
 #include "stdio.h"
 #include "stdlib.h"
 #include "time.h"
@@ -20,7 +22,14 @@ using namespace std;
 using namespace state;
 
 namespace render {
+  
+  Layer::Layer(const state::State& state) : state(state) {
+    this->surface= unique_ptr<Surface>(new Surface());
+    this->tileset= shared_ptr<GridTileSet>(new GridTileSet());
     
+  }
+  
+  
   void Layer::initmap() {
     // (monde.grid)=new ElementTab(); 
     std::vector<int> level;
@@ -54,15 +63,24 @@ namespace render {
     
     this->tilemap=std::unique_ptr<Tilemap>(new Tilemap());
     if (!this->tilemap->load("res/player.png", sf::Vector2u(64, 64),carteChars,10 , 10));
-
+    
   }
   
-  void initSurface (){
+  void Layer::initSurface (){
       
+    int x;
+    int y;
+    this->surface->initQuads(400); 
+    for (int i=0;i<400;i++){
+        x=int(i/20);
+        y=i%20; 
+        this->surface->loadTexture( this->tileset->getImageFile() );
+	this->surface->setSpriteLocation(i,y,x);
+	this->surface->setSpriteTexture(i,this->tileset->getTile(*(state.grid->getElement(i,1))));
+      
+    }
   }
   
 }
-
-
 
 

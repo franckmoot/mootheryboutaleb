@@ -20,6 +20,10 @@ using namespace std;
 using namespace state;
 
 namespace render {
+        Surface::Surface() {
+
+    }
+
   
   void Surface::draw(sf::RenderTarget& target, sf::RenderStates states) const {
     

@@ -6,6 +6,11 @@
 
 namespace render {
   class Surface;
+};
+namespace state {
+  class State;
+};
+namespace render {
   class Tilemap;
   class TileSet;
 };
@@ -17,6 +22,7 @@ namespace state {
 #include "Surface.h"
 #include "Tilemap.h"
 #include "TileSet.h"
+#include "state/State.h"
 #include "state/ElementChars.h"
 #include "state/ElementTab.h"
 
@@ -28,11 +34,14 @@ namespace render {
     // Attributes
   public:
     std::unique_ptr<Surface> surface;
+  private:
+    const state::State& state;
   protected:
     std::unique_ptr<Tilemap> tilemap;
     std::shared_ptr<TileSet> tileset;
     // Operations
   public:
+    Layer (const state::State& state);
     void initmap ();
     void initRandMap ();
     void displayChars (state::ElementChars* a);

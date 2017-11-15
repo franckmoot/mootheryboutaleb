@@ -24,6 +24,7 @@ namespace render {
     sf::Texture m_tileset;
     // Operations
   public:
+    Surface ();
     virtual void draw (sf::RenderTarget& target, sf::RenderStates states) const;
     void initQuads (int count);
     void setSpriteLocation (int i, int x, int y);

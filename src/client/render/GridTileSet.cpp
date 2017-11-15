@@ -12,12 +12,12 @@ namespace render {
   
   GridTileSet::GridTileSet() {
     
-    chpbataille.push_back( Tile(0,0,32,32)); //1 -> herbe
-    chpbataille.push_back( Tile(32,0,32,32)); //2 -> route
-    chpbataille.push_back( Tile(64,0,32,32)); //3 sable haut
-    chpbataille.push_back( Tile(96,0,32,32)); //4 eau sable
-    chpbataille.push_back( Tile(128,0,32,32)); //5 eau
-    chpbataille.push_back( Tile(160,0,32,32));//6 montagne
+    chpbataille.push_back( Tile(0,0,32,32)); //0 -> herbe
+    chpbataille.push_back( Tile(32,0,32,32)); //1 -> route
+    chpbataille.push_back( Tile(64,0,32,32)); //2 sable haut
+    chpbataille.push_back( Tile(96,0,32,32)); //3 eau sable
+    chpbataille.push_back( Tile(128,0,32,32)); //4 eau
+    chpbataille.push_back( Tile(160,0,32,32));//5 montagne
     batiment.push_back( Tile(192,0,32,32)); // 0 qg
     batiment.push_back(Tile(224,0,32,32));  //1 caserne
   }
@@ -36,6 +36,8 @@ namespace render {
       if(staticTmp->isChampdebataille()){
 	Champdebataille* champTmp = (Champdebataille*)&e;
 	
+        
+        cout<<champTmp->getChampdeBatailleType()<<endl;
 	switch (champTmp->getChampdeBatailleType()){
 	
         case HERBE:     
@@ -56,6 +58,7 @@ namespace render {
           
 	case EAU:
 	  return chpbataille[EAU];
+          cout<<"je suis la EN TANT QUE EAU"<<endl;
 	  break;
 	  
 	case MONTAGNE:
@@ -64,12 +67,13 @@ namespace render {
           
 	default:
 	  return chpbataille[0];
+          cout<<"IL Y A UN PROLEME"<<endl;
 	  break;
 	}
       }else if (!staticTmp->isChampdebataille()){
-          cout<<"je suis la"<<endl;
+          
 	Batiment* batTmp=(Batiment*)staticTmp;
-	cout<<"batimentTypeId = "<<batTmp->getBatimentTypeId()<<endl;
+	
 	switch (batTmp->getBatimentTypeId()){
 	  
 	case QG:
@@ -81,7 +85,7 @@ namespace render {
 	  break;
           
 	default:
-            cout<<"IL Y A UN PROLEME"<<endl;
+            
 	  return chpbataille[0];
 	  break;
 	}

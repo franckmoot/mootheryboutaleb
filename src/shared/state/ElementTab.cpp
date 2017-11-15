@@ -86,7 +86,7 @@ namespace state{
       switch (carte[i]){
 	
       case EAU:
-	this->setElement(new Champdebataille(ROUTE));
+	this->setElement(new Champdebataille(EAU));
 	break;
 	
       case HERBE:     

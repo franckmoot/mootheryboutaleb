@@ -54,33 +54,11 @@ int main(int argc,char* argv[]) {
  
   std::vector<int> liste;
   monde.grid->createElementCsv(liste);
-  cout<<"junji"<<endl;
-      GridTileSet a;
-
-      Surface surf;
-       cout<<"junji"<<endl;
-      for (int i=1;i<9;i++){
-          for(int j=1;j<9;j++){
-          cout<<"junji"<<endl;
-      surf.loadTexture(a.getImageFile());
-       cout<<"junji"<<endl;
-      surf.initQuads(i*j);  
-       cout<<"junji"<<endl;
-      surf.setSpriteLocation(i*j,i,j);
-       cout<<"junji"<<endl;
-      surf.setSpriteTexture(i*j,a.getTile(*(monde.grid->getElement(i,j))));
-      cout<<"junji"<<endl;
-          
-          }
-      }
-     //
-     // surf.setSpriteLocation(1,1,0);
-     // surf.setSpriteTexture(1);
-      
-      
-      
-      while (window.isOpen())
-	{
+       
+  Layer surf(monde);
+  surf.initSurface();
+    
+      while (window.isOpen()){
 	  // on gère les évènements
 	  sf::Event event;
 	  while (window.pollEvent(event))
@@ -90,7 +68,7 @@ int main(int argc,char* argv[]) {
 	    }
 	  // on dessine le niveau
 	  window.clear();  
-	  window.draw(surf);
+	  window.draw(*(surf.surface));
 	  window.display(); 
 	  
 	}
