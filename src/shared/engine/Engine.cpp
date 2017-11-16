@@ -12,32 +12,37 @@
 #include "Engine.h"
 #include "state/State.h"
 #include "state/Element.h"
-
+#include "state/ElementTab.h"
+#include "state/ElementChars.h"
 
 using namespace std;
-namespace engine{
-    
+using namespace state;
+
+namespace engine {
+
     Engine::Engine() {
+        //this->currentState = new State;
+        this->currentState.grid = new ElementTab();
+        this->currentState.chars = new ElementChars();
+
 
     }
-    
-    void Engine::addCommand( Command* cmd) {
-        currentCommands.push_back( unique_ptr<Command>  (cmd ) ) ;
+
+    void Engine::addCommand(Command* cmd) {
+        currentCommands.push_back(unique_ptr<Command> (cmd));
     }
-    
+
     void Engine::update() {
-       
-       
-     /* for ( auto& command : currentCommands ) {
-          
-          command.->execute(currentState);
-          //command->execute(currentCommands);
-        }  */
+
+        for (auto& command : currentCommands) {
+            
+            command->execute(currentState);
+        }
     }
-        const state::State Engine::getState() const {
-            return currentState;
+
+    const state::State& Engine::getState() const {
+        return currentState;
     }
 
 }
-    
-    
+

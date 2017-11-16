@@ -29,7 +29,7 @@ namespace engine {
     Engine ();
     void addCommand (Command* cmd);
     void update ();
-    const state::State getState () const;
+    const state::State& getState () const;
     // Setters and Getters
   };
 

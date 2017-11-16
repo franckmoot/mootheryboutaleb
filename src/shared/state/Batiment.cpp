@@ -14,12 +14,10 @@ namespace state {
         
         if (id == BatimentTypeId::CASERNE ) {
             batimentTypeId=BatimentTypeId::CASERNE;
-            cout<<"JE CREER UNE CASERNE ET batimentTYpeID EST "<<endl;
             
         }
         if (id == BatimentTypeId::QG ) {
             batimentTypeId=BatimentTypeId::QG;
-            cout<<"JE CREER UN QG ET batimentTYpeID EST :"<<endl;
 
         }
               
