@@ -5,11 +5,11 @@
 #include <vector>
 #include <memory>
 
-namespace engine {
-  class Command;
-};
 namespace state {
   class State;
+};
+namespace engine {
+  class Command;
 }
 
 #include "engine/Command.h"
@@ -20,7 +20,9 @@ namespace ai {
   class AI {
     // Operations
   public:
-    void listCommands (std::vector<std::unique_ptr<engine::Command> >& list, const state::State& state, int caractere);
+    void InfanterieCommands (const state::State& state, int i, std::vector<std::unique_ptr<engine::Command> >& list0);
+    void HeliCommands (const state::State& state, int i, std::vector<std::unique_ptr<engine::Command> >& list1);
+    void TankCommands (const state::State& state, int i, std::vector<std::unique_ptr<engine::Command> >& list2);
     // Setters and Getters
   };
 

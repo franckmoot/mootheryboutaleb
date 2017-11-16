@@ -50,44 +50,91 @@ int main(int argc,char* argv[]) {
       
       sf::RenderWindow window(sf::VideoMode(640, 640), "Advance wars");
       Heli *H=new Heli();
-      H->setJoueur(1);
+      
     Infanterie *I=new Infanterie();
-    I->setJoueur(1);
     Tank *T=new Tank();
-    T->setJoueur(1);
     Heli *He=new Heli();
-    He->setJoueur(1);
     Infanterie *In=new Infanterie();
-    In->setJoueur(1);
     Tank *Ta=new Tank();
-    Ta->setJoueur(1);
     Tank *Tan=new Tank();
-    Tan->setJoueur(1);
+    Heli *Ha=new Heli();
+    Infanterie *Ia=new Infanterie();
+    Tank *To=new Tank();
+    Heli *Hez=new Heli();
+    Infanterie *Ina=new Infanterie();
+    Tank *Tae=new Tank();
+    Tank *Tanz=new Tank();
      State monde;
 
   (monde.grid)=new ElementTab(); 
   (monde.chars)=new ElementChars();
+  H->setJoueur(1);
+  T->setJoueur(2);
+   I->setJoueur(2);
+  He->setJoueur(2);
+   Ta->setJoueur(1);
+  In->setJoueur(1);
+   Tan->setJoueur(2);
+  Tae->setJoueur(2);
+   Tanz->setJoueur(1);
+  Hez->setJoueur(2);
+   To->setJoueur(1);
+  Ia->setJoueur(1);
 
    monde.chars->chgList(1,H);//ajoute des elements
-    monde.chars->chgList(20,T);
-    monde.chars->chgList(2,I);
-    monde.chars->chgList(29,He);
-    monde.chars->chgList(50,Ta);
-    monde.chars->chgList(98,In);
-    
-    //monde.chars->chgList2(2,7);
+    monde.chars->chgList(6,T);
+    monde.chars->chgList(8,I);
+    monde.chars->chgList(15,He);
+    monde.chars->chgList(29,Ta);
+    monde.chars->chgList(49,In);
     monde.chars->setElement(Tan);
+       monde.chars->chgList(78,Tae);//ajoute des elements
+    monde.chars->chgList(89,To);
+    monde.chars->chgList(99,Tanz);
+    monde.chars->chgList(123,Hez);
+    monde.chars->chgList(144,Ta);
+    monde.chars->chgList(149,Ha);
+    
  // cout<<"1"<<endl;
   std::vector<int> liste;
   monde.grid->createElementCsv(liste);
   
   Layer surf(monde);
   surf.initSurface();
-  int t;
   RandomAI test;
+  RandomAI test1;
+  RandomAI test2;
+  RandomAI test3;
+  RandomAI test7;
+  RandomAI test4;
+  RandomAI test5;
+  RandomAI test6;
+    RandomAI test8;
+  RandomAI test11;
+  RandomAI test12;
+  RandomAI test13;
+  RandomAI test14;
+  RandomAI test15;
+  RandomAI test18;
+  RandomAI test19;
    test.run(monde,1);
- 
-    
+   test4.run(monde,1);
+  test5.run(monde,1);
+   test6.run(monde,1);
+      test.run(monde,1);
+   test1.run(monde,1);
+   test2.run(monde,1);
+   test3.run(monde,1);
+      test8.run(monde,1);
+   test11.run(monde,1);
+   test12.run(monde,1);
+   test13.run(monde,1);
+      test14.run(monde,1);
+   test15.run(monde,1);
+   test18.run(monde,1);
+   test19.run(monde,1);
+   
+   surf.initSurface();
       while (window.isOpen()){
 
 	  // on gère les évènements
@@ -97,40 +144,18 @@ int main(int argc,char* argv[]) {
 	      if(event.type == sf::Event::Closed)
 		window.close();
 	    }
-	  
-          if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
-    // la touche "flèche gauche" est enfoncée : on bouge le personnage
-    cout<<"jappuie"<<endl;
-   
-    //sleep(2);
-      surf.initSurface();
-} 
-        
+     
           
           
-          if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){
-    // la touche "flèche gauche" est enfoncée : on bouge le personnage
-    cout<<"jappuie"<<endl;
-   monde.chars->chgList2(20,21);
-      //deplacementtank.execute(monde);
-      cout<<"Le tank se deplace " <<endl;
-   
-      surf.initSurface();
-} 
+
           
-           if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){
-    // la touche "flèche gauche" est enfoncée : on bouge le personnage
-    cout<<"jappuie"<<endl;
-  engine::MoveCharCommand Helijoueur2(98,97);
-      Helijoueur2.execute(monde);
-      surf.initSurface();
-} 
-          
-          
-          /*if(event.type == sf::Event::Event::KeyEvent){
+         /* 
+          if(event.type == sf::Event::Event::KeyEvent){
                cout<<"jappuie"<<endl;
-	    }*/
-          
+               test19.run(monde,1);
+               
+	    }
+          */
     
 	  window.clear();     
 	  window.draw(*(surf.surface));
@@ -141,6 +166,15 @@ int main(int argc,char* argv[]) {
       
       return 0;
     }
+    
+    
+    
+    
+    
+    
+    
+    
+   /*
     else if(!s.compare("engine")){
       
       State monde;
@@ -170,7 +204,7 @@ int main(int argc,char* argv[]) {
 	monde.chars->chgList(30,I2);
 	monde.chars->chgList(40,H2);
 	monde.chars->chgList(50,T2);
-      */
+      
       
       engine::CreateCharCommand infanteriejoueur1(0,INFANTERIE,1);
       infanteriejoueur1.execute(monde);
@@ -266,7 +300,7 @@ int main(int argc,char* argv[]) {
       
       return 0;
     }
-    
+   */ 
   }
   
   return 0;

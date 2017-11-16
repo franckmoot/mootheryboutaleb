@@ -18,11 +18,10 @@ using namespace state;
 using namespace engine;
 namespace ai{
     
-    void AI::listCommands (std::vector<std::unique_ptr<engine::Command> > &list, const state::State& state ,int caractere){
-     
-        
-        for(int i=0;i<state.chars->sizeList();i++){
-            if(state.chars->getElement(i,1)->getTypeId()==2){
+   void AI::InfanterieCommands(const state::State& state, int i, std::vector<std::unique_ptr<engine::Command> >& list){
+                if(i>360) i=360;
+                if(i<0) i=0;
+                
                 list.push_back(unique_ptr<Command>(new AttaqueCharCommand(i,i+1)));
                 list.push_back(unique_ptr<Command>(new AttaqueCharCommand(i,i-1)));
                 list.push_back(unique_ptr<Command>(new AttaqueCharCommand(i,i+20)));
@@ -39,35 +38,34 @@ namespace ai{
                 list.push_back(unique_ptr<Command>(new MoveCharCommand(i,i-20)));
                 list.push_back(unique_ptr<Command>(new MoveCharCommand(i,i-40)));
                 list.push_back(unique_ptr<Command>(new MoveCharCommand(i,i+40)));
-                
-                
+                   
             }
-                
-            else if(state.chars->getElement(i,1)->getTypeId()==3){
-                   for(int j=i-80;j<i+80;j++){
-                       if(j>400) j=200 ;
+    
+    
+    void AI::HeliCommands(const state::State& state, int i, std::vector<std::unique_ptr<engine::Command> >& list1){
+                    for(int j=i-80;j<i+80;j++){
+                       if(j>400) j=400 ;
                        if(j<0) j=0;
-                       list.push_back(unique_ptr<Command>(new AttaqueCharCommand(i,j)));
-                       list.push_back(unique_ptr<Command>(new MoveCharCommand(i,j)));    
-               }
-            }
-            else if(state.chars->getElement(i,1)->getTypeId()==4){
-                   for(int j=i-60;j<i+60;j++){
-                       if(j>400) j=200 ;
-                       if(j<0) j=0;
-                       list.push_back(unique_ptr<Command>(new AttaqueCharCommand(i,j)));
-                       list.push_back(unique_ptr<Command>(new MoveCharCommand(i,j)));    
-               }
-            }
+                       if(state.chars->getElement(j,1)!=NULL && state.chars->getElement(j,1)->getJoueur()!=state.chars->getElement(j,1)->getJoueur()){
+                       list1.push_back(unique_ptr<Command>(new AttaqueCharCommand(i,j)));
+                    }
+                       list1.push_back(unique_ptr<Command>(new MoveCharCommand(i,j)));
+                    }
         
         
-   }
-    
-    
-    
-    
-    
-    
+        
+    }
+    void AI::TankCommands(const state::State& state, int i, std::vector<std::unique_ptr<engine::Command> >& list2){
+                    for(int j=i-60;j<i+60;j++){
+                       if(j>400) j=400 ;
+                       if(j<0) j=0;
+                       if(state.chars->getElement(j,1)!=NULL){
+                       list2.push_back(unique_ptr<Command>(new AttaqueCharCommand(i,j)));
+                    }
+                       list2.push_back(unique_ptr<Command>(new MoveCharCommand(i,j)));
+                    }
+        
+        
+        
+    }
 }
- 
-}    

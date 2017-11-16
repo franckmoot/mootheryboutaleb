@@ -27,64 +27,39 @@ namespace ai{
     }
     
     void RandomAI::run (state::State& state,int joueur){
-        std::vector<std::unique_ptr<engine::Command> > list;
+        std::vector<std::unique_ptr<engine::Command>>list;
         mt19937 mt_rand(time(0));
         int h;
-        
-        
-        /*for(int i=0;i<state.chars->sizeList();i++){
+        for(int i=0;i<300;i++){
             if(state.chars->getElement(i,1)!=NULL){
-            if(state.chars->getElement(i,1)->getTypeId()==2 && state.chars->getElement(i,1)->getJoueur()==joueur){
-                list.push_back(unique_ptr<Command>(new AttaqueCharCommand(i,i+1)));
-                list.push_back(unique_ptr<Command>(new AttaqueCharCommand(i,i-1)));
-                list.push_back(unique_ptr<Command>(new AttaqueCharCommand(i,i+20)));
-                list.push_back(unique_ptr<Command>(new AttaqueCharCommand(i,i+21)));
-                list.push_back(unique_ptr<Command>(new AttaqueCharCommand(i,i-21)));
-                list.push_back(unique_ptr<Command>(new AttaqueCharCommand(i,i-20)));
-                list.push_back(unique_ptr<Command>(new AttaqueCharCommand(i,i-40)));
-                list.push_back(unique_ptr<Command>(new AttaqueCharCommand(i,i+40)));
-                list.push_back(unique_ptr<Command>(new MoveCharCommand(i,i+1)));
-                list.push_back(unique_ptr<Command>(new MoveCharCommand(i,i-1)));
-                list.push_back(unique_ptr<Command>(new MoveCharCommand(i,i+20)));
-                list.push_back(unique_ptr<Command>(new MoveCharCommand(i,i+21)));
-                list.push_back(unique_ptr<Command>(new MoveCharCommand(i,i-21)));
-                list.push_back(unique_ptr<Command>(new MoveCharCommand(i,i-20)));
-                list.push_back(unique_ptr<Command>(new MoveCharCommand(i,i-40)));
-                list.push_back(unique_ptr<Command>(new MoveCharCommand(i,i+40)));
-                
-                h=(int)(mt_rand() % list.size());
-                list[h]->execute(state);
+           
+               /* if(state.chars->getElement(i,1)->getTypeId()==2){
+                    std::vector<std::unique_ptr<engine::Command> > l0;
+                    InfanterieCommands(state,i,l0);
+                    h=(int)(mt_rand() % l0.size());
+                    l0[h]->execute(state);
+                    
                   
-            }
-                
-            else if(state.chars->getElement(i,1)->getTypeId()==3 && state.chars->getElement(i,1)->getJoueur()==joueur){
-                   for(int j=i-80;j<i+80;j++){
-                       if(j>400) j=200 ;
-                       if(j<0) j=0;
-                       list.push_back(unique_ptr<Command>(new AttaqueCharCommand(i,j)));
-                       list.push_back(unique_ptr<Command>(new MoveCharCommand(i,j)));
+                }*/  
+               if(state.chars->getElement(i,1)->getTypeId()==3 ){
+                    std::vector<std::unique_ptr<engine::Command> > l2;
+                    HeliCommands(state,i,l2);
+                    h=(int)(mt_rand() % l2.size());
+                    l2[h]->execute(state);   
                        
-                    }
-                h=(int)(mt_rand() % list.size());
-                list[h]->execute(state);       
+    
+                }
+               else if(state.chars->getElement(i,1)->getTypeId()==4 ){
+                    std::vector<std::unique_ptr<engine::Command> > l3;
+                    TankCommands(state,i,l3);
+                    h=(int)(mt_rand() % l3.size());
+                    l3[h]->execute(state);   
+                    
+                }
             }
-            else if(state.chars->getElement(i,1)->getTypeId()==4 && state.chars->getElement(i,1)->getJoueur()==joueur){
-                   for(int j=i-60;j<i+60;j++){
-                       if(j>400) j=200 ;
-                       if(j<0) j=0;
-                       list.push_back(unique_ptr<Command>(new AttaqueCharCommand(i,j)));
-                       list.push_back(unique_ptr<Command>(new MoveCharCommand(i,j)));    
-                    }
-                h=(int)(mt_rand() % list.size());
-                list[h]->execute(state);   
-            }
-            }
-        
-        }
-        for(int i=0;i<state.grid->sizeList();i++){
-        for(int i=0;i<state.grid->sizeList();i++){
-            if(state.grid->getElement(i,1)->getTypeId()==1 && state.chars->getElement(i,1)->getJoueur()==joueur){
-                if(joueur==1){
+      
+        /*for(int i=0;i<state.grid->sizeList();i++){
+            if(state.grid->getElement(i,1)->getTypeId()==1 ){
                     for(int j=0;j<200;j++){
                             list.push_back(unique_ptr<Command>(new CreateCharCommand(j,state::TypeId::HELI,1)));
                             list.push_back(unique_ptr<Command>(new CreateCharCommand(j,state::TypeId::INFANTERIE,1)));
@@ -94,7 +69,7 @@ namespace ai{
                     list[h]->execute(state);
 
                    }   
-                else if(joueur==2){
+                /*else if(joueur==2){
                     for(int j=200;j<400;j++){
                             list.push_back(unique_ptr<Command>(new CreateCharCommand(j,state::TypeId::HELI,2)));
                             list.push_back(unique_ptr<Command>(new CreateCharCommand(j,state::TypeId::INFANTERIE,2)));
@@ -103,10 +78,13 @@ namespace ai{
                     h=(int)(mt_rand() % list.size());
                     list[h]->execute(state);
 
-                    }        
-                }                
-                   
-        }
-        }}*/
- 
-} 
+                    }*/        
+                              
+                }
+    }
+}
+
+       
+
+
+    
