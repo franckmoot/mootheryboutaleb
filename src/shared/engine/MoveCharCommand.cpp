@@ -45,8 +45,8 @@ namespace engine{
             else if (state.getChars()->getElement(i,1)->getTypeId()==4){
                 if(state.getGrid()->getElement(j,1)->getTypeId()==0){
                     state::Champdebataille* eletmp2 = (state::Champdebataille*)(state.grid->getElement(j,1));
-                    if(eletmp2->getType()==4|| eletmp2->getType()==5 ){
-                        cout<< "c'est impossible de mettre un element mobile sur ces elments static"<<endl;
+                    if(eletmp2->getChampdeBatailleType()==4 || eletmp2->getChampdeBatailleType()==5 ){
+                        cout<< "c'est impossible de mettre un element mobile sur cet elment statique"<<endl;
                     }   
                     else {
                         if(j<i+30||j>i-30){
@@ -65,19 +65,19 @@ namespace engine{
             else if (state.getChars()->getElement(i,1)->getTypeId()==2){
                 if(state.getGrid()->getElement(j,1)->getTypeId()==0){               
                     state::Champdebataille* eletmp2 = (state::Champdebataille*)(state.grid->getElement(j,1));
-                    if(eletmp2->getType()==4 ){
-                        cout<< "c'est impossible de mettre un element mobile sur cette elments static"<<endl;
+                    if(eletmp2->getChampdeBatailleType()==4 ){
+                        cout<< "c'est impossible de mettre un element mobile sur cet elment statique"<<endl;
                     }
                     
                     else {
-                        if(j==i+1||j==i-1||j==i+10 ||j==i-10||j==i+11||j==i-11||j==i+20 ||j==i-20){
+                        if(j==i+1||j==i-1||j==i+21||j==i-21||j==i+20 ||j==i-20||j==i+30 ||j==i-30){
                             state.getChars()->chgList2(i,j);
                         }
                         else cout<<"c est impossible pour une infanterie de partir plus loin"<<endl;
                      }
                 }    
                 else if(state.getGrid()->getElement(j,1)->getTypeId()==1){
-                        if(j==i+1||j==i-1||j==i+10 ||j==i-10||j==i+11||j==i-11||j==i+20 ||j==i-20){
+                        if(j==i+1||j==i-1||j==i+21||j==i-21||j==i+20 ||j==i-20||j==i+30 ||j==i-30){
                             state.getChars()->chgList2(i,j);
                         }
                 }

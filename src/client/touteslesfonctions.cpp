@@ -307,51 +307,15 @@ void testengine() {
 void testai() {
 
     sf::RenderWindow window(sf::VideoMode(640, 640), "Advance wars");
-    Heli *H = new Heli();
 
-    Infanterie *I = new Infanterie();
-    Tank *T = new Tank();
-    Heli *He = new Heli();
-    Infanterie *In = new Infanterie();
-    Tank *Ta = new Tank();
-    Tank *Tan = new Tank();
-    Heli *Ha = new Heli();
-    Infanterie *Ia = new Infanterie();
-    Tank *To = new Tank();
-    Heli *Hez = new Heli();
-    Infanterie *Ina = new Infanterie();
-    Tank *Tae = new Tank();
-    Tank *Tanz = new Tank();
     State monde;
 
     (monde.grid) = new ElementTab();
     (monde.chars) = new ElementChars();
-    H->setJoueur(1);
-    T->setJoueur(2);
-    I->setJoueur(2);
-    He->setJoueur(2);
-    Ta->setJoueur(1);
-    In->setJoueur(1);
-    Tan->setJoueur(2);
-    Tae->setJoueur(2);
-    Tanz->setJoueur(1);
-    Hez->setJoueur(2);
-    To->setJoueur(1);
-    Ia->setJoueur(1);
 
-    monde.chars->chgList(1, H); //ajoute des elements
-    monde.chars->chgList(6, T);
-    monde.chars->chgList(8, I);
-    monde.chars->chgList(15, He);
-    monde.chars->chgList(29, Ta);
-    monde.chars->chgList(49, In);
-    monde.chars->setElement(Tan);
-    monde.chars->chgList(78, Tae); //ajoute des elements
-    monde.chars->chgList(89, To);
-    monde.chars->chgList(99, Tanz);
-    monde.chars->chgList(123, Hez);
-    monde.chars->chgList(144, Ta);
-    monde.chars->chgList(149, Ha);
+    int joueur1=1;
+    int joueur2=2;
+
 
     std::vector<int> liste;
     monde.grid->createElementCsv(liste);
@@ -360,36 +324,7 @@ void testai() {
     surf.initSurface();
     RandomAI test;
     RandomAI test1;
-    RandomAI test2;
-    RandomAI test3;
-    RandomAI test7;
-    RandomAI test4;
-    RandomAI test5;
-    RandomAI test6;
-    RandomAI test8;
-    RandomAI test11;
-    RandomAI test12;
-    RandomAI test13;
-    RandomAI test14;
-    RandomAI test15;
-    RandomAI test18;
-    RandomAI test19;
 
-    /*test4.run(monde,1);
-      test5.run(monde,1);
-      test6.run(monde,1);
-      test.run(monde,1);
-      test1.run(monde,1);
-      test2.run(monde,1);
-      test3.run(monde,1);
-      test8.run(monde,1);
-      test11.run(monde,1);
-      test12.run(monde,1);
-      test13.run(monde,1);
-      test14.run(monde,1);
-      test15.run(monde,1);
-      test18.run(monde,1);
-      test19.run(monde,1);*/
 
     surf.initSurface();
     while (window.isOpen()) {
@@ -401,15 +336,27 @@ void testai() {
                 window.close();
         }
 
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {// presser bouton gauche
             // la touche "flèche gauche" est enfoncée : on bouge le personnage
-            cout << "jappuie" << endl;
+            cout << "JOUEUR1 joue::" << endl;
 
             //sleep(2);
-            test.run(monde, 1);
-            sf::sleep(sf::milliseconds(1000));
+            test.run(monde, joueur1);
+            
+            sf::sleep(sf::milliseconds(500));
             surf.initSurface();
         }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {//presser bouton droit
+            // la touche "flèche gauche" est enfoncée : on bouge le personnage
+            cout << "JOUEUR2 joue::" << endl;
+
+            //sleep(2);
+            
+            test1.run(monde,joueur2);
+            sf::sleep(sf::milliseconds(500));
+            surf.initSurface();
+        }
+        
 
         window.clear();
         window.draw(*(surf.surface));

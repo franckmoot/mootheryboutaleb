@@ -25,8 +25,8 @@ namespace ai {
         b = i - 1;
         c = i + 20;
         d = i - 20;
-        e = i + 40;
-        f = i - 40;
+        e = i + 30;
+        f = i - 30;
         g = i - 21;
         h = i + 21;
         if (a > 399) a = 399;
@@ -59,13 +59,13 @@ namespace ai {
         list.push_back(unique_ptr<Command>(new MoveCharCommand(i, h)));
         list.push_back(unique_ptr<Command>(new MoveCharCommand(i, g)));
         list.push_back(unique_ptr<Command>(new MoveCharCommand(i, d)));
-        list.push_back(unique_ptr<Command>(new MoveCharCommand(i, f)));
-        list.push_back(unique_ptr<Command>(new MoveCharCommand(i, e)));
+        //list.push_back(unique_ptr<Command>(new MoveCharCommand(i, f)));
+       // list.push_back(unique_ptr<Command>(new MoveCharCommand(i, e)));
 
     }
 
     void AI::HeliCommands(const state::State& state, int i, std::vector<std::unique_ptr<engine::Command> >& list1) {
-        for (int j = i - 80; j < i + 80; j++) {
+        for (int j = i - 30; j < i + 30; j++) {
             if (j > 399) j = 399;
             if (j < 0) j = 0;
             if (state.chars->getElement(j, 1) != NULL && state.chars->getElement(j, 1)->getJoueur() != state.chars->getElement(j, 1)->getJoueur()) {
@@ -79,7 +79,7 @@ namespace ai {
     }
 
     void AI::TankCommands(const state::State& state, int i, std::vector<std::unique_ptr<engine::Command> >& list2) {
-        for (int j = i - 60; j < i + 60; j++) {
+        for (int j = i - 30; j < i + 30; j++) {
             if (j > 399) j = 399;
             if (j < 0) j = 0;
             if (state.chars->getElement(j, 1) != NULL) {
@@ -103,12 +103,12 @@ namespace ai {
 
         }
         if (joueur == 2) {
-            list4.push_back(unique_ptr<Command>(new CreateCharCommand(374, state::TypeId::HELI, 2)));
-            list4.push_back(unique_ptr<Command>(new CreateCharCommand(374, state::TypeId::INFANTERIE, 2)));
-            list4.push_back(unique_ptr<Command>(new CreateCharCommand(374, state::TypeId::TANK, 2)));
-            list4.push_back(unique_ptr<Command>(new CreateCharCommand(375, state::TypeId::HELI, 2)));
-            list4.push_back(unique_ptr<Command>(new CreateCharCommand(375, state::TypeId::INFANTERIE, 2)));
-            list4.push_back(unique_ptr<Command>(new CreateCharCommand(375, state::TypeId::TANK, 2)));
+            list4.push_back(unique_ptr<Command>(new CreateCharCommand(297, state::TypeId::HELI, 2)));
+            list4.push_back(unique_ptr<Command>(new CreateCharCommand(297, state::TypeId::INFANTERIE, 2)));
+            list4.push_back(unique_ptr<Command>(new CreateCharCommand(297, state::TypeId::TANK, 2)));
+            list4.push_back(unique_ptr<Command>(new CreateCharCommand(298, state::TypeId::HELI, 2)));
+            list4.push_back(unique_ptr<Command>(new CreateCharCommand(298, state::TypeId::INFANTERIE, 2)));
+            list4.push_back(unique_ptr<Command>(new CreateCharCommand(298, state::TypeId::TANK, 2)));
 
         }
 
