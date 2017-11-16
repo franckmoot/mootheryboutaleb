@@ -41,7 +41,7 @@ void testrender();
 void testload();
 void testengine();
 void testai();
-
+void testcommande();
 
 
 

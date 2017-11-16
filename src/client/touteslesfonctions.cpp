@@ -23,7 +23,7 @@ void teststate() {
     State monde;
 
     (monde.grid) = new ElementTab();
-    (monde.chars) = new ElementChars(10,10);
+    (monde.chars) = new ElementChars(10, 10);
     /* Init list charactere */
     cout << "Fabrique une list de charactere" << endl;
     Infanterie *I = new Infanterie();
@@ -313,8 +313,8 @@ void testai() {
     (monde.grid) = new ElementTab();
     (monde.chars) = new ElementChars();
 
-    int joueur1=1;
-    int joueur2=2;
+    int joueur1 = 1;
+    int joueur2 = 2;
 
 
     std::vector<int> liste;
@@ -342,7 +342,7 @@ void testai() {
 
             //sleep(2);
             test.run(monde, joueur1);
-            
+
             sf::sleep(sf::milliseconds(500));
             surf.initSurface();
         }
@@ -351,12 +351,12 @@ void testai() {
             cout << "JOUEUR2 joue::" << endl;
 
             //sleep(2);
-            
-            test1.run(monde,joueur2);
+
+            test1.run(monde, joueur2);
             sf::sleep(sf::milliseconds(500));
             surf.initSurface();
         }
-        
+
 
         window.clear();
         window.draw(*(surf.surface));
@@ -368,10 +368,33 @@ void testai() {
 }
 
 void testcommande() {
-    //engine::Engine i;
-    //i.addCommand(new engine::MoveCharCommand(2,30));
-    //i.update();
+    sf::RenderWindow window(sf::VideoMode(640, 640), "Advance wars");
+    engine::Engine i;
 
-    //engine::MoveCharCommand aa(1,2);
-    // aa.execute(monde);
+
+    i.addCommand(new engine::LoadCommand("res/map.csv"));
+    i.addCommand(new engine::CreateCharCommand(0, INFANTERIE, 1));
+    i.addCommand(new engine::CreateCharCommand(30, INFANTERIE, 1));
+    i.addCommand(new engine::MoveCharCommand(0, 30));
+    cout << "je suis" << endl;
+    i.update();
+
+    Layer surf(i.getState());
+    surf.initSurface();
+    surf.initSurface();
+    while (window.isOpen()) {
+
+        // on gère les évènements
+        sf::Event event;
+        while (window.pollEvent(event)) {
+            if (event.type == sf::Event::Closed)
+                window.close();
+        }
+
+        window.clear();
+        window.draw(*(surf.surface));
+        window.draw(*(surf.surfaceplayer));
+        window.display();
+
+    }
 }

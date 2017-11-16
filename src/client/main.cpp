@@ -49,7 +49,7 @@ int main(int argc, char* argv[]) {
             testrender();
         } else if (!s.compare("engine")) {
 
-            testengine();
+            testcommande();
         } else if (!s.compare("ai")) {
 
             testai();
