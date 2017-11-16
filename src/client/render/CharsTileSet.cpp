@@ -32,7 +32,6 @@ namespace render {
      
     if(!e.isStatic()){
       MobileElement* mobileTmp = (MobileElement*)&e;
-      cout<<mobileTmp->getTypeId()<<endl;
       
       switch (mobileTmp->getTypeId()){
 	  

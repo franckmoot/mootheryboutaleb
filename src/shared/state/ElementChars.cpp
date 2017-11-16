@@ -23,10 +23,10 @@ namespace state{
   }
   
   ElementChars::ElementChars(size_t width, size_t height) {
-    vector<unique_ptr<Element> > list(0);
+    /*vector<unique_ptr<Element> > list(0);
     for (size_t i=0;i<width*height;i++){
       this->setElement(NULL);
-    }
+    }*/
 
   }
   

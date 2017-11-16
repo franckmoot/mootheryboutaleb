@@ -19,12 +19,11 @@ using namespace ai;
 
 void teststate() {
 
-
     /* init monde */
     State monde;
 
     (monde.grid) = new ElementTab();
-    (monde.chars) = new ElementChars();
+    (monde.chars) = new ElementChars(10,10);
     /* Init list charactere */
     cout << "Fabrique une list de charactere" << endl;
     Infanterie *I = new Infanterie();
@@ -38,7 +37,7 @@ void teststate() {
     cout << "Verifie que la liste est 1" << endl;
     if (monde.chars->sizeList() == 1) cout << "Ok" << endl;
     cout << "Verifie que l'element ajouter est une infanterie" << endl;
-    if (monde.chars->getElement(0, 0)->getTypeId() == 2) cout << "Ok" << endl;
+    if (monde.chars->getElement(0, 1)->getTypeId() == 2) cout << "Ok" << endl;
 
     /* tank */
     Tank *Ta = new Tank();

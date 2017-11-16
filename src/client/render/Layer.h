@@ -10,18 +10,12 @@ namespace render {
 };
 namespace state {
   class State;
-};
-namespace render {
-  class Tilemap;
-};
-namespace state {
   class ElementChars;
   class ElementTab;
 }
 
 #include "Surface.h"
 #include "TileSet.h"
-#include "Tilemap.h"
 #include "state/State.h"
 #include "state/ElementChars.h"
 #include "state/ElementTab.h"
@@ -39,18 +33,13 @@ namespace render {
   private:
     const state::State& state;
   protected:
-    std::unique_ptr<Tilemap> tilemap;
     std::shared_ptr<TileSet> tileset;
     // Operations
   public:
     Layer (const state::State& state);
-    void initmap ();
     void initRandMap ();
-    void displayChars (state::ElementChars* a);
     void initSurface ();
     // Setters and Getters
-    const std::unique_ptr<Tilemap>& getTilemap() const;
-    void setTilemap(const std::unique_ptr<Tilemap>& tilemap);
     const std::shared_ptr<TileSet>& getTileset() const;
     void setTileset(const std::shared_ptr<TileSet>& tileset);
   };

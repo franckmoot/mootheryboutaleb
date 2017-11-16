@@ -8,7 +8,6 @@
 #include "render/CharsTileSet.h"
 #include "render/GridTileSet.h"
 #include "render/Tile.h"
-#include "render/Tilemap.h"
 #include "state/Batiment.h"
 #include "state/Champdebataille.h"
 #include "state/Element.h"
