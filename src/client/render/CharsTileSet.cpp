@@ -14,9 +14,12 @@ namespace render {
   CharsTileSet::CharsTileSet() {
     
     infanterie.push_back( Tile(0,0,32,32));//0 -> infanterie
+    infanterie.push_back( Tile(0,32,32,32));
     heli.push_back( Tile(32,0,32,32));//0 -> helicoptere
+    heli.push_back( Tile(32,32,32,32));//0 -> helicoptere
     tank.push_back( Tile(64,0,32,32));//0 tank
     tank.push_back( Tile(96,0,32,32));//0 tank
+    tank.push_back( Tile(64,32,32,32));//0 tank
   }
   
   
@@ -34,15 +37,20 @@ namespace render {
       switch (mobileTmp->getTypeId()){
 	  
 	case INFANTERIE:
-	  return infanterie[0];
+            if(mobileTmp->getJoueur()==1)return infanterie[0];
+            if(mobileTmp->getJoueur()==2)return infanterie[1];
 	  break;
 	  
 	case TANK:    
-	  return tank[0];
+	  
+            if(mobileTmp->getJoueur()==1)return tank[0];
+            if(mobileTmp->getJoueur()==2)return tank[2];
 	  break;
         
         case HELI:    
-	  return heli[0];
+            if(mobileTmp->getJoueur()==1)return heli[0];
+            if(mobileTmp->getJoueur()==2)return heli[1];
+            
 	  break;
         
 	default:
