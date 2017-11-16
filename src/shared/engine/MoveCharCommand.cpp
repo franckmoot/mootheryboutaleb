@@ -45,7 +45,7 @@ namespace engine{
             else if (state.getChars()->getElement(i,1)->getTypeId()==4){
                 if(state.getGrid()->getElement(j,1)->getTypeId()==0){
                     state::Champdebataille* eletmp2 = (state::Champdebataille*)(state.grid->getElement(j,1));
-                    if(eletmp2->getType()==3|| eletmp2->getType()==4 ){
+                    if(eletmp2->getType()==4|| eletmp2->getType()==5 ){
                         cout<< "c'est impossible de mettre un element mobile sur ces elments static"<<endl;
                     }   
                     else {
@@ -65,7 +65,7 @@ namespace engine{
             else if (state.getChars()->getElement(i,1)->getTypeId()==2){
                 if(state.getGrid()->getElement(j,1)->getTypeId()==0){               
                     state::Champdebataille* eletmp2 = (state::Champdebataille*)(state.grid->getElement(j,1));
-                    if(eletmp2->getType()==3 ){
+                    if(eletmp2->getType()==4 ){
                         cout<< "c'est impossible de mettre un element mobile sur cette elments static"<<endl;
                     }
                     

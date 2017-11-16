@@ -14,47 +14,46 @@
 
 using namespace std;
 using namespace state;
-namespace engine{
-    CreateCharCommand::CreateCharCommand(int i,state::TypeId d,int joueur) {
-            this->i=i;
-            this->d=d;
-            this->joueur=joueur;
+namespace engine {
+
+    CreateCharCommand::CreateCharCommand(int i, state::TypeId d, int joueur) {
+        this->i = i;
+        this->d = d;
+        this->joueur = joueur;
     }
 
-        
     CommandTypeId CreateCharCommand::getTypeId() const {
         return CommandTypeId::ATTAQUE;
     }
-    
-    
-    
+
     void CreateCharCommand::execute(state::State& state) {
-        if(d==2){
-         Infanterie *I=new Infanterie();
-         I->setJoueur(joueur);
-         state.chars->setElement(I);
-         state.chars->chgList(i,I);
+        if (state.chars->getElement(i, 1) == NULL) {
+            if (d == 2) {
+                Infanterie *I = new Infanterie();
+                I->setJoueur(joueur);
+                state.chars->setElement(I);
+                state.chars->chgList(i, I);
+            }
+            if (d == 3) {
+                Heli *H = new Heli();
+                H->setJoueur(joueur);
+                state.chars->setElement(H);
+                state.chars->chgList(i, H);
+
+            }
+            if (d == 4) {
+                Tank *T = new Tank();
+                T->setJoueur(joueur);
+                state.chars->setElement(T);
+                state.chars->chgList(i, T);
+
+            }
         }
-        if(d==3){
-            Heli *H=new Heli();
-            H->setJoueur(joueur);
-         state.chars->setElement(H);
-         state.chars->chgList(i,H);
-        
-        }
-        if(d==4){
-            Tank *T=new Tank();
-            T->setJoueur(joueur);
-         state.chars->setElement(T);
-         state.chars->chgList(i,T);
-        
-        }
+
     }
 
-        
-        
-        
-        
-        
-        
+
+
+
+
 }

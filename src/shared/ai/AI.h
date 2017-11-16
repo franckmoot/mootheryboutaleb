@@ -23,6 +23,7 @@ namespace ai {
     void InfanterieCommands (const state::State& state, int i, std::vector<std::unique_ptr<engine::Command> >& list0);
     void HeliCommands (const state::State& state, int i, std::vector<std::unique_ptr<engine::Command> >& list1);
     void TankCommands (const state::State& state, int i, std::vector<std::unique_ptr<engine::Command> >& list2);
+    void BatimentCommands (const state::State& state, int joueur, std::vector<std::unique_ptr<engine::Command> >& list3);
     // Setters and Getters
   };
 
