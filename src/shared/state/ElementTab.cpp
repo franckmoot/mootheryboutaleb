@@ -28,10 +28,15 @@ namespace state {
         list.push_back(unique_ptr<Element>(e));
     }
 
-    Element * ElementTab::getElement(int i, int j) const {
-        if (i < 0 || i >= int(width) || j < 0 || j >= int(height))
+    void ElementTab::setElementXY(Element* e, int x, int y) {
+        if (list[x + y * width] == NULL) list[x + y * width] = unique_ptr<Element>(e);
+
+    }
+
+    Element * ElementTab::getElement(int x, int y) const {
+        if (x < 0 || x >= int(width) || y < 0 || y >= int(height))
             return nullptr;
-        return list[i + j * width].get();
+        return list[x + y * width].get();
     }
 
     size_t ElementTab::getHeight() {
@@ -46,12 +51,10 @@ namespace state {
     }
 
     void ElementTab::chgList(int i, Element* e) {
-
         if (list[i] == NULL) list[i] = unique_ptr<Element>(e);
     }
 
     void ElementTab::chgList2(int i, int j) {
-
         if (int(list.size()) >= i && int(list.size()) >= j) {
             if (list[i] != NULL) {
                 if (list[j] == NULL) {
@@ -66,6 +69,8 @@ namespace state {
         if (getElement(x1, y1) != NULL) {
             if (getElement(x2, y2) == NULL) {
                 list[x2 + y2 * width].swap(list[x1 + y1 * width]);
+
+                list[x2 + y2 * width].get();
             }
         } else std::cout << "Erreur sur le deplacement !" << std::endl;
     }
@@ -125,14 +130,15 @@ namespace state {
                     this->setElement(NULL);
                     break;
             }
+
+            return carte;
         }
         return carte;
     }
-    
+
     void ElementTab::killElement(int i, int j) {
-        list[i+j*width] = NULL;
+        list[i + j * width] = NULL;
 
     }
 
 }
-

@@ -40,7 +40,7 @@ namespace engine{
 
             if(state.getChars()->getElement(i,1)->getTypeId()==3){
                 if(j<i+40||j>i-40){
-                    state.getChars()->chgList2(i,j);
+                 //   state.getChars()->chgList2(i,j);
                 }
 
             }
@@ -52,14 +52,14 @@ namespace engine{
                     }   
                     else {
                         if(j<i+30||j>i-30){
-                            state.getChars()->chgList2(i,j);
+                       //     state.getChars()->chgList2(i,j);
                         }
                         else cout<<"c est impossible pour un Tank de partir plus loin"<<endl;
                      }
                 }
                 else if(state.getGrid()->getElement(j,1)->getTypeId()==1){
                         if(j<i+30||j>i-30){
-                            state.getChars()->chgList2(i,j);
+                       //     state.getChars()->chgList2(i,j);
                         }
                     
                 }
@@ -73,14 +73,14 @@ namespace engine{
                     
                     else {
                         if(j==i+1||j==i-1||j==i+21||j==i-21||j==i+20 ||j==i-20||j==i+30 ||j==i-30){
-                            state.getChars()->chgList2(i,j);
+                      //      state.getChars()->chgList2(i,j);
                         }
                         else cout<<"c est impossible pour une infanterie de partir plus loin"<<endl;
                      }
                 }    
                 else if(state.getGrid()->getElement(j,1)->getTypeId()==1){
                         if(j==i+1||j==i-1||j==i+21||j==i-21||j==i+20 ||j==i-20||j==i+30 ||j==i-30){
-                            state.getChars()->chgList2(i,j);
+                    //        state.getChars()->chgList2(i,j);
                         }
                 }
             }

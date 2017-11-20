@@ -43,39 +43,39 @@ namespace engine{
       switch (carte[i]){
 	
       case 0:
-	state.getGrid()->setElement(new state::Champdebataille(state::ChampdebatailleTypeId::HERBE));
+//	state.getGrid()->setElement(new state::Champdebataille(state::ChampdebatailleTypeId::HERBE));
 	break;
 	
       case 1:     
-	state.getGrid()->setElement(new state::Champdebataille(state::ChampdebatailleTypeId::ROUTE));
+//	state.getGrid()->setElement(new state::Champdebataille(state::ChampdebatailleTypeId::ROUTE));
 	break;
 	
       case 2:
-	state.getGrid()->setElement(new state::Champdebataille(state::ChampdebatailleTypeId::SABLE1));
+	//state.getGrid()->setElement(new state::Champdebataille(state::ChampdebatailleTypeId::SABLE1));
 	break;
         
       case 3:
-	state.getGrid()->setElement(new state::Champdebataille(state::ChampdebatailleTypeId::SABLE2));
+//	state.getGrid()->setElement(new state::Champdebataille(state::ChampdebatailleTypeId::SABLE2));
 	break;  
         
       case 4:
-	state.getGrid()->setElement(new state::Champdebataille(state::ChampdebatailleTypeId::EAU));
+//	state.getGrid()->setElement(new state::Champdebataille(state::ChampdebatailleTypeId::EAU));
 	break;
         
       case 5:
-	state.getGrid()->setElement(new state::Champdebataille(state::ChampdebatailleTypeId::MONTAGNE));
+//	state.getGrid()->setElement(new state::Champdebataille(state::ChampdebatailleTypeId::MONTAGNE));
 	break;
         
       case 6:
-	state.getGrid()->setElement(new state::Batiment(state::BatimentTypeId::QG));
+//	state.getGrid()->setElement(new state::Batiment(state::BatimentTypeId::QG));
 	break;
         
       case 7:
-	state.getGrid()->setElement(new state::Batiment(state::BatimentTypeId::CASERNE));
+//	state.getGrid()->setElement(new state::Batiment(state::BatimentTypeId::CASERNE));
 	break;
         
       default:
-	state.getGrid()->setElement(NULL);
+//	state.getGrid()->setElement(NULL);
 	break; 
       }
     }

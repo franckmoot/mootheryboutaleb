@@ -17,8 +17,6 @@ namespace state {
     // Associations
     state::TypeId typeId;
     // Attributes
-  private:
-    int type;
   protected:
     int joueur;
     int x;
@@ -29,9 +27,9 @@ namespace state {
     ~Element ();
     virtual TypeId getTypeId () const = 0;
     virtual bool isStatic () const = 0;
-    void setType (int type);
     int getJoueur ();
     void setJoueur (int joueur);
+    void setPosition (int x, int y);
     // Setters and Getters
     void setTypeId(TypeId typeId);
     int getX() const;

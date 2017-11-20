@@ -27,14 +27,15 @@ namespace state {
     ~ElementTab ();
     size_t getWidth ();
     size_t getHeight ();
-    Element* getElement (int i, int j) const;
+    Element* getElement (int x, int y) const;
     void setElement (Element* e);
     int sizeList ();
     void chgList (int i, Element* e);
     void chgList2 (int i, int j);
     std::vector<int> const createElementCsv (std::vector<int>  carte);
-    void killElement (int i, int j);
+    void killElement (int x, int y);
     void chgPosition (int x1, int y1, int x2, int y2);
+    void setElementXY (Element* e, int x, int y);
     // Setters and Getters
     const std::vector<std::unique_ptr<Element> >& getList() const;
     void setList(const std::vector<std::unique_ptr<Element> >& list);

@@ -27,7 +27,7 @@ namespace engine {
     }
 
     void CreateCharCommand::execute(state::State& state) {
-        if (state.chars->getElement(i, 1) == NULL) {
+     /*   if (state.chars->getElement(i, 1) == NULL) {
             if (d == 2) {
                 Infanterie *I = new Infanterie();
                 I->setJoueur(joueur);
@@ -48,7 +48,7 @@ namespace engine {
                 state.chars->chgList(i, T);
 
             }
-        }
+        }*/
 
     }
 
