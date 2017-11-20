@@ -12,136 +12,136 @@
 
 using namespace std;
 
-namespace state{
-  
-  ElementTab::ElementTab() {    
-  }
-  
-  ElementTab::ElementTab(size_t width, size_t height) : width(width),height(height),list(width*height) {
-  }
-  
-  int ElementTab::sizeList() {
-    return list.size();
-  }
-  
-  
-  void ElementTab::setElement( Element* e) {
-    list.push_back(unique_ptr<Element>(e));
-  }
-  
-  Element *  ElementTab::getElement(int i,int j) const {  
-      if (i < 0 || i >= width || j < 0 || j >= height)
-          return nullptr;
-      return list[i+j*width].get();
-  }
-  
-  
-  size_t ElementTab::getHeight() {
-    return height;
-  }
-  
-  size_t ElementTab::getWidth() {
-    return width;
-  }
-  
-  ElementTab::~ElementTab() { 
-  }
-  
-  void ElementTab::chgList(int i, Element* e) {
-    
-    if(list[i]==NULL) list[i]=unique_ptr<Element>(e);
-  }
-  
-  void ElementTab::chgList2(int i, int j) {
-    
-    if(int(list.size())>=i&&int(list.size())>=j){
-      if(list[i]!=NULL){
-	if(list[j]==NULL) {
-	  list[j].swap(list[i]);
-	}
-      }
-      else std::cout << "Erreur sur le deplacement !" << std::endl;
+namespace state {
+
+    ElementTab::ElementTab() {
     }
-    else std::cout << "Deplacement hors list" << std::endl;
-  }
-  
-  const std::vector<int> ElementTab::createElementCsv( std::vector<int> carte){
-    std::ifstream fichier;
-    fichier.open("res/map.csv",std::ios::in);
-    if(!fichier.good())
-      throw std::runtime_error("Error opening!!");
-    std::string ligne,valeur;
-    
-    while(!fichier.eof()){
-      std::getline(fichier,ligne);
-      std::stringstream stream(ligne);
-      std::cout << ligne << std::endl;
-      
-      while(getline(stream, valeur,',')){	
-	carte.push_back(atoi(valeur.c_str()));
-      }
+
+    ElementTab::ElementTab(size_t width, size_t height) : width(width), height(height), list(width*height) {
+    }
+
+    int ElementTab::sizeList() {
+        return list.size();
+    }
+
+    void ElementTab::setElement(Element* e) {
+        list.push_back(unique_ptr<Element>(e));
+    }
+
+    Element * ElementTab::getElement(int i, int j) const {
+        if (i < 0 || i >= int(width) || j < 0 || j >= int(height))
+            return nullptr;
+        return list[i + j * width].get();
+    }
+
+    size_t ElementTab::getHeight() {
+        return height;
+    }
+
+    size_t ElementTab::getWidth() {
+        return width;
+    }
+
+    ElementTab::~ElementTab() {
+    }
+
+    void ElementTab::chgList(int i, Element* e) {
+
+        if (list[i] == NULL) list[i] = unique_ptr<Element>(e);
+    }
+
+    void ElementTab::chgList2(int i, int j) {
+
+        if (int(list.size()) >= i && int(list.size()) >= j) {
+            if (list[i] != NULL) {
+                if (list[j] == NULL) {
+                    list[j].swap(list[i]);
+                }
+            } else std::cout << "Erreur sur le deplacement !" << std::endl;
+        } else std::cout << "Deplacement hors list" << std::endl;
+    }
+
+    void ElementTab::chgPosition(int x1, int y1, int x2, int y2) {
+
+        if (getElement(x1, y1) != NULL) {
+            if (getElement(x2, y2) == NULL) {
+                list[x2 + y2 * width].swap(list[x1 + y1 * width]);
+            }
+        } else std::cout << "Erreur sur le deplacement !" << std::endl;
+    }
+
+    const std::vector<int> ElementTab::createElementCsv(std::vector<int> carte) {
+        std::ifstream fichier;
+        fichier.open("res/map.csv", std::ios::in);
+        if (!fichier.good())
+            throw std::runtime_error("Error opening!!");
+        std::string ligne, valeur;
+
+        while (!fichier.eof()) {
+            std::getline(fichier, ligne);
+            std::stringstream stream(ligne);
+            std::cout << ligne << std::endl;
+
+            while (getline(stream, valeur, ',')) {
+                carte.push_back(atoi(valeur.c_str()));
+            }
+        }
+
+        for (int i = 0; i<int(carte.size()); i++) {
+            switch (carte[i]) {
+
+                case EAU:
+                    this->setElement(new Champdebataille(EAU));
+                    break;
+
+                case HERBE:
+                    this->setElement(new Champdebataille(HERBE));
+                    break;
+
+                case MONTAGNE:
+                    this->setElement(new Champdebataille(MONTAGNE));
+                    break;
+
+                case ROUTE:
+                    this->setElement(new Champdebataille(ROUTE));
+                    break;
+
+                case SABLE1:
+                    this->setElement(new Champdebataille(SABLE1));
+                    break;
+                case SABLE2:
+                    this->setElement(new Champdebataille(SABLE2));
+                    break;
+
+                case 6:
+                    this->setElement(new Batiment(QG));
+                    break;
+
+                case 7:
+                    this->setElement(new Batiment(CASERNE));
+                    break;
+
+                default:
+                    this->setElement(NULL);
+                    break;
+            }
+        }
+        return carte;
+    }
+
+    const std::vector<int> ElementTab::Elemnttocarte(std::vector<int> carte) {
+        for (int i = 0; i < (int) list.size(); i++) {
+            if (list[i] = NULL) carte[i] = -1;
+            else carte[i] = list[i].get()->getType();
+        }
+        return carte;
+
     }
     
-    for(int i=0; i<int(carte.size()) ; i++){
-     // cout<<"La liste fait "<<list.size()<<" et le numero de carte est "<<carte[i]<<endl;
-      switch (carte[i]){
-	
-      case EAU:
-	this->setElement(new Champdebataille(EAU));
-	break;
-	
-      case HERBE:     
-	this->setElement(new Champdebataille(HERBE));
-	break;
-	
-      case MONTAGNE:
-	this->setElement(new Champdebataille(MONTAGNE));
-	break;
-        
-      case ROUTE:
-	this->setElement(new Champdebataille(ROUTE));
-	break;
-        
-      case SABLE1:
-	this->setElement(new Champdebataille(SABLE1));
-	break;
-      case SABLE2:
-	this->setElement(new Champdebataille(SABLE2));
-	break; 
-        
-      case 6:
-	this->setElement(new Batiment(QG));
-	break;
-        
-      case 7:
-	this->setElement(new Batiment(CASERNE));
-	break;
-        
-      default:
-	this->setElement(NULL);
-	break; 
-      }
+    void ElementTab::killElement(int i, int j) {
+        list[i+j*width] = NULL;
+
     }
-    return carte;
-  }
-  
-  const std::vector<int> ElementTab::Elemnttocarte (std::vector<int> carte){
-    for(int i=0;i<(int)list.size();i++){
-      if(list[i]=NULL) carte[i]=-1;
-      else carte[i]=list[i].get()->getType();
-    }
-    return carte;
-    
-  }
-  
-  void ElementTab::killElement(int i){
-      list[i]=NULL;
-      
-      
-  }
-  
-  
-  
-  
+
 }
 

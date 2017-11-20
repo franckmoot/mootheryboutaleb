@@ -21,6 +21,8 @@ namespace state {
     int type;
   protected:
     int joueur;
+    int x;
+    int y;
     // Operations
   public:
     Element ( );
@@ -33,6 +35,10 @@ namespace state {
     void setJoueur (int joueur);
     // Setters and Getters
     void setTypeId(TypeId typeId);
+    int getX() const;
+    void setX(int x);
+    int getY() const;
+    void setY(int y);
   };
 
 };

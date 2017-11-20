@@ -38,7 +38,7 @@ namespace engine{
                     if(j==i+1||j==i-1||j==i+20 ||j==i-20||j==i+21||j==i-21||j==i+30 ||j==i-30){
                         eletmp2->setPdv(eletmp2->getPdv()-eletmp->getAttaque());
                         if(eletmp2->getPdv()<=0){
-                            state.chars->killElement(j);
+                          //  state.chars->killElement(j);
                             cout<<"notre element" <<j<< "est mort"<<endl;
                         }
                     }
@@ -49,7 +49,7 @@ namespace engine{
                     if(j==i+1||j==i-1||j==i+20 ||j==i-20||j==i+21||j==i-21||j==i+30 ||j==i-30){
                         eletmp2->setPdv(eletmp2->getPdv()-eletmp->getAttaque());
                         if(eletmp2->getPdv()<=0){
-                            state.chars->killElement(j);
+                          //  state.chars->killElement(j);
                             cout<<"notre element" <<j<< "est mort"<<endl;
                         }
                     }
@@ -60,7 +60,7 @@ namespace engine{
                     if(j==i+1||j==i-1||j==i+20 ||j==i-20||j==i+21||j==i-21||j==i+30 ||j==i-30){
                         eletmp2->setPdv(eletmp2->getPdv()-eletmp->getAttaque());
                         if(eletmp2->getPdv()<=0){
-                            state.chars->killElement(j);
+                          //  state.chars->killElement(j);
                             cout<<"notre element" <<j<< "est mort"<<endl;
                         }
                     }
@@ -74,7 +74,7 @@ namespace engine{
                     if(j<i+30 || j>i-30){
                         eletmp2->setPdv(eletmp2->getPdv()-eletmp->getAttaque());
                         if(eletmp2->getPdv()<=0){
-                            state.chars->killElement(j);
+                         //   state.chars->killElement(j);
                             cout<<"notre element" <<j<< "est mort"<<endl;
                         }
                     }
@@ -85,7 +85,7 @@ namespace engine{
                     if(j<i+30 || j>i-30){
                         eletmp2->setPdv(eletmp2->getPdv()-eletmp->getAttaque());
                         if(eletmp2->getPdv()<=0){
-                            state.chars->killElement(j);
+                         //   state.chars->killElement(j);
                             cout<<"notre element" <<j<< "est mort"<<endl;
                         }
                     }
@@ -97,7 +97,7 @@ namespace engine{
                     if(j<i+30 || j>i-30){
                         eletmp2->setPdv(eletmp2->getPdv()-eletmp->getAttaque());
                         if(eletmp2->getPdv()<=0){
-                            state.chars->killElement(j);
+                          //  state.chars->killElement(j);
                             cout<<"notre element" <<j<< "est mort"<<endl;
                         }
                     }
@@ -111,7 +111,7 @@ namespace engine{
                     if(j<i+30 || j>i-30){
                         eletmp2->setPdv(eletmp2->getPdv()-eletmp->getAttaque());
                         if(eletmp2->getPdv()<=0){
-                            state.chars->killElement(j);
+                         //   state.chars->killElement(j);
                             cout<<"notre element" <<j<< "est mort"<<endl;
                         }
                     }
@@ -122,7 +122,7 @@ namespace engine{
                     if(j<i+30 || j>i-30){
                         eletmp2->setPdv(eletmp2->getPdv()-eletmp->getAttaque());
                         if(eletmp2->getPdv()<=0){
-                            state.chars->killElement(j);
+                          //  state.chars->killElement(j);
                             cout<<"notre element" <<j<< "est mort"<<endl;
                         }
                     }
@@ -133,7 +133,7 @@ namespace engine{
                     if(j<i+30 || j>i-30){
                         eletmp2->setPdv(eletmp2->getPdv()-eletmp->getAttaque());
                         if(eletmp2->getPdv()<=0){
-                            state.chars->killElement(j);
+                          //  state.chars->killElement(j);
                             cout<<"notre element" <<j<< "est mort"<<endl;
                         }
                     }

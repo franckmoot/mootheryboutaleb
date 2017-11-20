@@ -18,7 +18,7 @@ using namespace engine;
 using namespace ai;
 
 void teststate() {
-
+ 
     /* init monde */
     State monde;
 
@@ -114,7 +114,7 @@ void teststate() {
     if (monde.grid->sizeList() == 3) cout << "Ok" << endl;
     cout << "Verifie que l'element ajouter est un Batiment caserne" << endl;
     if (monde.grid->getElement(1, 2)->getType() == BatimentTypeId::CASERNE) cout << "Ok" << endl;
-
+         
 }
 
 void testrender() {

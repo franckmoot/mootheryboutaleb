@@ -16,8 +16,8 @@ namespace state {
   class ElementTab {
     // Attributes
   private:
-    size_t width;
-    size_t height;
+    size_t width     = 20;
+    size_t height     = 20;
   protected:
     std::vector<std::unique_ptr<Element> > list;
     // Operations
@@ -34,7 +34,8 @@ namespace state {
     void chgList2 (int i, int j);
     std::vector<int> const createElementCsv (std::vector<int>  carte);
     std::vector<int> const Elemnttocarte (std::vector<int> carte);
-    void killElement (int i);
+    void killElement (int i, int j);
+    void chgPosition (int x1, int y1, int x2, int y2);
     // Setters and Getters
     const std::vector<std::unique_ptr<Element> >& getList() const;
     void setList(const std::vector<std::unique_ptr<Element> >& list);
