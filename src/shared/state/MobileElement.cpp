@@ -9,10 +9,6 @@ namespace state{
         return attaque;
     }
 
-    int MobileElement::getMouvement() const {
-        return mouvement;
-    }
-
     int MobileElement::getDefense() const {
         return defense;
     }
@@ -20,10 +16,21 @@ namespace state{
     int MobileElement::getPdv() const {
         return pdv;
     }
+    
+    int MobileElement::getPorteeAtq() const {
+        return porteeAtq;
+    }
+        
+    int MobileElement::getPorteeMvt() const {
+        return porteeMvt;
+    }
 
-    int MobileElement::getPosition() const {
-        return position;
-       
+    void MobileElement::setPorteeAtq(int porteeAtq) {
+        this->porteeAtq=porteeAtq;
+    }
+    
+    void MobileElement::setPorteeMvt(int porteeMvt) {
+        this->porteeMvt=porteeMvt;
     }
 
     void MobileElement::setAttaque(int attaque) {
@@ -34,23 +41,13 @@ namespace state{
          this ->defense=defense;
     }
 
-    void MobileElement::setMouvement(int mouvement) {
-         this ->mouvement=mouvement;
-    }
-
     void MobileElement::setPdv(int pdv) {
          this ->pdv=pdv;
     }
 
-    void MobileElement::setPosition(int position) {
-         this ->position=position;
-    }
-
     MobileElement::~MobileElement() {
-
     }
     
-
     bool MobileElement::isStatic() const {
         return false;
     }

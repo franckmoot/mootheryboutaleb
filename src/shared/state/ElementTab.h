@@ -33,7 +33,6 @@ namespace state {
     void chgList (int i, Element* e);
     void chgList2 (int i, int j);
     std::vector<int> const createElementCsv (std::vector<int>  carte);
-    std::vector<int> const Elemnttocarte (std::vector<int> carte);
     void killElement (int i, int j);
     void chgPosition (int x1, int y1, int x2, int y2);
     // Setters and Getters

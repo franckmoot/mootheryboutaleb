@@ -30,7 +30,6 @@ namespace state {
     virtual TypeId getTypeId () const = 0;
     virtual bool isStatic () const = 0;
     void setType (int type);
-    int getType ();
     int getJoueur ();
     void setJoueur (int joueur);
     // Setters and Getters

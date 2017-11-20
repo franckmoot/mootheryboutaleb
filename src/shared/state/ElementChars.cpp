@@ -26,7 +26,6 @@ namespace state{
     for (size_t i=0;i<width*height;i++){
       this->setElement(NULL);
     }*/
-
   }
 
   const std::vector<int> ElementChars::ElementToCarte (std::vector<int> carte){

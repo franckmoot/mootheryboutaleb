@@ -128,15 +128,6 @@ namespace state {
         }
         return carte;
     }
-
-    const std::vector<int> ElementTab::Elemnttocarte(std::vector<int> carte) {
-        for (int i = 0; i < (int) list.size(); i++) {
-            if (list[i] = NULL) carte[i] = -1;
-            else carte[i] = list[i].get()->getType();
-        }
-        return carte;
-
-    }
     
     void ElementTab::killElement(int i, int j) {
         list[i+j*width] = NULL;

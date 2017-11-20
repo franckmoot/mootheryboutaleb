@@ -113,7 +113,7 @@ void teststate() {
     cout << "Verifie que la liste est 3" << endl;
     if (monde.grid->sizeList() == 3) cout << "Ok" << endl;
     cout << "Verifie que l'element ajouter est un Batiment caserne" << endl;
-    if (monde.grid->getElement(1, 2)->getType() == BatimentTypeId::CASERNE) cout << "Ok" << endl;
+    if (monde.grid->getElement(1, 2)->getTypeId() == int(BatimentTypeId::CASERNE)) cout << "Ok" << endl;
          
 }
 
