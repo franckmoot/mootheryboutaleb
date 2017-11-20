@@ -12,6 +12,8 @@ using namespace std;
 using namespace state;
 namespace engine{
     AttaqueCharCommand::AttaqueCharCommand(int i, int j) {
+            if(j>400) j=399;
+            if(j<0) j=0;
             this->i=i;
             this->j=j;
     }

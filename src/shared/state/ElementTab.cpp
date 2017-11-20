@@ -17,8 +17,7 @@ namespace state{
   ElementTab::ElementTab() {    
   }
   
-  ElementTab::ElementTab(size_t width, size_t height) {
-    vector<unique_ptr<Element> > list(width*height);  
+  ElementTab::ElementTab(size_t width, size_t height) : width(width),height(height),list(width*height) {
   }
   
   int ElementTab::sizeList() {
@@ -31,7 +30,9 @@ namespace state{
   }
   
   Element *  ElementTab::getElement(int i,int j) const {  
-    return list[i*j].get();
+      if (i < 0 || i >= width || j < 0 || j >= height)
+          return nullptr;
+      return list[i+j*width].get();
   }
   
   

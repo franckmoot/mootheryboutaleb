@@ -30,10 +30,12 @@ namespace ai {
         mt19937 mt_rand(time(0));
         int h;
 
+        for (int j = 0; j < state.chars->getHeight();j++)
+        for (int i = 0; i < state.chars->getWidth(); i++) {
+            if (state.chars->getElement(i, j) != NULL) {
 
-        for (int i = 0; i <369; i++) {
-            if (state.chars->getElement(i, 1) != NULL) {
-
+                
+                
                 if (state.chars->getElement(i, 1)->getTypeId() == 2 && state.chars->getElement(i, 1)->getJoueur() == joueur) {
                     std::vector<std::unique_ptr<engine::Command> > l0;
                     InfanterieCommands(state, i, l0);

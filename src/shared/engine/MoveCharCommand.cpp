@@ -22,6 +22,8 @@ namespace engine{
     
     
     MoveCharCommand::MoveCharCommand(int i, int j){
+        if(j>400) j=399;
+        if(j<0) j=0;
         this->i=i;
         this->j=j;
         

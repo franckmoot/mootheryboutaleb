@@ -59,8 +59,8 @@ namespace ai {
         list.push_back(unique_ptr<Command>(new MoveCharCommand(i, h)));
         list.push_back(unique_ptr<Command>(new MoveCharCommand(i, g)));
         list.push_back(unique_ptr<Command>(new MoveCharCommand(i, d)));
-        //list.push_back(unique_ptr<Command>(new MoveCharCommand(i, f)));
-       // list.push_back(unique_ptr<Command>(new MoveCharCommand(i, e)));
+        list.push_back(unique_ptr<Command>(new MoveCharCommand(i, f)));
+        list.push_back(unique_ptr<Command>(new MoveCharCommand(i, e)));
 
     }
 
@@ -80,7 +80,7 @@ namespace ai {
 
     void AI::TankCommands(const state::State& state, int i, std::vector<std::unique_ptr<engine::Command> >& list2) {
         for (int j = i - 30; j < i + 30; j++) {
-            if (j > 399) j = 399;
+           if (j > 399) j = 399;
             if (j < 0) j = 0;
             if (state.chars->getElement(j, 1) != NULL) {
                 list2.push_back(unique_ptr<Command>(new AttaqueCharCommand(i, j)));
