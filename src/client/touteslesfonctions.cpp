@@ -100,7 +100,7 @@ void teststate() {
 }
 
 void testrender() {
-    /* sf::RenderWindow window(sf::VideoMode(640, 640), "Advance wars");
+     sf::RenderWindow window(sf::VideoMode(640, 640), "Advance wars");
      Heli *H = new Heli();
 
      Infanterie *I = new Infanterie();
@@ -121,6 +121,7 @@ void testrender() {
      (monde.grid) = new ElementTab();
      (monde.chars) = new ElementChars();
      H->setJoueur(1);
+
      T->setJoueur(1);
      I->setJoueur(1);
      Ina->setJoueur(1);
@@ -134,27 +135,41 @@ void testrender() {
      To->setJoueur(1);
      Ia->setJoueur(1);
 
-     monde.chars->chgList(1, H); //ajoute des elements
-     monde.chars->chgList(6, T);
-     monde.chars->chgList(8, I);
-     monde.chars->chgList(15, He);
-     monde.chars->chgList(29, Ta);
-     monde.chars->chgList(49, In);
-     monde.chars->chgList(270, Ina);
-     monde.chars->setElement(Tan);
-     monde.chars->chgList(78, Tae); //ajoute des elements
-     monde.chars->chgList(89, To);
-     monde.chars->chgList(99, Tanz);
-     monde.chars->chgList(123, Hez);
-     monde.chars->chgList(144, Ta);
-     monde.chars->chgList(149, Ha);
+     monde.chars->setElementXY(H,0,0); //ajoute des elements
+    
+     monde.chars->setElementXY(T,0,19);
+     
+     monde.chars->setElementXY(I,1,2);
+    
+     monde.chars->setElementXY(He,2,15);
+     
+     monde.chars->setElementXY(Ta,3,4);
+     
+     monde.chars->setElementXY(In,4,8);
+     
+     monde.chars->setElementXY(Ina,9,0);
+     
+     monde.chars->setElementXY(Tan,11,3);
+     
+     monde.chars->setElementXY(Tae,12,7);
+     
+     monde.chars->setElementXY(To,14,15);
+    
+     monde.chars->setElementXY(Tanz,17,2);
+     
+     monde.chars->setElementXY(Hez,18,9);
+     
+     monde.chars->setElementXY(Ta,10,10);
+     
+     monde.chars->setElementXY(Ha,19,0);
 
      std::vector<int> liste;
      monde.grid->createElementCsv(liste);
-
+cout << "Ok" << endl;
      Layer surf(monde);
+     cout << "Ok" << endl;
      surf.initSurface();
-     surf.initSurface();
+     cout << "Ok" << endl;
      while (window.isOpen()) {
 
          // on gère les évènements
@@ -169,7 +184,7 @@ void testrender() {
          window.draw(*(surf.surfaceplayer));
          window.display();
 
-     }*/
+     }
 }
 
 void testengine() {

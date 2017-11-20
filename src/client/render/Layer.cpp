@@ -30,30 +30,38 @@ namespace render {
         this->tilesetChars = shared_ptr<CharsTileSet>(new CharsTileSet());
     }
 
-
     void Layer::initSurface() {
 
         int x;
         int y;
         this->surface->initQuads(400);
         this->surfaceplayer->initQuads(400);
-        for (int i = 0; i < 400; i++) {
-            x = int(i / 20);
-            y = i % 20;
-            this->surface->loadTexture(this->tileset->getImageFile());
-            this->surface->setSpriteLocation(i, y, x);
-            this->surface->setSpriteTexture(i, this->tileset->getTile(*(state.grid->getElement(i, 1))));
+        cout << "pb" << endl;
+        for (int j = 0; j < 20; j++) {
+            for (int i = 0; i < 20; i++) {
+                x = int(i / 20);
+                y = i % 20;
+                this->surface->loadTexture(this->tileset->getImageFile());
+                cout << "pb1" << endl;
+                this->surface->setSpriteLocation(i + j * state.grid->getWidth(), i, j);
+                cout << "i : " << i + j * state.grid->getWidth() << "x : " << i << "y : " << j << endl;
+                this->surface->setSpriteTexture(i + j * state.grid->getWidth(), this->tileset->getTile(*(state.grid->getElement(j, i))));
+                cout << "pb3" << endl;
+            }
         }
-        for (int i = 0; i < 400; i++) {
-            x = int(i / 20);
-            y = i % 20;
-            this->surfaceplayer->loadTexture(this->tilesetChars->getImageFile());
-            this->surfaceplayer->setSpriteLocation(i, y, x);
-            if (state.chars->getElement(i, 1) != NULL) {
-                this->surfaceplayer->setSpriteTexture(i, this->tilesetChars->getTile(*(state.chars->getElement(i, 1))));
-            } else {
-                // Tile tmp = new Tile(0,0,0,32);
-                this->surfaceplayer->setSpriteTexture(i, Tile(0, 0, 0, 32));
+        cout << "pb" << endl;
+        for (int j = 0; j < 20; j++) {
+            for (int i = 0; i < 20; i++) {
+                x = int(i / 20);
+                y = i % 20;
+                this->surfaceplayer->loadTexture(this->tilesetChars->getImageFile());
+                this->surfaceplayer->setSpriteLocation(i + j * state.grid->getWidth(), i, j);
+                if (state.chars->getElement(i, j) != NULL) {
+                    this->surfaceplayer->setSpriteTexture(i + j * state.grid->getWidth(), this->tilesetChars->getTile(*(state.chars->getElement(i, j))));
+                } else {
+                    // Tile tmp = new Tile(0,0,0,32);
+                    this->surfaceplayer->setSpriteTexture(i + j * state.grid->getWidth(), Tile(0, 0, 0, 32));
+                }
             }
 
         }
