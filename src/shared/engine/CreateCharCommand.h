@@ -21,14 +21,15 @@ namespace engine {
     // Associations
     // Attributes
   public:
-    int i;
+    int x;
     state::TypeId d;
     int joueur;
+    int y;
     // Operations
   public:
     CommandTypeId getTypeId () const;
     void execute (state::State& state);
-    CreateCharCommand (int i, state::TypeId d, int joueur);
+    CreateCharCommand (state::TypeId d, int joueur);
     // Setters and Getters
   };
 

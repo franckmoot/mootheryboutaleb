@@ -15,72 +15,68 @@
 #include "state/Heli.h"
 #include "state/ChampdebatailleTypeId.h"
 #include "state/BatimentTypeId.h"
+#include <math.h>
 
 using namespace std;
 using namespace state;
 namespace engine{
     
     
-    MoveCharCommand::MoveCharCommand(int i, int j){
-        if(j>400) j=399;
-        if(j<0) j=0;
-        this->i=i;
-        this->j=j;
+    MoveCharCommand::MoveCharCommand(int x1, int y1, int x2, int y2):x1(x1),y1(y1),x2(x2),y2(y2){
         
     }
     
     void MoveCharCommand::execute(state::State& state){
-        int i=this->i;
-        int j=this->j;
-      
-       
-        
-       if((state.getChars()->getElement(j,1)!=NULL) && (state.getChars()->getElement(i,1)==NULL) ) cout<< "c'est impossible "<<endl;
+
+       if((state.getChars()->getElement(x2,y2)!=NULL) && (state.getChars()->getElement(x1,y1)==NULL) ) cout<< "c'est impossible "<<endl;
        else{
 
-            if(state.getChars()->getElement(i,1)->getTypeId()==3){
-                if(j<i+40||j>i-40){
-                 //   state.getChars()->chgList2(i,j);
+            if(state.getChars()->getElement(x1,y1)->getTypeId()==3){
+                state::Heli* eletmp = (state::Heli*)(state.chars->getElement(x1,y1));
+                if((int)(sqrt((((x1-x2)*(x1-x2))+((y1-y2)*(y1-y2)))))<eletmp->getPorteeMvt()){
+                    state.getChars()->chgPosition(x1,y1,x2,y2);
                 }
 
             }
-            else if (state.getChars()->getElement(i,1)->getTypeId()==4){
-                if(state.getGrid()->getElement(j,1)->getTypeId()==0){
-                    state::Champdebataille* eletmp2 = (state::Champdebataille*)(state.grid->getElement(j,1));
+            else if (state.getChars()->getElement(x1,y1)->getTypeId()==4){
+                state::Tank* eletmp = (state::Tank*)(state.chars->getElement(x1,y1));
+                if(state.getChars()->getElement(x2,y2)->getTypeId()==0){
+                    state::Champdebataille* eletmp2 = (state::Champdebataille*)(state.getChars()->getElement(x2,y2));
                     if(eletmp2->getChampdeBatailleType()==4 || eletmp2->getChampdeBatailleType()==5 ){
                         cout<< "c'est impossible de mettre un element mobile sur cet elment statique"<<endl;
                     }   
                     else {
-                        if(j<i+30||j>i-30){
-                       //     state.getChars()->chgList2(i,j);
+                        if((int)(sqrt((((x1-x2)*(x1-x2))+((y1-y2)*(y1-y2)))))<eletmp->getPorteeMvt()){
+                           state.getChars()->chgPosition(x1,y1,x2,y2);
                         }
                         else cout<<"c est impossible pour un Tank de partir plus loin"<<endl;
                      }
                 }
-                else if(state.getGrid()->getElement(j,1)->getTypeId()==1){
-                        if(j<i+30||j>i-30){
-                       //     state.getChars()->chgList2(i,j);
+                else if(state.getChars()->getElement(x2,y2)->getTypeId()==1){
+                        if((int)(sqrt((((x1-x2)*(x1-x2))+((y1-y2)*(y1-y2)))))<eletmp->getPorteeMvt()){
+                           state.getChars()->chgPosition(x1,y1,x2,y2);
                         }
                     
                 }
             }       
-            else if (state.getChars()->getElement(i,1)->getTypeId()==2){
-                if(state.getGrid()->getElement(j,1)->getTypeId()==0){               
-                    state::Champdebataille* eletmp2 = (state::Champdebataille*)(state.grid->getElement(j,1));
+            else if (state.getChars()->getElement(x1,y1)->getTypeId()==2){
+                state::Infanterie* eletmp = (state::Infanterie*)(state.chars->getElement(x1,y1));
+                if(state.getChars()->getElement(x2,y2)->getTypeId()==0){               
+                    state::Champdebataille* eletmp2 = (state::Champdebataille*)(state.getChars()->getElement(x2,y2));
                     if(eletmp2->getChampdeBatailleType()==4 ){
                         cout<< "c'est impossible de mettre un element mobile sur cet elment statique"<<endl;
                     }
                     
                     else {
-                        if(j==i+1||j==i-1||j==i+21||j==i-21||j==i+20 ||j==i-20||j==i+30 ||j==i-30){
-                      //      state.getChars()->chgList2(i,j);
+                        if((int)(sqrt((((x1-x2)*(x1-x2))+((y1-y2)*(y1-y2)))))<eletmp->getPorteeMvt()){
+                            state.getChars()->chgPosition(x1,y1,x2,y2);
                         }
                         else cout<<"c est impossible pour une infanterie de partir plus loin"<<endl;
                      }
                 }    
-                else if(state.getGrid()->getElement(j,1)->getTypeId()==1){
-                        if(j==i+1||j==i-1||j==i+21||j==i-21||j==i+20 ||j==i-20||j==i+30 ||j==i-30){
-                    //        state.getChars()->chgList2(i,j);
+                else if(state.getChars()->getElement(x2,y2)->getTypeId()==1){
+                        if((int)(sqrt((((x1-x2)*(x1-x2))+((y1-y2)*(y1-y2)))))<eletmp->getPorteeMvt()){
+                         state.getChars()->chgPosition(x1,y1,x2,y2);
                         }
                 }
             }
