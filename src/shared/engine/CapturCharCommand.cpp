@@ -16,15 +16,14 @@ namespace engine{
         return CommandTypeId::CAPTUR;
     }
 
-    CapturCharCommand::CapturCharCommand(int i){
-            this->i=i;
+    CapturCharCommand::CapturCharCommand(int x, int y):x(x),y(y){
+
     }
     
     void CapturCharCommand::execute(state::State& state) {
-        int i=this->i;
-        if(state.grid->getElement(i,1)->getTypeId()==1){
-            if((state.chars->getElement(i,1)->getTypeId()==2) ||(state.chars->getElement(i,1)->getTypeId()==3) || (state.chars->getElement(i,1)->getTypeId()==4)){
-                state::Batiment* eletmp2= (state::Batiment*)(state.grid->getElement(i,1));
+        if(state.grid->getElement(x,y)->getTypeId()==1){
+            if((state.chars->getElement(x,y)->getTypeId()==2) ||(state.chars->getElement(x,y)->getTypeId()==3) || (state.chars->getElement(x,y)->getTypeId()==4)){
+                state::Batiment* eletmp2= (state::Batiment*)(state.grid->getElement(x,y));
                 eletmp2->setPdv(eletmp2->getPdv()-10);
                 if(eletmp2->getPdv()<=0){
                       cout<<"notre Batiment a été capturé"<<endl;

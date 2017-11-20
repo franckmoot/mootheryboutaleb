@@ -25,32 +25,31 @@ namespace ai {
 
     }
 
-    void RandomAI::run(state::State& state, int joueur) {
+   void RandomAI::run(state::State& state, int joueur) {
         std::vector<std::unique_ptr < engine::Command>>list;
         mt19937 mt_rand(time(0));
         int h;
 
-        for (int j = 0; j < state.chars->getHeight();j++)
-        for (int i = 0; i < state.chars->getWidth(); i++) {
-            if (state.chars->getElement(i, j) != NULL) {
+        for (int j = 0; j < state.chars->getHeight();j++){
+            for (int i = 0; i < state.chars->getWidth(); i++) {
+                if (state.chars->getElement(i, j) != NULL) {
 
-                
-                
-                if (state.chars->getElement(i, 1)->getTypeId() == 2 && state.chars->getElement(i, 1)->getJoueur() == joueur) {
-                    std::vector<std::unique_ptr<engine::Command> > l0;
-                    InfanterieCommands(state, i, l0);
-                    h = (int) (mt_rand() % l0.size());
-                    l0[h]->execute(state);
-
-                } else if (state.chars->getElement(i, 1)->getTypeId() == 3 && state.chars->getElement(i, 1)->getJoueur() == joueur) {
+                    if (state.chars->getElement(i, j)->getTypeId() == 2 && state.chars->getElement(i, j)->getJoueur() == joueur) {
+                        std::vector<std::unique_ptr<engine::Command> > l0;
+                        InfanterieCommands(state, i, l0,j);
+                        h = (int) (mt_rand() % l0.size());
+                        l0[h]->execute(state);
+                                
+                    }   
+                    else if (state.chars->getElement(i, j)->getTypeId() == 3 && state.chars->getElement(i, j)->getJoueur() == joueur) {
                     std::vector<std::unique_ptr<engine::Command> > l2;
-                    HeliCommands(state, i, l2);
+                    HeliCommands(state, i, l2,j);
                     h = (int) (mt_rand() % l2.size());
                     l2[h]->execute(state);
                 }
-                else if (state.chars->getElement(i, 1)->getTypeId() == 4 && state.chars->getElement(i, 1)->getJoueur() == joueur) {
+                    else if (state.chars->getElement(i, j)->getTypeId() == 4 && state.chars->getElement(i, j)->getJoueur() == joueur) {
                     std::vector<std::unique_ptr<engine::Command> > l3;
-                    TankCommands(state, i, l3);
+                    TankCommands(state, i, l3,j);
                     h = (int) (mt_rand() % l3.size());
                     l3[h]->execute(state);
 
@@ -59,8 +58,9 @@ namespace ai {
 
 
         }
+        }
         if (joueur == 1) {
-            if (state.chars->getElement(22, 1) == NULL && state.chars->getElement(26, 1) == NULL) {
+            if (state.chars->getElement(2,1) == NULL && state.chars->getElement(2, 6) == NULL) {
                 std::vector<std::unique_ptr<engine::Command> > l4;
                 BatimentCommands(state, 1, l4);
                 h = (int) (mt_rand() % l4.size());
@@ -68,7 +68,7 @@ namespace ai {
             }
         }
         if (joueur == 2) {
-            if (state.chars->getElement(297, 1) == NULL && state.chars->getElement(298, 1) == NULL) {
+            if (state.chars->getElement(17, 14) == NULL && state.chars->getElement(18,14 ) == NULL) {
                 std::vector<std::unique_ptr<engine::Command> > l5;
                 BatimentCommands(state, joueur, l5);
                 h = (int) (mt_rand() % l5.size());
@@ -78,7 +78,6 @@ namespace ai {
 
     }
 }
-
 
 
 

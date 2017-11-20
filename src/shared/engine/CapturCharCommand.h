@@ -19,12 +19,13 @@ namespace engine {
   class CapturCharCommand : public engine::Command {
     // Attributes
   public:
-    int i;
+    int x;
+    int y;
     // Operations
   public:
     CommandTypeId getTypeId () const;
     void execute (state::State& state);
-    CapturCharCommand (int i);
+    CapturCharCommand (int x, int y);
     // Setters and Getters
   };
 

@@ -19,13 +19,15 @@ namespace engine {
   class AttaqueCharCommand : public engine::Command {
     // Attributes
   public:
-    int i;
-    int j;
+    int x1;
+    int y1;
+    int x2;
+    int y2;
     // Operations
   public:
     CommandTypeId getTypeId () const;
     void execute (state::State& state);
-    AttaqueCharCommand (int i, int j);
+    AttaqueCharCommand (int x1, int y1, int x2, int y2);
     // Setters and Getters
   };
 
