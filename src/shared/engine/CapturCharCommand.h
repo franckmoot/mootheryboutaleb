@@ -18,7 +18,7 @@ namespace engine {
   /// class CapturCharCommand - 
   class CapturCharCommand : public engine::Command {
     // Attributes
-  public:
+  private:
     int x;
     int y;
     // Operations

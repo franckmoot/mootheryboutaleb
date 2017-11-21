@@ -18,7 +18,7 @@ namespace engine {
   /// class MoveCharCommand - 
   class MoveCharCommand : public engine::Command {
     // Attributes
-  public:
+  private:
     int x1;
     int y1;
     int x2;

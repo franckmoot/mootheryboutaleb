@@ -18,7 +18,7 @@ namespace engine {
   /// class AttaqueCharCommand - 
   class AttaqueCharCommand : public engine::Command {
     // Attributes
-  public:
+  private:
     int x1;
     int y1;
     int x2;
