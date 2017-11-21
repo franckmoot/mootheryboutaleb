@@ -16,7 +16,7 @@ using namespace std;
 using namespace state;
 namespace engine {
 
-    CreateCharCommand::CreateCharCommand( state::TypeId d, int joueur){
+    CreateCharCommand::CreateCharCommand(state::TypeId d, int joueur) {
 
     }
 
@@ -25,57 +25,57 @@ namespace engine {
     }
 
     void CreateCharCommand::execute(state::State& state) {
-        if(joueur==1){
-        for (int j = 0; j < state.getChars()->getHeight();j++){
-            for (int i = 0; i < state.getChars()->getWidth(); i++) {
-                if((state.grid->getElement(i,j)->getTypeId()==1)&& (state.chars->getElement(i,j)==NULL)){
-                    if (d == 2) {
-                        Infanterie *I = new Infanterie();
-                        I->setJoueur(1);
-                        state.chars->setElementXY(I,i,j);
-                        
-                    }
-                    if (d == 3) {
-                        Heli *H = new Heli();
-                        H->setJoueur(1);
-                        state.chars->setElementXY(H,i,j);
+        if (joueur == 1) {
+            for (int j = 0; j < int(state.getChars()->getHeight()); j++) {
+                for (int i = 0; i < int(state.getChars()->getWidth()); i++) {
+                    if ((state.grid->getElement(i, j)->getTypeId() == 1)&& (state.chars->getElement(i, j) == NULL)) {
+                        if (d == 2) {
+                            Infanterie *I = new Infanterie();
+                            I->setJoueur(1);
+                            state.chars->setElementXY(I, i, j);
 
+                        }
+                        if (d == 3) {
+                            Heli *H = new Heli();
+                            H->setJoueur(1);
+                            state.chars->setElementXY(H, i, j);
+
+                        }
+                        if (d == 4) {
+                            Tank *T = new Tank();
+                            T->setJoueur(1);
+                            state.chars->setElementXY(T, i, j);
+                        }
                     }
-                    if (d == 4) {
-                        Tank *T = new Tank();
-                        T->setJoueur(1);
-                        state.chars->setElementXY(T,i,j);
-                    }   
+
                 }
-                        
             }
         }
-        }
-        if(joueur==2){
-        for (int j = 0; j < state.chars->getHeight();j++){
-            for (int i = 0; i < state.chars->getWidth(); i++) {
-                if((state.grid->getElement(i,j)->getTypeId()==1)&& (state.chars->getElement(i,j)==NULL)){
-                    if (d == 2) {
-                        Infanterie *I = new Infanterie();
-                        I->setJoueur(2);
-                        state.chars->setElementXY(I,i,j);
-                        
-                    }
-                    if (d == 3) {
-                        Heli *H = new Heli();
-                        H->setJoueur(2);
-                        state.chars->setElementXY(H,i,j);
+        if (joueur == 2) {
+            for (int j = 0; j < int(state.chars->getHeight()); j++) {
+                for (int i = 0; i < int(state.chars->getWidth()); i++) {
+                    if ((state.grid->getElement(i, j)->getTypeId() == 1)&& (state.chars->getElement(i, j) == NULL)) {
+                        if (d == 2) {
+                            Infanterie *I = new Infanterie();
+                            I->setJoueur(2);
+                            state.chars->setElementXY(I, i, j);
 
+                        }
+                        if (d == 3) {
+                            Heli *H = new Heli();
+                            H->setJoueur(2);
+                            state.chars->setElementXY(H, i, j);
+
+                        }
+                        if (d == 4) {
+                            Tank *T = new Tank();
+                            T->setJoueur(2);
+                            state.chars->setElementXY(T, i, j);
+                        }
                     }
-                    if (d == 4) {
-                        Tank *T = new Tank();
-                        T->setJoueur(2);
-                        state.chars->setElementXY(T,i,j);
-                    }   
+
                 }
-                        
             }
-        }
         }
 
 

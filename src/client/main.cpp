@@ -13,8 +13,6 @@
 
 void testSFML() {
     sf::Texture texture;
-
-
 }
 
 // Fin test SFML
@@ -49,7 +47,7 @@ int main(int argc, char* argv[]) {
             testrender();
         } else if (!s.compare("engine")) {
 
-            testcommande();
+            testengine();
         } else if (!s.compare("ai")) {
 
             testai();
