@@ -121,7 +121,6 @@ void testrender() {
      (monde.grid) = new ElementTab();
      (monde.chars) = new ElementChars();
      H->setJoueur(1);
-
      T->setJoueur(1);
      I->setJoueur(1);
      Ina->setJoueur(1);
@@ -135,41 +134,27 @@ void testrender() {
      To->setJoueur(1);
      Ia->setJoueur(1);
 
-     monde.chars->setElementXY(H,0,0); //ajoute des elements
-    
+     monde.chars->setElementXY(H,0,0);
      monde.chars->setElementXY(T,0,19);
-     
      monde.chars->setElementXY(I,1,2);
-    
      monde.chars->setElementXY(He,2,15);
-     
      monde.chars->setElementXY(Ta,3,4);
-     
-     monde.chars->setElementXY(In,4,8);
-     
+     monde.chars->setElementXY(In,8,8);
      monde.chars->setElementXY(Ina,9,0);
-     
      monde.chars->setElementXY(Tan,11,3);
-     
      monde.chars->setElementXY(Tae,12,7);
-     
      monde.chars->setElementXY(To,14,15);
-    
      monde.chars->setElementXY(Tanz,17,2);
-     
      monde.chars->setElementXY(Hez,18,9);
-     
      monde.chars->setElementXY(Ta,10,10);
-     
      monde.chars->setElementXY(Ha,19,0);
 
      std::vector<int> liste;
      monde.grid->createElementCsv(liste);
-cout << "Ok" << endl;
+     
+
      Layer surf(monde);
-     cout << "Ok" << endl;
      surf.initSurface();
-     cout << "Ok" << endl;
      while (window.isOpen()) {
 
          // on gère les évènements

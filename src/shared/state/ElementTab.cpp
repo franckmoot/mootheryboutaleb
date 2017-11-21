@@ -85,7 +85,7 @@ namespace state {
         while (!fichier.eof()) {
             std::getline(fichier, ligne);
             std::stringstream stream(ligne);
-            std::cout << ligne << std::endl;
+            //std::cout << ligne << std::endl;
 
             while (getline(stream, valeur, ',')) {
                 carte.push_back(atoi(valeur.c_str()));
@@ -93,6 +93,8 @@ namespace state {
         }
 
         for (int i = 0; i<int(carte.size()); i++) {
+
+            
             switch (carte[i]) {
 
                 case EAU:
@@ -130,8 +132,6 @@ namespace state {
                     this->setElement(NULL);
                     break;
             }
-
-            return carte;
         }
         return carte;
     }
