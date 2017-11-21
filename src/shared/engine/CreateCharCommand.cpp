@@ -10,14 +10,11 @@
 #include "CreateCharCommand.h"
 #include "state/TypeId.h"
 
-
-
 using namespace std;
 using namespace state;
 namespace engine {
 
-    CreateCharCommand::CreateCharCommand(state::TypeId d, int joueur):d(d),joueur(joueur) {
-
+    CreateCharCommand::CreateCharCommand(state::TypeId elementId, int x, int y, int joueur) : elementId(elementId), x(x), y(y), joueur(joueur) {
     }
 
     CommandTypeId CreateCharCommand::getTypeId() const {
@@ -25,57 +22,44 @@ namespace engine {
     }
 
     void CreateCharCommand::execute(state::State& state) {
-        if (joueur == 1) {
-            for (int j = 0; j < int(state.getChars()->getHeight()); j++) {
-                for (int i = 0; i < int(state.getChars()->getWidth()); i++) {
-                    if ((state.grid->getElement(i, j)->getTypeId() == 1)&& (state.chars->getElement(i, j) == NULL)) {
-                        if (d == 2) {
-                            Infanterie *I = new Infanterie();
-                            I->setJoueur(1);
-                            state.chars->setElementXY(I, i, j);
 
-                        }
-                        if (d == 3) {
-                            Heli *H = new Heli();
-                            H->setJoueur(1);
-                            state.chars->setElementXY(H, i, j);
+        if ((state.grid->getElement(x, y)->getTypeId() == 1)&& (state.chars->getElement(x, y) == NULL)&& (joueur == 1)) {
+            if (elementId == state::INFANTERIE) {
+                Infanterie *infanterietmp = new Infanterie();
+                infanterietmp->setJoueur(1);
+                state.chars->setElementXY(infanterietmp, x, y);
 
-                        }
-                        if (d == 4) {
-                            Tank *T = new Tank();
-                            T->setJoueur(1);
-                            state.chars->setElementXY(T, i, j);
-                        }
-                    }
+            } else if (elementId == state::HELI) {
+                Heli *H = new Heli();
+                H->setJoueur(1);
+                state.chars->setElementXY(H, x, y);
 
-                }
+            } else if (elementId == state::TANK) {
+                Tank *T = new Tank();
+                T->setJoueur(1);
+                state.chars->setElementXY(T, x, y);
             }
+
         }
-        if (joueur == 2) {
-            for (int j = 0; j < int(state.chars->getHeight()); j++) {
-                for (int i = 0; i < int(state.chars->getWidth()); i++) {
-                    if ((state.grid->getElement(i, j)->getTypeId() == 1)&& (state.chars->getElement(i, j) == NULL)) {
-                        if (d == 2) {
-                            Infanterie *I = new Infanterie();
-                            I->setJoueur(2);
-                            state.chars->setElementXY(I, i, j);
+        if ((state.grid->getElement(x, y)->getTypeId() == 1)&& (state.chars->getElement(x, y) == NULL)&& (joueur == 2)) {
+            if (elementId == state::INFANTERIE) {
+                Infanterie *infanterietmp = new Infanterie();
+                infanterietmp->setJoueur(2);
+                state.chars->setElementXY(infanterietmp, x, y);
 
-                        }
-                        if (d == 3) {
-                            Heli *H = new Heli();
-                            H->setJoueur(2);
-                            state.chars->setElementXY(H, i, j);
+            } else if (elementId == state::HELI) {
+                Heli *H = new Heli();
+                H->setJoueur(2);
+                state.chars->setElementXY(H, x, y);
 
-                        }
-                        if (d == 4) {
-                            Tank *T = new Tank();
-                            T->setJoueur(2);
-                            state.chars->setElementXY(T, i, j);
-                        }
-                    }
-
-                }
+            } else if (elementId == state::TANK) {
+                Tank *T = new Tank();
+                T->setJoueur(2);
+                state.chars->setElementXY(T, x, y);
             }
+
+
+
         }
     }
 }

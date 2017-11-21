@@ -20,16 +20,16 @@ namespace engine {
   class CreateCharCommand : public engine::Command {
     // Associations
     // Attributes
-  public:
+  private:
+    state::TypeId elementId;
     int x;
-    state::TypeId d;
-    int joueur;
     int y;
+    int joueur;
     // Operations
   public:
+    CreateCharCommand (state::TypeId elementId, int x, int y, int joueur);
     CommandTypeId getTypeId () const;
     void execute (state::State& state);
-    CreateCharCommand (state::TypeId d, int joueur);
     // Setters and Getters
   };
 

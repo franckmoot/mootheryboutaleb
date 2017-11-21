@@ -179,7 +179,10 @@ void testengine() {
     engine::Engine engine;
 
     engine.addCommand(new engine::LoadCommand("res/map.csv"));
-    engine.addCommand(new engine::CreateCharCommand(INFANTERIE, 1));
+    engine.addCommand(new engine::CreateCharCommand(TANK, 2,1,1));
+    engine.addCommand(new engine::CreateCharCommand(TANK, 18,14,2));
+    
+    
     // engine.addCommand(new engine::CreateCharCommand(30, INFANTERIE, 1));
     // engine.addCommand(new engine::MoveCharCommand(0, 30));
 
@@ -210,51 +213,7 @@ void testengine() {
         window.draw(*(surf.surfaceplayer));
         window.display();
 
-        /* engine::LoadCommand a("res/map.csv");
-
-         (monde.chars) = new ElementChars(9, 11);
-
-         Infanterie *I = new Infanterie();
-         I->setJoueur(1);
-         Heli *H = new Heli();
-         H->setJoueur(1);
-         Tank *T = new Tank();
-         T->setJoueur(1);
-
-         Infanterie *I2 = new Infanterie();
-         I2->setJoueur(2);
-         Heli *H2 = new Heli();
-         H2->setJoueur(2);
-         Tank *T2 = new Tank();
-         T2->setJoueur(2);
-
-         monde.chars->chgList(0, I); //ajoute des elements
-
-         monde.chars->chgList(10, H);
-         monde.chars->chgList(20, T);
-         monde.chars->chgList(30, I2);
-         monde.chars->chgList(40, H2);
-         monde.chars->chgList(50, T2);
-
-
-         engine::CreateCharCommand infanteriejoueur1(0, INFANTERIE, 1);
-         infanteriejoueur1.execute(monde);
-
-         engine::CreateCharCommand infanteriejoueur2(30, INFANTERIE, 2);
-         infanteriejoueur2.execute(monde);
-
-         engine::CreateCharCommand Helijoueur1(10, HELI, 1);
-         Helijoueur1.execute(monde);
-
-         engine::CreateCharCommand Helijoueur2(40, HELI, 2);
-         Helijoueur2.execute(monde);
-
-         engine::CreateCharCommand Tankjoueur1(20, TANK, 1);
-         Tankjoueur1.execute(monde);
-
-         engine::CreateCharCommand Tankjoueur2(50, TANK, 2);
-         Tankjoueur2.execute(monde);
-
+        /* 
          if (monde.chars->getElement(0, 1)->getTypeId() == 2) cout << "L'infanterie est en position 0 " << endl;
          engine::MoveCharCommand deplacementinfanterie(0, 1);
          deplacementinfanterie.execute(monde);
