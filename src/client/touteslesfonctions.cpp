@@ -290,22 +290,19 @@ void testengine() {
 }
 
 void testai() {
-    /*
+    
         sf::RenderWindow window(sf::VideoMode(640, 640), "Advance wars");
 
-        State monde;
-
-        (monde.grid) = new ElementTab();
-        (monde.chars) = new ElementChars();
-
-        int joueur1 = 1;
-        int joueur2 = 2;
-
-
+        engine::Engine engine;
         std::vector<int> liste;
-        monde.grid->createElementCsv(liste);
+        engine.currentState.grid->createElementCsv(liste);
+        
+        int joueur1=1;
+        int joueur2=2;
+        
+       
 
-        Layer surf(monde);
+        Layer surf(engine.currentState);
         surf.initSurface();
         RandomAI test;
         RandomAI test1;
@@ -326,7 +323,7 @@ void testai() {
                 cout << "JOUEUR1 joue::" << endl;
 
                 //sleep(2);
-                test.run(monde, joueur1);
+                test.run(joueur1,engine);
 
                 sf::sleep(sf::milliseconds(500));
                 surf.initSurface();
@@ -337,7 +334,7 @@ void testai() {
 
                 //sleep(2);
 
-                test1.run(monde, joueur2);
+                test1.run(joueur2,engine);
                 sf::sleep(sf::milliseconds(500));
                 surf.initSurface();
             }
@@ -347,10 +344,10 @@ void testai() {
             window.draw(*(surf.surface));
             window.draw(*(surf.surfaceplayer));
             window.display();
-     */
+     
 }
 
-void testcommande() {
+//void testcommande() {
     /*  sf::RenderWindow window(sf::VideoMode(640, 640), "Advance wars");
       engine::Engine i;
 

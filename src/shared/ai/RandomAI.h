@@ -3,8 +3,8 @@
 #define AI__RANDOMAI__H
 
 
-namespace state {
-  class State;
+namespace engine {
+  class Engine;
 };
 namespace ai {
   class AI;
@@ -18,7 +18,7 @@ namespace ai {
   class RandomAI : public ai::AI {
     // Operations
   public:
-    void run (state::State& state, int joueur);
+    void run (int joueur, engine::Engine& engine);
     RandomAI ();
     // Setters and Getters
   };

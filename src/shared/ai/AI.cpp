@@ -66,16 +66,18 @@ namespace ai {
 
 
     void AI::BatimentCommands(const state::State& state, int joueur, std::vector<std::unique_ptr<engine::Command> >& list4) {
+      
+        
         if (joueur == 1) {
-/*            list4.push_back(unique_ptr<Command>(new CreateCharCommand(state::TypeId::HELI, 1)));
-            list4.push_back(unique_ptr<Command>(new CreateCharCommand(state::TypeId::INFANTERIE, 1)));
-            list4.push_back(unique_ptr<Command>(new CreateCharCommand(state::TypeId::TANK, 1)));*/
+           list4.push_back(unique_ptr<Command>(new CreateCharCommand(state::TypeId::HELI,2,1, 1)));
+            list4.push_back(unique_ptr<Command>(new CreateCharCommand(state::TypeId::INFANTERIE,2,1, 1)));
+            list4.push_back(unique_ptr<Command>(new CreateCharCommand(state::TypeId::TANK,2,1, 1)));
 
         }
         if (joueur == 2) {
-           /* list4.push_back(unique_ptr<Command>(new CreateCharCommand(state::TypeId::HELI, 2)));
-            list4.push_back(unique_ptr<Command>(new CreateCharCommand(state::TypeId::INFANTERIE, 2)));
-            list4.push_back(unique_ptr<Command>(new CreateCharCommand(state::TypeId::TANK, 2)));*/
+            list4.push_back(unique_ptr<Command>(new CreateCharCommand(state::TypeId::HELI,17,14, 2)));
+            list4.push_back(unique_ptr<Command>(new CreateCharCommand(state::TypeId::INFANTERIE,17,14, 2)));
+            list4.push_back(unique_ptr<Command>(new CreateCharCommand(state::TypeId::TANK,17,14, 2)));
 
         }
 

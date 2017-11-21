@@ -11,6 +11,7 @@
 #include "state/Infanterie.h"
 #include "state/Tank.h"
 #include "state/Heli.h"
+#include "engine/Engine.h"
 #include <random>
 #include <iostream>
 
@@ -25,57 +26,57 @@ namespace ai {
 
     }
 
-   void RandomAI::run(state::State& state, int joueur) {
+   void RandomAI::run( int joueur, engine::Engine& engine) {
         std::vector<std::unique_ptr < engine::Command>>list;
         mt19937 mt_rand(time(0));
         int h;
+        /*
+        for (int j = 0; j < int(engine.currentState.getChars()->getHeight());j++){
+            for (int i = 0; i < int(engine.currentState.getChars()->getWidth()); i++) {
+                if (engine.currentState.getChars()->getElement(i, j) != NULL) {
 
-        for (int j = 0; j < int(state.chars->getHeight());j++){
-            for (int i = 0; i < int(state.chars->getWidth()); i++) {
-                if (state.chars->getElement(i, j) != NULL) {
-
-                    if (state.chars->getElement(i, j)->getTypeId() == 2 && state.chars->getElement(i, j)->getJoueur() == joueur) {
+                    if (engine.currentState.getChars()->getElement(i, j)->getTypeId() == 2 && engine.currentState.getChars()->getElement(i, j)->getJoueur() == joueur) {
                         std::vector<std::unique_ptr<engine::Command> > l0;
-                        InfanterieCommands(state, i, l0,j);
+                        InfanterieCommands(engine.currentState, i, l0,j);
                         h = (int) (mt_rand() % l0.size());
-                        l0[h]->execute(state);
+                        engine.addCommand(l0[h].get());
                                 
                     }   
-                    else if (state.chars->getElement(i, j)->getTypeId() == 3 && state.chars->getElement(i, j)->getJoueur() == joueur) {
+                    else if (engine.currentState.getChars()->getElement(i, j)->getTypeId() == 3 && engine.currentState.getChars()->getElement(i, j)->getJoueur() == joueur) {
                     std::vector<std::unique_ptr<engine::Command> > l2;
-                    HeliCommands(state, i, l2,j);
+                    HeliCommands(engine.currentState, i, l2,j);
                     h = (int) (mt_rand() % l2.size());
-                    l2[h]->execute(state);
+                    engine.addCommand(l2[h].get());
                 }
-                    else if (state.chars->getElement(i, j)->getTypeId() == 4 && state.chars->getElement(i, j)->getJoueur() == joueur) {
+                    else if (engine.currentState.getChars()->getElement(i, j)->getTypeId() == 4 && engine.currentState.getChars()->getElement(i, j)->getJoueur() == joueur) {
                     std::vector<std::unique_ptr<engine::Command> > l3;
-                    TankCommands(state, i, l3,j);
+                    TankCommands(engine.currentState, i, l3,j);
                     h = (int) (mt_rand() % l3.size());
-                    l3[h]->execute(state);
+                    engine.addCommand(l3[h].get());
 
                 }
             }
 
 
         }
-        }
+        }*/
         if (joueur == 1) {
-            if (state.chars->getElement(2,1) == NULL && state.chars->getElement(2, 6) == NULL) {
+            if (engine.currentState.getChars()->getElement(2,1) == NULL && engine.currentState.getChars()->getElement(2, 6) == NULL) {
                 std::vector<std::unique_ptr<engine::Command> > l4;
-                BatimentCommands(state, 1, l4);
+                BatimentCommands(engine.currentState, 1, l4);
                 h = (int) (mt_rand() % l4.size());
-                l4[h]->execute(state);
+                engine.addCommand(l4[h].get());
             }
         }
         if (joueur == 2) {
-            if (state.chars->getElement(17, 14) == NULL && state.chars->getElement(18,14 ) == NULL) {
+            if (engine.currentState.getChars()->getElement(17, 14) == NULL && engine.currentState.getChars()->getElement(18,14 ) == NULL) {
                 std::vector<std::unique_ptr<engine::Command> > l5;
-                BatimentCommands(state, joueur, l5);
+                BatimentCommands(engine.currentState, joueur, l5);
                 h = (int) (mt_rand() % l5.size());
-                l5[h]->execute(state);
+                engine.addCommand(l5[h].get());
             }
         }
-
+        engine.update();
     }
 }
 
