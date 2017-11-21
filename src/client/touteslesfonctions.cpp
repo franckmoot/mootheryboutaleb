@@ -179,20 +179,28 @@ void testengine() {
     engine::Engine engine;
 
     engine.addCommand(new engine::LoadCommand("res/map.csv"));
-    engine.addCommand(new engine::CreateCharCommand(TANK, 2,1,1));
-    engine.addCommand(new engine::CreateCharCommand(TANK, 18,14,2));
     
+    cout << "Creation d'un tank dans les casernes" << endl;
+    engine.addCommand(new engine::CreateCharCommand(INFANTERIE, 2,1,1));
+    engine.addCommand(new engine::CreateCharCommand(INFANTERIE, 18,14,2));
     
-    // engine.addCommand(new engine::CreateCharCommand(30, INFANTERIE, 1));
-    // engine.addCommand(new engine::MoveCharCommand(0, 30));
+    cout << "Deplacement des tank" << endl;
+   // engine.addCommand(new engine::MoveCharCommand(2,1,3,2));
+   // engine.addCommand(new engine::MoveCharCommand(3,2,3,5));
+    
+    cout << "Deplacement infanterie" << endl;
+    engine.addCommand(new engine::MoveCharCommand(18,14,17,16));
+    engine.addCommand(new engine::CapturCharCommand(17,16));
 
     engine.update();
 
-    for (int j = 0; j < int(engine.getState().chars->getHeight()); j++) {
+    
+    
+    /*for (int j = 0; j < int(engine.getState().chars->getHeight()); j++) {
         for (int i = 0; i < int(engine.getState().chars->getWidth()); i++) {
             if (engine.getState().chars->getElement(i, j) != NULL) cout << engine.getState().chars->getElement(i, j)->getTypeId() << endl;
         }
-    }
+    }*/
     Layer surf(engine.getState());
     surf.initSurface();
 

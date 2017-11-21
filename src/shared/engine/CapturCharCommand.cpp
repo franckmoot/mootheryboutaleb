@@ -10,36 +10,47 @@
 #include "CapturCharCommand.h"
 
 using namespace std;
-namespace engine{
-    
-        CommandTypeId CapturCharCommand::getTypeId() const {
+using namespace state;
+
+namespace engine {
+
+    CommandTypeId CapturCharCommand::getTypeId() const {
         return CommandTypeId::CAPTUR;
     }
 
-    CapturCharCommand::CapturCharCommand(int x, int y):x(x),y(y){
+    CapturCharCommand::CapturCharCommand(int x, int y) : x(x), y(y) {
 
     }
-    
+
     void CapturCharCommand::execute(state::State& state) {
-        if(state.grid->getElement(x,y)->getTypeId()==1){
-            if((state.chars->getElement(x,y)->getTypeId()==2) ||(state.chars->getElement(x,y)->getTypeId()==3) || (state.chars->getElement(x,y)->getTypeId()==4)){
-                state::Batiment* eletmp2= (state::Batiment*)(state.grid->getElement(x,y));
-                eletmp2->setPdv(eletmp2->getPdv()-10);
-                if(eletmp2->getPdv()<=0){
-                      cout<<"notre Batiment a été capturé"<<endl;
-                      
+        if (state.grid->getElement(x, y)->getTypeId() == 1) {
+            if ((state.chars->getElement(x, y)->getTypeId() == 2)) {
+                if (state.chars->getElement(x, y)->getJoueur() != state.grid->getElement(x, y)->getJoueur()) {
+                    state::Batiment* eletmp2 = (state::Batiment*)(state.grid->getElement(x, y));
+                    eletmp2->setPdv(eletmp2->getPdv() - 10);
+                    if (eletmp2->getPdv() <= 0) {
+                        cout << "Batiment a été capturé" << endl;
+                        state::BatimentTypeId typebatiment = eletmp2->getBatimentTypeId();
+                        state.grid->killElement(x, y);
+                        if(typebatiment==state::QGBLEU) state.grid->setElementXY(new state::Batiment(QGROUGE), x, y);
+                        else if(typebatiment==state::QGROUGE) state.grid->setElementXY(new state::Batiment(QGBLEU), x, y);
+                        else if(typebatiment==state::CASERNEBLEU) state.grid->setElementXY(new state::Batiment(CASERNEROUGE), x, y);
+                        else if(typebatiment==state::CASERNEROUGE) state.grid->setElementXY(new state::Batiment(CASERNEBLEU), x, y);
+                        else if(typebatiment==state::APPARTBLEU) state.grid->setElementXY(new state::Batiment(APPARTROUGE), x, y);
+                        else if(typebatiment==state::APPARTROUGE) state.grid->setElementXY(new state::Batiment(APPARTBLEU), x, y);
+                        
+                    }
                 }
             }
-            
-            
+
+
         }
 
     }
-    
 
-        
-        
-    }
 
-    
-    
+
+
+}
+
+

@@ -7,7 +7,7 @@ namespace state{
     Infanterie::Infanterie(){
         this->pdv=10;
         this->attaque=10;
-        this->porteeMvt=2;
+        this->porteeMvt=8;
         this->porteeAtq=2;
         
     }
