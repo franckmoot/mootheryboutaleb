@@ -89,13 +89,13 @@ void teststate() {
 
 
     /* batiment caserne */
-    Batiment *C2 = new Batiment(BatimentTypeId::CASERNE);
+    Batiment *C2 = new Batiment(BatimentTypeId::CASERNEROUGE);
     cout << "On ajoute un Element de type Batiment" << endl;
     monde.grid->setElement(C2);
     cout << "Verifie que la liste est 3" << endl;
     if (monde.grid->sizeList() == 3) cout << "Ok" << endl;
     cout << "Verifie que l'element ajouter est un Batiment caserne" << endl;
-    if (monde.grid->getElement(2, 0)->getTypeId() == int(BatimentTypeId::CASERNE)) cout << "Ok" << endl;
+    if (monde.grid->getElement(2, 0)->getTypeId() == int(BatimentTypeId::CASERNEROUGE)) cout << "Ok" << endl;
 
 }
 
@@ -176,19 +176,24 @@ void testengine() {
 
 
     sf::RenderWindow window(sf::VideoMode(640, 640), "Advance wars");
-    engine::Engine i;
+    engine::Engine engine;
 
-    i.addCommand(new engine::LoadCommand("res/map.csv"));
-    /* i.addCommand(new engine::CreateCharCommand(0, INFANTERIE, 1));
-     i.addCommand(new engine::CreateCharCommand(30, INFANTERIE, 1));
-     i.addCommand(new engine::MoveCharCommand(0, 30));*/
+    engine.addCommand(new engine::LoadCommand("res/map.csv"));
+    engine.addCommand(new engine::CreateCharCommand(INFANTERIE, 1));
+    // engine.addCommand(new engine::CreateCharCommand(30, INFANTERIE, 1));
+    // engine.addCommand(new engine::MoveCharCommand(0, 30));
 
-    i.update();
+    engine.update();
 
-    Layer surf(i.getState());
+    for (int j = 0; j < int(engine.getState().chars->getHeight()); j++) {
+        for (int i = 0; i < int(engine.getState().chars->getWidth()); i++) {
+            if (engine.getState().chars->getElement(i, j) != NULL) cout << engine.getState().chars->getElement(i, j)->getTypeId() << endl;
+        }
+    }
+    Layer surf(engine.getState());
     surf.initSurface();
 
-    //State monde = i.getState();
+    //State monde = engine.getState();
 
 
     while (window.isOpen()) {
@@ -201,8 +206,8 @@ void testengine() {
         }
 
         window.clear();
-       // window.draw(*(surf.surface));
-        //window.draw(*(surf.surfaceplayer));
+        window.draw(*(surf.surface));
+        window.draw(*(surf.surfaceplayer));
         window.display();
 
         /* engine::LoadCommand a("res/map.csv");

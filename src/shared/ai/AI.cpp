@@ -13,10 +13,10 @@
 #include "state/Heli.h"
 
 
-
 using namespace std;
 using namespace state;
 using namespace engine;
+
 namespace ai {
 
     void AI::InfanterieCommands(const state::State& state, int x, std::vector<std::unique_ptr<engine::Command> >& list0, int y) {
@@ -24,7 +24,7 @@ namespace ai {
         
         for(int x2=(x-eletmp->getPorteeMvt());x2<(x+eletmp->getPorteeMvt());x2++){
             for(int y2=(y-eletmp->getPorteeMvt());y2<(y+eletmp->getPorteeMvt());y2++){
-                if((x2>=0)&&(y2>=0)&&(x2<state.grid->getWidth())&&(y2<state.grid->getHeight())){
+                if((x2>=0)&&(y2>=0)&&(x2<int(state.grid->getWidth()))&&(y2<int(state.grid->getHeight()))){
                 list0.push_back(unique_ptr<Command>(new MoveCharCommand(x,y,x2,y2)));
                 list0.push_back(unique_ptr<Command>(new AttaqueCharCommand(x,y,x2,y2)));
                 }
@@ -39,7 +39,7 @@ namespace ai {
         
         for(int x2=(x-eletmp->getPorteeMvt());x2<(x+eletmp->getPorteeMvt());x2++){
             for(int y2=(y-eletmp->getPorteeMvt());y2<(y+eletmp->getPorteeMvt());y2++){
-                if((x2>=0)&&(y2>=0)&&(x2<state.grid->getWidth())&&(y2<state.grid->getHeight())){
+                if((x2>=0)&&(y2>=0)&&(x2<int(state.grid->getWidth()))&&(y2<int(state.grid->getHeight()))){
                 list1.push_back(unique_ptr<Command>(new MoveCharCommand(x,y,x2,y2)));
                 list1.push_back(unique_ptr<Command>(new AttaqueCharCommand(x,y,x2,y2)));
                 }
@@ -52,7 +52,7 @@ namespace ai {
         
         for(int x2=(x-eletmp->getPorteeMvt());x2<(x+eletmp->getPorteeMvt());x2++){
             for(int y2=(y-eletmp->getPorteeMvt());y2<(y+eletmp->getPorteeMvt());y2++){
-                if((x2>=0)&&(y2>=0)&&(x2<state.grid->getWidth())&&(y2<state.grid->getHeight())){
+                if((x2>=0)&&(y2>=0)&&(x2<int(state.grid->getWidth()))&&(y2<int(state.grid->getHeight()))){
                 list2.push_back(unique_ptr<Command>(new MoveCharCommand(x,y,x2,y2)));
                 list2.push_back(unique_ptr<Command>(new AttaqueCharCommand(x,y,x2,y2)));
                 }

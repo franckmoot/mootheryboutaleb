@@ -16,7 +16,7 @@ using namespace std;
 using namespace state;
 namespace engine {
 
-    CreateCharCommand::CreateCharCommand(state::TypeId d, int joueur) {
+    CreateCharCommand::CreateCharCommand(state::TypeId d, int joueur):d(d),joueur(joueur) {
 
     }
 
@@ -77,8 +77,5 @@ namespace engine {
                 }
             }
         }
-
-
-
     }
 }

@@ -14,7 +14,7 @@
 #include <random>
 #include <iostream>
 
-
+  
 
 using namespace std;
 using namespace state;
@@ -30,8 +30,8 @@ namespace ai {
         mt19937 mt_rand(time(0));
         int h;
 
-        for (int j = 0; j < state.chars->getHeight();j++){
-            for (int i = 0; i < state.chars->getWidth(); i++) {
+        for (int j = 0; j < int(state.chars->getHeight());j++){
+            for (int i = 0; i < int(state.chars->getWidth()); i++) {
                 if (state.chars->getElement(i, j) != NULL) {
 
                     if (state.chars->getElement(i, j)->getTypeId() == 2 && state.chars->getElement(i, j)->getJoueur() == joueur) {

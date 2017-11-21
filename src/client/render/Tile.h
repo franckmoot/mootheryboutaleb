@@ -11,8 +11,8 @@ namespace render {
   protected:
     int x     = 0;
     int y     = 0;
-    int width     = 16;
-    int height     = 16;
+    int width     = 32;
+    int height     = 32;
     // Operations
   public:
     Tile (int x, int y, int w, int h);

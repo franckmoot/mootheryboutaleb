@@ -71,7 +71,7 @@ namespace state {
         if (getElement(x1, y1) != NULL) {
             if (getElement(x2, y2) == NULL) {
                 list[x2 + y2 * width].swap(list[x1 + y1 * width]);
-                getElement(x2,y2)->setPosition(x2,y2);
+                getElement(x2, y2)->setPosition(x2, y2);
             }
         } else std::cout << "Erreur sur le deplacement !" << std::endl;
     }
@@ -121,12 +121,28 @@ namespace state {
                     this->setElement(new Champdebataille(SABLE2));
                     break;
 
-                case 6:
-                    this->setElement(new Batiment(QG));
+                case 6://BatimentTypeId::QGROUGE = 0 
+                    this->setElement(new Batiment(QGROUGE));
                     break;
 
-                case 7:
-                    this->setElement(new Batiment(CASERNE));
+                case 7://BatimentTypeId::CASERNEROUGE = 1
+                    this->setElement(new Batiment(CASERNEROUGE));
+                    break;
+
+                case 8://BatimentTypeId::APPARTROUGE = 2
+                    this->setElement(new Batiment(APPARTROUGE));
+                    break;
+
+                case 9://BatimentTypeId::QGBLEU = 3
+                    this->setElement(new Batiment(QGBLEU));
+                    break;
+
+                case 10://BatimentTypeId::CASERNEBLEU = 4
+                    this->setElement(new Batiment(CASERNEBLEU));
+                    break;
+
+                case 11://BatimentTypeId::APPARTBLEU = 5
+                    this->setElement(new Batiment(APPARTBLEU));
                     break;
 
                 default:
