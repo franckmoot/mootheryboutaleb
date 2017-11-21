@@ -100,84 +100,96 @@ void teststate() {
 }
 
 void testrender() {
-     sf::RenderWindow window(sf::VideoMode(640, 640), "Advance wars");
-     Heli *H = new Heli();
+    sf::RenderWindow window(sf::VideoMode(640, 640), "Advance wars");
+    Heli *H = new Heli();
 
-     Infanterie *I = new Infanterie();
-     Tank *T = new Tank();
-     Heli *He = new Heli();
-     Infanterie *In = new Infanterie();
-     Tank *Ta = new Tank();
-     Tank *Tan = new Tank();
-     Heli *Ha = new Heli();
-     Infanterie *Ia = new Infanterie();
-     Tank *To = new Tank();
-     Heli *Hez = new Heli();
-     Infanterie *Ina = new Infanterie();
-     Tank *Tae = new Tank();
-     Tank *Tanz = new Tank();
-     State monde;
+    Infanterie *I = new Infanterie();
+    Tank *T = new Tank();
+    Heli *He = new Heli();
+    Infanterie *In = new Infanterie();
+    Tank *Ta = new Tank();
+    Tank *Tan = new Tank();
+    Heli *Ha = new Heli();
+    Infanterie *Ia = new Infanterie();
+    Tank *To = new Tank();
+    Heli *Hez = new Heli();
+    Infanterie *Ina = new Infanterie();
+    Tank *Tae = new Tank();
+    Tank *Tanz = new Tank();
+    State monde;
 
-     (monde.grid) = new ElementTab();
-     (monde.chars) = new ElementChars();
-     H->setJoueur(1);
-     T->setJoueur(1);
-     I->setJoueur(1);
-     Ina->setJoueur(1);
-     He->setJoueur(2);
-     Ta->setJoueur(1);
-     In->setJoueur(1);
-     Tan->setJoueur(2);
-     Tae->setJoueur(2);
-     Tanz->setJoueur(1);
-     Hez->setJoueur(2);
-     To->setJoueur(1);
-     Ia->setJoueur(1);
+    (monde.grid) = new ElementTab();
+    (monde.chars) = new ElementChars();
+    H->setJoueur(1);
+    T->setJoueur(1);
+    I->setJoueur(1);
+    Ina->setJoueur(1);
+    He->setJoueur(2);
+    Ta->setJoueur(1);
+    In->setJoueur(1);
+    Tan->setJoueur(2);
+    Tae->setJoueur(2);
+    Tanz->setJoueur(1);
+    Hez->setJoueur(2);
+    To->setJoueur(1);
+    Ia->setJoueur(1);
 
-     monde.chars->setElementXY(H,0,0);
-     monde.chars->setElementXY(T,0,19);
-     monde.chars->setElementXY(I,1,2);
-     monde.chars->setElementXY(He,2,15);
-     monde.chars->setElementXY(Ta,3,4);
-     monde.chars->setElementXY(In,8,8);
-     monde.chars->setElementXY(Ina,9,0);
-     monde.chars->setElementXY(Tan,11,3);
-     monde.chars->setElementXY(Tae,12,7);
-     monde.chars->setElementXY(To,14,15);
-     monde.chars->setElementXY(Tanz,17,2);
-     monde.chars->setElementXY(Hez,18,9);
-     monde.chars->setElementXY(Ta,10,10);
-     monde.chars->setElementXY(Ha,19,0);
+    monde.chars->setElementXY(H, 0, 0);
+    monde.chars->setElementXY(T, 0, 19);
+    monde.chars->setElementXY(I, 1, 2);
+    monde.chars->setElementXY(He, 2, 15);
+    monde.chars->setElementXY(Ta, 3, 4);
+    monde.chars->setElementXY(In, 8, 8);
+    monde.chars->setElementXY(Ina, 9, 0);
+    monde.chars->setElementXY(Tan, 11, 3);
+    monde.chars->setElementXY(Tae, 12, 7);
+    monde.chars->setElementXY(To, 14, 15);
+    monde.chars->setElementXY(Tanz, 17, 2);
+    monde.chars->setElementXY(Hez, 18, 9);
+    monde.chars->setElementXY(Ta, 10, 10);
+    monde.chars->setElementXY(Ha, 19, 0);
 
-     std::vector<int> liste;
-     monde.grid->createElementCsv(liste);
-     
+    std::vector<int> liste;
+    monde.grid->createElementCsv(liste);
 
-     Layer surf(monde);
-     surf.initSurface();
-     while (window.isOpen()) {
 
-         // on gère les évènements
-         sf::Event event;
-         while (window.pollEvent(event)) {
-             if (event.type == sf::Event::Closed)
-                 window.close();
-         }
+    Layer surf(monde);
+    surf.initSurface();
+    while (window.isOpen()) {
 
-         window.clear();
-         window.draw(*(surf.surface));
-         window.draw(*(surf.surfaceplayer));
-         window.display();
+        // on gère les évènements
+        sf::Event event;
+        while (window.pollEvent(event)) {
+            if (event.type == sf::Event::Closed)
+                window.close();
+        }
 
-     }
+        window.clear();
+        window.draw(*(surf.surface));
+        window.draw(*(surf.surfaceplayer));
+        window.display();
+
+    }
 }
 
 void testengine() {
 
-    /* State monde;
-     (monde.grid) = new ElementTab();
-     engine::LoadCommand a("res/map.csv");
-     a.execute(monde);
+    engine::Engine i;
+
+   /* i.addCommand(new engine::LoadCommand("res/map.csv"));
+    i.addCommand(new engine::CreateCharCommand(0, INFANTERIE, 1));
+    i.addCommand(new engine::CreateCharCommand(30, INFANTERIE, 1));
+    i.addCommand(new engine::MoveCharCommand(0, 30));*/
+
+    // i.update();
+
+    /*Layer surf(i.getState());
+    surf.initSurface();
+    surf.initSurface();*/
+
+    State monde = i.getState();
+    /* engine::LoadCommand a("res/map.csv");
+
      (monde.chars) = new ElementChars(9, 11);
 
      Infanterie *I = new Infanterie();
@@ -283,7 +295,8 @@ void testengine() {
      cout << "" << endl;
      if (monde.chars->getElement(30, 1) == NULL)cout << "L'infanterie n'existe plus" << endl;
      //Heli* helitmp =(Heli*)(monde.chars->getElement(10,1));
-     cout << "" << endl;*/
+     cout << "" << endl;
+     */
 }
 
 void testai() {

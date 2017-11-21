@@ -29,8 +29,10 @@ namespace state {
     }
 
     void ElementTab::setElementXY(Element* e, int x, int y) {
-        if (list[x + y * width] == NULL) list[x + y * width] = unique_ptr<Element>(e);
-
+        if (list[x + y * width] == NULL) {
+            list[x + y * width] = unique_ptr<Element>(e);
+            e->setPosition(x, y);
+        }
     }
 
     Element * ElementTab::getElement(int x, int y) const {
@@ -50,7 +52,7 @@ namespace state {
     ElementTab::~ElementTab() {
     }
 
-    void ElementTab::chgList(int i, Element* e) {
+    void ElementTab::chgList(int i, Element * e) {
         if (list[i] == NULL) list[i] = unique_ptr<Element>(e);
     }
 
@@ -69,8 +71,7 @@ namespace state {
         if (getElement(x1, y1) != NULL) {
             if (getElement(x2, y2) == NULL) {
                 list[x2 + y2 * width].swap(list[x1 + y1 * width]);
-
-                list[x2 + y2 * width].get();
+                getElement(x2,y2)->setPosition(x2,y2);
             }
         } else std::cout << "Erreur sur le deplacement !" << std::endl;
     }
@@ -94,7 +95,7 @@ namespace state {
 
         for (int i = 0; i<int(carte.size()); i++) {
 
-            
+
             switch (carte[i]) {
 
                 case EAU:
