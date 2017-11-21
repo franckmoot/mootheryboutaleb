@@ -25,40 +25,40 @@ namespace engine{
     
     void AttaqueCharCommand::execute(state::State& state) {
 
-        if((state.chars->getElement(x1,y1)!=NULL) && (state.chars->getElement(x2,y2)!=NULL) ){
+        if((state.getChars()->getElement(x1,y1)!=NULL) && (state.getChars()->getElement(x2,y2)!=NULL) ){
             
-         if(state.chars->getElement(x1,y1)->getJoueur()!=state.chars->getElement(x2,y2)->getJoueur()){
+         if(state.getChars()->getElement(x1,y1)->getJoueur()!=state.getChars()->getElement(x2,y2)->getJoueur()){
 
           if(state.chars->getElement(x1,y1)->getTypeId()==2){
-            state::Infanterie* eletmp = (state::Infanterie*)(state.chars->getElement(x1,y1));
-                if(state.chars->getElement(x2,y2)->getTypeId()==2){
-                    state::Infanterie* eletmp2 = (state::Infanterie*)(state.chars->getElement(x2,y2));
+            state::Infanterie* eletmp = (state::Infanterie*)(state.getChars()->getElement(x1,y1));
+                if(state.getChars()->getElement(x2,y2)->getTypeId()==2){
+                    state::Infanterie* eletmp2 = (state::Infanterie*)(state.getChars()->getElement(x2,y2));
                     if((int)(sqrt((((x1-x2)*(x1-x2))+((y1-y2)*(y1-y2)))))<eletmp->getPorteeAtq()){
                         eletmp2->setPdv(eletmp2->getPdv()-eletmp->getAttaque());
                         if(eletmp2->getPdv()<=0){
-                           state.chars->killElement(x2,y2);
+                           state.getChars()->killElement(x2,y2);
                             cout<<"notre element d'absice" <<x2<<"et d'ordonnée"<<y2<< "est mort"<<endl;
                         }
                     }
                     else cout<<"ta portée n'est pas suffisante"<<endl;
                 }
-                else if(state.chars->getElement(x2,y2)->getTypeId()==3){
-                    state::Heli* eletmp2 = (state::Heli*)(state.chars->getElement(x2,y2));
+                else if(state.getChars()->getElement(x2,y2)->getTypeId()==3){
+                    state::Heli* eletmp2 = (state::Heli*)(state.getChars()->getElement(x2,y2));
                     if((int)(sqrt((((x1-x2)*(x1-x2))+((y1-y2)*(y1-y2)))))<eletmp->getPorteeAtq()){
                         eletmp2->setPdv(eletmp2->getPdv()-eletmp->getAttaque());
                         if(eletmp2->getPdv()<=0){
-                            state.chars->killElement(x2,y2);
+                            state.getChars()->killElement(x2,y2);
                             cout<<"notre element d'absice" <<x2<<"et d'ordonnée"<<y2<< "est mort"<<endl;
                         }
                     }
                     else cout<<"ta portée n'est pas suffisante"<<endl;
                  }
-                else if(state.chars->getElement(x2,y2)->getTypeId()==4){
-                    state::Tank* eletmp2 = (state::Tank*)(state.chars->getElement(x2,y2));
+                else if(state.getChars()->getElement(x2,y2)->getTypeId()==4){
+                    state::Tank* eletmp2 = (state::Tank*)(state.getChars()->getElement(x2,y2));
                     if((int)(sqrt((((x1-x2)*(x1-x2))+((y1-y2)*(y1-y2)))))<eletmp->getPorteeAtq()){
                         eletmp2->setPdv(eletmp2->getPdv()-eletmp->getAttaque());
                         if(eletmp2->getPdv()<=0){
-                           state.chars->killElement(x2,y2);
+                           state.getChars()->killElement(x2,y2);
                             cout<<"notre element d'absice" <<x2<<"et d'ordonnée"<<y2<< "est mort"<<endl;
                         }
                     }
@@ -66,9 +66,9 @@ namespace engine{
                 }
          }
            else if(state.chars->getElement(x1,y1)->getTypeId()==3){
-              state::Infanterie* eletmp = (state::Infanterie*)(state.chars->getElement(x1,y1));
+              state::Infanterie* eletmp = (state::Infanterie*)(state.getChars()->getElement(x1,y1));
                 if(state.chars->getElement(x2,y2)->getTypeId()==2){
-                    state::Infanterie* eletmp2 = (state::Infanterie*)(state.chars->getElement(x2,y2));
+                    state::Infanterie* eletmp2 = (state::Infanterie*)(state.getChars()->getElement(x2,y2));
                     if((int)(sqrt((((x1-x2)*(x1-x2))+((y1-y2)*(y1-y2)))))<eletmp->getPorteeAtq()){
                         eletmp2->setPdv(eletmp2->getPdv()-eletmp->getAttaque());
                         if(eletmp2->getPdv()<=0){
@@ -79,11 +79,11 @@ namespace engine{
                      else cout<<"ta portée n'est pas suffisante"<<endl;
                 }    
                 else if(state.chars->getElement(x2,y2)->getTypeId()==3){
-                    state::Heli* eletmp2 = (state::Heli*)(state.chars->getElement(x2,y2));
+                    state::Heli* eletmp2 = (state::Heli*)(state.getChars()->getElement(x2,y2));
                     if((int)(sqrt((((x1-x2)*(x1-x2))+((y1-y2)*(y1-y2)))))<eletmp->getPorteeAtq()){
                         eletmp2->setPdv(eletmp2->getPdv()-eletmp->getAttaque());
                         if(eletmp2->getPdv()<=0){
-                            state.chars->killElement(x2,y2);
+                            state.getChars().chars->killElement(x2,y2);
                             cout<<"notre element d'absice" <<x2<<"et d'ordonnée"<<y2<< "est mort"<<endl;
                         }
                     }
@@ -91,11 +91,11 @@ namespace engine{
                 } 
 
                 else if(state.chars->getElement(x2,y2)->getTypeId()==4){
-                    state::Tank* eletmp2 = (state::Tank*)(state.chars->getElement(x2,y2));
+                    state::Tank* eletmp2 = (state::Tank*)(state.getChars()->getElement(x2,y2));
                     if((int)(sqrt((((x1-x2)*(x1-x2))+((y1-y2)*(y1-y2)))))<eletmp->getPorteeAtq()){
                         eletmp2->setPdv(eletmp2->getPdv()-eletmp->getAttaque());
                         if(eletmp2->getPdv()<=0){
-                           state.chars->killElement(x2,y2);
+                           state.getChars()->killElement(x2,y2);
                             cout<<"notre element d'absice" <<x2<<"et d'ordonnée"<<y2<< "est mort"<<endl;
                         }
                     }
@@ -103,9 +103,9 @@ namespace engine{
                 }
             }
             else if(state.chars->getElement(x1,y1)->getTypeId()==4){
-               state::Infanterie* eletmp = (state::Infanterie*)(state.chars->getElement(x1,y1));
-                if(state.chars->getElement(x2,y2)->getTypeId()==2){
-                    state::Infanterie* eletmp2 = (state::Infanterie*)(state.chars->getElement(x2,y2));
+               state::Infanterie* eletmp = (state::Infanterie*)(state.getChars()->getElement(x1,y1));
+                if(state.getChars()->getElement(x2,y2)->getTypeId()==2){
+                    state::Infanterie* eletmp2 = (state::Infanterie*)(state.getChars()->getElement(x2,y2));
                     if((int)(sqrt((((x1-x2)*(x1-x2))+((y1-y2)*(y1-y2)))))<eletmp->getPorteeAtq()){
                         eletmp2->setPdv(eletmp2->getPdv()-eletmp->getAttaque());
                         if(eletmp2->getPdv()<=0){
@@ -115,7 +115,7 @@ namespace engine{
                     }
                      else cout<<"ta portée n'est pas suffisante"<<endl;
                 } 
-                else if(state.chars->getElement(x2,y2)->getTypeId()==3){
+                else if(state.getChars()->getElement(x2,y2)->getTypeId()==3){
                     state::Heli* eletmp2 = (state::Heli*)(state.chars->getElement(x2,y2));
                     if((int)(sqrt((((x1-x2)*(x1-x2))+((y1-y2)*(y1-y2)))))<eletmp->getPorteeAtq()){
                         eletmp2->setPdv(eletmp2->getPdv()-eletmp->getAttaque());
@@ -126,7 +126,7 @@ namespace engine{
                     }
                      else cout<<"ta portée n'est pas suffisante"<<endl;
                 } 
-                else if(state.chars->getElement(x2,y2)->getTypeId()==4){
+                else if(state.getChars()->getElement(x2,y2)->getTypeId()==4){
                     state::Tank* eletmp2 = (state::Tank*)(state.chars->getElement(x2,y2));
                     if((int)(sqrt((((x1-x2)*(x1-x2))+((y1-y2)*(y1-y2)))))<eletmp->getPorteeAtq()){
                         eletmp2->setPdv(eletmp2->getPdv()-eletmp->getAttaque());
