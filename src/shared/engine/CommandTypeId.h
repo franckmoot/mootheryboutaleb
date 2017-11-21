@@ -10,7 +10,8 @@ namespace engine {
     MOVE     = 2,
     ATTAQUE     = 3,
     CAPTUR     = 4,
-    CREATE     = 5
+    CREATE     = 5,
+    EARNMONEY     = 6
   };
 
 };

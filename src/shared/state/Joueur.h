@@ -2,8 +2,6 @@
 #ifndef STATE__JOUEUR__H
 #define STATE__JOUEUR__H
 
-#include <vector>
-#include <memory>
 
 namespace state {
   class Element;
@@ -17,16 +15,15 @@ namespace state {
   class Joueur {
     // Associations
     // Attributes
-  protected:
-    std::vector<std::unique_ptr<Element> > listelemnt;
+  private:
+    int money;
     // Operations
   public:
-    void setElement (Element* e);
-    Element* const getElement (int i);
     Joueur ();
+    int getMoney ( );
+    void setMoney (int money);
+    void addMoney (int money);
     // Setters and Getters
-    const std::vector<std::unique_ptr<Element> >& getListelemnt() const;
-    void setListelemnt(const std::vector<std::unique_ptr<Element> >& listelemnt);
   };
 
 };
