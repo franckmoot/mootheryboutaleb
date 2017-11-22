@@ -34,39 +34,44 @@ namespace ai {
         
         for (int j = 0; j < int(engine.currentState.getChars()->getHeight());j++){
             for (int i = 0; i < int(engine.currentState.getChars()->getWidth()); i++) {
-                cout<<"probleme"<<endl;
+                
                 if (engine.currentState.getChars()->getElement(i, j) != NULL) {
 
                     if (engine.currentState.getChars()->getElement(i, j)->getTypeId() == 2 && engine.currentState.getChars()->getElement(i, j)->getJoueur() == joueur) {
                         std::vector<std::unique_ptr<engine::Command> > l0;
                         InfanterieCommands(engine.currentState, i, l0,j);
                         h = (int) (mt_rand() % l0.size());
-                        engine.addCommand(l0[h].get());
+                        cout<<"probleme"<<endl;
+                        l0[h]->execute(engine.currentState);
+                        //engine.addCommand(l0[h].get());
                                 
                     }   
                     else if (engine.currentState.getChars()->getElement(i, j)->getTypeId() == 3 && engine.currentState.getChars()->getElement(i, j)->getJoueur() == joueur) {
                     std::vector<std::unique_ptr<engine::Command> > l2;
                     HeliCommands(engine.currentState, i, l2,j);
                     h = (int) (mt_rand() % l2.size());
-                    engine.addCommand(l2[h].get());
+                    l2[h]->execute(engine.currentState);
+                    //engine.addCommand(l2[h].get());
                 }
                     else if (engine.currentState.getChars()->getElement(i, j)->getTypeId() == 4 && engine.currentState.getChars()->getElement(i, j)->getJoueur() == joueur) {
                     std::vector<std::unique_ptr<engine::Command> > l3;
                     TankCommands(engine.currentState, i, l3,j);
                     h = (int) (mt_rand() % l3.size());
-                    engine.addCommand(l3[h].get());
+                    l3[h]->execute(engine.currentState);
+                    //engine.addCommand(l3[h].get());
 
                 }
             }
 
         }
         }
-        /*if (joueur == 1) {
+        if (joueur == 1) {
             if (engine.currentState.getChars()->getElement(2,1) == NULL && engine.currentState.getChars()->getElement(2, 6) == NULL) {
                 std::vector<std::unique_ptr<engine::Command> > l4;
                 BatimentCommands(engine.currentState, 1, l4);
                 h = (int) (mt_rand() % l4.size());
-                engine.addCommand(l4[h].get());
+                l4[h]->execute(engine.currentState);
+                //engine.addCommand(l4[h].get());
             }
         }
         if (joueur == 2) {
@@ -74,10 +79,11 @@ namespace ai {
                 std::vector<std::unique_ptr<engine::Command> > l5;
                 BatimentCommands(engine.currentState, joueur, l5);
                 h = (int) (mt_rand() % l5.size());
-                engine.addCommand(l5[h].get());
+                l5[h]->execute(engine.currentState);
+               // engine.addCommand(l5[h].get());
             }
-        }*/
-        engine.update();
+        }
+       // engine.update();
     }
 }
 

@@ -300,8 +300,11 @@ void testai() {
         int joueur1=1;
         int joueur2=2;
         
-        engine.addCommand(new engine::CreateCharCommand(INFANTERIE, 2,1,1));
-    engine.addCommand(new engine::CreateCharCommand(INFANTERIE, 18,14,2));
+
+     engine.addCommand(new engine::CreateCharCommand(HELI, 17,14,2));
+     engine.addCommand(new engine::CreateCharCommand(TANK, 1,2,2));
+     
+    
     engine.update();
     
         Layer surf(engine.currentState);
