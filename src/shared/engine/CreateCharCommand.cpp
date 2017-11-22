@@ -25,37 +25,51 @@ namespace engine {
 
         if ((state.grid->getElement(x, y)->getTypeId() == 1)&& (state.chars->getElement(x, y) == NULL)&& (joueur == 1)) {
             if (elementId == state::INFANTERIE) {
-                Infanterie *infanterietmp = new Infanterie();
-                infanterietmp->setJoueur(1);
-                state.chars->setElementXY(infanterietmp, x, y);
-
+                if(state.joueur1->getMoney()>800){
+                    Infanterie *infanterietmp = new Infanterie();
+                    infanterietmp->setJoueur(1);
+                    state.chars->setElementXY(infanterietmp, x, y);
+                    state.joueur1->setMoney(state.joueur2->getMoney()-800);
+                }
             } else if (elementId == state::HELI) {
-                Heli *H = new Heli();
-                H->setJoueur(1);
-                state.chars->setElementXY(H, x, y);
-
+                if(state.joueur1->getMoney()>1000){
+                    Heli *H = new Heli();
+                    H->setJoueur(1);
+                    state.chars->setElementXY(H, x, y);
+                    state.joueur1->setMoney(state.joueur2->getMoney()-1000);
+                }
             } else if (elementId == state::TANK) {
-                Tank *T = new Tank();
-                T->setJoueur(1);
-                state.chars->setElementXY(T, x, y);
+                if(state.joueur1->getMoney()>900){
+                    Tank *T = new Tank();
+                    T->setJoueur(1);
+                     state.chars->setElementXY(T, x, y);
+                     state.joueur1->setMoney(state.joueur2->getMoney()-900);
+                }
             }
 
         }
         if ((state.grid->getElement(x, y)->getTypeId() == 1)&& (state.chars->getElement(x, y) == NULL)&& (joueur == 2)) {
             if (elementId == state::INFANTERIE) {
-                Infanterie *infanterietmp = new Infanterie();
-                infanterietmp->setJoueur(2);
-                state.chars->setElementXY(infanterietmp, x, y);
-
+                if(state.joueur2->getMoney()>800){
+                    Infanterie *infanterietmp = new Infanterie();
+                    infanterietmp->setJoueur(2);
+                    state.chars->setElementXY(infanterietmp, x, y);
+                    state.joueur2->setMoney(state.joueur2->getMoney()-800);
+                } 
             } else if (elementId == state::HELI) {
-                Heli *H = new Heli();
-                H->setJoueur(2);
-                state.chars->setElementXY(H, x, y);
-
+                if(state.joueur2->getMoney()>1000){
+                    Heli *H = new Heli();
+                    H->setJoueur(2);
+                    state.chars->setElementXY(H, x, y);
+                    state.joueur2->setMoney(state.joueur2->getMoney()-1000);
+                }
             } else if (elementId == state::TANK) {
-                Tank *T = new Tank();
-                T->setJoueur(2);
-                state.chars->setElementXY(T, x, y);
+                if(state.joueur2->getMoney()>900){
+                    Tank *T = new Tank();
+                    T->setJoueur(2);
+                    state.chars->setElementXY(T, x, y);
+                    state.joueur2->setMoney(state.joueur2->getMoney()-900);
+                }
             }
 
 

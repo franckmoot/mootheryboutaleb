@@ -300,9 +300,9 @@ void testai() {
         int joueur1=1;
         int joueur2=2;
         
-
-     engine.addCommand(new engine::CreateCharCommand(HELI, 17,14,2));
-     engine.addCommand(new engine::CreateCharCommand(TANK, 1,2,2));
+        engine.currentState.joueur1=new Joueur();
+        engine.currentState.joueur2=new Joueur();
+       
      
     
     engine.update();

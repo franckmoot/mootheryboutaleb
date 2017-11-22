@@ -22,7 +22,7 @@ namespace engine {
     }
 
     void AttaqueCharCommand::execute(state::State& state) {
-
+      
         if ((state.getChars()->getElement(x1, y1) != NULL) && (state.getChars()->getElement(x2, y2) != NULL)) {
 
             if (state.getChars()->getElement(x1, y1)->getJoueur() != state.getChars()->getElement(x2, y2)->getJoueur()) {

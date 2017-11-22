@@ -17,9 +17,12 @@ namespace engine {
 
   /// class EarnMoney - 
   class EarnMoney : public engine::Command {
+    // Attributes
+  public:
+    int joueur;
     // Operations
   public:
-    EarnMoney ();
+    EarnMoney (int joueur);
     void execute (state::State& state);
     CommandTypeId getTypeId () const;
     // Setters and Getters
