@@ -30,9 +30,11 @@ namespace ai {
         std::vector<std::unique_ptr < engine::Command>>list;
         mt19937 mt_rand(time(0));
         int h;
-        /*
+        
+        
         for (int j = 0; j < int(engine.currentState.getChars()->getHeight());j++){
             for (int i = 0; i < int(engine.currentState.getChars()->getWidth()); i++) {
+                cout<<"probleme"<<endl;
                 if (engine.currentState.getChars()->getElement(i, j) != NULL) {
 
                     if (engine.currentState.getChars()->getElement(i, j)->getTypeId() == 2 && engine.currentState.getChars()->getElement(i, j)->getJoueur() == joueur) {
@@ -57,10 +59,9 @@ namespace ai {
                 }
             }
 
-
         }
-        }*/
-        if (joueur == 1) {
+        }
+        /*if (joueur == 1) {
             if (engine.currentState.getChars()->getElement(2,1) == NULL && engine.currentState.getChars()->getElement(2, 6) == NULL) {
                 std::vector<std::unique_ptr<engine::Command> > l4;
                 BatimentCommands(engine.currentState, 1, l4);
@@ -75,7 +76,7 @@ namespace ai {
                 h = (int) (mt_rand() % l5.size());
                 engine.addCommand(l5[h].get());
             }
-        }
+        }*/
         engine.update();
     }
 }
