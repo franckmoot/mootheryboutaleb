@@ -5,13 +5,13 @@
 
 #include "AI.h"
 #include "state/State.h"
-#include "state/State.h"
 #include "state/Element.h"
 #include "state/MobileElement.h"
 #include "state/Infanterie.h"
 #include "state/Tank.h"
 #include "state/Heli.h"
-
+#include "state/Batiment.h"
+#include "state/TypeId.h"
 
 using namespace std;
 using namespace state;
@@ -65,22 +65,36 @@ namespace ai {
 
 
 
-    void AI::BatimentCommands(const state::State& state, int joueur, std::vector<std::unique_ptr<engine::Command> >& list4) {
+    void AI::BatimentCommands(state::State& state, int joueur, std::vector<std::unique_ptr<engine::Command> >& list4) {
       
         
         if (joueur == 1) {
-           list4.push_back(unique_ptr<Command>(new CreateCharCommand(state::TypeId::HELI,2,1, 1)));
-            list4.push_back(unique_ptr<Command>(new CreateCharCommand(state::TypeId::INFANTERIE,2,1, 1)));
-            list4.push_back(unique_ptr<Command>(new CreateCharCommand(state::TypeId::TANK,2,1, 1)));
-
-        }
+            for (int j = 0; j < int(state.getGrid()->getHeight());j++){
+            for (int i = 0; i < int(state.getGrid()->getWidth()); i++) {
+                if(state.getGrid()->getElement(i,j)->getTypeId()==1){
+                    state::Batiment* eletmp2 = (state::Batiment*)(state.getGrid()->getElement(i, j));
+                    if ((eletmp2->getBatimentTypeId()==QGROUGE)||(eletmp2->getBatimentTypeId()==CASERNEROUGE)||(eletmp2->getBatimentTypeId()==APPARTROUGE)){
+                        list4.push_back(unique_ptr<Command>(new CreateCharCommand(state::TypeId::HELI,i,j, joueur)));
+                        list4.push_back(unique_ptr<Command>(new CreateCharCommand(state::TypeId::INFANTERIE,i,j, joueur)));
+                        list4.push_back(unique_ptr<Command>(new CreateCharCommand(state::TypeId::TANK,i,j, joueur)));
+                    }    
+                }
+            }
+            }
+        }    
         if (joueur == 2) {
-            list4.push_back(unique_ptr<Command>(new CreateCharCommand(state::TypeId::HELI,17,14, 2)));
-            list4.push_back(unique_ptr<Command>(new CreateCharCommand(state::TypeId::INFANTERIE,17,14, 2)));
-            list4.push_back(unique_ptr<Command>(new CreateCharCommand(state::TypeId::TANK,17,14, 2)));
-
+            for (int j = 0; j < int(state.getGrid()->getHeight());j++){
+            for (int i = 0; i < int(state.getGrid()->getWidth()); i++) {
+                if(state.getGrid()->getElement(i,j)->getTypeId()==1){
+                    state::Batiment* eletmp2 = (state::Batiment*)(state.getGrid()->getElement(i, j));
+                    if ((eletmp2->getBatimentTypeId()==QGBLEU)||(eletmp2->getBatimentTypeId()==CASERNEBLEU)||(eletmp2->getBatimentTypeId()==APPARTBLEU)){
+                        list4.push_back(unique_ptr<Command>(new CreateCharCommand(state::TypeId::HELI,i,j, joueur)));
+                        list4.push_back(unique_ptr<Command>(new CreateCharCommand(state::TypeId::INFANTERIE,i,j, joueur)));
+                        list4.push_back(unique_ptr<Command>(new CreateCharCommand(state::TypeId::TANK,i,j, joueur)));
+                    }    
+                }
+            }
+            }
         }
-
-
     }
-}
+}    

@@ -27,23 +27,23 @@ namespace engine {
             if (elementId == state::INFANTERIE) {
                 if(state.joueur1->getMoney()>800){
                     Infanterie *infanterietmp = new Infanterie();
-                    infanterietmp->setJoueur(1);
+                    infanterietmp->setJoueur(joueur);
                     state.chars->setElementXY(infanterietmp, x, y);
-                    state.joueur1->setMoney(state.joueur2->getMoney()-800);
+                    state.joueur1->setMoney(state.joueur1->getMoney()-800);
                 }
             } else if (elementId == state::HELI) {
                 if(state.joueur1->getMoney()>1000){
                     Heli *H = new Heli();
-                    H->setJoueur(1);
+                    H->setJoueur(joueur);
                     state.chars->setElementXY(H, x, y);
-                    state.joueur1->setMoney(state.joueur2->getMoney()-1000);
+                    state.joueur1->setMoney(state.joueur1->getMoney()-1000);
                 }
             } else if (elementId == state::TANK) {
                 if(state.joueur1->getMoney()>900){
                     Tank *T = new Tank();
-                    T->setJoueur(1);
+                    T->setJoueur(joueur);
                      state.chars->setElementXY(T, x, y);
-                     state.joueur1->setMoney(state.joueur2->getMoney()-900);
+                     state.joueur1->setMoney(state.joueur1->getMoney()-900);
                 }
             }
 
@@ -52,21 +52,21 @@ namespace engine {
             if (elementId == state::INFANTERIE) {
                 if(state.joueur2->getMoney()>800){
                     Infanterie *infanterietmp = new Infanterie();
-                    infanterietmp->setJoueur(2);
+                    infanterietmp->setJoueur(joueur);
                     state.chars->setElementXY(infanterietmp, x, y);
                     state.joueur2->setMoney(state.joueur2->getMoney()-800);
                 } 
             } else if (elementId == state::HELI) {
                 if(state.joueur2->getMoney()>1000){
                     Heli *H = new Heli();
-                    H->setJoueur(2);
+                    H->setJoueur(joueur);
                     state.chars->setElementXY(H, x, y);
                     state.joueur2->setMoney(state.joueur2->getMoney()-1000);
                 }
             } else if (elementId == state::TANK) {
                 if(state.joueur2->getMoney()>900){
                     Tank *T = new Tank();
-                    T->setJoueur(2);
+                    T->setJoueur(joueur);
                     state.chars->setElementXY(T, x, y);
                     state.joueur2->setMoney(state.joueur2->getMoney()-900);
                 }

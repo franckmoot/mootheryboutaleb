@@ -1,4 +1,4 @@
-
+#include "state/BatimentTypeId.h"
 #include <string>
 #include <iostream>
 #include "state/Batiment.h"
@@ -27,15 +27,14 @@ namespace engine {
     
     void EarnMoney::execute(state::State& state){
         
-        int batimentgains=300;
+        int batimentgains=20;
         if(joueur==1){
           int r=0;
           for (int j = 0; j < int(state.getGrid()->getHeight());j++){
             for (int i = 0; i < int(state.getGrid()->getWidth()); i++) {
-                int r=0;
                 if(state.getGrid()->getElement(i,j)->getTypeId()==1){
                     state::Batiment* eletmp2 = (state::Batiment*)(state.getGrid()->getElement(i, j));
-                    if ((eletmp2->getTypeId()==0)||(eletmp2->getTypeId()==1)||(eletmp2->getTypeId()==2))r=r+1;
+                     if ((eletmp2->getBatimentTypeId()==QGROUGE)||(eletmp2->getBatimentTypeId()==CASERNEROUGE)||(eletmp2->getBatimentTypeId()==APPARTROUGE))r=r+1;
                 }
             }
           }
@@ -47,7 +46,7 @@ namespace engine {
             for (int i = 0; i < int(state.getGrid()->getWidth()); i++) {
                 if(state.getGrid()->getElement(i,j)->getTypeId()==1){
                     state::Batiment* eletmp2 = (state::Batiment*)(state.getGrid()->getElement(i, j));
-                    if ((eletmp2->getTypeId()==3)||(eletmp2->getTypeId()==4)||(eletmp2->getTypeId()==5))r=r+1;
+                     if ((eletmp2->getBatimentTypeId()==QGBLEU)||(eletmp2->getBatimentTypeId()==CASERNEBLEU)||(eletmp2->getBatimentTypeId()==APPARTBLEU))r=r+1;
                 }
             }
           }

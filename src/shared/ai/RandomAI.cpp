@@ -12,6 +12,7 @@
 #include "state/Tank.h"
 #include "state/Heli.h"
 #include "engine/Engine.h"
+#include "engine/EarnMoney.h"
 #include <random>
 #include <iostream>
 
@@ -66,22 +67,23 @@ namespace ai {
         }
         }
         if (joueur == 1) {
-            if (engine.currentState.getChars()->getElement(2,1) == NULL && engine.currentState.getChars()->getElement(2, 6) == NULL) {
+            EarnMoney *E=new EarnMoney(joueur);
+            E->execute(engine.currentState);
                 std::vector<std::unique_ptr<engine::Command> > l4;
                 BatimentCommands(engine.currentState, 1, l4);
                 h = (int) (mt_rand() % l4.size());
                 l4[h]->execute(engine.currentState);
                 //engine.addCommand(l4[h].get());
             }
-        }
         if (joueur == 2) {
-            if (engine.currentState.getChars()->getElement(17, 14) == NULL && engine.currentState.getChars()->getElement(18,14 ) == NULL) {
-                std::vector<std::unique_ptr<engine::Command> > l5;
-                BatimentCommands(engine.currentState, joueur, l5);
-                h = (int) (mt_rand() % l5.size());
-                l5[h]->execute(engine.currentState);
+             EarnMoney *E=new EarnMoney(joueur);
+             E->execute(engine.currentState);
+             std::vector<std::unique_ptr<engine::Command> > l4;
+             BatimentCommands(engine.currentState, joueur, l4);
+             h = (int) (mt_rand() % l4.size());
+             l4[h]->execute(engine.currentState);
                // engine.addCommand(l5[h].get());
-            }
+            
         }
        // engine.update();
     }
