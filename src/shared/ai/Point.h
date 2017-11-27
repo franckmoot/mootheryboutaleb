@@ -21,7 +21,7 @@ namespace ai {
     // Operations
   public:
     Point (int x = 0, int y = 0, int w = 0);
-    Point transform (state::Direction d);
+    Point transform (Direction d);
     // Setters and Getters
     int getX() const;
     void setX(int x);
