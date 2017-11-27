@@ -2,7 +2,7 @@
 #include "engine/AttaqueCharCommand.h"
 #include "engine/MoveCharCommand.h"
 #include "engine/CreateCharCommand.h"
-
+#include "engine/CapturCharCommand.h"
 #include "AI.h"
 #include "state/State.h"
 #include "state/Element.h"
@@ -27,7 +27,7 @@ namespace ai {
                 if ((x2 >= 0)&&(y2 >= 0)&&(x2<int(state.grid->getWidth()))&&(y2<int(state.grid->getHeight()))) {
                     list0.push_back(unique_ptr<Command>(new MoveCharCommand(x, y, x2, y2)));
                     list0.push_back(unique_ptr<Command>(new AttaqueCharCommand(x, y, x2, y2)));
-                    list0.push_back(unique_ptr<Command>(new CapturCharCommand(x, y)));
+                   // list0.push_back(unique_ptr<Command>(new CapturCharCommand(x, y)));
                 }
             }
         }
