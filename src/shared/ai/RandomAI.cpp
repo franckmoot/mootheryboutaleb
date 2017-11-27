@@ -16,7 +16,7 @@
 #include <random>
 #include <iostream>
 
-  
+
 
 using namespace std;
 using namespace state;
@@ -27,65 +27,64 @@ namespace ai {
 
     }
 
-   void RandomAI::run( int joueur, engine::Engine& engine) {
+    void RandomAI::run(int joueur, engine::Engine& engine) {
         std::vector<std::unique_ptr < engine::Command>>list;
         mt19937 mt_rand(time(0));
         int h;
-        
-        
-        for (int j = 0; j < int(engine.currentState.getChars()->getHeight());j++){
+
+
+        for (int j = 0; j < int(engine.currentState.getChars()->getHeight()); j++) {
             for (int i = 0; i < int(engine.currentState.getChars()->getWidth()); i++) {
-                
+
                 if (engine.currentState.getChars()->getElement(i, j) != NULL) {
 
                     if (engine.currentState.getChars()->getElement(i, j)->getTypeId() == 2 && engine.currentState.getChars()->getElement(i, j)->getJoueur() == joueur) {
                         std::vector<std::unique_ptr<engine::Command> > l0;
-                        InfanterieCommands(engine.currentState, i, l0,j);
+                        InfanterieCommands(engine.currentState, i, l0, j);
                         h = (int) (mt_rand() % l0.size());
-                        cout<<"probleme"<<endl;
+                        cout << "probleme" << endl;
                         l0[h]->execute(engine.currentState);
                         //engine.addCommand(l0[h].get());
-                                
-                    }   
+
+                    }
                     else if (engine.currentState.getChars()->getElement(i, j)->getTypeId() == 3 && engine.currentState.getChars()->getElement(i, j)->getJoueur() == joueur) {
-                    std::vector<std::unique_ptr<engine::Command> > l2;
-                    HeliCommands(engine.currentState, i, l2,j);
-                    h = (int) (mt_rand() % l2.size());
-                    l2[h]->execute(engine.currentState);
-                    //engine.addCommand(l2[h].get());
-                }
-                    else if (engine.currentState.getChars()->getElement(i, j)->getTypeId() == 4 && engine.currentState.getChars()->getElement(i, j)->getJoueur() == joueur) {
-                    std::vector<std::unique_ptr<engine::Command> > l3;
-                    TankCommands(engine.currentState, i, l3,j);
-                    h = (int) (mt_rand() % l3.size());
-                    l3[h]->execute(engine.currentState);
-                    //engine.addCommand(l3[h].get());
+                        std::vector<std::unique_ptr<engine::Command> > l2;
+                        HeliCommands(engine.currentState, i, l2, j);
+                        h = (int) (mt_rand() % l2.size());
+                        l2[h]->execute(engine.currentState);
+                        //engine.addCommand(l2[h].get());
+                    } else if (engine.currentState.getChars()->getElement(i, j)->getTypeId() == 4 && engine.currentState.getChars()->getElement(i, j)->getJoueur() == joueur) {
+                        std::vector<std::unique_ptr<engine::Command> > l3;
+                        TankCommands(engine.currentState, i, l3, j);
+                        h = (int) (mt_rand() % l3.size());
+                        l3[h]->execute(engine.currentState);
+                        //engine.addCommand(l3[h].get());
 
+                    }
                 }
+
             }
-
-        }
         }
         if (joueur == 1) {
-            EarnMoney *E=new EarnMoney(joueur);
+            EarnMoney *E = new EarnMoney(joueur);
             E->execute(engine.currentState);
-                std::vector<std::unique_ptr<engine::Command> > l4;
-                BatimentCommands(engine.currentState, 1, l4);
-                h = (int) (mt_rand() % l4.size());
-                l4[h]->execute(engine.currentState);
-                //engine.addCommand(l4[h].get());
-            }
-        if (joueur == 2) {
-             EarnMoney *E=new EarnMoney(joueur);
-             E->execute(engine.currentState);
-             std::vector<std::unique_ptr<engine::Command> > l4;
-             BatimentCommands(engine.currentState, joueur, l4);
-             h = (int) (mt_rand() % l4.size());
-             l4[h]->execute(engine.currentState);
-               // engine.addCommand(l5[h].get());
-            
+            std::vector<std::unique_ptr<engine::Command> > l4;
+            BatimentCommands(engine.currentState, 1, l4);
+            h = (int) (mt_rand() % l4.size());
+            l4[h]->execute(engine.currentState);
+            //engine.addCommand(l4[h].get());
         }
-       // engine.update();
+        if (joueur == 2) {
+            EarnMoney *E = new EarnMoney(joueur);
+            E->execute(engine.currentState);
+            std::vector<std::unique_ptr<engine::Command> > l4;
+            BatimentCommands(engine.currentState, joueur, l4);
+            h = (int) (mt_rand() % l4.size());
+            l4[h]->execute(engine.currentState);
+            // engine.addCommand(l5[h].get());
+
+        }
+        // engine.update();
     }
 }
 
