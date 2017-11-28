@@ -25,8 +25,7 @@ using namespace engine;
 namespace ai {
 
     bool PointCompareWeight::operator()(const Point& a, const Point& b) {
-        if (a.getWeight() < b.getWeight())return true;
-        return false;
+        return a.getWeight() < b.getWeight();
     }
 
 }
