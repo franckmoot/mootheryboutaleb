@@ -161,42 +161,22 @@ void testrender() {
     std::vector<int> liste;
     monde.grid->createElementCsv(liste);
 
-
+    /*
     ai::Pathmap path;
-
-
     path.init(*monde.grid);
-
-    for (int j = 0; j < 20; j++) {
-        for (int i = 0; i < 20; i++) {
-
-            if (path.weights[i + j * 20] == 10000) {
-                cout << "x\t" ;
-            } else {
-                cout << path.weights[i + j * 20]<<"\t";
-            }
-        }
-        cout << " " << endl;
-    }
-
     Point p1(1, 2, 0);
     Point p2(2, 15, 0);
-
-
     path.addSink(p1);
     path.addSink(p2);
-
     path.update(*monde.grid);
-
     path.weights;
-
     for (int j = 0; j < 20; j++) {
         for (int i = 0; i < 20; i++) {
 
             cout << path.weights[i + j * 20] << "\t";
         }
         cout << " " << endl;
-    }
+    }*/
 
     Layer surf(monde);
     surf.initSurface();

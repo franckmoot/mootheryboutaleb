@@ -52,14 +52,21 @@ namespace ai {
         directions.push_back(GAUCHE);
         directions.push_back(DROITE);
 
+
+
+
+
         for (int j = 0; j < 20; j++) {
             for (int i = 0; i < 20; i++) {
 
                 if (grid.getElement(i, j)->getTypeId() == 0) {
                     state::Champdebataille * eletmp = (state::Champdebataille*)(grid.getElement(i, j));
-                    if (eletmp->getChampdeBatailleType() == state::EAU)
+                    if (eletmp->getChampdeBatailleType() == state::EAU) {
                         //weights[i + 20 * j] = -1;
                         weights.push_back(-1);
+                    } else {
+                        weights.push_back(infini);
+                    }
 
                 } else {
                     //weights[i + 20 * j] = infini;
