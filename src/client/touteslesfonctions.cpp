@@ -145,7 +145,7 @@ void testrender() {
 
 
 
-    /*monde.chars->setElementXY(In, 8, 8);
+   *monde.chars->setElementXY(In, 8, 8);
     monde.chars->setElementXY(Ina, 9, 0);
     monde.chars->setElementXY(Tan, 11, 3);
     monde.chars->setElementXY(Tae, 12, 7);
@@ -153,7 +153,7 @@ void testrender() {
     monde.chars->setElementXY(Tanz, 17, 2);
     monde.chars->setElementXY(Hez, 18, 9);
     monde.chars->setElementXY(Ta, 10, 10);
-    monde.chars->setElementXY(Ha, 19, 0);*/
+    monde.chars->setElementXY(Ha, 19, 0);
 
     monde.chars->setElementXY(I, 1, 2);
     monde.chars->setElementXY(He, 2, 15);
