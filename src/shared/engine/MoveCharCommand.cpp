@@ -48,7 +48,6 @@ namespace engine {
                         } else cout << "c est impossible pour un Tank de partir plus loin" << endl;
                     }
                 } else if (state.grid->getElement(x2, y2)->getTypeId() == 1) {
-                    cout << "yes" << endl;
                     if ((int) (sqrt((((x1 - x2)*(x1 - x2))+((y1 - y2)*(y1 - y2))))) < eletmp->getPorteeMvt()) {
                         state.chars->chgPosition(x1, y1, x2, y2);
                     }

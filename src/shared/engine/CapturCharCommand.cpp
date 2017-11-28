@@ -32,13 +32,30 @@ namespace engine {
                         cout << "Batiment a été capturé" << endl;
                         state::BatimentTypeId typebatiment = eletmp2->getBatimentTypeId();
                         state.grid->killElement(x, y);
-                        if(typebatiment==state::QGBLEU) state.grid->setElementXY(new state::Batiment(QGROUGE), x, y);
-                        else if(typebatiment==state::QGROUGE) state.grid->setElementXY(new state::Batiment(QGBLEU), x, y);
-                        else if(typebatiment==state::CASERNEBLEU) state.grid->setElementXY(new state::Batiment(CASERNEROUGE), x, y);
-                        else if(typebatiment==state::CASERNEROUGE) state.grid->setElementXY(new state::Batiment(CASERNEBLEU), x, y);
-                        else if(typebatiment==state::APPARTBLEU) state.grid->setElementXY(new state::Batiment(APPARTROUGE), x, y);
-                        else if(typebatiment==state::APPARTROUGE) state.grid->setElementXY(new state::Batiment(APPARTBLEU), x, y);
-                        
+                        if(typebatiment==state::QGBLEU) {
+                            state.grid->setElementXY(new state::Batiment(QGROUGE), x, y);
+                            state.grid->getElement(x,y)->setJoueur(1);
+                        }
+                        else if(typebatiment==state::QGROUGE) {
+                            state.grid->setElementXY(new state::Batiment(QGBLEU), x, y);
+                            state.grid->getElement(x,y)->setJoueur(2);
+                        }
+                        else if(typebatiment==state::CASERNEBLEU){
+                            state.grid->setElementXY(new state::Batiment(CASERNEROUGE), x, y);
+                            state.grid->getElement(x,y)->setJoueur(2);
+                        }
+                        else if(typebatiment==state::CASERNEROUGE){
+                            state.grid->setElementXY(new state::Batiment(CASERNEBLEU), x, y);
+                            state.grid->getElement(x,y)->setJoueur(2);
+                        }
+                        else if(typebatiment==state::APPARTBLEU){
+                            state.grid->setElementXY(new state::Batiment(APPARTROUGE), x, y);
+                            state.grid->getElement(x,y)->setJoueur(1);
+                        }
+                        else if(typebatiment==state::APPARTROUGE){
+                            state.grid->setElementXY(new state::Batiment(APPARTBLEU), x, y);
+                            state.grid->getElement(x,y)->setJoueur(2);
+                        }
                     }
                 }
             }
