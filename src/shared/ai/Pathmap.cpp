@@ -58,10 +58,12 @@ namespace ai {
                 if (grid.getElement(i, j)->getTypeId() == 0) {
                     state::Champdebataille * eletmp = (state::Champdebataille*)(grid.getElement(i, j));
                     if (eletmp->getChampdeBatailleType() == state::EAU)
-                        weights[i + 20 * j] = -1;
+                        //weights[i + 20 * j] = -1;
+                        weights.push_back(-1);
 
                 } else {
-                    weights[i + 20 * j] = infini;
+                    //weights[i + 20 * j] = infini;
+                    weights.push_back(infini);
                 }
 
             }

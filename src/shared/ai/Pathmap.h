@@ -24,12 +24,12 @@ namespace ai {
   class Pathmap {
     // Attributes
   public:
+    std::vector<int> weights;
     std::priority_queue<Point, std::vector<Point>,PointCompareWeight> queue;
     std::vector<Direction>  directions;
   private:
     int width     = 0;
     int height     = 0;
-    std::vector<int> weights;
     // Operations
   public:
     void init (const state::ElementTab& grid);

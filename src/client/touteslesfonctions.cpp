@@ -3,6 +3,10 @@
 #include "render/Layer.h"
 #include "engine/Engine.h"
 #include "ai/RandomAI.h"
+#include "ai/Pathmap.h"
+#include "ai/Direction.h"
+#include "ai/Point.h"
+#include "ai/PointCompareWeight.h"
 #include "engine/MoveCharCommand.h"
 #include "engine/Engine.h"
 #include "engine/LoadCommand.h"
@@ -134,12 +138,14 @@ void testrender() {
     To->setJoueur(1);
     Ia->setJoueur(1);
 
-    monde.chars->setElementXY(H, 0, 0);
-    monde.chars->setElementXY(T, 0, 19);
-    monde.chars->setElementXY(I, 1, 2);
-    monde.chars->setElementXY(He, 2, 15);
-    monde.chars->setElementXY(Ta, 3, 4);
-    monde.chars->setElementXY(In, 8, 8);
+    //monde.chars->setElementXY(H, 0, 0);
+    //monde.chars->setElementXY(T, 0, 19);
+
+    //monde.chars->setElementXY(Ta, 3, 4);
+
+
+
+    /*monde.chars->setElementXY(In, 8, 8);
     monde.chars->setElementXY(Ina, 9, 0);
     monde.chars->setElementXY(Tan, 11, 3);
     monde.chars->setElementXY(Tae, 12, 7);
@@ -147,11 +153,50 @@ void testrender() {
     monde.chars->setElementXY(Tanz, 17, 2);
     monde.chars->setElementXY(Hez, 18, 9);
     monde.chars->setElementXY(Ta, 10, 10);
-    monde.chars->setElementXY(Ha, 19, 0);
+    monde.chars->setElementXY(Ha, 19, 0);*/
+
+    monde.chars->setElementXY(I, 1, 2);
+    monde.chars->setElementXY(He, 2, 15);
 
     std::vector<int> liste;
     monde.grid->createElementCsv(liste);
 
+
+    ai::Pathmap path;
+
+
+    path.init(*monde.grid);
+
+    for (int j = 0; j < 20; j++) {
+        for (int i = 0; i < 20; i++) {
+
+            if (path.weights[i + j * 20] == 10000) {
+                cout << "x\t" ;
+            } else {
+                cout << path.weights[i + j * 20]<<"\t";
+            }
+        }
+        cout << " " << endl;
+    }
+
+    Point p1(1, 2, 0);
+    Point p2(2, 15, 0);
+
+
+    path.addSink(p1);
+    path.addSink(p2);
+
+    path.update(*monde.grid);
+
+    path.weights;
+
+    for (int j = 0; j < 20; j++) {
+        for (int i = 0; i < 20; i++) {
+
+            cout << path.weights[i + j * 20] << "\t";
+        }
+        cout << " " << endl;
+    }
 
     Layer surf(monde);
     surf.initSurface();
@@ -179,23 +224,23 @@ void testengine() {
     engine::Engine engine;
 
     engine.addCommand(new engine::LoadCommand("res/map.csv"));
-    
+
     cout << "Creation d'un tank dans les casernes" << endl;
-    engine.addCommand(new engine::CreateCharCommand(INFANTERIE, 2,1,1));
-    engine.addCommand(new engine::CreateCharCommand(INFANTERIE, 18,14,2));
-    
+    engine.addCommand(new engine::CreateCharCommand(INFANTERIE, 2, 1, 1));
+    engine.addCommand(new engine::CreateCharCommand(INFANTERIE, 18, 14, 2));
+
     cout << "Deplacement des tank" << endl;
-   // engine.addCommand(new engine::MoveCharCommand(2,1,3,2));
-   // engine.addCommand(new engine::MoveCharCommand(3,2,3,5));
-    
+    // engine.addCommand(new engine::MoveCharCommand(2,1,3,2));
+    // engine.addCommand(new engine::MoveCharCommand(3,2,3,5));
+
     cout << "Deplacement infanterie" << endl;
-    engine.addCommand(new engine::MoveCharCommand(18,14,17,16));
-    engine.addCommand(new engine::CapturCharCommand(17,16));
+    engine.addCommand(new engine::MoveCharCommand(18, 14, 17, 16));
+    engine.addCommand(new engine::CapturCharCommand(17, 16));
 
     engine.update();
 
-    
-    
+
+
     /*for (int j = 0; j < int(engine.getState().chars->getHeight()); j++) {
         for (int i = 0; i < int(engine.getState().chars->getWidth()); i++) {
             if (engine.getState().chars->getElement(i, j) != NULL) cout << engine.getState().chars->getElement(i, j)->getTypeId() << endl;
@@ -290,70 +335,70 @@ void testengine() {
 }
 
 void testai() {
-    
-        sf::RenderWindow window(sf::VideoMode(640, 640), "Advance wars");
 
-        engine::Engine engine;
-        std::vector<int> liste;
-        engine.currentState.grid->createElementCsv(liste);
-        
-        int joueur1=1;
-        int joueur2=2;
-        
-        engine.currentState.joueur1=new Joueur();
-        engine.currentState.joueur2=new Joueur();
-       
-     
-    
+    sf::RenderWindow window(sf::VideoMode(640, 640), "Advance wars");
+
+    engine::Engine engine;
+    std::vector<int> liste;
+    engine.currentState.grid->createElementCsv(liste);
+
+    int joueur1 = 1;
+    int joueur2 = 2;
+
+    engine.currentState.joueur1 = new Joueur();
+    engine.currentState.joueur2 = new Joueur();
+
+
+
     engine.update();
-    
-        Layer surf(engine.currentState);
-        surf.initSurface();
-        RandomAI test;
-        RandomAI test1;
 
-        
-
-        surf.initSurface();
-        while (window.isOpen()) {
-
-            // on gère les évènements
-            sf::Event event;
-            while (window.pollEvent(event)) {
-                if (event.type == sf::Event::Closed)
-                    window.close();
-            }
-
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {// presser bouton gauche
-                // la touche "flèche gauche" est enfoncée : on bouge le personnage
-                cout << "JOUEUR1 joue::" << endl;
-
-                //sleep(2);
-                test.run(joueur1,engine);
-
-                sf::sleep(sf::milliseconds(500));
-                surf.initSurface();
-            }
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {//presser bouton droit
-                // la touche "flèche gauche" est enfoncée : on bouge le personnage
-                cout << "JOUEUR2 joue::" << endl;
-
-                //sleep(2);
-
-                test1.run(joueur2,engine);
-                sf::sleep(sf::milliseconds(500));
-                surf.initSurface();
-            }
+    Layer surf(engine.currentState);
+    surf.initSurface();
+    RandomAI test;
+    RandomAI test1;
 
 
-            window.clear();
-            window.draw(*(surf.surface));
-            window.draw(*(surf.surfaceplayer));
-            window.display();
-     
-}
 
-//void testcommande() {
+    surf.initSurface();
+    while (window.isOpen()) {
+
+        // on gère les évènements
+        sf::Event event;
+        while (window.pollEvent(event)) {
+            if (event.type == sf::Event::Closed)
+                window.close();
+        }
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {// presser bouton gauche
+            // la touche "flèche gauche" est enfoncée : on bouge le personnage
+            cout << "JOUEUR1 joue::" << endl;
+
+            //sleep(2);
+            test.run(joueur1, engine);
+
+            sf::sleep(sf::milliseconds(500));
+            surf.initSurface();
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {//presser bouton droit
+            // la touche "flèche gauche" est enfoncée : on bouge le personnage
+            cout << "JOUEUR2 joue::" << endl;
+
+            //sleep(2);
+
+            test1.run(joueur2, engine);
+            sf::sleep(sf::milliseconds(500));
+            surf.initSurface();
+        }
+
+
+        window.clear();
+        window.draw(*(surf.surface));
+        window.draw(*(surf.surfaceplayer));
+        window.display();
+
+    }
+
+    //void testcommande() {
     /*  sf::RenderWindow window(sf::VideoMode(640, 640), "Advance wars");
       engine::Engine i;
 
