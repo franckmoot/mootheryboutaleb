@@ -73,7 +73,7 @@ namespace ai {
                 break;
 
             default:
-                
+                return Point(- 1, -1, 1);
                 break;
 
         }

@@ -25,21 +25,32 @@ using namespace engine;
 
 namespace ai {
 
-    int Pathmap::getWeight(const Point& p) const {
-        return p.getWeight();
+    void Pathmap::chgWeights(Point p) {
+        weights[p.getX() + p.getY()*20] = p.getWeight();
     }
 
-    const int* Pathmap::getWeights() const {
-        int* a = NULL;
-        return a;
+    int Pathmap::getWeights(Point p) {
+        return weights[p.getX() + p.getY()*20];
+    }
+
+    bool Pathmap::isWall(Point p) {
+        if ((p.getX() < 0) || (p.getY() < 0) || p.getY() > 19 || p.getX() > 19) return true;
+        else if (weights[p.getX() + p.getY()*20] == -1) return true;
+        else return false;
+
     }
 
     void Pathmap::addSink(Point p) {
-
+        weights[p.getX() + p.getY()*20] = 0;
+        queue.push(p);
     }
 
     void Pathmap::init(const state::ElementTab& grid) {
         int infini = 10000;
+        directions.push_back(HAUT);
+        directions.push_back(BAS);
+        directions.push_back(GAUCHE);
+        directions.push_back(DROITE);
 
         for (int j = 0; j < 20; j++) {
             for (int i = 0; i < 20; i++) {
@@ -58,27 +69,20 @@ namespace ai {
 
     }
 
-    void Pathmap::setWeight(const Point & p) {
-        queue.push(p);
-    }
-
     void Pathmap::update(const state::ElementTab & grid) {
 
 
-        bool found = true;
-        Point *p= new Point(0,0,0);
-        queue.push(p,weights,PointCompareWeight);
         while (!queue.empty()) {
             auto p = queue.top();
             queue.pop();
 
-            /*chgpoids(p,p.point)*/
+            chgWeights(p);
 
             for (Direction d : directions) {
                 auto pp = p.transform(d);
-                if (pp.getWeight() <= 1) {
+                if (!isWall(pp)) {
                     pp.setWeight(p.getWeight() + 1);
-                    if (getWeight(pp) > pp.getWeight()) {
+                    if (getWeights(pp) > pp.getWeight()) {
                         queue.push(pp);
                     }
                 }
@@ -87,6 +91,7 @@ namespace ai {
 
 
         }
+
     }
 
 
