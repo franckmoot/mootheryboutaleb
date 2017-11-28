@@ -145,7 +145,7 @@ void testrender() {
 
 
 
-   monde.chars->setElementXY(In, 8, 8);
+    monde.chars->setElementXY(In, 8, 8);
     monde.chars->setElementXY(Ina, 9, 0);
     monde.chars->setElementXY(Tan, 11, 3);
     monde.chars->setElementXY(Tae, 12, 7);
@@ -206,19 +206,18 @@ void testengine() {
     engine.addCommand(new engine::LoadCommand("res/map.csv"));
 
     cout << "Creation d'un tank dans les casernes" << endl;
-   // engine.addCommand(new engine::CreateCharCommand(INFANTERIE, 2, 1, 1));
-    //engine.addCommand(new engine::CreateCharCommand(INFANTERIE, 18, 14, 2));
+    engine.addCommand(new engine::CreateCharCommand(INFANTERIE, 2, 1, 1));
+    engine.addCommand(new engine::CreateCharCommand(INFANTERIE, 18, 14, 2));
 
     cout << "Deplacement des tank" << endl;
-    // engine.addCommand(new engine::MoveCharCommand(2,1,3,2));
-    // engine.addCommand(new engine::MoveCharCommand(3,2,3,5));
+    engine.addCommand(new engine::MoveCharCommand(2, 1, 3, 2));
+    engine.addCommand(new engine::MoveCharCommand(3, 2, 3, 5));
 
     cout << "Deplacement infanterie" << endl;
-    //engine.addCommand(new engine::MoveCharCommand(18, 14, 17, 16));
-    //engine.addCommand(new engine::CapturCharCommand(17, 16));
+    engine.addCommand(new engine::MoveCharCommand(18, 14, 17, 16));
+    engine.addCommand(new engine::CapturCharCommand(17, 16));
 
     engine.update();
-
 
 
     /*for (int j = 0; j < int(engine.getState().chars->getHeight()); j++) {
@@ -325,8 +324,8 @@ void testai() {
     int joueur1 = 1;
     int joueur2 = 2;
 
-    engine.currentState.joueur1 = new Joueur();
-    engine.currentState.joueur2 = new Joueur();
+    //engine.currentState.joueur1 = new Joueur();
+    //engine.currentState.joueur2 = new Joueur();
 
 
 
@@ -358,6 +357,7 @@ void testai() {
 
             sf::sleep(sf::milliseconds(500));
             surf.initSurface();
+
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {//presser bouton droit
             // la touche "flèche gauche" est enfoncée : on bouge le personnage

@@ -22,14 +22,19 @@ namespace engine {
     }
 
     void CreateCharCommand::execute(state::State& state) {
-
+        cout<<"je suis là"<<endl;
         if ((state.grid->getElement(x, y)->getTypeId() == 1)&& (state.chars->getElement(x, y) == NULL)&& (joueur == 1)) {
+            cout<<"je suis là2"<<endl;
             if (elementId == state::INFANTERIE) {
+                cout<<"je suis là3"<<endl;
                 if(state.joueur1->getMoney()>800){
+                    cout<<"je suis là4"<<endl;
+                    
                     Infanterie *infanterietmp = new Infanterie();
                     infanterietmp->setJoueur(joueur);
                     state.chars->setElementXY(infanterietmp, x, y);
                     state.joueur1->setMoney(state.joueur1->getMoney()-800);
+                   
                 }
             } else if (elementId == state::HELI) {
                 if(state.joueur1->getMoney()>1000){

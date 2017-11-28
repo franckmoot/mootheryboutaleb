@@ -24,6 +24,8 @@ namespace engine {
         //this->currentState = new State;
         this->currentState.grid = new ElementTab();
         this->currentState.chars = new ElementChars();
+        this->currentState.joueur1 =new Joueur();
+        this->currentState.joueur2 = new Joueur();
 
 
     }
@@ -36,8 +38,13 @@ namespace engine {
 
         for (auto& command : currentCommands) {
             
+           
             command->execute(currentState);
+           
         }
+       
+        currentCommands.clear();
+     
     }
 
     const state::State& Engine::getState() const {

@@ -32,22 +32,24 @@ namespace render {
 
     void Layer::initSurface() {
 
-        this->surface->initQuads(state.grid->getWidth()*state.grid->getHeight());
-        this->surfaceplayer->initQuads(state.grid->getWidth()*state.grid->getHeight());
-      
+       
+        this->surface->initQuads(state.grid->getWidth() * state.grid->getHeight());
+        this->surfaceplayer->initQuads(state.grid->getWidth() * state.grid->getHeight());
+       
         for (int j = 0; j < int(state.grid->getHeight()); j++) {
+           
             for (int i = 0; i < int(state.grid->getWidth()); i++) {
-                
-                this->surface->loadTexture(this->tileset->getImageFile());       
-                this->surface->setSpriteLocation(i + j * state.grid->getWidth(), i, j);
+                cout<<"erreur iminante dans layer.cpp fonction initSurface"<<endl;
+                this->surface->loadTexture(this->tileset->getImageFile());  
+                cout<<"erreur arrivée"<<endl;
+                this->surface->setSpriteLocation(i + j * state.grid->getWidth(), i, j);            
                 this->surface->setSpriteTexture(i + j * state.grid->getWidth(), this->tileset->getTile(*(state.grid->getElement(i, j))));
                
             }
         }
-        
         for (int j = 0; j < int(state.grid->getHeight()); j++) {
             for (int i = 0; i < int(state.grid->getWidth()); i++) {
-                
+
                 this->surfaceplayer->loadTexture(this->tilesetChars->getImageFile());
                 this->surfaceplayer->setSpriteLocation(i + j * state.grid->getWidth(), i, j);
                 if (state.chars->getElement(i, j) != NULL) {
@@ -57,7 +59,6 @@ namespace render {
                     this->surfaceplayer->setSpriteTexture(i + j * state.grid->getWidth(), Tile(0, 0, 0, 0));
                 }
             }
-
         }
     }
 }
