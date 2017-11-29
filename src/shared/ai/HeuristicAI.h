@@ -37,7 +37,11 @@ namespace ai {
     void run (int joueur, engine::Engine& engine);
     HeuristicAI ();
     Pathmap& getInfmap (engine::Engine& engine, int joueur);
+    Pathmap& getTankmap (engine::Engine& engine, int joueur);
+    Pathmap& getHelimap (engine::Engine& engine, int joueur);
     void setInfmap (engine::Engine& engine, int joueur);
+    void setTankmap (engine::Engine& engine, int joueur);
+    void setHelimap (engine::Engine& engine, int joueur);
     // Setters and Getters
   };
 

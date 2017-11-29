@@ -47,8 +47,42 @@ namespace ai {
         this->infmap.update(*engine.currentState.grid);
     }
 
-    Pathmap& HeuristicAI::getInfmap(engine::Engine& engine, int joueur)  {
+    void HeuristicAI::setHelimap(engine::Engine& engine, int joueur) {
+        this->helimap.init(*engine.currentState.grid);
+        for (int j = 0; j < int(engine.currentState.getGrid()->getHeight()); j++) {
+            for (int i = 0; i < int(engine.currentState.getGrid()->getWidth()); i++) {
+                if ((engine.currentState.getGrid()->getElement(i, j)->getTypeId() == 1)&&(engine.currentState.getGrid()->getElement(i, j)->getJoueur() != joueur)) {
+                    this->helimap.addSink(Point(i, j, 0));
+
+                }
+            }
+        }
+        this->helimap.update(*engine.currentState.grid);
+    }
+
+    void HeuristicAI::setTankmap(engine::Engine& engine, int joueur) {
+        this->tankmap.init(*engine.currentState.grid);
+        for (int j = 0; j < int(engine.currentState.getGrid()->getHeight()); j++) {
+            for (int i = 0; i < int(engine.currentState.getGrid()->getWidth()); i++) {
+                if ((engine.currentState.getGrid()->getElement(i, j)->getTypeId() == 1)&&(engine.currentState.getGrid()->getElement(i, j)->getJoueur() != joueur)) {
+                    this->tankmap.addSink(Point(i, j, 0));
+
+                }
+            }
+        }
+        this->tankmap.update(*engine.currentState.grid);
+    }
+
+    Pathmap& HeuristicAI::getInfmap(engine::Engine& engine, int joueur) {
         return infmap;
+    }
+
+    Pathmap& HeuristicAI::getHelimap(engine::Engine& engine, int joueur) {
+        return tankmap;
+    }
+
+    Pathmap& HeuristicAI::getTankmap(engine::Engine& engine, int joueur) {
+        return helimap;
     }
 
     void HeuristicAI::run(int joueur, engine::Engine& engine) {
@@ -81,25 +115,24 @@ namespace ai {
                                     if ((x3 >= 0)&&(y3 >= 0)&&(x3<int(engine.currentState.getGrid()->getWidth()))&&(y3<int(engine.currentState.getGrid()->getHeight()))) {
                                         int min = 1000;
 
-                                        if (min > getInfmap(engine, joueur).getPoidlist(x3 + y3 * 20)){
-                                                min = getInfmap(engine, joueur).getPoidlist(x3 + y3 * 20);
-                                                x3min = x3;
-                                                y3min = y3;
+                                        if (min > getInfmap(engine, joueur).getPoidlist(x3 + y3 * 20)) {
+                                            min = getInfmap(engine, joueur).getPoidlist(x3 + y3 * 20);
+                                            x3min = x3;
+                                            y3min = y3;
 
-                                            }
                                         }
+                                    }
                                 }
                             }
                             cout << x3min << endl;
-                                    cout << y3min << endl;
-                                    engine::MoveCharCommand *M = new MoveCharCommand(i, j, x3min - 1, y3min - 1);
-                                    M->execute(engine.currentState);
+                            cout << y3min << endl;
+                            engine::MoveCharCommand *M = new MoveCharCommand(i, j, x3min - 1, y3min - 1);
+                            M->execute(engine.currentState);
 
                         }
                         // }               
                         // }
-                    }
-                    else if (engine.currentState.getChars()->getElement(i, j)->getTypeId() == 3 && engine.currentState.getChars()->getElement(i, j)->getJoueur() == joueur) {
+                    } else if (engine.currentState.getChars()->getElement(i, j)->getTypeId() == 3 && engine.currentState.getChars()->getElement(i, j)->getJoueur() == joueur) {
 
                     } else if (engine.currentState.getChars()->getElement(i, j)->getTypeId() == 4 && engine.currentState.getChars()->getElement(i, j)->getJoueur() == joueur) {
 
