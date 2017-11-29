@@ -33,6 +33,13 @@ namespace state {
     void Element::setJoueur(int joueur) {
         this->joueur = joueur;
     }
+    
+    bool Element::getCommande() {
+        return commande;
+    }
 
+    void Element::setCommande(bool commande) {
+        this->commande=commande;
+    }
 
 }

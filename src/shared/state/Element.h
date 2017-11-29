@@ -21,6 +21,7 @@ namespace state {
     int joueur;
     int x;
     int y;
+    bool commande;
     // Operations
   public:
     Element ( );
@@ -30,6 +31,8 @@ namespace state {
     int getJoueur ();
     void setJoueur (int joueur);
     void setPosition (int x, int y);
+    bool getCommande ();
+    void setCommande (bool commande);
     // Setters and Getters
     void setTypeId(TypeId typeId);
     int getX() const;
