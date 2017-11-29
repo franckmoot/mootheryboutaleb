@@ -26,7 +26,9 @@ using namespace engine;
 namespace ai {
 
     void Pathmap::chgWeights(Point p) {
+        
         weights[p.getX() + p.getY()*20] = p.getWeight();
+        
     }
 
     int Pathmap::getWeights(Point p) {
@@ -45,31 +47,25 @@ namespace ai {
         queue.push(p);
     }
 
-    void Pathmap::init(const state::ElementTab& grid) {
+    void Pathmap::init( state::ElementTab& grid) {
         int infini = 10000;
         directions.push_back(HAUT);
         directions.push_back(BAS);
         directions.push_back(GAUCHE);
         directions.push_back(DROITE);
 
-
-
-
-
-        for (int j = 0; j < 20; j++) {
-            for (int i = 0; i < 20; i++) {
+        for (int j = 0; j <  int(grid.getHeight()); j++) {
+            for (int i = 0; i < int(grid.getWidth()); i++) {
 
                 if (grid.getElement(i, j)->getTypeId() == 0) {
                     state::Champdebataille * eletmp = (state::Champdebataille*)(grid.getElement(i, j));
-                    if (eletmp->getChampdeBatailleType() == state::EAU) {
-                        //weights[i + 20 * j] = -1;
+                    if (eletmp->getChampdeBatailleType() == state::EAU) {                      
                         weights.push_back(-1);
                     } else {
                         weights.push_back(infini);
                     }
 
                 } else {
-                    //weights[i + 20 * j] = infini;
                     weights.push_back(infini);
                 }
 
@@ -79,7 +75,6 @@ namespace ai {
     }
 
     void Pathmap::update(const state::ElementTab & grid) {
-
 
         while (!queue.empty()) {
             auto p = queue.top();

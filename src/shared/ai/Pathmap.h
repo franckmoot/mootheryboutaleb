@@ -32,7 +32,7 @@ namespace ai {
     int height     = 0;
     // Operations
   public:
-    void init (const state::ElementTab& grid);
+    void init (state::ElementTab& grid);
     void addSink (Point p);
     void update (const state::ElementTab& grid);
     bool isWall (Point p);
