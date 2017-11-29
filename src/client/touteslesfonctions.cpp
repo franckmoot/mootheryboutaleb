@@ -208,8 +208,8 @@ void testengine() {
     engine.addCommand(new engine::LoadCommand("res/map.csv"));
 
     cout << "Creation d'un tank dans les casernes" << endl;
-    engine.addCommand(new engine::CreateCharCommand(INFANTERIE, 2, 1, 1));
-    engine.addCommand(new engine::CreateCharCommand(INFANTERIE, 18, 14, 2));
+    engine.addCommand(new engine::CreateCharCommand(INFANTERIE, 16, 3, 1));
+    //engine.addCommand(new engine::CreateCharCommand(INFANTERIE, 18, 14, 2));
 
     cout << "Deplacement des tank" << endl;
    // engine.addCommand(new engine::MoveCharCommand(2, 1, 3, 2));
@@ -238,7 +238,7 @@ void testengine() {
     
     heuri.setInfmap(engine,1);
     
-    heuri.run(1,engine);
+    
     
     vector<int> listpoid;
    
@@ -251,7 +251,7 @@ void testengine() {
         cout << " " << endl;
     }
 
-    
+    heuri.run(1,engine);
     
     //State monde = engine.getState();
 
