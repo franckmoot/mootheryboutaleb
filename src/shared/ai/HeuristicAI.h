@@ -4,17 +4,23 @@
 
 
 namespace ai {
-  class Pathmap;
+  class Pathinf;
+  class Pathheli;
+  class Pathtank;
 };
 namespace engine {
   class Engine;
 };
 namespace ai {
+  class Pathmap;
   class AI;
 }
 
-#include "Pathmap.h"
+#include "Pathinf.h"
+#include "Pathheli.h"
+#include "Pathtank.h"
 #include "AI.h"
+#include "Pathmap.h"
 
 namespace ai {
 
@@ -23,7 +29,9 @@ namespace ai {
     // Associations
     // Attributes
   public:
-    Pathmap infmap;
+    Pathinf infmap;
+    Pathheli helimap;
+    Pathtank tankmap;
     // Operations
   public:
     void run (int joueur, engine::Engine& engine);

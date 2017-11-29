@@ -33,7 +33,7 @@ namespace ai {
 
         }
         void HeuristicAI::setInfmap(engine::Engine& engine, int joueur) {
-           this->infmap.init(*engine.currentState.grid);
+           //this->infmap.init(*engine.currentState.grid);
            for (int j = 0; j < int(engine.currentState.getGrid()->getHeight()); j++) {
                 for (int i = 0; i < int(engine.currentState.getGrid()->getWidth()); i++) { 
                     if((engine.currentState.getGrid()->getElement(i,j)->getTypeId()==1)&&(engine.currentState.getGrid()->getElement(i,j)->getJoueur()!=joueur)){

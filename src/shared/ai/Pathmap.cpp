@@ -25,10 +25,23 @@ using namespace engine;
 
 namespace ai {
 
+    Pathmap::Pathmap() {
+        directions.push_back(HAUT);
+        directions.push_back(BAS);
+        directions.push_back(GAUCHE);
+        directions.push_back(DROITE);
+    }
+
+    const std::vector<Direction>& Pathmap::getDirections() const {
+        return directions;
+    }
+        
+    const std::priority_queue<Point, std::vector<Point>, PointCompareWeight>& Pathmap::getQueue() const {
+        return queue;
+    }
+        
     void Pathmap::chgWeights(Point p) {
-        
         weights[p.getX() + p.getY()*20] = p.getWeight();
-        
     }
 
     int Pathmap::getWeights(Point p) {
@@ -39,7 +52,6 @@ namespace ai {
         if ((p.getX() < 0) || (p.getY() < 0) || p.getY() > 19 || p.getX() > 19) return true;
         else if (weights[p.getX() + p.getY()*20] == -1) return true;
         else return false;
-
     }
 
     void Pathmap::addSink(Point p) {
@@ -47,32 +59,30 @@ namespace ai {
         queue.push(p);
     }
 
-    void Pathmap::init( state::ElementTab& grid) {
-        int infini = 10000;
-        directions.push_back(HAUT);
-        directions.push_back(BAS);
-        directions.push_back(GAUCHE);
-        directions.push_back(DROITE);
+    /* void Pathmap::init( state::ElementTab& grid) {
+         int infini = 10000;
+         directions.push_back(HAUT);
+         directions.push_back(BAS);
+         directions.push_back(GAUCHE);
+         directions.push_back(DROITE);
 
-        for (int j = 0; j <  int(grid.getHeight()); j++) {
-            for (int i = 0; i < int(grid.getWidth()); i++) {
+         for (int j = 0; j <  int(grid.getHeight()); j++) {
+             for (int i = 0; i < int(grid.getWidth()); i++) {
 
-                if (grid.getElement(i, j)->getTypeId() == 0) {
-                    state::Champdebataille * eletmp = (state::Champdebataille*)(grid.getElement(i, j));
-                    if (eletmp->getChampdeBatailleType() == state::EAU) {                      
-                        weights.push_back(-1);
-                    } else {
-                        weights.push_back(infini);
-                    }
+                 if (grid.getElement(i, j)->getTypeId() == 0) {
+                     state::Champdebataille * eletmp = (state::Champdebataille*)(grid.getElement(i, j));
+                     if (eletmp->getChampdeBatailleType() == state::EAU) {                      
+                         weights.push_back(-1);
+                     } else {
+                         weights.push_back(infini);
+                     }
 
-                } else {
-                    weights.push_back(infini);
-                }
-
-            }
-        }
-
-    }
+                 } else {
+                     weights.push_back(infini);
+                 }
+             }
+         }
+     }*/
 
     void Pathmap::update(const state::ElementTab & grid) {
 
@@ -90,17 +100,13 @@ namespace ai {
                         queue.push(pp);
                     }
                 }
-
             }
-
-
         }
-
+    }
+        
+    int Pathmap::getPoidlist(int i) {
+        return weights[i];
     }
 
-
-
-
-
-
+    
 }

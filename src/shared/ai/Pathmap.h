@@ -23,22 +23,29 @@ namespace ai {
   /// class Pathmap - 
   class Pathmap {
     // Attributes
-  public:
-    std::vector<int> weights;
-    std::priority_queue<Point, std::vector<Point>,PointCompareWeight> queue;
-    std::vector<Direction>  directions;
   private:
     int width     = 0;
     int height     = 0;
+  protected:
+    std::vector<int> weights;
+    std::priority_queue<Point, std::vector<Point>,PointCompareWeight> queue;
+    std::vector<Direction>  directions;
     // Operations
   public:
-    void init (state::ElementTab& grid);
+    Pathmap ();
+    virtual void init (state::ElementTab& grid) = 0;
     void addSink (Point p);
     void update (const state::ElementTab& grid);
     bool isWall (Point p);
     void chgWeights (Point p);
     int getWeights (Point p);
+    int getPoidlist (int i);
     // Setters and Getters
+    void setWeights(const std::vector<int>& weights);
+    const std::priority_queue<Point, std::vector<Point>,PointCompareWeight>& getQueue() const;
+    void setQueue(const std::priority_queue<Point, std::vector<Point>,PointCompareWeight>& queue);
+    const std::vector<Direction> & getDirections() const;
+    void setDirections(const std::vector<Direction> & directions);
   };
 
 };

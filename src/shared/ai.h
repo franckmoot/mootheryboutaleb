@@ -8,5 +8,8 @@
 #include "ai/Point.h"
 #include "ai/PointCompareWeight.h"
 #include "ai/Pathmap.h"
+#include "ai/Pathinf.h"
+#include "ai/Pathheli.h"
+#include "ai/Pathtank.h"
 #include "ai/HeuristicAI.h"
 #endif
