@@ -26,7 +26,7 @@ namespace engine {
     }
 
     void MoveCharCommand::execute(state::State& state) {
-cout << "je fais un deplacement" << endl;
+
         if ((state.getChars()->getElement(x2, y2) != NULL) || (state.getChars()->getElement(x1, y1) == NULL)) cout << "c'est impossible " << endl;
         else {
 

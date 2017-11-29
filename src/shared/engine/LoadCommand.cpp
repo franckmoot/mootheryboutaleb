@@ -37,8 +37,10 @@ namespace engine {
                 carte.push_back(atoi(valeur.c_str()));
             }
         }
-
+        int x,y;
         for (int i = 0; i<int(carte.size()); i++) {
+            x=i%20;
+            y=i/20;
             switch (carte[i]) {
 
                 case ChampdebatailleTypeId::HERBE:
@@ -67,26 +69,32 @@ namespace engine {
 
                 case 6://BatimentTypeId::QGROUGE = 0 
                     state.getGrid()->setElement(new state::Batiment(BatimentTypeId::QGROUGE));
+                    state.getGrid()->getElement(x,y)->setJoueur(1);
                     break;
 
                 case 7://BatimentTypeId::CASERNEROUGE = 1
                     state.getGrid()->setElement(new state::Batiment(BatimentTypeId::CASERNEROUGE));
+                    state.getGrid()->getElement(x,y)->setJoueur(1);
                     break;
 
                 case 8://BatimentTypeId::APPARTROUGE = 2
                     state.getGrid()->setElement(new state::Batiment(BatimentTypeId::APPARTROUGE));
+                    state.getGrid()->getElement(x,y)->setJoueur(1);
                     break;
 
                 case 9://BatimentTypeId::QGBLEU = 3
                     state.getGrid()->setElement(new state::Batiment(BatimentTypeId::QGBLEU));
+                    state.getGrid()->getElement(x,y)->setJoueur(2);
                     break;
 
                 case 10://BatimentTypeId::CASERNEBLEU = 4
                     state.getGrid()->setElement(new state::Batiment(BatimentTypeId::CASERNEBLEU));
+                    state.getGrid()->getElement(x,y)->setJoueur(2);
                     break;
 
                 case 11://BatimentTypeId::APPARTBLEU = 5
                     state.getGrid()->setElement(new state::Batiment(BatimentTypeId::APPARTBLEU));
+                    state.getGrid()->getElement(x,y)->setJoueur(2);
                     break;
 
                 default:

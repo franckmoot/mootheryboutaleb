@@ -212,11 +212,12 @@ void testengine() {
     cout << "Deplacement des tank" << endl;
     engine.addCommand(new engine::MoveCharCommand(2, 1, 3, 2));
     engine.addCommand(new engine::MoveCharCommand(3, 2, 3, 5));
+    engine.addCommand(new engine::CapturCharCommand(3,2));
 
     cout << "Deplacement infanterie" << endl;
     engine.addCommand(new engine::MoveCharCommand(18, 14, 17, 16));
     engine.addCommand(new engine::CapturCharCommand(17, 16));
-
+engine.addCommand(new engine::MoveCharCommand(17, 16, 18, 14));
     engine.update();
 
 
@@ -355,7 +356,7 @@ void testai() {
             //sleep(2);
             test.run(joueur1, engine);
 
-            sf::sleep(sf::milliseconds(500));
+            sf::sleep(sf::milliseconds(50));
             surf.initSurface();
 
         }
@@ -366,7 +367,7 @@ void testai() {
             //sleep(2);
 
             test1.run(joueur2, engine);
-            sf::sleep(sf::milliseconds(500));
+            sf::sleep(sf::milliseconds(50));
             surf.initSurface();
         }
 

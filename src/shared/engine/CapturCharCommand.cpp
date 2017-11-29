@@ -29,7 +29,6 @@ namespace engine {
                     state::Batiment* eletmp2 = (state::Batiment*)(state.grid->getElement(x, y));
                     eletmp2->setPdv(eletmp2->getPdv() - 10);
                     if (eletmp2->getPdv() <= 0) {
-                        cout << "Batiment a été capturé" << endl;
                         state::BatimentTypeId typebatiment = eletmp2->getBatimentTypeId();
                         state.grid->killElement(x, y);
                         if(typebatiment==state::QGBLEU) {
@@ -42,7 +41,7 @@ namespace engine {
                         }
                         else if(typebatiment==state::CASERNEBLEU){
                             state.grid->setElementXY(new state::Batiment(CASERNEROUGE), x, y);
-                            state.grid->getElement(x,y)->setJoueur(2);
+                            state.grid->getElement(x,y)->setJoueur(1);
                         }
                         else if(typebatiment==state::CASERNEROUGE){
                             state.grid->setElementXY(new state::Batiment(CASERNEBLEU), x, y);
