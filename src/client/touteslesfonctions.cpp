@@ -4,6 +4,7 @@
 #include "engine/Engine.h"
 #include "ai/RandomAI.h"
 #include "ai/Pathmap.h"
+#include "ai/HeuristicAI.h"
 #include "ai/Direction.h"
 #include "ai/Point.h"
 #include "ai/PointCompareWeight.h"
@@ -177,6 +178,7 @@ void testrender() {
         }
         cout << " " << endl;
     }*/
+    
 
     Layer surf(monde);
     surf.initSurface();
@@ -210,15 +212,17 @@ void testengine() {
     engine.addCommand(new engine::CreateCharCommand(INFANTERIE, 18, 14, 2));
 
     cout << "Deplacement des tank" << endl;
-    engine.addCommand(new engine::MoveCharCommand(2, 1, 3, 2));
-    engine.addCommand(new engine::MoveCharCommand(3, 2, 3, 5));
-    engine.addCommand(new engine::CapturCharCommand(3,2));
+   // engine.addCommand(new engine::MoveCharCommand(2, 1, 3, 2));
+   // engine.addCommand(new engine::MoveCharCommand(3, 2, 3, 5));
+   // engine.addCommand(new engine::CapturCharCommand(3,2));
 
     cout << "Deplacement infanterie" << endl;
-    engine.addCommand(new engine::MoveCharCommand(18, 14, 17, 16));
-    engine.addCommand(new engine::CapturCharCommand(17, 16));
-engine.addCommand(new engine::MoveCharCommand(17, 16, 18, 14));
+   // engine.addCommand(new engine::MoveCharCommand(18, 14, 17, 16));
+   // engine.addCommand(new engine::CapturCharCommand(17, 16));
+//engine.addCommand(new engine::MoveCharCommand(17, 16, 18, 14));
     engine.update();
+    
+    
 
 
     /*for (int j = 0; j < int(engine.getState().chars->getHeight()); j++) {
@@ -228,7 +232,27 @@ engine.addCommand(new engine::MoveCharCommand(17, 16, 18, 14));
     }*/
     Layer surf(engine.getState());
     surf.initSurface();
+    
+    HeuristicAI heuri;
+    
+    
+    heuri.setInfmap(engine,1);
+    
+    heuri.run(1,engine);
+    
+    vector<int> listpoid;
+   
+    
+    for (int j = 0; j < 20; j++) {
+        for (int i = 0; i < 20; i++) {
 
+            cout << heuri.getInfmap(engine,1).weights[i + j * 20] << "\t";
+        }
+        cout << " " << endl;
+    }
+
+    
+    
     //State monde = engine.getState();
 
 
