@@ -208,8 +208,8 @@ void testengine() {
     engine.addCommand(new engine::LoadCommand("res/map.csv"));
 
     cout << "Creation d'un tank dans les casernes" << endl;
-    engine.addCommand(new engine::CreateCharCommand(INFANTERIE, 2, 1, 1));
-    engine.addCommand(new engine::CreateCharCommand(INFANTERIE, 18, 14, 2));
+    engine.addCommand(new engine::CreateCharCommand(INFANTERIE, 16, 3, 1));
+    //engine.addCommand(new engine::CreateCharCommand(INFANTERIE, 18, 14, 2));
 
     cout << "Deplacement des tank" << endl;
     // engine.addCommand(new engine::MoveCharCommand(2, 1, 3, 2));
@@ -232,6 +232,7 @@ void testengine() {
     }*/
     Layer surf(engine.getState());
     surf.initSurface();
+<<<<<<< HEAD
 
     /*HeuristicAI heuri;
 
@@ -240,6 +241,16 @@ void testengine() {
 
     heuri.run(1, engine);
 
+=======
+    
+    HeuristicAI heuri;
+    
+    
+    heuri.setInfmap(engine,1);
+    
+    
+    
+>>>>>>> 91e841e4ee385315c47f050ceaf2d92134cc6c6d
     vector<int> listpoid;
 
 
@@ -253,6 +264,11 @@ void testengine() {
 */
 
 
+<<<<<<< HEAD
+=======
+    heuri.run(1,engine);
+    
+>>>>>>> 91e841e4ee385315c47f050ceaf2d92134cc6c6d
     //State monde = engine.getState();
 
 

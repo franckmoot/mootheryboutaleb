@@ -51,7 +51,7 @@ namespace ai {
 
        const Pathmap&  HeuristicAI::getInfmap (engine::Engine& engine,int joueur) const{
            
-           return this->infmap;
+           return infmap;
 
         }
 
@@ -64,9 +64,10 @@ namespace ai {
                    
                     if ((engine.currentState.getChars()->getElement(i, j)->getTypeId() == 2) && (engine.currentState.getChars()->getElement(i, j)->getJoueur() == joueur)) {
                         Infanterie* eletmp = (Infanterie*)(engine.currentState.getChars()->getElement(i, j));
-                        for (int x2 = (i - eletmp->getPorteeMvt()); x2 < (i + eletmp->getPorteeMvt()); x2++) {
-                            for (int y2 = (j - eletmp->getPorteeMvt()); y2 < (j + eletmp->getPorteeMvt()); y2++){
-                                 
+                        //for (int x2 = (i - eletmp->getPorteeMvt()); x2 < (i + eletmp->getPorteeMvt()); x2++) {
+                            //for (int y2 = (j - eletmp->getPorteeMvt()); y2 < (j + eletmp->getPorteeMvt()); y2++){
+                            int x2=10;
+                            int y2=10;
                                 if((engine.currentState.getGrid()->getElement(i, j)->getTypeId()==1)&&(engine.currentState.getGrid()->getElement(i, j)->getJoueur()!=joueur)){
                                     engine::CapturCharCommand *C=new CapturCharCommand(i,j);
                                     C->execute(engine.currentState);
@@ -75,14 +76,35 @@ namespace ai {
                                     engine::AttaqueCharCommand *A=new AttaqueCharCommand(i,j,x2,y2);
                                     A->execute(engine.currentState); 
                                 }
-                                else{  
+                                else{
                                     
-                                }       
-                        }       
+                                    setInfmap(engine,joueur);
+                                   
+                                    int x3min=100;
+                                    int y3min=100;
+                                    for (int x3 = (i - eletmp->getPorteeMvt()); x3 < (i + eletmp->getPorteeMvt()); x3++) {
+                                        for (int y3 = (j - eletmp->getPorteeMvt()); y3 < (j + eletmp->getPorteeMvt()); y3++){
+                                            if ((x3 >= 0)&&(y3 >= 0)&&(x3<int(engine.currentState.getGrid()->getWidth()))&&(y3<int(engine.currentState.getGrid()->getHeight()))){  
+                                                int min=1000;
+                                                
+                                                if(min>getInfmap(engine,joueur).weights[x3+y3*20]){
+                                                    min=getInfmap(engine,joueur).weights[x3+y3*20];
+                                                    x3min=x3;
+                                                    y3min=y3;
+                                                    
+                                                }
+                                            }       
+                                        }       
+                                    }
+                                    cout<<x3min<<endl;
+                                    cout<<y3min<<endl;
+                                    engine::MoveCharCommand *M=new MoveCharCommand(i,j,x3min-1,y3min-1);
+                                    M->execute(engine.currentState); 
+                                    
+                                }
+                           // }               
+                      // }
                     }    
-                            
-                }     
-
                     else if (engine.currentState.getChars()->getElement(i, j)->getTypeId() == 3 && engine.currentState.getChars()->getElement(i, j)->getJoueur() == joueur) {
 
                     } else if (engine.currentState.getChars()->getElement(i, j)->getTypeId() == 4 && engine.currentState.getChars()->getElement(i, j)->getJoueur() == joueur) {
