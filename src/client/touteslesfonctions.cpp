@@ -232,28 +232,14 @@ void testengine() {
     }*/
     Layer surf(engine.getState());
     surf.initSurface();
-<<<<<<< HEAD
+
 
     /*HeuristicAI heuri;
-
-
     heuri.setInfmap(engine, 1);
-
-    heuri.run(1, engine);
-
-=======
-    
-    HeuristicAI heuri;
-    
-    
-    heuri.setInfmap(engine,1);
-    
-    
-    
->>>>>>> 91e841e4ee385315c47f050ceaf2d92134cc6c6d
+    heuri.run(1, engine);    
+    HeuristicAI heuri;   
+    heuri.setInfmap(engine,1);   
     vector<int> listpoid;
-
-
     for (int j = 0; j < 20; j++) {
         for (int i = 0; i < 20; i++) {
 
@@ -261,16 +247,10 @@ void testengine() {
         }
         cout << " " << endl;
     }
-*/
 
 
-<<<<<<< HEAD
-=======
-    heuri.run(1,engine);
-    
->>>>>>> 91e841e4ee385315c47f050ceaf2d92134cc6c6d
+    heuri.run(1,engine);*/
     //State monde = engine.getState();
-
 
     while (window.isOpen()) {
 
