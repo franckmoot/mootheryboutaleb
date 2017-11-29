@@ -33,12 +33,20 @@ namespace ai {
         }
         
 
-       const Pathmap&  HeuristicAI::getInfmap (engine::Engine& engine) const{
-           
-            //this.init(*engine.currentState.grid);
+       const Pathmap&  HeuristicAI::getInfmap (engine::Engine& engine,int joueur) const{
+           /*
+            
+           this->infmap.init(*engine.currentState.grid);
+           for (int j = 0; j < int(engine.currentState.getGrid()->getHeight()); j++) {
+            for (int i = 0; i < int(engine.currentState.getGrid()->getWidth()); i++) { 
+                
+            }
+                
+            }
+                    
            
         
-            /*Point p1(1, 2, 0);
+            Point p1(1, 2, 0);
             Point p2(2, 15, 0);
             path.addSink(p1);
             path.addSink(p2);
