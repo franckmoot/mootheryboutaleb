@@ -21,7 +21,7 @@ namespace state {
     int joueur;
     int x;
     int y;
-    bool commande;
+    bool commande     = true;
     // Operations
   public:
     Element ( );
