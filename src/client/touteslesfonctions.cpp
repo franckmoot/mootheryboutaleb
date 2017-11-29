@@ -209,7 +209,7 @@ void testengine() {
 
     cout << "Creation d'un tank dans les casernes" << endl;
     engine.addCommand(new engine::CreateCharCommand(INFANTERIE, 16, 3, 1));
-    //engine.addCommand(new engine::CreateCharCommand(INFANTERIE, 18, 14, 2));
+    engine.addCommand(new engine::CreateCharCommand(INFANTERIE, 18, 14, 2));
 
     cout << "Deplacement des tank" << endl;
     // engine.addCommand(new engine::MoveCharCommand(2, 1, 3, 2));
@@ -247,9 +247,21 @@ void testengine() {
         }
         cout << " " << endl;
     }
+     
 
 
     heuri.run(1,engine);*/
+    HeuristicAI heuri;
+    heuri.setInfmap(engine,1);
+    heuri.run(engine,1);
+    
+    for (int j = 0; j < 20; j++) {
+        for (int i = 0; i < 20; i++) {
+
+            cout << heuri.getInfmap(engine, 1).getPoidlist(i + j * 20) << "\t";
+        }
+        cout << " " << endl;
+    }
     //State monde = engine.getState();
 
     while (window.isOpen()) {

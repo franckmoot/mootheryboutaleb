@@ -85,7 +85,9 @@ namespace ai {
         return helimap;
     }
 
-    void HeuristicAI::run(int joueur, engine::Engine& engine) {
+    void HeuristicAI::run(engine::Engine& engine, int joueur) {
+
+        setInfmap(engine, joueur);
 
         for (int j = 0; j < int(engine.currentState.getChars()->getHeight()); j++) {
             for (int i = 0; i < int(engine.currentState.getChars()->getWidth()); i++) {

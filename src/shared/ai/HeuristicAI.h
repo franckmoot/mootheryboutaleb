@@ -34,7 +34,7 @@ namespace ai {
     Pathtank tankmap;
     // Operations
   public:
-    void run (int joueur, engine::Engine& engine);
+    void run (engine::Engine& engine, int joueur);
     HeuristicAI ();
     Pathmap& getInfmap (engine::Engine& engine, int joueur);
     Pathmap& getTankmap (engine::Engine& engine, int joueur);
