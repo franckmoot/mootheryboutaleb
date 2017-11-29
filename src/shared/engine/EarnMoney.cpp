@@ -14,48 +14,45 @@
 using namespace std;
 using namespace state;
 namespace engine {
-       EarnMoney::EarnMoney( int joueur):joueur(joueur){
-           
-       }
 
-        
-      CommandTypeId EarnMoney::getTypeId() const {
+    EarnMoney::EarnMoney(int joueur) : joueur(joueur) {
+
+    }
+
+    CommandTypeId EarnMoney::getTypeId() const {
         return CommandTypeId::EARNMONEY;
     }
-    
-    
-    
-    void EarnMoney::execute(state::State& state){
-        
-        int batimentgains=20;
-        if(joueur==1){
-          int r=0;
-          for (int j = 0; j < int(state.getGrid()->getHeight());j++){
-            for (int i = 0; i < int(state.getGrid()->getWidth()); i++) {
-                if(state.getGrid()->getElement(i,j)->getTypeId()==1){
-                    state::Batiment* eletmp2 = (state::Batiment*)(state.getGrid()->getElement(i, j));
-                     if ((eletmp2->getBatimentTypeId()==QGROUGE)||(eletmp2->getBatimentTypeId()==CASERNEROUGE)||(eletmp2->getBatimentTypeId()==APPARTROUGE))r=r+1;
+
+    void EarnMoney::execute(state::State& state) {
+
+        int batimentgains = 20;
+        if (joueur == 1) {
+            int nbrBatiment = 0;
+            for (int j = 0; j < int(state.getGrid()->getHeight()); j++) {
+                for (int i = 0; i < int(state.getGrid()->getWidth()); i++) {
+                    if (state.getGrid()->getElement(i, j)->getTypeId() == 1) {
+                        state::Batiment* eletmp2 = (state::Batiment*)(state.getGrid()->getElement(i, j));
+                        if ((eletmp2->getBatimentTypeId() == QGROUGE) || (eletmp2->getBatimentTypeId() == CASERNEROUGE) || (eletmp2->getBatimentTypeId() == APPARTROUGE))nbrBatiment++;
+                    }
                 }
             }
-          }
-          state.joueur1->addMoney(r*batimentgains);
-        }
-          else if(joueur==2){
-            int r=0;
-           for (int j = 0; j < int(state.getGrid()->getHeight());j++){
-            for (int i = 0; i < int(state.getGrid()->getWidth()); i++) {
-                if(state.getGrid()->getElement(i,j)->getTypeId()==1){
-                    state::Batiment* eletmp2 = (state::Batiment*)(state.getGrid()->getElement(i, j));
-                     if ((eletmp2->getBatimentTypeId()==QGBLEU)||(eletmp2->getBatimentTypeId()==CASERNEBLEU)||(eletmp2->getBatimentTypeId()==APPARTBLEU))r=r+1;
+            state.joueur1->addMoney(nbrBatiment * batimentgains);
+        } else if (joueur == 2) {
+            int nbrBatiment = 0;
+            for (int j = 0; j < int(state.getGrid()->getHeight()); j++) {
+                for (int i = 0; i < int(state.getGrid()->getWidth()); i++) {
+                    if (state.getGrid()->getElement(i, j)->getTypeId() == 1) {
+                        state::Batiment* eletmp2 = (state::Batiment*)(state.getGrid()->getElement(i, j));
+                        if ((eletmp2->getBatimentTypeId() == QGBLEU) || (eletmp2->getBatimentTypeId() == CASERNEBLEU) || (eletmp2->getBatimentTypeId() == APPARTBLEU))nbrBatiment++;
+                    }
                 }
             }
-          }
-          state.joueur2->addMoney(r*batimentgains);
+            state.joueur2->addMoney(nbrBatiment * batimentgains);
         }
-          
-        
-    
-    
-    
-}
+
+
+
+
+
+    }
 }
