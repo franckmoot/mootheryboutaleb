@@ -20,6 +20,7 @@
 #include <random>
 #include <iostream>
 #include <engine/Engine.h>
+#include "Point.h"
 
 
 
@@ -31,26 +32,27 @@ namespace ai {
         HeuristicAI::HeuristicAI() {
 
         }
-        
-
-       const Pathmap&  HeuristicAI::getInfmap (engine::Engine& engine,int joueur) const{
-           /*
-            
+        void HeuristicAI::setInfmap(engine::Engine& engine, int joueur) {
            this->infmap.init(*engine.currentState.grid);
            for (int j = 0; j < int(engine.currentState.getGrid()->getHeight()); j++) {
-            for (int i = 0; i < int(engine.currentState.getGrid()->getWidth()); i++) { 
-                
-            }
+                for (int i = 0; i < int(engine.currentState.getGrid()->getWidth()); i++) { 
+                    if((engine.currentState.getGrid()->getElement(i,j)->getTypeId()==1)&&(engine.currentState.getGrid()->getElement(i,j)->getJoueur()!=joueur)){
+                        
+                        this->infmap.addSink(Point(i,j,0));
+                    
+                    }
                 
             }
                     
+           }
+            this->infmap.update(*engine.currentState.grid);
+
+        }
+
+       const Pathmap&  HeuristicAI::getInfmap (engine::Engine& engine,int joueur) const{
            
-        
-            Point p1(1, 2, 0);
-            Point p2(2, 15, 0);
-            path.addSink(p1);
-            path.addSink(p2);
-            path.update(*monde.grid);*/
+           return this->infmap;
+
         }
 
     void HeuristicAI::run(int joueur, engine::Engine& engine) {

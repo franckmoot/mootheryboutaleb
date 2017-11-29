@@ -29,6 +29,7 @@ namespace ai {
     void run (int joueur, engine::Engine& engine);
     HeuristicAI ();
     const Pathmap& getInfmap (engine::Engine& engine, int joueur) const;
+    void setInfmap (engine::Engine& engine, int joueur);
     // Setters and Getters
   };
 
