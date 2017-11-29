@@ -123,26 +123,32 @@ namespace state {
 
                 case 6://BatimentTypeId::QGROUGE = 0 
                     this->setElement(new Batiment(QGROUGE));
+                    this->getElement(i%20,i/20)->setJoueur(1);
                     break;
 
                 case 7://BatimentTypeId::CASERNEROUGE = 1
                     this->setElement(new Batiment(CASERNEROUGE));
+                    this->getElement(i%20,i/20)->setJoueur(1);
                     break;
 
                 case 8://BatimentTypeId::APPARTROUGE = 2
                     this->setElement(new Batiment(APPARTROUGE));
+                    this->getElement(i%20,i/20)->setJoueur(1);
                     break;
 
                 case 9://BatimentTypeId::QGBLEU = 3
                     this->setElement(new Batiment(QGBLEU));
+                    this->getElement(i%20,i/20)->setJoueur(2);
                     break;
 
                 case 10://BatimentTypeId::CASERNEBLEU = 4
                     this->setElement(new Batiment(CASERNEBLEU));
+                    this->getElement(i%20,i/20)->setJoueur(2);
                     break;
 
                 case 11://BatimentTypeId::APPARTBLEU = 5
                     this->setElement(new Batiment(APPARTBLEU));
+                    this->getElement(i%20,i/20)->setJoueur(2);
                     break;
 
                 default:
