@@ -90,10 +90,34 @@ namespace ai {
     }
 
     void HeuristicAI::run(engine::Engine& engine, int joueur) {
-
         std::vector<std::unique_ptr < engine::Command>>list;
         mt19937 mt_rand(time(0));
         int h;
+                if (joueur == 1) {
+
+            EarnMoney *E = new EarnMoney(joueur);
+            E->execute(engine.currentState);
+            std::vector<std::unique_ptr<engine::Command> > l4;
+            BatimentCommands(engine.currentState, 1, l4);
+            h = (int) (mt_rand() % l4.size());
+            engine.addCommand(l4[h].release());
+        }
+
+        if (joueur == 2) {
+
+
+            EarnMoney *E = new EarnMoney(joueur);
+            E->execute(engine.currentState);
+            std::vector<std::unique_ptr<engine::Command> > l4;
+            BatimentCommands(engine.currentState, joueur, l4);
+            h = (int) (mt_rand() % l4.size());
+
+            engine.addCommand(l4[h].release());
+        }
+
+        
+
+        
 
         for (int j = 0; j < int(engine.currentState.getChars()->getHeight()); j++) {
             for (int i = 0; i < int(engine.currentState.getChars()->getWidth()); i++) {
@@ -235,27 +259,6 @@ namespace ai {
             }
         }*/
 
-        if (joueur == 1) {
-
-            EarnMoney *E = new EarnMoney(joueur);
-            E->execute(engine.currentState);
-            std::vector<std::unique_ptr<engine::Command> > l4;
-            BatimentCommands(engine.currentState, 1, l4);
-            h = (int) (mt_rand() % l4.size());
-            engine.addCommand(l4[h].release());
-        }
-
-        if (joueur == 2) {
-
-
-            EarnMoney *E = new EarnMoney(joueur);
-            E->execute(engine.currentState);
-            std::vector<std::unique_ptr<engine::Command> > l4;
-            BatimentCommands(engine.currentState, joueur, l4);
-            h = (int) (mt_rand() % l4.size());
-
-            engine.addCommand(l4[h].release());
-        }
 
 
         /*for (int j = 0; j < int(engine.currentState.getChars()->getHeight()); j++) {
