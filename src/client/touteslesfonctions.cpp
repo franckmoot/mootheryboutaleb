@@ -347,7 +347,7 @@ void testheuristicAI() {
 
     engine.addCommand(new engine::CreateCharCommand(INFANTERIE, 18, 14, 2));
     engine.addCommand(new engine::CreateCharCommand(HELI, 17, 14, 2));
-    engine.addCommand(new engine::CreateCharCommand(HELI, 2, 1, 1));
+    //engine.addCommand(new engine::CreateCharCommand(HELI, 2, 1, 1));
 
     engine.addCommand(new engine::CreateCharCommand(HELI, 3, 1, 1));
     //engine.addCommand(new engine::MoveCharCommand(16, 3, 17, 4));
@@ -399,12 +399,14 @@ void testheuristicAI() {
             cout << "JOUEUR1 joue::" << endl;
             test.run(engine, 1);
             sf::sleep(sf::milliseconds(50));
+            surf.initSurface();
         }
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
             cout << "JOUEUR2 joue::" << endl;
             test1.run(engine, 2);
             sf::sleep(sf::milliseconds(50));
+            surf.initSurface();
         }
 
         window.clear();
