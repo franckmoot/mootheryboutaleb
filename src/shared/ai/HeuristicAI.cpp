@@ -108,10 +108,10 @@ namespace ai {
                                 if ((engine.currentState.getGrid()->getElement(i, j)->getTypeId() == 1)&&(engine.currentState.getGrid()->getElement(i, j)->getJoueur() != joueur)) {
                                     engine.addCommand(new CapturCharCommand(i, j));
                                 } else if ((x2 >= 0)&&(y2 >= 0)&&(x2<int(engine.currentState.getGrid()->getWidth()))&&(y2<int(engine.currentState.getGrid()->getHeight()))&&(engine.currentState.getChars()->getElement(x2, y2) != NULL)&&(joueur != engine.currentState.getChars()->getElement(x2, y2)->getJoueur())) {
-                                    if (engine.currentState.getChars()->getElement(i, j)->getCommande()) {
-                                        engine.currentState.getChars()->getElement(i, j)->setCommande(false);
+                                   // if (engine.currentState.getChars()->getElement(i, j)->getCommande()) {
+                                    //    engine.currentState.getChars()->getElement(i, j)->setCommande(false);
                                         engine.addCommand(new AttaqueCharCommand(i, j, x2, y2));
-                                    }
+                                   // }
 
                                 } else {
 
@@ -134,10 +134,10 @@ namespace ai {
                                             }
                                         }
                                     }
-                                    if (engine.currentState.getChars()->getElement(i, j)->getCommande()) {
-                                        engine.currentState.getChars()->getElement(i, j)->setCommande(false);
+                                   // if (engine.currentState.getChars()->getElement(i, j)->getCommande()) {
+                                   //     engine.currentState.getChars()->getElement(i, j)->setCommande(false);
                                         engine.addCommand(new MoveCharCommand(i, j, x3min, y3min));
-                                    }
+                                   // }
                                 }
                             }
                         }
@@ -147,10 +147,10 @@ namespace ai {
                         for (int x2 = (i - eletmp->getPorteeMvt()); x2 < (i + eletmp->getPorteeMvt()); x2++) {
                             for (int y2 = (j - eletmp->getPorteeMvt()); y2 < (j + eletmp->getPorteeMvt()); y2++) {
                                 if ((x2 >= 0)&&(y2 >= 0)&&(x2<int(engine.currentState.getGrid()->getWidth()))&&(y2<int(engine.currentState.getGrid()->getHeight()))&&(engine.currentState.getChars()->getElement(x2, y2) != NULL)&&(joueur != engine.currentState.getChars()->getElement(x2, y2)->getJoueur())) {
-                                    if (engine.currentState.getChars()->getElement(i, j)->getCommande()) {
-                                        engine.currentState.getChars()->getElement(i, j)->setCommande(false);
+                                  //  if (engine.currentState.getChars()->getElement(i, j)->getCommande()) {
+                                   //     engine.currentState.getChars()->getElement(i, j)->setCommande(false);
                                         engine.addCommand(new AttaqueCharCommand(i, j, x2, y2));
-                                    }
+                                   // }
                                 } else {
                                     setHelimap(engine, joueur);
                                     int x3min = 100;
@@ -173,11 +173,11 @@ namespace ai {
                                         }
                                     }
 
-                                    if (engine.currentState.getChars()->getElement(i, j)->getCommande()) {
-                                        engine.currentState.getChars()->getElement(i, j)->setCommande(false);
+                                  //  if (engine.currentState.getChars()->getElement(i, j)->getCommande()) {
+                                   //     engine.currentState.getChars()->getElement(i, j)->setCommande(false);
                                         engine.addCommand(new MoveCharCommand(i, j, x3min, y3min));
                                         cout << "je l'ai appliquer movacharcommande" << endl;
-                                    }
+                                    //}
                                 }
 
                             }
@@ -188,10 +188,10 @@ namespace ai {
                             for (int y2 = (j - eletmp->getPorteeMvt()); y2 < (j + eletmp->getPorteeMvt()); y2++) {
 
                                 if ((x2 >= 0)&&(y2 >= 0)&&(x2<int(engine.currentState.getGrid()->getWidth()))&&(y2<int(engine.currentState.getGrid()->getHeight()))&&(engine.currentState.getChars()->getElement(x2, y2) != NULL)&&(joueur != engine.currentState.getChars()->getElement(x2, y2)->getJoueur())) {
-                                    if (engine.currentState.getChars()->getElement(i, j)->getCommande()) {
-                                        engine.currentState.getChars()->getElement(i, j)->setCommande(false);
+                                 //   if (engine.currentState.getChars()->getElement(i, j)->getCommande()) {
+                                 //       engine.currentState.getChars()->getElement(i, j)->setCommande(false);
                                         engine.addCommand(new AttaqueCharCommand(i, j, x2, y2));
-                                    }
+                                  //  }
                                     cout << "je suis le tank et je vais attaquer" << endl;
                                 } else {
 
@@ -215,11 +215,11 @@ namespace ai {
                                         }
                                     }
 
-                                    if (engine.currentState.getChars()->getElement(i, j)->getCommande()) {
-                                        engine.currentState.getChars()->getElement(i, j)->setCommande(false);
+                                   // if (engine.currentState.getChars()->getElement(i, j)->getCommande()) {
+                                   //     engine.currentState.getChars()->getElement(i, j)->setCommande(false);
                                         engine.addCommand(new MoveCharCommand(i, j, x3min, y3min));
                                         cout << "je suis le tank et je vais bouger" << endl;
-                                    }
+                                    //}
                                 }
                             }
 
@@ -230,13 +230,13 @@ namespace ai {
             }
         }
 
-        for (int j = 0; j < int(engine.currentState.getChars()->getHeight()); j++) {
+       /* for (int j = 0; j < int(engine.currentState.getChars()->getHeight()); j++) {
             for (int i = 0; i < int(engine.currentState.getChars()->getWidth()); i++) {
                 if (engine.currentState.getChars()->getElement(i, j) != NULL) {
                     engine.currentState.getChars()->getElement(i, j)->setCommande(true);
                 }
             }
-        }
+        }*/
 
         if (joueur == 1) {
 
