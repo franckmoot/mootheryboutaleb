@@ -110,8 +110,8 @@ namespace ai {
 
                             int x3min = 100;
                             int y3min = 100;
-                            for (int x3 = (i - eletmp->getPorteeMvt()); x3 < (i + eletmp->getPorteeMvt()); x3++) {
-                                for (int y3 = (j - eletmp->getPorteeMvt()); y3 < (j + eletmp->getPorteeMvt()); y3++) {
+                            for (int x3 = (i - eletmp->getPorteeMvt()+1); x3 < (i + eletmp->getPorteeMvt()-1); x3++) {
+                                for (int y3 = (j - eletmp->getPorteeMvt()+1); y3 < (j + eletmp->getPorteeMvt()-1); y3++) {
                                     if ((x3 >= 0)&&(y3 >= 0)&&(x3<int(engine.currentState.getGrid()->getWidth()))&&(y3<int(engine.currentState.getGrid()->getHeight()))) {
                                         int min = 1000;
 
@@ -119,15 +119,15 @@ namespace ai {
                                             min = getInfmap(engine, joueur).getPoidlist(x3 + y3 * 20);
                                             x3min = x3;
                                             y3min = y3;
-                                            cout << x3min << endl;
-                                            cout << y3min << endl;
+                                            //cout << x3min << endl;
+                                           // cout << y3min << endl;
                                         }
                                     }
                                 }
                             }
                             cout << x3min << endl;
                             cout << y3min << endl;
-                            engine::MoveCharCommand *M = new MoveCharCommand(i, j, x3min - 1, y3min - 1);
+                            engine::MoveCharCommand *M = new MoveCharCommand(i, j, x3min, y3min);
                             M->execute(engine.currentState);
 
                         }

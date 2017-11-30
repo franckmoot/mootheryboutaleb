@@ -394,7 +394,7 @@ void testheuristicAI() {
      surf.initSurface();
 
      HeuristicAI heuri;
-    
+    heuri.run(engine, 1);
     
 
      /*
@@ -417,7 +417,7 @@ void testheuristicAI() {
         }
 
         sf::sleep(sf::milliseconds(50));
-        heuri.run(engine, 1);
+        
 
         window.clear();
         window.draw(*(surf.surface));
