@@ -343,13 +343,13 @@ void testheuristicAI() {
 
     engine.addCommand(new engine::LoadCommand("res/map.csv"));
 
-    engine.addCommand(new engine::CreateCharCommand(INFANTERIE, 16, 3, 1));
+    //engine.addCommand(new engine::CreateCharCommand(INFANTERIE, 16, 3, 1));
 
-    engine.addCommand(new engine::CreateCharCommand(INFANTERIE, 18, 14, 2));
-    engine.addCommand(new engine::CreateCharCommand(HELI, 17, 14, 2));
+    engine.addCommand(new engine::CreateCharCommand(INFANTERIE, 16, 3, 1));
+    engine.addCommand(new engine::CreateCharCommand(INFANTERIE, 17, 14, 2));
     //engine.addCommand(new engine::CreateCharCommand(HELI, 2, 1, 1));
 
-    engine.addCommand(new engine::CreateCharCommand(HELI, 3, 1, 1));
+    engine.addCommand(new engine::CreateCharCommand(HELI, 3, 17, 2));
     //engine.addCommand(new engine::MoveCharCommand(16, 3, 17, 4));
 
     // engine.addCommand(new engine::MoveCharCommand(2, 1, 3, 2));

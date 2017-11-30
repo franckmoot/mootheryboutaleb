@@ -134,7 +134,7 @@ namespace ai {
                                 }
                             }
                         }
-                    } else if (engine.currentState.getChars()->getElement(i, j)->getTypeId() == 3 && engine.currentState.getChars()->getElement(i, j)->getJoueur() == joueur) {
+                    } if (engine.currentState.getChars()->getElement(i, j)->getTypeId() == 3 && engine.currentState.getChars()->getElement(i, j)->getJoueur() == joueur) {
                         cout << "ou est mon erreur de segmentation 1 " << endl;
                         Heli* eletmp = (Heli*) (engine.currentState.getChars()->getElement(i, j));
                         cout << "ou est mon erreur de segmentation 2 " << endl;
