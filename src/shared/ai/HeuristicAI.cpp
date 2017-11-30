@@ -120,18 +120,29 @@ namespace ai {
                                             x3min = x3;
                                             y3min = y3;
                                             //cout << x3min << endl;
-                                            // cout << y3min << endl;
+                                            //cout << y3min << endl;
                                         }
                                     }
                                 }
                             }
                             cout << x3min << endl;
                             cout << y3min << endl;
+                            cout << "la valeur de i est :"<<i << endl;
+                            cout << "la valeur de j est :" <<j<< endl;
 
-                            if (engine.currentState.getChars()->getElement(i, j)->getCommande()) {
+                            for (int j = 0; j < 20; j++) {
+                                for (int i = 0; i < 20; i++) {
+
+                                    cout << getInfmap(engine, 1).getPoidlist(i + j * 20) << "\t";
+                                }
+                                cout << " " << endl;
+                            }
+
+                            if (engine.currentState.getChars()->getElement(i, j)->getCommande()) {                               
                                 engine.currentState.getChars()->getElement(i, j)->setCommande(false);
+                                cout << "je vais appliquer movacharcommande" << endl;
                                 engine.addCommand(new MoveCharCommand(i, j, x3min, y3min));
-
+                                cout << "je l'ai appliquer movacharcommande" << endl;
                             }
                             //M->execute(engine.currentState);
 
@@ -146,7 +157,9 @@ namespace ai {
                 }
             }
         }
+        cout << "j'execute" << endl;
         engine.update();
+        cout << "j'ai executé" << endl;
         
         for (int j = 0; j < int(engine.currentState.getChars()->getHeight()); j++) {
             for (int i = 0; i < int(engine.currentState.getChars()->getWidth()); i++) {

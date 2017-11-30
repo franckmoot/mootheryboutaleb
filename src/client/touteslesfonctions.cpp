@@ -337,20 +337,20 @@ void testai() {
 
 void testheuristicAI() {
 
-   /* vector<int> test;
-    for (int j = 0; j < 7; j++) {
-        for (int i = 0; i < 7; i++) {
+    /* vector<int> test;
+     for (int j = 0; j < 7; j++) {
+         for (int i = 0; i < 7; i++) {
 
-            test.push_back(i + j * 7);
-        }
-    }
-    for (int j = 0; j < 7; j++) {
-        for (int i = 0; i < 7; i++) {
+             test.push_back(i + j * 7);
+         }
+     }
+     for (int j = 0; j < 7; j++) {
+         for (int i = 0; i < 7; i++) {
 
-            cout << test[i + j * 7] << "\t";
-        }
-        cout << "" << endl;
-    }*/
+             cout << test[i + j * 7] << "\t";
+         }
+         cout << "" << endl;
+     }*/
 
     /*for (int x3 = (i - eletmp->getPorteeMvt()); x3 < (i + eletmp->getPorteeMvt()); x3++) {
         for (int y3 = (j - eletmp->getPorteeMvt()); y3 < (j + eletmp->getPorteeMvt()); y3++) {
@@ -370,41 +370,41 @@ void testheuristicAI() {
 
 
 
-     sf::RenderWindow window(sf::VideoMode(640, 640), "Advance wars");
-     engine::Engine engine;
+    sf::RenderWindow window(sf::VideoMode(640, 640), "Advance wars");
+    engine::Engine engine;
 
-     engine.addCommand(new engine::LoadCommand("res/map.csv"));
+    engine.addCommand(new engine::LoadCommand("res/map.csv"));
 
-     cout << "Creation d'un tank dans les casernes" << endl;
-     engine.addCommand(new engine::CreateCharCommand(INFANTERIE, 16, 3, 1));
-     engine.addCommand(new engine::CreateCharCommand(INFANTERIE, 18, 14, 2));
+    cout << "Creation d'un tank dans les casernes" << endl;
+    engine.addCommand(new engine::CreateCharCommand(INFANTERIE, 16, 3, 1));
+    engine.addCommand(new engine::CreateCharCommand(INFANTERIE, 18, 14, 2));
+    //engine.addCommand(new engine::MoveCharCommand(16, 3, 15, 4));
+    cout << "Deplacement des tank" << endl;
+    // engine.addCommand(new engine::MoveCharCommand(2, 1, 3, 2));
+    // engine.addCommand(new engine::MoveCharCommand(3, 2, 3, 5));
+    // engine.addCommand(new engine::CapturCharCommand(3,2));
 
-     cout << "Deplacement des tank" << endl;
-     // engine.addCommand(new engine::MoveCharCommand(2, 1, 3, 2));
-     // engine.addCommand(new engine::MoveCharCommand(3, 2, 3, 5));
-     // engine.addCommand(new engine::CapturCharCommand(3,2));
+    cout << "Deplacement infanterie" << endl;
+    // engine.addCommand(new engine::MoveCharCommand(18, 14, 17, 16));
+    // engine.addCommand(new engine::CapturCharCommand(17, 16));
+    //engine.addCommand(new engine::MoveCharCommand(17, 16, 18, 14));
+    engine.update();
 
-     cout << "Deplacement infanterie" << endl;
-     // engine.addCommand(new engine::MoveCharCommand(18, 14, 17, 16));
-     // engine.addCommand(new engine::CapturCharCommand(17, 16));
-     //engine.addCommand(new engine::MoveCharCommand(17, 16, 18, 14));
-     engine.update();
+    Layer surf(engine.getState());
+    surf.initSurface();
 
-     Layer surf(engine.getState());
-     surf.initSurface();
+    HeuristicAI heuri;
 
-     HeuristicAI heuri;
-    heuri.run(engine, 1);
-    
 
-     /*
-      for (int j = 0; j < 20; j++) {
-         for (int i = 0; i < 20; i++) {
 
-             cout << heuri.getInfmap(engine, 1).getPoidlist(i + j * 20) << "\t";
-         }
-         cout << " " << endl;
-     }
+    /*
+     for (int j = 0; j < 20; j++) {
+        for (int i = 0; i < 20; i++) {
+
+            cout << heuri.getInfmap(engine, 1).getPoidlist(i + j * 20) << "\t";
+        }
+        cout << " " << endl;
+    }
      */
 
     while (window.isOpen()) {
@@ -416,14 +416,17 @@ void testheuristicAI() {
                 window.close();
         }
 
-        sf::sleep(sf::milliseconds(50));
-        
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
+            surf.initSurface();
 
+            sf::sleep(sf::milliseconds(50));
+            heuri.run(engine, 1);
+        }
         window.clear();
         window.draw(*(surf.surface));
         window.draw(*(surf.surfaceplayer));
         window.display();
 
     }
-     
+
 }
