@@ -27,7 +27,7 @@ namespace engine {
 
     void MoveCharCommand::execute(state::State& state) {
 
-        if ((state.getChars()->getElement(x2, y2) != NULL) || (state.getChars()->getElement(x1, y1) == NULL)) cout << "c'est impossible " << endl;
+        if ((state.getChars()->getElement(x2, y2) != NULL) || (state.getChars()->getElement(x1, y1) == NULL)){} //cout << "c'est impossible " << endl;
         else {
 
             if (state.getChars()->getElement(x1, y1)->getTypeId() == 3) {
@@ -41,11 +41,11 @@ namespace engine {
                 if (state.getGrid()->getElement(x2, y2)->getTypeId() == 0) {
                     state::Champdebataille* eletmp2 = (state::Champdebataille*)(state.getGrid()->getElement(x2, y2));
                     if (eletmp2->getChampdeBatailleType() == 4 || eletmp2->getChampdeBatailleType() == 5) {
-                        cout << "c'est impossible de mettre un element mobile sur cet elment statique" << endl;
+                        //cout << "c'est impossible de mettre un element mobile sur cet elment statique" << endl;
                     } else {
                         if ((int) (sqrt((((x1 - x2)*(x1 - x2))+((y1 - y2)*(y1 - y2))))) <= eletmp->getPorteeMvt()) {
                             state.getChars()->chgPosition(x1, y1, x2, y2);
-                        } else cout << "c est impossible pour un Tank de partir plus loin" << endl;
+                        } //else cout << "c est impossible pour un Tank de partir plus loin" << endl;
                     }
                 } else if (state.grid->getElement(x2, y2)->getTypeId() == 1) {
                     if ((int) (sqrt((((x1 - x2)*(x1 - x2))+((y1 - y2)*(y1 - y2))))) <= eletmp->getPorteeMvt()) {
@@ -58,12 +58,12 @@ namespace engine {
                 if (state.getGrid()->getElement(x2, y2)->getTypeId() == 0) {
                     state::Champdebataille* eletmp2 = (state::Champdebataille*)(state.getGrid()->getElement(x2, y2));
                     if (eletmp2->getChampdeBatailleType() == 4) {
-                        cout << "c'est impossible de mettre un element mobile sur cet elment statique" << endl;
+                        //cout << "c'est impossible de mettre un element mobile sur cet elment statique" << endl;
                     } else {
 
                         if ((int) (sqrt((((x1 - x2)*(x1 - x2))+((y1 - y2)*(y1 - y2))))) <= eletmp->getPorteeMvt()) {
                             state.chars->chgPosition(x1, y1, x2, y2);
-                        } else cout << "c est impossible pour une infanterie de partir plus loin" << endl;
+                        } //else cout << "c est impossible pour une infanterie de partir plus loin" << endl;
                     }
                 } else if (state.getGrid()->getElement(x2, y2)->getTypeId() == 1) {
 

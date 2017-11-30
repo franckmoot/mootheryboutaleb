@@ -343,24 +343,6 @@ void testheuristicAI() {
 
     engine.addCommand(new engine::LoadCommand("res/map.csv"));
 
-    //engine.addCommand(new engine::CreateCharCommand(INFANTERIE, 16, 3, 1));
-
-    //engine.addCommand(new engine::CreateCharCommand(INFANTERIE, 16, 3, 1));
-    //engine.addCommand(new engine::CreateCharCommand(INFANTERIE, 17, 14, 2));
-    //engine.addCommand(new engine::CreateCharCommand(HELI, 2, 1, 1));
-
-    //engine.addCommand(new engine::CreateCharCommand(HELI, 3, 17, 2));
-    //engine.addCommand(new engine::CreateCharCommand(TANK, 3, 17, 2));
-    //engine.addCommand(new engine::MoveCharCommand(16, 3, 17, 4));
-
-    // engine.addCommand(new engine::MoveCharCommand(2, 1, 3, 2));
-    // engine.addCommand(new engine::MoveCharCommand(3, 2, 3, 5));
-    // engine.addCommand(new engine::CapturCharCommand(3,2));
-
-
-    // engine.addCommand(new engine::MoveCharCommand(18, 14, 17, 16));
-    // engine.addCommand(new engine::CapturCharCommand(17, 16));
-    //engine.addCommand(new engine::MoveCharCommand(17, 16, 18, 14));
     engine.update();
 
     Layer surf(engine.getState());
@@ -396,19 +378,6 @@ void testheuristicAI() {
           }
           joueur++;
 
-        /*if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-            cout << "JOUEUR1 joue::" << endl;
-            test.run(engine, 1);
-            sf::sleep(sf::milliseconds(50));
-            surf.initSurface();
-        }
-
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-            cout << "JOUEUR2 joue::" << endl;
-            test1.run(engine, 2);
-            sf::sleep(sf::milliseconds(50));
-            surf.initSurface();
-        }*/
 
         window.clear();
         window.draw(*(surf.surface));

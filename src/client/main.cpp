@@ -48,11 +48,11 @@ int main(int argc, char* argv[]) {
         } else if (!s.compare("engine")) {
 
             testengine();
-        } else if (!s.compare("ai")) {
+        } else if (!s.compare("random_ai")) {
 
             testai();
         }
-        else if (!s.compare("heuri")) {
+        else if (!s.compare("heuristic_ai")) {
 
             testheuristicAI();
         }

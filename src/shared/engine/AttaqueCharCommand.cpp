@@ -35,27 +35,27 @@ namespace engine {
                             eletmp2->setPdv(eletmp2->getPdv() - eletmp->getAttaque());
                             if (eletmp2->getPdv() <= 0) {
                                 state.getChars()->killElement(x2, y2);
-                                cout << "notre element d'absice" << x2 << "et d'ordonnée" << y2 << "est mort" << endl;
+                                //cout << "notre element d'absice" << x2 << "et d'ordonnée" << y2 << "est mort" << endl;
                             }
-                        } else cout << "ta portée n'est pas suffisante" << endl;
+                        } //else cout << "ta portée n'est pas suffisante" << endl;
                     } else if (state.getChars()->getElement(x2, y2)->getTypeId() == 3) {
                         state::Heli* eletmp2 = (state::Heli*)(state.getChars()->getElement(x2, y2));
                         if ((int) (sqrt((((x1 - x2)*(x1 - x2))+((y1 - y2)*(y1 - y2))))) <= eletmp->getPorteeAtq()) {
                             eletmp2->setPdv(eletmp2->getPdv() - eletmp->getAttaque());
                             if (eletmp2->getPdv() <= 0) {
                                 state.getChars()->killElement(x2, y2);
-                                cout << "notre element d'absice" << x2 << "et d'ordonnée" << y2 << "est mort" << endl;
+                                //cout << "notre element d'absice" << x2 << "et d'ordonnée" << y2 << "est mort" << endl;
                             }
-                        } else cout << "ta portée n'est pas suffisante" << endl;
+                        } //else cout << "ta portée n'est pas suffisante" << endl;
                     } else if (state.getChars()->getElement(x2, y2)->getTypeId() == 4) {
                         state::Tank* eletmp2 = (state::Tank*)(state.getChars()->getElement(x2, y2));
                         if ((int) (sqrt((((x1 - x2)*(x1 - x2))+((y1 - y2)*(y1 - y2))))) <= eletmp->getPorteeAtq()) {
                             eletmp2->setPdv(eletmp2->getPdv() - eletmp->getAttaque());
                             if (eletmp2->getPdv() <= 0) {
                                 state.getChars()->killElement(x2, y2);
-                                cout << "notre element d'absice" << x2 << "et d'ordonnée" << y2 << "est mort" << endl;
+                                //cout << "notre element d'absice" << x2 << "et d'ordonnée" << y2 << "est mort" << endl;
                             }
-                        } else cout << "ta portée n'est pas suffisante" << endl;
+                        } //else cout << "ta portée n'est pas suffisante" << endl;
                     }
                 } else if (state.chars->getElement(x1, y1)->getTypeId() == 3) {
                     state::Infanterie* eletmp = (state::Infanterie*)(state.getChars()->getElement(x1, y1));
@@ -65,18 +65,18 @@ namespace engine {
                             eletmp2->setPdv(eletmp2->getPdv() - eletmp->getAttaque());
                             if (eletmp2->getPdv() <= 0) {
                                 state.chars->killElement(x2, y2);
-                                cout << "notre element d'absice" << x2 << "et d'ordonnée" << y2 << "est mort" << endl;
+                                //cout << "notre element d'absice" << x2 << "et d'ordonnée" << y2 << "est mort" << endl;
                             }
-                        } else cout << "ta portée n'est pas suffisante" << endl;
+                        } //else cout << "ta portée n'est pas suffisante" << endl;
                     } else if (state.chars->getElement(x2, y2)->getTypeId() == 3) {
                         state::Heli* eletmp2 = (state::Heli*)(state.getChars()->getElement(x2, y2));
                         if ((int) (sqrt((((x1 - x2)*(x1 - x2))+((y1 - y2)*(y1 - y2))))) <= eletmp->getPorteeAtq()) {
                             eletmp2->setPdv(eletmp2->getPdv() - eletmp->getAttaque());
                             if (eletmp2->getPdv() <= 0) {
                                 state.getChars()->killElement(x2, y2);
-                                cout << "notre element d'absice" << x2 << "et d'ordonnée" << y2 << "est mort" << endl;
+                                //cout << "notre element d'absice" << x2 << "et d'ordonnée" << y2 << "est mort" << endl;
                             }
-                        } else cout << "ta portée n'est pas suffisante" << endl;
+                        } //else cout << "ta portée n'est pas suffisante" << endl;
                     }
                     else if (state.chars->getElement(x2, y2)->getTypeId() == 4) {
                         state::Tank* eletmp2 = (state::Tank*)(state.getChars()->getElement(x2, y2));
@@ -84,9 +84,9 @@ namespace engine {
                             eletmp2->setPdv(eletmp2->getPdv() - eletmp->getAttaque());
                             if (eletmp2->getPdv() <= 0) {
                                 state.getChars()->killElement(x2, y2);
-                                cout << "notre element d'absice" << x2 << "et d'ordonnée" << y2 << "est mort" << endl;
+                                //cout << "notre element d'absice" << x2 << "et d'ordonnée" << y2 << "est mort" << endl;
                             }
-                        } else cout << "ta portée n'est pas suffisante" << endl;
+                        } //else cout << "ta portée n'est pas suffisante" << endl;
                     }
                 } else if (state.chars->getElement(x1, y1)->getTypeId() == 4) {
                     state::Infanterie* eletmp = (state::Infanterie*)(state.getChars()->getElement(x1, y1));
@@ -96,40 +96,33 @@ namespace engine {
                             eletmp2->setPdv(eletmp2->getPdv() - eletmp->getAttaque());
                             if (eletmp2->getPdv() <= 0) {
                                 state.chars->killElement(x2, y2);
-                                cout << "notre element d'absice" << x2 << "et d'ordonnée" << y2 << "est mort" << endl;
+                                //cout << "notre element d'absice" << x2 << "et d'ordonnée" << y2 << "est mort" << endl;
                             }
-                        } else cout << "ta portée n'est pas suffisante" << endl;
+                        } //else cout << "ta portée n'est pas suffisante" << endl;
                     } else if (state.getChars()->getElement(x2, y2)->getTypeId() == 3) {
                         state::Heli* eletmp2 = (state::Heli*)(state.chars->getElement(x2, y2));
                         if ((int) (sqrt((((x1 - x2)*(x1 - x2))+((y1 - y2)*(y1 - y2))))) <= eletmp->getPorteeAtq()) {
                             eletmp2->setPdv(eletmp2->getPdv() - eletmp->getAttaque());
                             if (eletmp2->getPdv() <= 0) {
                                 state.chars->killElement(x2, y2);
-                                cout << "notre element d'absice" << x2 << "et d'ordonnée" << y2 << "est mort" << endl;
+                                //cout << "notre element d'absice" << x2 << "et d'ordonnée" << y2 << "est mort" << endl;
                             }
-                        } else cout << "ta portée n'est pas suffisante" << endl;
+                        } //else cout << "ta portée n'est pas suffisante" << endl;
                     } else if (state.getChars()->getElement(x2, y2)->getTypeId() == 4) {
                         state::Tank* eletmp2 = (state::Tank*)(state.chars->getElement(x2, y2));
                         if ((int) (sqrt((((x1 - x2)*(x1 - x2))+((y1 - y2)*(y1 - y2))))) <= eletmp->getPorteeAtq()) {
                             eletmp2->setPdv(eletmp2->getPdv() - eletmp->getAttaque());
                             if (eletmp2->getPdv() <= 0) {
                                 state.chars->killElement(x2, y2);
-                                cout << "notre element d'absice" << x2 << "et d'ordonnée" << y2 << "est mort" << endl;
+                                //cout << "notre element d'absice" << x2 << "et d'ordonnée" << y2 << "est mort" << endl;
                             }
-                        } else cout << "ta portée n'est pas suffisante" << endl;
+                        } //else cout << "ta portée n'est pas suffisante" << endl;
                     }
                 }
             } else {
-                cout << "tu n'attaques pas ton ami" << endl;
+                //cout << "tu n'attaques pas ton ami" << endl;
             }
         }
-
-
-
-
-
-
-
     }
 }
 

@@ -176,7 +176,6 @@ namespace ai {
                                   //  if (engine.currentState.getChars()->getElement(i, j)->getCommande()) {
                                    //     engine.currentState.getChars()->getElement(i, j)->setCommande(false);
                                         engine.addCommand(new MoveCharCommand(i, j, x3min, y3min));
-                                        cout << "je l'ai appliquer movacharcommande" << endl;
                                     //}
                                 }
 
@@ -192,7 +191,6 @@ namespace ai {
                                  //       engine.currentState.getChars()->getElement(i, j)->setCommande(false);
                                         engine.addCommand(new AttaqueCharCommand(i, j, x2, y2));
                                   //  }
-                                    cout << "je suis le tank et je vais attaquer" << endl;
                                 } else {
 
                                     setTankmap(engine, joueur);
@@ -218,7 +216,6 @@ namespace ai {
                                    // if (engine.currentState.getChars()->getElement(i, j)->getCommande()) {
                                    //     engine.currentState.getChars()->getElement(i, j)->setCommande(false);
                                         engine.addCommand(new MoveCharCommand(i, j, x3min, y3min));
-                                        cout << "je suis le tank et je vais bouger" << endl;
                                     //}
                                 }
                             }
