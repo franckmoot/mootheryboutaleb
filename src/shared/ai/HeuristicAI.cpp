@@ -51,13 +51,26 @@ namespace ai {
         this->helimap.init(*engine.currentState.grid);
         for (int j = 0; j < int(engine.currentState.getGrid()->getHeight()); j++) {
             for (int i = 0; i < int(engine.currentState.getGrid()->getWidth()); i++) {
-                if ((engine.currentState.getGrid()->getElement(i, j)->getTypeId() == 1)&&(engine.currentState.getGrid()->getElement(i, j)->getJoueur() != joueur)) {
-                    this->helimap.addSink(Point(i, j, 0));
+                if (engine.currentState.getChars()->getElement(i, j) != NULL) {
+                    if ((engine.currentState.getChars()->getElement(i, j)->getJoueur() != joueur)) {
+                        this->helimap.addSink(Point(i, j, 0));
 
+                    }
                 }
             }
         }
+
         this->helimap.update(*engine.currentState.grid);
+        for (int j = 0; j < int(engine.currentState.getGrid()->getHeight()); j++) {
+            for (int i = 0; i < int(engine.currentState.getGrid()->getWidth()); i++) {
+                cout << getHelimap(engine, joueur).getPoidlist(i + j * 20) << "\t";
+            }
+            cout << "" << endl;
+        }
+
+        cout << "" << endl;
+        cout << "" << endl;
+
     }
 
     void HeuristicAI::setTankmap(engine::Engine& engine, int joueur) {
