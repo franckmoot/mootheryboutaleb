@@ -25,7 +25,7 @@ namespace engine {
 
     void EarnMoney::execute(state::State& state) {
 
-        int batimentgains = 20;
+        int batimentgains = 100;
         if (joueur == 1) {
             int nbrBatiment = 0;
             for (int j = 0; j < int(state.getGrid()->getHeight()); j++) {
