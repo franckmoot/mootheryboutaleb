@@ -28,8 +28,8 @@ namespace ai {
 
     void Pathheli::init(state::ElementTab& grid) {
 
-        int infini=10000;
-     weights.clear();
+        int infini = 10000;
+        weights.clear();
 
         for (int j = 0; j < int(grid.getHeight()); j++) {
             for (int i = 0; i < int(grid.getWidth()); i++) {

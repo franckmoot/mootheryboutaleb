@@ -59,30 +59,6 @@ namespace ai {
         queue.push(p);
     }
 
-    /* void Pathmap::init( state::ElementTab& grid) {
-         int infini = 10000;
-         directions.push_back(HAUT);
-         directions.push_back(BAS);
-         directions.push_back(GAUCHE);
-         directions.push_back(DROITE);
-
-         for (int j = 0; j <  int(grid.getHeight()); j++) {
-             for (int i = 0; i < int(grid.getWidth()); i++) {
-
-                 if (grid.getElement(i, j)->getTypeId() == 0) {
-                     state::Champdebataille * eletmp = (state::Champdebataille*)(grid.getElement(i, j));
-                     if (eletmp->getChampdeBatailleType() == state::EAU) {                      
-                         weights.push_back(-1);
-                     } else {
-                         weights.push_back(infini);
-                     }
-
-                 } else {
-                     weights.push_back(infini);
-                 }
-             }
-         }
-     }*/
 
     void Pathmap::update(const state::ElementTab & grid) {
 

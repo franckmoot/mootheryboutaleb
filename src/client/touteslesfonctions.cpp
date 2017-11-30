@@ -337,59 +337,26 @@ void testai() {
 
 void testheuristicAI() {
 
-    /* vector<int> test;
-     for (int j = 0; j < 7; j++) {
-         for (int i = 0; i < 7; i++) {
-
-             test.push_back(i + j * 7);
-         }
-     }
-     for (int j = 0; j < 7; j++) {
-         for (int i = 0; i < 7; i++) {
-
-             cout << test[i + j * 7] << "\t";
-         }
-         cout << "" << endl;
-     }*/
-
-    /*for (int x3 = (i - eletmp->getPorteeMvt()); x3 < (i + eletmp->getPorteeMvt()); x3++) {
-        for (int y3 = (j - eletmp->getPorteeMvt()); y3 < (j + eletmp->getPorteeMvt()); y3++) {
-            if ((x3 >= 0)&&(y3 >= 0)&&(x3<int(engine.currentState.getGrid()->getWidth()))&&(y3<int(engine.currentState.getGrid()->getHeight()))) {
-                int min = 1000;
-
-                if (min > getInfmap(engine, joueur).getPoidlist(x3 + y3 * 20)) {
-                    min = getInfmap(engine, joueur).getPoidlist(x3 + y3 * 20);
-                    x3min = x3;
-                    y3min = y3;
-                    cout << x3min << endl;
-                    cout << y3min << endl;
-                }
-            }
-        }
-    }*/
-
-
 
     sf::RenderWindow window(sf::VideoMode(640, 640), "Advance wars");
     engine::Engine engine;
 
     engine.addCommand(new engine::LoadCommand("res/map.csv"));
 
-    cout << "Creation d'un tank dans les casernes" << endl;
     engine.addCommand(new engine::CreateCharCommand(INFANTERIE, 16, 3, 1));
-    
+
     engine.addCommand(new engine::CreateCharCommand(INFANTERIE, 18, 14, 2));
     engine.addCommand(new engine::CreateCharCommand(HELI, 17, 14, 2));
-     engine.addCommand(new engine::CreateCharCommand(HELI, 2, 1, 1));
-    
+    engine.addCommand(new engine::CreateCharCommand(HELI, 2, 1, 1));
+
     engine.addCommand(new engine::CreateCharCommand(HELI, 3, 1, 1));
     //engine.addCommand(new engine::MoveCharCommand(16, 3, 17, 4));
-    cout << "Deplacement des tank" << endl;
+
     // engine.addCommand(new engine::MoveCharCommand(2, 1, 3, 2));
     // engine.addCommand(new engine::MoveCharCommand(3, 2, 3, 5));
     // engine.addCommand(new engine::CapturCharCommand(3,2));
 
-    cout << "Deplacement infanterie" << endl;
+
     // engine.addCommand(new engine::MoveCharCommand(18, 14, 17, 16));
     // engine.addCommand(new engine::CapturCharCommand(17, 16));
     //engine.addCommand(new engine::MoveCharCommand(17, 16, 18, 14));
@@ -398,19 +365,11 @@ void testheuristicAI() {
     Layer surf(engine.getState());
     surf.initSurface();
 
-    HeuristicAI heuri;
+    /* int joueur=0;
+     int joueur1=1;
+     int joueur2=2;*/
+    HeuristicAI test, test1;
 
-
-
-    /*
-     for (int j = 0; j < 20; j++) {
-        for (int i = 0; i < 20; i++) {
-
-            cout << heuri.getInfmap(engine, 1).getPoidlist(i + j * 20) << "\t";
-        }
-        cout << " " << endl;
-    }
-     */
 
     while (window.isOpen()) {
 
@@ -421,12 +380,33 @@ void testheuristicAI() {
                 window.close();
         }
 
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
-            surf.initSurface();
+        /* if (joueur % 2 == 0) {
+              cout << "JOUEUR1 joue::" << endl;
+              test.run( engine,joueur1);
 
+              sf::sleep(sf::milliseconds(50));
+              surf.initSurface();
+          } else {
+
+              cout << "JOUEUR2 joue::" << endl;
+              test1.run( engine,joueur2);
+              sf::sleep(sf::milliseconds(50));
+              surf.initSurface();
+          }
+          joueur++;*/
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
+            cout << "JOUEUR1 joue::" << endl;
+            test.run(engine, 1);
             sf::sleep(sf::milliseconds(50));
-            heuri.run(engine, 1);
         }
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
+            cout << "JOUEUR2 joue::" << endl;
+            test1.run(engine, 2);
+            sf::sleep(sf::milliseconds(50));
+        }
+
         window.clear();
         window.draw(*(surf.surface));
         window.draw(*(surf.surfaceplayer));

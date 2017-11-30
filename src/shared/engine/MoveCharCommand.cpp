@@ -26,15 +26,14 @@ namespace engine {
     }
 
     void MoveCharCommand::execute(state::State& state) {
-        cout<<"je rentre sur movechar"<<endl;
+
         if ((state.getChars()->getElement(x2, y2) != NULL) || (state.getChars()->getElement(x1, y1) == NULL)) cout << "c'est impossible " << endl;
         else {
-            cout<<"je rentre sur 1"<<endl;
+
             if (state.getChars()->getElement(x1, y1)->getTypeId() == 3) {
                 state::Heli* eletmp = (state::Heli*)(state.getChars()->getElement(x1, y1));
                 if ((int) (sqrt((((x1 - x2)*(x1 - x2))+((y1 - y2)*(y1 - y2))))) <= eletmp->getPorteeMvt()) {
                     state.chars->chgPosition(x1, y1, x2, y2);
-                    cout<<"il se deplace2"<<endl;
                 }
 
             } else if (state.getChars()->getElement(x1, y1)->getTypeId() == 4) {
@@ -51,34 +50,30 @@ namespace engine {
                 } else if (state.grid->getElement(x2, y2)->getTypeId() == 1) {
                     if ((int) (sqrt((((x1 - x2)*(x1 - x2))+((y1 - y2)*(y1 - y2))))) <= eletmp->getPorteeMvt()) {
                         state.chars->chgPosition(x1, y1, x2, y2);
-                        cout<<"il se deplace1"<<endl;
                     }
-
                 }
             } else if (state.getChars()->getElement(x1, y1)->getTypeId() == 2) {
-                cout<<"je rentre sur 2"<<endl;
+
                 state::Infanterie* eletmp = (state::Infanterie*)(state.getChars()->getElement(x1, y1));
                 if (state.getGrid()->getElement(x2, y2)->getTypeId() == 0) {
                     state::Champdebataille* eletmp2 = (state::Champdebataille*)(state.getGrid()->getElement(x2, y2));
                     if (eletmp2->getChampdeBatailleType() == 4) {
                         cout << "c'est impossible de mettre un element mobile sur cet elment statique" << endl;
                     } else {
-                        cout<<"je rentre sur 3"<<endl;
+
                         if ((int) (sqrt((((x1 - x2)*(x1 - x2))+((y1 - y2)*(y1 - y2))))) <= eletmp->getPorteeMvt()) {
                             state.chars->chgPosition(x1, y1, x2, y2);
-                             cout<<"je rentre sur 4"<<endl;
                         } else cout << "c est impossible pour une infanterie de partir plus loin" << endl;
                     }
                 } else if (state.getGrid()->getElement(x2, y2)->getTypeId() == 1) {
-                    
+
                     if ((int) (sqrt((((x1 - x2)*(x1 - x2))+((y1 - y2)*(y1 - y2))))) <= eletmp->getPorteeMvt()) {
                         state.chars->chgPosition(x1, y1, x2, y2);
-                       cout<<"je rentre sur 5"<<endl;
+
                     }
                 }
             }
         }
-
     }
 
     CommandTypeId MoveCharCommand::getTypeId() const {

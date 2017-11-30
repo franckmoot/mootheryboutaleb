@@ -109,7 +109,6 @@ namespace ai {
                                 } else {
 
                                     setInfmap(engine, joueur);
-
                                     int x3min = 100;
                                     int y3min = 100;
                                     int min = 1000;
@@ -124,6 +123,85 @@ namespace ai {
                                                         min = getInfmap(engine, joueur).getPoidlist(x3 + y3 * 20);
                                                         x3min = x3;
                                                         y3min = y3;
+
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+
+                                    engine.addCommand(new MoveCharCommand(i, j, x3min, y3min));
+                                }
+                            }
+                        }
+                    } else if (engine.currentState.getChars()->getElement(i, j)->getTypeId() == 3 && engine.currentState.getChars()->getElement(i, j)->getJoueur() == joueur) {
+                        cout << "ou est mon erreur de segmentation 1 " << endl;
+                        Heli* eletmp = (Heli*) (engine.currentState.getChars()->getElement(i, j));
+                        cout << "ou est mon erreur de segmentation 2 " << endl;
+                        for (int x2 = (i - eletmp->getPorteeMvt()); x2 < (i + eletmp->getPorteeMvt()); x2++) {
+                            for (int y2 = (j - eletmp->getPorteeMvt()); y2 < (j + eletmp->getPorteeMvt()); y2++) {
+                                cout << "ou est mon erreur de segmentation 3 " << endl;
+
+                                if ((x2 >= 0)&&(y2 >= 0)&&(x2<int(engine.currentState.getGrid()->getWidth()))&&(y2<int(engine.currentState.getGrid()->getHeight()))&&(engine.currentState.getChars()->getElement(x2, y2) != NULL)&&(joueur != engine.currentState.getChars()->getElement(x2, y2)->getJoueur())) {
+                                    engine.addCommand(new AttaqueCharCommand(i, j, x2, y2));
+                                    cout << "ou est mon erreur de segmentation 4 " << endl;
+                                } else {
+                                    cout << "ou est mon erreur de segmentation 5 " << endl;
+                                    setHelimap(engine, joueur);
+                                    cout << "i :  "<<i<<"   j : " <<j<< endl;
+                                    int x3min = 100;
+                                    int y3min = 100;
+                                    int min = 1000;
+
+                                    for (int x3 = (i - eletmp->getPorteeMvt() + 1); x3 < (i + eletmp->getPorteeMvt() - 1); x3++) {
+                                        for (int y3 = (j - eletmp->getPorteeMvt() + 1); y3 < (j + eletmp->getPorteeMvt() - 1); y3++) {
+                                            if ((x3 >= 0)&&(y3 >= 0)&&(x3<int(engine.currentState.getGrid()->getWidth()))&&(y3<int(engine.currentState.getGrid()->getHeight()))) {
+                                                cout << "ou est mon erreur de segmentation 8 " << endl;
+                                                //      if (getHelimap(engine, joueur).getPoidlist(x3 + y3 * 20) != -1) {
+getHelimap(engine, joueur).getPoidlist(0);
+ cout << "ou est mon erreur de segmentation 9 " << endl;
+                                                if (min > getHelimap(engine, joueur).getPoidlist(x3 + y3 * 20)) {
+                                                   
+                                                    min = getHelimap(engine, joueur).getPoidlist(x3 + y3 * 20);
+                                                    cout << "ou est mon erreur de segmentation 10 " << endl;
+                                                    x3min = x3;
+                                                    y3min = y3;
+
+                                                }
+                                                //    }
+                                            }
+                                        }
+                                    }
+
+                                    engine.addCommand(new MoveCharCommand(i, j, x3min, y3min));
+                                    cout << "je l'ai appliquer movacharcommande" << endl;
+                                }
+
+                            }
+                        }
+                    } /*else if (engine.currentState.getChars()->getElement(i, j)->getTypeId() == 4 && engine.currentState.getChars()->getElement(i, j)->getJoueur() == joueur) {
+                        Tank* eletmp = (Tank*) (engine.currentState.getChars()->getElement(i, j));
+                        for (int x2 = (i - eletmp->getPorteeMvt()); x2 < (i + eletmp->getPorteeMvt()); x2++) {
+                            for (int y2 = (j - eletmp->getPorteeMvt()); y2 < (j + eletmp->getPorteeMvt()); y2++) {
+
+                                if ((x2 >= 0)&&(y2 >= 0)&&(x2<int(engine.currentState.getGrid()->getWidth()))&&(y2<int(engine.currentState.getGrid()->getHeight()))&&(engine.currentState.getChars()->getElement(x2, y2) != NULL)&&(joueur != engine.currentState.getChars()->getElement(x2, y2)->getJoueur())) {
+                                    engine.addCommand(new AttaqueCharCommand(i, j, x2, y2));
+                                } else {
+
+                                    setTankmap(engine, joueur);
+                                    
+                                    int x3min = 100;
+                                    int y3min = 100;
+                                    int min = 1000;
+                                    for (int x3 = (i - eletmp->getPorteeMvt() + 1); x3 < (i + eletmp->getPorteeMvt() - 1); x3++) {
+                                        for (int y3 = (j - eletmp->getPorteeMvt() + 1); y3 < (j + eletmp->getPorteeMvt() - 1); y3++) {
+                                            if ((x3 >= 0)&&(y3 >= 0)&&(x3<int(engine.currentState.getGrid()->getWidth()))&&(y3<int(engine.currentState.getGrid()->getHeight()))) {
+
+                                                if (getTankmap(engine, joueur).getPoidlist(x3 + y3 * 20) != -1) {
+                                                    if (min > getTankmap(engine, joueur).getPoidlist(x3 + y3 * 20)) {
+                                                        min = getTankmap(engine, joueur).getPoidlist(x3 + y3 * 20);
+                                                        x3min = x3;
+                                                        y3min = y3;
                                                         //cout << x3min << endl;
                                                         //cout << y3min << endl;
                                                     }
@@ -131,10 +209,7 @@ namespace ai {
                                             }
                                         }
                                     }
-                                    cout << x3min << endl;
-                                    cout << y3min << endl;
-                                    cout << "la valeur de i est :" << i << endl;
-                                    cout << "la valeur de j est :" << j << endl;
+
 
 
 
@@ -148,112 +223,12 @@ namespace ai {
 
                                 }
                             }
-                        }
-                    } /*else if (engine.currentState.getChars()->getElement(i, j)->getTypeId() == 3 && engine.currentState.getChars()->getElement(i, j)->getJoueur() == joueur) {
-                        Heli* eletmp = (Heli*) (engine.currentState.getChars()->getElement(i, j));
-                        for (int x2 = (i - eletmp->getPorteeMvt()); x2 < (i + eletmp->getPorteeMvt()); x2++) {
-                        for (int y2 = (j - eletmp->getPorteeMvt()); y2 < (j + eletmp->getPorteeMvt()); y2++){
-                        
 
-                         if ((x2 >= 0)&&(y2 >= 0)&&(x2<int(engine.currentState.getGrid()->getWidth()))&&(y2<int(engine.currentState.getGrid()->getHeight()))&&(engine.currentState.getChars()->getElement(x2, y2) != NULL)&&(joueur != engine.currentState.getChars()->getElement(x2, y2)->getJoueur())) {
-                            engine.addCommand(new AttaqueCharCommand(i, j, x2, y2));
-                        } else {
-
-                            setHelimap(engine, joueur);
-
-                            int x3min = 100;
-                            int y3min = 100;
-                            int min = 1000;
-                            for (int x3 = (i - eletmp->getPorteeMvt() + 1); x3 < (i + eletmp->getPorteeMvt() - 1); x3++) {
-                                for (int y3 = (j - eletmp->getPorteeMvt() + 1); y3 < (j + eletmp->getPorteeMvt() - 1); y3++) {
-                                    if ((x3 >= 0)&&(y3 >= 0)&&(x3<int(engine.currentState.getGrid()->getWidth()))&&(y3<int(engine.currentState.getGrid()->getHeight()))) {
-
-                                        if (getHelimap(engine, joueur).getPoidlist(x3 + y3 * 20) != -1) {
-
-
-                                            if (min > getHelimap(engine, joueur).getPoidlist(x3 + y3 * 20)) {
-                                                min = getHelimap(engine, joueur).getPoidlist(x3 + y3 * 20);
-                                                x3min = x3;
-                                                y3min = y3;
-                                                //cout << x3min << endl;
-                                                //cout << y3min << endl;
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                            cout << x3min << endl;
-                            cout << y3min << endl;
-                            cout << "la valeur de i est :" << i << endl;
-                            cout << "la valeur de j est :" << j << endl;
-
-
-
-                            //if (engine.currentState.getChars()->getElement(i, j)->getCommande()) {                               
-                            //   engine.currentState.getChars()->getElement(i, j)->setCommande(false);
-                            cout << "je vais appliquer movacharcommande" << endl;
-                            engine.addCommand(new MoveCharCommand(i, j, x3min, y3min));
-                            cout << "je l'ai appliquer movacharcommande" << endl;
-                            }
-                            //M->execute(engine.currentState);
-                        }
-                        }
-                    } else if (engine.currentState.getChars()->getElement(i, j)->getTypeId() == 4 && engine.currentState.getChars()->getElement(i, j)->getJoueur() == joueur) {
-                        Tank* eletmp = (Tank*) (engine.currentState.getChars()->getElement(i, j));
-                        for (int x2 = (i - eletmp->getPorteeMvt()); x2 < (i + eletmp->getPorteeMvt()); x2++) {
-                        for (int y2 = (j - eletmp->getPorteeMvt()); y2 < (j + eletmp->getPorteeMvt()); y2++){
-                        
- 
-                        if ((x2 >= 0)&&(y2 >= 0)&&(x2<int(engine.currentState.getGrid()->getWidth()))&&(y2<int(engine.currentState.getGrid()->getHeight()))&&(engine.currentState.getChars()->getElement(x2, y2) != NULL)&&(joueur != engine.currentState.getChars()->getElement(x2, y2)->getJoueur())) {
-                            engine.addCommand(new AttaqueCharCommand(i, j, x2, y2));
-                        } else {
-
-                            setTankmap(engine, joueur);
-
-                            int x3min = 100;
-                            int y3min = 100;
-                            int min = 1000;
-                            for (int x3 = (i - eletmp->getPorteeMvt() + 1); x3 < (i + eletmp->getPorteeMvt() - 1); x3++) {
-                                for (int y3 = (j - eletmp->getPorteeMvt() + 1); y3 < (j + eletmp->getPorteeMvt() - 1); y3++) {
-                                    if ((x3 >= 0)&&(y3 >= 0)&&(x3<int(engine.currentState.getGrid()->getWidth()))&&(y3<int(engine.currentState.getGrid()->getHeight()))) {
-
-                                        if (getTankmap(engine, joueur).getPoidlist(x3 + y3 * 20) != -1) {
-
-
-                                            if (min > getTankmap(engine, joueur).getPoidlist(x3 + y3 * 20)) {
-                                                min = getTankmap(engine, joueur).getPoidlist(x3 + y3 * 20);
-                                                x3min = x3;
-                                                y3min = y3;
-                                                //cout << x3min << endl;
-                                                //cout << y3min << endl;
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                            cout << x3min << endl;
-                            cout << y3min << endl;
-                            cout << "la valeur de i est :" << i << endl;
-                            cout << "la valeur de j est :" << j << endl;
-
-
-
-                            //if (engine.currentState.getChars()->getElement(i, j)->getCommande()) {                               
-                            //   engine.currentState.getChars()->getElement(i, j)->setCommande(false);
-                            cout << "je vais appliquer movacharcommande" << endl;
-                            engine.addCommand(new MoveCharCommand(i, j, x3min, y3min));
-                            cout << "je l'ai appliquer movacharcommande" << endl;
-                            //}
-                            //M->execute(engine.currentState);
 
                         }
-                    }
-                
-            
-        }
-        }
-        }
-        }
+                    /*}
+                }
+            }
         }
         /*
         if (joueur == 1) {
@@ -283,7 +258,7 @@ namespace ai {
             //engine.update();
         }*/
                     cout << "j'execute" << endl;
-                    
+
                     cout << "j'ai executé" << endl;
 
                     /*for (int j = 0; j < int(engine.currentState.getChars()->getHeight()); j++) {
@@ -293,9 +268,15 @@ namespace ai {
                             }
                         }
                     }*/
+
                 }
             }
+
         }
         engine.update();
     }
 }
+
+
+
+
