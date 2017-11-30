@@ -254,7 +254,7 @@ namespace ai {
                 }
             }
         }
-        /*
+        
         if (joueur == 1) {
             
             EarnMoney *E = new EarnMoney(joueur);
@@ -280,7 +280,7 @@ namespace ai {
 
             engine.addCommand(l4[h].release());
             //engine.update();
-        }*/
+        }
         cout << "j'execute" << endl;
 
         cout << "j'ai executé" << endl;
