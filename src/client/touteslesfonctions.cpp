@@ -378,7 +378,7 @@ void testheuristicAI() {
     cout << "Creation d'un tank dans les casernes" << endl;
     engine.addCommand(new engine::CreateCharCommand(INFANTERIE, 16, 3, 1));
     engine.addCommand(new engine::CreateCharCommand(INFANTERIE, 18, 14, 2));
-    engine.addCommand(new engine::MoveCharCommand(16, 3, 17, 4));
+    //engine.addCommand(new engine::MoveCharCommand(16, 3, 17, 4));
     cout << "Deplacement des tank" << endl;
     // engine.addCommand(new engine::MoveCharCommand(2, 1, 3, 2));
     // engine.addCommand(new engine::MoveCharCommand(3, 2, 3, 5));
