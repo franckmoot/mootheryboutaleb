@@ -361,8 +361,8 @@ void testheuristicAI() {
     surf.initSurface();
 
     HeuristicAI heuri;
-    heuri.setInfmap(engine, 1);
-    heuri.run(engine, 1);
+    
+    
 
     /*for (int j = 0; j < 20; j++) {
         for (int i = 0; i < 20; i++) {
@@ -381,6 +381,9 @@ void testheuristicAI() {
                 window.close();
         }
 
+        sf::sleep(sf::milliseconds(50));
+        heuri.run(engine, 1);
+        
         window.clear();
         window.draw(*(surf.surface));
         window.draw(*(surf.surfaceplayer));
