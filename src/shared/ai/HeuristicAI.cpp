@@ -78,11 +78,11 @@ namespace ai {
     }
 
     Pathmap& HeuristicAI::getHelimap(engine::Engine& engine, int joueur) {
-        return tankmap;
+        return helimap;
     }
 
     Pathmap& HeuristicAI::getTankmap(engine::Engine& engine, int joueur) {
-        return helimap;
+        return tankmap;
     }
 
     void HeuristicAI::run(engine::Engine& engine, int joueur) {
