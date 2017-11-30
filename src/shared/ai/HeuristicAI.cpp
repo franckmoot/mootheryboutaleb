@@ -86,6 +86,10 @@ namespace ai {
     }
 
     void HeuristicAI::run(engine::Engine& engine, int joueur) {
+        
+         std::vector<std::unique_ptr < engine::Command>>list;
+        mt19937 mt_rand(time(0));
+        int h;
 
         for (int j = 0; j < int(engine.currentState.getChars()->getHeight()); j++) {
             for (int i = 0; i < int(engine.currentState.getChars()->getWidth()); i++) {
@@ -94,16 +98,15 @@ namespace ai {
 
                     if ((engine.currentState.getChars()->getElement(i, j)->getTypeId() == 2) && (engine.currentState.getChars()->getElement(i, j)->getJoueur() == joueur)) {
                         Infanterie* eletmp = (Infanterie*) (engine.currentState.getChars()->getElement(i, j));
-                        //for (int x2 = (i - eletmp->getPorteeMvt()); x2 < (i + eletmp->getPorteeMvt()); x2++) {
-                        //for (int y2 = (j - eletmp->getPorteeMvt()); y2 < (j + eletmp->getPorteeMvt()); y2++){
-                        int x2 = 10;
-                        int y2 = 10;
+                      for (int x2 = (i - eletmp->getPorteeMvt()); x2 < (i + eletmp->getPorteeMvt()); x2++) {
+                        for (int y2 = (j - eletmp->getPorteeMvt()); y2 < (j + eletmp->getPorteeMvt()); y2++){
+                        
+                        
                         if ((engine.currentState.getGrid()->getElement(i, j)->getTypeId() == 1)&&(engine.currentState.getGrid()->getElement(i, j)->getJoueur() != joueur)) {
-                            engine::CapturCharCommand *C = new CapturCharCommand(i, j);
-                            C->execute(engine.currentState);
+                            engine.addCommand(new CapturCharCommand(i, j));
                         } else if ((x2 >= 0)&&(y2 >= 0)&&(x2<int(engine.currentState.getGrid()->getWidth()))&&(y2<int(engine.currentState.getGrid()->getHeight()))&&(engine.currentState.getChars()->getElement(x2, y2) != NULL)&&(joueur != engine.currentState.getChars()->getElement(x2, y2)->getJoueur())) {
-                            engine::AttaqueCharCommand *A = new AttaqueCharCommand(i, j, x2, y2);
-                            A->execute(engine.currentState);
+
+                            engine.addCommand(new AttaqueCharCommand(i, j, x2, y2));
                         } else {
 
                             setInfmap(engine, joueur);
@@ -134,13 +137,7 @@ namespace ai {
                             cout << "la valeur de i est :" << i << endl;
                             cout << "la valeur de j est :" << j << endl;
 
-                            for (int j = 0; j < 20; j++) {
-                                for (int i = 0; i < 20; i++) {
 
-                                    cout << getInfmap(engine, 1).getPoidlist(i + j * 20) << "\t";
-                                }
-                                cout << " " << endl;
-                            }
 
                             //if (engine.currentState.getChars()->getElement(i, j)->getCommande()) {                               
                             //   engine.currentState.getChars()->getElement(i, j)->setCommande(false);
@@ -151,16 +148,141 @@ namespace ai {
                             //M->execute(engine.currentState);
 
                         }
-                        // }               
-                        // }
-                    } else if (engine.currentState.getChars()->getElement(i, j)->getTypeId() == 3 && engine.currentState.getChars()->getElement(i, j)->getJoueur() == joueur) {
+                        }               
+                        }
+                    } /*else if (engine.currentState.getChars()->getElement(i, j)->getTypeId() == 3 && engine.currentState.getChars()->getElement(i, j)->getJoueur() == joueur) {
+                        Heli* eletmp = (Heli*) (engine.currentState.getChars()->getElement(i, j));
+                        for (int x2 = (i - eletmp->getPorteeMvt()); x2 < (i + eletmp->getPorteeMvt()); x2++) {
+                        for (int y2 = (j - eletmp->getPorteeMvt()); y2 < (j + eletmp->getPorteeMvt()); y2++){
+                        
 
+                         if ((x2 >= 0)&&(y2 >= 0)&&(x2<int(engine.currentState.getGrid()->getWidth()))&&(y2<int(engine.currentState.getGrid()->getHeight()))&&(engine.currentState.getChars()->getElement(x2, y2) != NULL)&&(joueur != engine.currentState.getChars()->getElement(x2, y2)->getJoueur())) {
+                            engine.addCommand(new AttaqueCharCommand(i, j, x2, y2));
+                        } else {
+
+                            setHelimap(engine, joueur);
+
+                            int x3min = 100;
+                            int y3min = 100;
+                            int min = 1000;
+                            for (int x3 = (i - eletmp->getPorteeMvt() + 1); x3 < (i + eletmp->getPorteeMvt() - 1); x3++) {
+                                for (int y3 = (j - eletmp->getPorteeMvt() + 1); y3 < (j + eletmp->getPorteeMvt() - 1); y3++) {
+                                    if ((x3 >= 0)&&(y3 >= 0)&&(x3<int(engine.currentState.getGrid()->getWidth()))&&(y3<int(engine.currentState.getGrid()->getHeight()))) {
+
+                                        if (getHelimap(engine, joueur).getPoidlist(x3 + y3 * 20) != -1) {
+
+
+                                            if (min > getHelimap(engine, joueur).getPoidlist(x3 + y3 * 20)) {
+                                                min = getHelimap(engine, joueur).getPoidlist(x3 + y3 * 20);
+                                                x3min = x3;
+                                                y3min = y3;
+                                                //cout << x3min << endl;
+                                                //cout << y3min << endl;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            cout << x3min << endl;
+                            cout << y3min << endl;
+                            cout << "la valeur de i est :" << i << endl;
+                            cout << "la valeur de j est :" << j << endl;
+
+
+
+                            //if (engine.currentState.getChars()->getElement(i, j)->getCommande()) {                               
+                            //   engine.currentState.getChars()->getElement(i, j)->setCommande(false);
+                            cout << "je vais appliquer movacharcommande" << endl;
+                            engine.addCommand(new MoveCharCommand(i, j, x3min, y3min));
+                            cout << "je l'ai appliquer movacharcommande" << endl;
+                            }
+                            //M->execute(engine.currentState);
+                        }
+                        }
                     } else if (engine.currentState.getChars()->getElement(i, j)->getTypeId() == 4 && engine.currentState.getChars()->getElement(i, j)->getJoueur() == joueur) {
+                        Tank* eletmp = (Tank*) (engine.currentState.getChars()->getElement(i, j));
+                        for (int x2 = (i - eletmp->getPorteeMvt()); x2 < (i + eletmp->getPorteeMvt()); x2++) {
+                        for (int y2 = (j - eletmp->getPorteeMvt()); y2 < (j + eletmp->getPorteeMvt()); y2++){
+                        
+ 
+                        if ((x2 >= 0)&&(y2 >= 0)&&(x2<int(engine.currentState.getGrid()->getWidth()))&&(y2<int(engine.currentState.getGrid()->getHeight()))&&(engine.currentState.getChars()->getElement(x2, y2) != NULL)&&(joueur != engine.currentState.getChars()->getElement(x2, y2)->getJoueur())) {
+                            engine.addCommand(new AttaqueCharCommand(i, j, x2, y2));
+                        } else {
 
+                            setTankmap(engine, joueur);
+
+                            int x3min = 100;
+                            int y3min = 100;
+                            int min = 1000;
+                            for (int x3 = (i - eletmp->getPorteeMvt() + 1); x3 < (i + eletmp->getPorteeMvt() - 1); x3++) {
+                                for (int y3 = (j - eletmp->getPorteeMvt() + 1); y3 < (j + eletmp->getPorteeMvt() - 1); y3++) {
+                                    if ((x3 >= 0)&&(y3 >= 0)&&(x3<int(engine.currentState.getGrid()->getWidth()))&&(y3<int(engine.currentState.getGrid()->getHeight()))) {
+
+                                        if (getTankmap(engine, joueur).getPoidlist(x3 + y3 * 20) != -1) {
+
+
+                                            if (min > getTankmap(engine, joueur).getPoidlist(x3 + y3 * 20)) {
+                                                min = getTankmap(engine, joueur).getPoidlist(x3 + y3 * 20);
+                                                x3min = x3;
+                                                y3min = y3;
+                                                //cout << x3min << endl;
+                                                //cout << y3min << endl;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            cout << x3min << endl;
+                            cout << y3min << endl;
+                            cout << "la valeur de i est :" << i << endl;
+                            cout << "la valeur de j est :" << j << endl;
+
+
+
+                            //if (engine.currentState.getChars()->getElement(i, j)->getCommande()) {                               
+                            //   engine.currentState.getChars()->getElement(i, j)->setCommande(false);
+                            cout << "je vais appliquer movacharcommande" << endl;
+                            engine.addCommand(new MoveCharCommand(i, j, x3min, y3min));
+                            cout << "je l'ai appliquer movacharcommande" << endl;
+                            //}
+                            //M->execute(engine.currentState);
+
+                        }
                     }
-                }
-            }
+                
+            
         }
+        }
+        }
+        }
+        }
+        /*
+        if (joueur == 1) {
+            
+            EarnMoney *E = new EarnMoney(joueur);
+            E->execute(engine.currentState);
+            std::vector<std::unique_ptr<engine::Command> > l4;
+            BatimentCommands(engine.currentState, 1, l4);
+            h = (int) (mt_rand() % l4.size());
+            //l4[h]->execute(engine.currentState);
+
+            engine.addCommand(l4[h].release());
+            //engine.update();
+        }
+
+        if (joueur == 2) {
+            
+            
+            EarnMoney *E = new EarnMoney(joueur);
+            E->execute(engine.currentState);
+            std::vector<std::unique_ptr<engine::Command> > l4;
+            BatimentCommands(engine.currentState, joueur, l4);
+            h = (int) (mt_rand() % l4.size());
+            //l4[h]->execute(engine.currentState);
+
+            engine.addCommand(l4[h].release());
+            //engine.update();
+        }*/
         cout << "j'execute" << endl;
         engine.update();
         cout << "j'ai executé" << endl;
@@ -172,5 +294,8 @@ namespace ai {
                 }
             }
         }*/
+    }
+}
+        }
     }
 }
