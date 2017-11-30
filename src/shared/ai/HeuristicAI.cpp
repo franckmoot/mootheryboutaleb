@@ -179,7 +179,7 @@ getHelimap(engine, joueur).getPoidlist(0);
 
                             }
                         }
-                    } /*else if (engine.currentState.getChars()->getElement(i, j)->getTypeId() == 4 && engine.currentState.getChars()->getElement(i, j)->getJoueur() == joueur) {
+                    } else if (engine.currentState.getChars()->getElement(i, j)->getTypeId() == 4 && engine.currentState.getChars()->getElement(i, j)->getJoueur() == joueur) {
                         Tank* eletmp = (Tank*) (engine.currentState.getChars()->getElement(i, j));
                         for (int x2 = (i - eletmp->getPorteeMvt()); x2 < (i + eletmp->getPorteeMvt()); x2++) {
                             for (int y2 = (j - eletmp->getPorteeMvt()); y2 < (j + eletmp->getPorteeMvt()); y2++) {
@@ -226,7 +226,7 @@ getHelimap(engine, joueur).getPoidlist(0);
 
 
                         }
-                    /*}
+                    }
                 }
             }
         }
@@ -268,14 +268,13 @@ getHelimap(engine, joueur).getPoidlist(0);
                             }
                         }
                     }*/
-
+                    engine.update();
                 }
             }
 
-        }
-        engine.update();
-    }
-}
+       
+        
+    
 
 
 

@@ -349,7 +349,8 @@ void testheuristicAI() {
     engine.addCommand(new engine::CreateCharCommand(INFANTERIE, 17, 14, 2));
     //engine.addCommand(new engine::CreateCharCommand(HELI, 2, 1, 1));
 
-    engine.addCommand(new engine::CreateCharCommand(HELI, 3, 17, 2));
+    //engine.addCommand(new engine::CreateCharCommand(HELI, 3, 17, 2));
+    engine.addCommand(new engine::CreateCharCommand(TANK, 3, 17, 2));
     //engine.addCommand(new engine::MoveCharCommand(16, 3, 17, 4));
 
     // engine.addCommand(new engine::MoveCharCommand(2, 1, 3, 2));
