@@ -110,10 +110,13 @@ namespace ai {
 
                             int x3min = 100;
                             int y3min = 100;
+                            int min = 1000;
                             for (int x3 = (i - eletmp->getPorteeMvt() + 1); x3 < (i + eletmp->getPorteeMvt() - 1); x3++) {
                                 for (int y3 = (j - eletmp->getPorteeMvt() + 1); y3 < (j + eletmp->getPorteeMvt() - 1); y3++) {
                                     if ((x3 >= 0)&&(y3 >= 0)&&(x3<int(engine.currentState.getGrid()->getWidth()))&&(y3<int(engine.currentState.getGrid()->getHeight()))) {
-                                        int min = 1000;
+                                        
+                                        //if (getInfmap(engine, joueur).getPoidlist(x3 + y3 * 20))
+                                        
 
                                         if (min > getInfmap(engine, joueur).getPoidlist(x3 + y3 * 20)) {
                                             min = getInfmap(engine, joueur).getPoidlist(x3 + y3 * 20);
@@ -138,12 +141,12 @@ namespace ai {
                                 cout << " " << endl;
                             }
 
-                            if (engine.currentState.getChars()->getElement(i, j)->getCommande()) {                               
-                                engine.currentState.getChars()->getElement(i, j)->setCommande(false);
+                            //if (engine.currentState.getChars()->getElement(i, j)->getCommande()) {                               
+                             //   engine.currentState.getChars()->getElement(i, j)->setCommande(false);
                                 cout << "je vais appliquer movacharcommande" << endl;
                                 engine.addCommand(new MoveCharCommand(i, j, x3min, y3min));
                                 cout << "je l'ai appliquer movacharcommande" << endl;
-                            }
+                            //}
                             //M->execute(engine.currentState);
 
                         }
@@ -161,12 +164,12 @@ namespace ai {
         engine.update();
         cout << "j'ai executé" << endl;
         
-        for (int j = 0; j < int(engine.currentState.getChars()->getHeight()); j++) {
+        /*for (int j = 0; j < int(engine.currentState.getChars()->getHeight()); j++) {
             for (int i = 0; i < int(engine.currentState.getChars()->getWidth()); i++) {
                 if (engine.currentState.getChars()->getElement(i, j) != NULL) {
                     engine.currentState.getChars()->getElement(i, j)->setCommande(true);
                 }
             }
-        }
+        }*/
     }
 }
