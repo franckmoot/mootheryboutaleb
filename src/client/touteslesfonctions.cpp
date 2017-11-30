@@ -337,42 +337,77 @@ void testai() {
 
 void testheuristicAI() {
 
-    sf::RenderWindow window(sf::VideoMode(640, 640), "Advance wars");
-    engine::Engine engine;
+    vector<int> test;
+    for (int j = 0; j < 7; j++) {
+        for (int i = 0; i < 7; i++) {
 
-    engine.addCommand(new engine::LoadCommand("res/map.csv"));
-
-    cout << "Creation d'un tank dans les casernes" << endl;
-    engine.addCommand(new engine::CreateCharCommand(INFANTERIE, 16, 3, 1));
-    engine.addCommand(new engine::CreateCharCommand(INFANTERIE, 18, 14, 2));
-
-    cout << "Deplacement des tank" << endl;
-    // engine.addCommand(new engine::MoveCharCommand(2, 1, 3, 2));
-    // engine.addCommand(new engine::MoveCharCommand(3, 2, 3, 5));
-    // engine.addCommand(new engine::CapturCharCommand(3,2));
-
-    cout << "Deplacement infanterie" << endl;
-    // engine.addCommand(new engine::MoveCharCommand(18, 14, 17, 16));
-    // engine.addCommand(new engine::CapturCharCommand(17, 16));
-    //engine.addCommand(new engine::MoveCharCommand(17, 16, 18, 14));
-    engine.update();
-
-    Layer surf(engine.getState());
-    surf.initSurface();
-
-    HeuristicAI heuri;
-    
-    
-
-    /*for (int j = 0; j < 20; j++) {
-        for (int i = 0; i < 20; i++) {
-
-            cout << heuri.getInfmap(engine, 1).getPoidlist(i + j * 20) << "\t";
+            test.push_back(i + j * 7);
         }
-        cout << " " << endl;
+    }
+    for (int j = 0; j < 7; j++) {
+        for (int i = 0; i < 7; i++) {
+
+            cout << test[i + j * 7] << "\t";
+        }
+        cout << "" << endl;
+    }
+
+    /*for (int x3 = (i - eletmp->getPorteeMvt()); x3 < (i + eletmp->getPorteeMvt()); x3++) {
+        for (int y3 = (j - eletmp->getPorteeMvt()); y3 < (j + eletmp->getPorteeMvt()); y3++) {
+            if ((x3 >= 0)&&(y3 >= 0)&&(x3<int(engine.currentState.getGrid()->getWidth()))&&(y3<int(engine.currentState.getGrid()->getHeight()))) {
+                int min = 1000;
+
+                if (min > getInfmap(engine, joueur).getPoidlist(x3 + y3 * 20)) {
+                    min = getInfmap(engine, joueur).getPoidlist(x3 + y3 * 20);
+                    x3min = x3;
+                    y3min = y3;
+                    cout << x3min << endl;
+                    cout << y3min << endl;
+                }
+            }
+        }
     }*/
 
-    while (window.isOpen()) {
+
+
+    /* sf::RenderWindow window(sf::VideoMode(640, 640), "Advance wars");
+     engine::Engine engine;
+
+     engine.addCommand(new engine::LoadCommand("res/map.csv"));
+
+     cout << "Creation d'un tank dans les casernes" << endl;
+     engine.addCommand(new engine::CreateCharCommand(INFANTERIE, 16, 3, 1));
+     engine.addCommand(new engine::CreateCharCommand(INFANTERIE, 18, 14, 2));
+
+     cout << "Deplacement des tank" << endl;
+     // engine.addCommand(new engine::MoveCharCommand(2, 1, 3, 2));
+     // engine.addCommand(new engine::MoveCharCommand(3, 2, 3, 5));
+     // engine.addCommand(new engine::CapturCharCommand(3,2));
+
+     cout << "Deplacement infanterie" << endl;
+     // engine.addCommand(new engine::MoveCharCommand(18, 14, 17, 16));
+     // engine.addCommand(new engine::CapturCharCommand(17, 16));
+     //engine.addCommand(new engine::MoveCharCommand(17, 16, 18, 14));
+     engine.update();
+
+     Layer surf(engine.getState());
+     surf.initSurface();
+
+     HeuristicAI heuri;
+    
+    
+
+     /*
+      for (int j = 0; j < 20; j++) {
+         for (int i = 0; i < 20; i++) {
+
+             cout << heuri.getInfmap(engine, 1).getPoidlist(i + j * 20) << "\t";
+         }
+         cout << " " << endl;
+     }
+     */
+
+    /*while (window.isOpen()) {
 
         // on gère les évènements
         sf::Event event;
@@ -383,11 +418,12 @@ void testheuristicAI() {
 
         sf::sleep(sf::milliseconds(50));
         heuri.run(engine, 1);
-        
+
         window.clear();
         window.draw(*(surf.surface));
         window.draw(*(surf.surfaceplayer));
         window.display();
 
     }
+     */
 }

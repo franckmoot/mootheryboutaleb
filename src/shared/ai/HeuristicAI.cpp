@@ -87,8 +87,6 @@ namespace ai {
 
     void HeuristicAI::run(engine::Engine& engine, int joueur) {
 
-        setInfmap(engine, joueur);
-
         for (int j = 0; j < int(engine.currentState.getChars()->getHeight()); j++) {
             for (int i = 0; i < int(engine.currentState.getChars()->getWidth()); i++) {
 
@@ -121,7 +119,8 @@ namespace ai {
                                             min = getInfmap(engine, joueur).getPoidlist(x3 + y3 * 20);
                                             x3min = x3;
                                             y3min = y3;
-
+                                            cout << x3min << endl;
+                                            cout << y3min << endl;
                                         }
                                     }
                                 }
