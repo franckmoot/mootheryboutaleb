@@ -140,13 +140,6 @@ void testrender() {
     To->setJoueur(1);
     Ia->setJoueur(1);
 
-    //monde.chars->setElementXY(H, 0, 0);
-    //monde.chars->setElementXY(T, 0, 19);
-
-    //monde.chars->setElementXY(Ta, 3, 4);
-
-
-
     monde.chars->setElementXY(In, 8, 8);
     monde.chars->setElementXY(Ina, 9, 0);
     monde.chars->setElementXY(Tan, 11, 3);
@@ -162,23 +155,6 @@ void testrender() {
 
     std::vector<int> liste;
     monde.grid->createElementCsv(liste);
-
-    
-    ai::Pathheli path;
-    path.init(*monde.grid);
-    Point p1(1, 2, 0);
-    Point p2(2, 15, 0);
-    path.addSink(p1);
-    path.addSink(p2);
-    path.update(*monde.grid);
-    for (int j = 0; j < 20; j++) {
-        for (int i = 0; i < 20; i++) {
-
-            cout << path.getPoidlist(i + j * 20) << "\t";
-        }
-        cout << " " << endl;
-    }
-
 
     Layer surf(monde);
     surf.initSurface();
@@ -201,68 +177,28 @@ void testrender() {
 
 void testengine() {
 
-
     sf::RenderWindow window(sf::VideoMode(640, 640), "Advance wars");
     engine::Engine engine;
 
     engine.addCommand(new engine::LoadCommand("res/map.csv"));
 
     cout << "Creation d'un tank dans les casernes" << endl;
-    engine.addCommand(new engine::CreateCharCommand(INFANTERIE, 16, 3, 1));
+    engine.addCommand(new engine::CreateCharCommand(INFANTERIE, 2, 1, 1));
     engine.addCommand(new engine::CreateCharCommand(INFANTERIE, 18, 14, 2));
 
     cout << "Deplacement des tank" << endl;
-    // engine.addCommand(new engine::MoveCharCommand(2, 1, 3, 2));
-    // engine.addCommand(new engine::MoveCharCommand(3, 2, 3, 5));
-    // engine.addCommand(new engine::CapturCharCommand(3,2));
+    engine.addCommand(new engine::MoveCharCommand(2, 1, 3, 2));
+    engine.addCommand(new engine::MoveCharCommand(3, 2, 3, 5));
+    engine.addCommand(new engine::CapturCharCommand(3, 2));
 
     cout << "Deplacement infanterie" << endl;
-    // engine.addCommand(new engine::MoveCharCommand(18, 14, 17, 16));
-    // engine.addCommand(new engine::CapturCharCommand(17, 16));
-    //engine.addCommand(new engine::MoveCharCommand(17, 16, 18, 14));
+    engine.addCommand(new engine::MoveCharCommand(18, 14, 17, 16));
+    engine.addCommand(new engine::CapturCharCommand(17, 16));
+    engine.addCommand(new engine::MoveCharCommand(17, 16, 18, 14));
     engine.update();
 
-
-
-
-    /*for (int j = 0; j < int(engine.getState().chars->getHeight()); j++) {
-        for (int i = 0; i < int(engine.getState().chars->getWidth()); i++) {
-            if (engine.getState().chars->getElement(i, j) != NULL) cout << engine.getState().chars->getElement(i, j)->getTypeId() << endl;
-        }
-    }*/
     Layer surf(engine.getState());
     surf.initSurface();
-
-
-    /*HeuristicAI heuri;
-    heuri.setInfmap(engine, 1);
-    heuri.run(1, engine);    
-    HeuristicAI heuri;   
-    heuri.setInfmap(engine,1);   
-    vector<int> listpoid;
-    for (int j = 0; j < 20; j++) {
-        for (int i = 0; i < 20; i++) {
-
-            cout << heuri.getInfmap(engine, 1).weights[i + j * 20] << "\t";
-        }
-        cout << " " << endl;
-    }
-     
-
-
-    heuri.run(1,engine);*/
-    HeuristicAI heuri;
-    heuri.setInfmap(engine,1);
-    heuri.run(engine,1);
-    
-    for (int j = 0; j < 20; j++) {
-        for (int i = 0; i < 20; i++) {
-
-            cout << heuri.getInfmap(engine, 1).getPoidlist(i + j * 20) << "\t";
-        }
-        cout << " " << endl;
-    }
-    //State monde = engine.getState();
 
     while (window.isOpen()) {
 
@@ -349,18 +285,13 @@ void testengine() {
 void testai() {
 
     sf::RenderWindow window(sf::VideoMode(640, 640), "Advance wars");
-
     engine::Engine engine;
     std::vector<int> liste;
     engine.currentState.grid->createElementCsv(liste);
 
+    int joueur = 0;
     int joueur1 = 1;
     int joueur2 = 2;
-
-    //engine.currentState.joueur1 = new Joueur();
-    //engine.currentState.joueur2 = new Joueur();
-
-
 
     engine.update();
 
@@ -368,8 +299,6 @@ void testai() {
     surf.initSurface();
     RandomAI test;
     RandomAI test1;
-
-
 
     surf.initSurface();
     while (window.isOpen()) {
@@ -381,28 +310,22 @@ void testai() {
                 window.close();
         }
 
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {// presser bouton gauche
-            // la touche "flèche gauche" est enfoncée : on bouge le personnage
+        // if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
+        if (joueur % 2 == 0) {
             cout << "JOUEUR1 joue::" << endl;
-
-            //sleep(2);
             test.run(joueur1, engine);
 
             sf::sleep(sf::milliseconds(50));
             surf.initSurface();
+        } else {
 
-        }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {//presser bouton droit
-            // la touche "flèche gauche" est enfoncée : on bouge le personnage
             cout << "JOUEUR2 joue::" << endl;
-
-            //sleep(2);
-
             test1.run(joueur2, engine);
             sf::sleep(sf::milliseconds(50));
             surf.initSurface();
         }
-
+        joueur++;
+        // }
 
         window.clear();
         window.draw(*(surf.surface));
@@ -410,35 +333,58 @@ void testai() {
         window.display();
 
     }
-
-    //void testcommande() {
-    /*  sf::RenderWindow window(sf::VideoMode(640, 640), "Advance wars");
-      engine::Engine i;
-
-
-      i.addCommand(new engine::LoadCommand("res/map.csv"));
-      i.addCommand(new engine::CreateCharCommand(0, INFANTERIE, 1));
-      i.addCommand(new engine::CreateCharCommand(30, INFANTERIE, 1));
-      i.addCommand(new engine::MoveCharCommand(0, 30));
-      cout << "je suis" << endl;
-      i.update();
-
-      Layer surf(i.getState());
-      surf.initSurface();
-      surf.initSurface();
-      while (window.isOpen()) {
-
-          // on gère les évènements
-          sf::Event event;
-          while (window.pollEvent(event)) {
-              if (event.type == sf::Event::Closed)
-                  window.close();
-          }
-
-          window.clear();
-          window.draw(*(surf.surface));
-          window.draw(*(surf.surfaceplayer));
-          window.display();*/
-
 }
 
+void testheuristicAI() {
+
+    sf::RenderWindow window(sf::VideoMode(640, 640), "Advance wars");
+    engine::Engine engine;
+
+    engine.addCommand(new engine::LoadCommand("res/map.csv"));
+
+    cout << "Creation d'un tank dans les casernes" << endl;
+    engine.addCommand(new engine::CreateCharCommand(INFANTERIE, 16, 3, 1));
+    engine.addCommand(new engine::CreateCharCommand(INFANTERIE, 18, 14, 2));
+
+    cout << "Deplacement des tank" << endl;
+    // engine.addCommand(new engine::MoveCharCommand(2, 1, 3, 2));
+    // engine.addCommand(new engine::MoveCharCommand(3, 2, 3, 5));
+    // engine.addCommand(new engine::CapturCharCommand(3,2));
+
+    cout << "Deplacement infanterie" << endl;
+    // engine.addCommand(new engine::MoveCharCommand(18, 14, 17, 16));
+    // engine.addCommand(new engine::CapturCharCommand(17, 16));
+    //engine.addCommand(new engine::MoveCharCommand(17, 16, 18, 14));
+    engine.update();
+
+    Layer surf(engine.getState());
+    surf.initSurface();
+
+    HeuristicAI heuri;
+    heuri.setInfmap(engine, 1);
+    heuri.run(engine, 1);
+
+    /*for (int j = 0; j < 20; j++) {
+        for (int i = 0; i < 20; i++) {
+
+            cout << heuri.getInfmap(engine, 1).getPoidlist(i + j * 20) << "\t";
+        }
+        cout << " " << endl;
+    }*/
+
+    while (window.isOpen()) {
+
+        // on gère les évènements
+        sf::Event event;
+        while (window.pollEvent(event)) {
+            if (event.type == sf::Event::Closed)
+                window.close();
+        }
+
+        window.clear();
+        window.draw(*(surf.surface));
+        window.draw(*(surf.surfaceplayer));
+        window.display();
+
+    }
+}

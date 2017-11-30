@@ -52,6 +52,10 @@ int main(int argc, char* argv[]) {
 
             testai();
         }
+        else if (!s.compare("heuri")) {
+
+            testheuristicAI();
+        }
 
     }
 

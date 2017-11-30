@@ -42,7 +42,7 @@ void testload();
 void testengine();
 void testai();
 void testcommande();
-
+void testheuristicAI();
 
 
     
