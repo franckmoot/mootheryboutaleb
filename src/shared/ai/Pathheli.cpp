@@ -28,11 +28,8 @@ namespace ai {
 
     void Pathheli::init(state::ElementTab& grid) {
 
-        int infini = 10000;
-        /*directions.push_back(HAUT);
-        directions.push_back(BAS);
-        directions.push_back(GAUCHE);
-        directions.push_back(DROITE);*/
+        int infini=10000;
+     weights.clear();
 
         for (int j = 0; j < int(grid.getHeight()); j++) {
             for (int i = 0; i < int(grid.getWidth()); i++) {

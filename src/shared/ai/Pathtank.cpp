@@ -28,15 +28,16 @@ namespace ai {
 
     void Pathtank::init(state::ElementTab& grid) {
 
+        weights.clear();
         int infini = 10000;
-        
+
 
         for (int j = 0; j < int(grid.getHeight()); j++) {
             for (int i = 0; i < int(grid.getWidth()); i++) {
 
                 if (grid.getElement(i, j)->getTypeId() == 0) {
                     state::Champdebataille * eletmp = (state::Champdebataille*)(grid.getElement(i, j));
-                    if (eletmp->getChampdeBatailleType() == state::MONTAGNE||eletmp->getChampdeBatailleType() == state::EAU) {
+                    if (eletmp->getChampdeBatailleType() == state::MONTAGNE || eletmp->getChampdeBatailleType() == state::EAU) {
                         weights.push_back(-1);
                     } else {
                         weights.push_back(infini);
