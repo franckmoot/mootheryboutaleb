@@ -337,7 +337,7 @@ void testai() {
 
 void testheuristicAI() {
 
-    vector<int> test;
+   /* vector<int> test;
     for (int j = 0; j < 7; j++) {
         for (int i = 0; i < 7; i++) {
 
@@ -350,7 +350,7 @@ void testheuristicAI() {
             cout << test[i + j * 7] << "\t";
         }
         cout << "" << endl;
-    }
+    }*/
 
     /*for (int x3 = (i - eletmp->getPorteeMvt()); x3 < (i + eletmp->getPorteeMvt()); x3++) {
         for (int y3 = (j - eletmp->getPorteeMvt()); y3 < (j + eletmp->getPorteeMvt()); y3++) {
@@ -370,7 +370,7 @@ void testheuristicAI() {
 
 
 
-    /* sf::RenderWindow window(sf::VideoMode(640, 640), "Advance wars");
+     sf::RenderWindow window(sf::VideoMode(640, 640), "Advance wars");
      engine::Engine engine;
 
      engine.addCommand(new engine::LoadCommand("res/map.csv"));
@@ -407,7 +407,7 @@ void testheuristicAI() {
      }
      */
 
-    /*while (window.isOpen()) {
+    while (window.isOpen()) {
 
         // on gère les évènements
         sf::Event event;
@@ -425,5 +425,5 @@ void testheuristicAI() {
         window.display();
 
     }
-     */
+     
 }
