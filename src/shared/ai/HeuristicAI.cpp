@@ -61,16 +61,6 @@ namespace ai {
         }
 
         this->helimap.update(*engine.currentState.grid);
-        for (int j = 0; j < int(engine.currentState.getGrid()->getHeight()); j++) {
-            for (int i = 0; i < int(engine.currentState.getGrid()->getWidth()); i++) {
-                cout << getHelimap(engine, joueur).getPoidlist(i + j * 20) << "\t";
-            }
-            cout << "" << endl;
-        }
-
-        cout << "" << endl;
-        cout << "" << endl;
-
     }
 
     void HeuristicAI::setTankmap(engine::Engine& engine, int joueur) {
@@ -134,8 +124,6 @@ namespace ai {
                                             if ((x3 >= 0)&&(y3 >= 0)&&(x3<int(engine.currentState.getGrid()->getWidth()))&&(y3<int(engine.currentState.getGrid()->getHeight()))) {
 
                                                 if (getInfmap(engine, joueur).getPoidlist(x3 + y3 * 20) != -1) {
-
-
                                                     if (min > getInfmap(engine, joueur).getPoidlist(x3 + y3 * 20)) {
                                                         min = getInfmap(engine, joueur).getPoidlist(x3 + y3 * 20);
                                                         x3min = x3;
@@ -165,7 +153,6 @@ namespace ai {
                                     }
                                 } else {
                                     setHelimap(engine, joueur);
-                                    cout << "i :  " << i << "   j : " << j << endl;
                                     int x3min = 100;
                                     int y3min = 100;
                                     int min = 1000;
@@ -173,14 +160,10 @@ namespace ai {
                                     for (int x3 = (i - eletmp->getPorteeMvt() + 1); x3 < (i + eletmp->getPorteeMvt() - 1); x3++) {
                                         for (int y3 = (j - eletmp->getPorteeMvt() + 1); y3 < (j + eletmp->getPorteeMvt() - 1); y3++) {
                                             if ((x3 >= 0)&&(y3 >= 0)&&(x3<int(engine.currentState.getGrid()->getWidth()))&&(y3<int(engine.currentState.getGrid()->getHeight()))) {
-                                                cout << "ou est mon erreur de segmentation 8 " << endl;
-                                                //      if (getHelimap(engine, joueur).getPoidlist(x3 + y3 * 20) != -1) {
                                                 getHelimap(engine, joueur).getPoidlist(0);
-                                                cout << "ou est mon erreur de segmentation 9 " << endl;
                                                 if (min > getHelimap(engine, joueur).getPoidlist(x3 + y3 * 20)) {
 
                                                     min = getHelimap(engine, joueur).getPoidlist(x3 + y3 * 20);
-                                                    cout << "ou est mon erreur de segmentation 10 " << endl;
                                                     x3min = x3;
                                                     y3min = y3;
 
@@ -254,36 +237,29 @@ namespace ai {
                 }
             }
         }
-        
+
         if (joueur == 1) {
-            
+
             EarnMoney *E = new EarnMoney(joueur);
             E->execute(engine.currentState);
             std::vector<std::unique_ptr<engine::Command> > l4;
             BatimentCommands(engine.currentState, 1, l4);
             h = (int) (mt_rand() % l4.size());
-            //l4[h]->execute(engine.currentState);
-
             engine.addCommand(l4[h].release());
-            //engine.update();
         }
 
         if (joueur == 2) {
-            
-            
+
+
             EarnMoney *E = new EarnMoney(joueur);
             E->execute(engine.currentState);
             std::vector<std::unique_ptr<engine::Command> > l4;
             BatimentCommands(engine.currentState, joueur, l4);
             h = (int) (mt_rand() % l4.size());
-            //l4[h]->execute(engine.currentState);
 
             engine.addCommand(l4[h].release());
-            //engine.update();
         }
-        cout << "j'execute" << endl;
 
-        cout << "j'ai executé" << endl;
 
         /*for (int j = 0; j < int(engine.currentState.getChars()->getHeight()); j++) {
             for (int i = 0; i < int(engine.currentState.getChars()->getWidth()); i++) {
