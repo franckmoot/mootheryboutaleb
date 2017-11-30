@@ -110,8 +110,8 @@ namespace ai {
 
                             int x3min = 100;
                             int y3min = 100;
-                            for (int x3 = (i - eletmp->getPorteeMvt()+1); x3 < (i + eletmp->getPorteeMvt()-1); x3++) {
-                                for (int y3 = (j - eletmp->getPorteeMvt()+1); y3 < (j + eletmp->getPorteeMvt()-1); y3++) {
+                            for (int x3 = (i - eletmp->getPorteeMvt() + 1); x3 < (i + eletmp->getPorteeMvt() - 1); x3++) {
+                                for (int y3 = (j - eletmp->getPorteeMvt() + 1); y3 < (j + eletmp->getPorteeMvt() - 1); y3++) {
                                     if ((x3 >= 0)&&(y3 >= 0)&&(x3<int(engine.currentState.getGrid()->getWidth()))&&(y3<int(engine.currentState.getGrid()->getHeight()))) {
                                         int min = 1000;
 
@@ -120,15 +120,20 @@ namespace ai {
                                             x3min = x3;
                                             y3min = y3;
                                             //cout << x3min << endl;
-                                           // cout << y3min << endl;
+                                            // cout << y3min << endl;
                                         }
                                     }
                                 }
                             }
                             cout << x3min << endl;
                             cout << y3min << endl;
-                            engine::MoveCharCommand *M = new MoveCharCommand(i, j, x3min, y3min);
-                            M->execute(engine.currentState);
+
+                            if (engine.currentState.getChars()->getElement(i, j)->getCommande()) {
+                                engine.currentState.getChars()->getElement(i, j)->setCommande(false);
+                                engine.addCommand(new MoveCharCommand(i, j, x3min, y3min));
+
+                            }
+                            //M->execute(engine.currentState);
 
                         }
                         // }               
@@ -137,8 +142,16 @@ namespace ai {
 
                     } else if (engine.currentState.getChars()->getElement(i, j)->getTypeId() == 4 && engine.currentState.getChars()->getElement(i, j)->getJoueur() == joueur) {
 
-
                     }
+                }
+            }
+        }
+        engine.update();
+        
+        for (int j = 0; j < int(engine.currentState.getChars()->getHeight()); j++) {
+            for (int i = 0; i < int(engine.currentState.getChars()->getWidth()); i++) {
+                if (engine.currentState.getChars()->getElement(i, j) != NULL) {
+                    engine.currentState.getChars()->getElement(i, j)->setCommande(true);
                 }
             }
         }

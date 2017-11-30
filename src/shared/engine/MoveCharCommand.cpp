@@ -73,7 +73,7 @@ namespace engine {
                     
                     if ((int) (sqrt((((x1 - x2)*(x1 - x2))+((y1 - y2)*(y1 - y2))))) <= eletmp->getPorteeMvt()) {
                         state.chars->chgPosition(x1, y1, x2, y2);
-                       
+                       cout<<"je rentre sur 5"<<endl;
                     }
                 }
             }
