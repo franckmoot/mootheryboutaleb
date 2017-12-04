@@ -20,7 +20,7 @@ namespace engine {
 
     }
 
-    void LoadCommand::execute(state::State& state) {
+    void LoadCommand::execute(std::stack<std::shared_ptr<Action> >& actions,state::State& state) {
         std::vector<int> carte;
         std::ifstream fichier;
         fichier.open(filename, std::ios::in);

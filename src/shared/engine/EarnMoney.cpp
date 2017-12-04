@@ -23,7 +23,7 @@ namespace engine {
         return CommandTypeId::EARNMONEY;
     }
 
-    void EarnMoney::execute(state::State& state) {
+    void EarnMoney::execute(std::stack<std::shared_ptr<Action> >& actions,state::State& state) {
 
         int batimentgains = 100;
         if (joueur == 1) {

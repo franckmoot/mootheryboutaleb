@@ -2,7 +2,12 @@
 #ifndef ENGINE__CREATECHARCOMMAND__H
 #define ENGINE__CREATECHARCOMMAND__H
 
+#include <stack>
+#include <memory>
 
+namespace engine {
+  class Action;
+};
 namespace state {
   class State;
 };
@@ -12,6 +17,7 @@ namespace engine {
 
 #include "state/TypeId.h"
 #include "CommandTypeId.h"
+#include "Action.h"
 #include "Command.h"
 
 namespace engine {
@@ -29,7 +35,7 @@ namespace engine {
   public:
     CreateCharCommand (state::TypeId elementId, int x, int y, int joueur);
     CommandTypeId getTypeId () const;
-    void execute (state::State& state);
+    void execute (std::stack<std::shared_ptr<Action>>& actions, state::State& state);
     // Setters and Getters
   };
 

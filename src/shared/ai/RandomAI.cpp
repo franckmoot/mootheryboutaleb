@@ -30,6 +30,7 @@ namespace ai {
     void RandomAI::run(int joueur, engine::Engine& engine) {
         std::vector<std::unique_ptr < engine::Command>>list;
         mt19937 mt_rand(time(0));
+        std::stack<std::shared_ptr<Action> > actions;
         int h;
 
 
@@ -85,7 +86,7 @@ namespace ai {
         if (joueur == 1) {
 
             EarnMoney *E = new EarnMoney(joueur);
-            E->execute(engine.currentState);
+            E->execute(actions,engine.currentState);
             std::vector<std::unique_ptr<engine::Command> > l4;
             BatimentCommands(engine.currentState, 1, l4);
             h = (int) (mt_rand() % l4.size());
@@ -97,7 +98,7 @@ namespace ai {
 
         if (joueur == 2) {
             EarnMoney *E = new EarnMoney(joueur);
-            E->execute(engine.currentState);
+            E->execute(actions,engine.currentState);
             std::vector<std::unique_ptr<engine::Command> > l4;
             BatimentCommands(engine.currentState, joueur, l4);
             h = (int) (mt_rand() % l4.size());

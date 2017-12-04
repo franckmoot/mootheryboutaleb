@@ -180,22 +180,28 @@ void testengine() {
     sf::RenderWindow window(sf::VideoMode(640, 640), "Advance wars");
     engine::Engine engine;
 
+    std::stack<std::shared_ptr<Action> > actions;
+    
     engine.addCommand(new engine::LoadCommand("res/map.csv"));
 
     cout << "Creation d'un tank dans les casernes" << endl;
     engine.addCommand(new engine::CreateCharCommand(INFANTERIE, 2, 1, 1));
-    engine.addCommand(new engine::CreateCharCommand(INFANTERIE, 18, 14, 2));
+    //engine.addCommand(new engine::CreateCharCommand(INFANTERIE, 18, 14, 2));
 
     cout << "Deplacement des tank" << endl;
     engine.addCommand(new engine::MoveCharCommand(2, 1, 3, 2));
-    engine.addCommand(new engine::MoveCharCommand(3, 2, 3, 5));
-    engine.addCommand(new engine::CapturCharCommand(3, 2));
+    //engine.addCommand(new engine::MoveCharCommand(3, 2, 3, 5));
+    //engine.addCommand(new engine::CapturCharCommand(3, 2));
 
     cout << "Deplacement infanterie" << endl;
-    engine.addCommand(new engine::MoveCharCommand(18, 14, 17, 16));
-    engine.addCommand(new engine::CapturCharCommand(17, 16));
-    engine.addCommand(new engine::MoveCharCommand(17, 16, 18, 14));
-    engine.update();
+    //engine.addCommand(new engine::MoveCharCommand(18, 14, 17, 16));
+    //engine.addCommand(new engine::CapturCharCommand(17, 16));
+    //engine.addCommand(new engine::MoveCharCommand(17, 16, 18, 14));
+    actions=engine.update();
+    
+    cout<<actions.size()<<endl;
+    
+    engine.undo(actions);
 
     Layer surf(engine.getState());
     surf.initSurface();

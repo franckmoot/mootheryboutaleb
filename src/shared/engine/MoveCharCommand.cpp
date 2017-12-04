@@ -5,6 +5,7 @@
 #include "state/Element.h"
 #include "state/State.h"
 #include "MoveCharCommand.h"
+#include "MoveCharAction.h"
 #include "state/State.h"
 #include "state/Element.h"
 #include "state/Champdebataille.h"
@@ -25,15 +26,20 @@ namespace engine {
 
     }
 
-    void MoveCharCommand::execute(state::State& state) {
+    void MoveCharCommand::execute(std::stack<std::shared_ptr<Action> >& actions, state::State& state) {
 
-        if ((state.getChars()->getElement(x2, y2) != NULL) || (state.getChars()->getElement(x1, y1) == NULL)){} //cout << "c'est impossible " << endl;
+        if ((state.getChars()->getElement(x2, y2) != NULL) || (state.getChars()->getElement(x1, y1) == NULL)) {
+        }//cout << "c'est impossible " << endl;
         else {
 
             if (state.getChars()->getElement(x1, y1)->getTypeId() == 3) {
                 state::Heli* eletmp = (state::Heli*)(state.getChars()->getElement(x1, y1));
                 if ((int) (sqrt((((x1 - x2)*(x1 - x2))+((y1 - y2)*(y1 - y2))))) <= eletmp->getPorteeMvt()) {
-                    state.chars->chgPosition(x1, y1, x2, y2);
+                    MoveCharAction *move = new MoveCharAction(x1, y1, x2, y2);
+                    move->apply(state);
+                    actions.push(shared_ptr<MoveCharAction>(move));
+                    cout<< "oo"<<endl;
+                    //state.chars->chgPosition(x1, y1, x2, y2);
                 }
 
             } else if (state.getChars()->getElement(x1, y1)->getTypeId() == 4) {
@@ -44,12 +50,17 @@ namespace engine {
                         //cout << "c'est impossible de mettre un element mobile sur cet elment statique" << endl;
                     } else {
                         if ((int) (sqrt((((x1 - x2)*(x1 - x2))+((y1 - y2)*(y1 - y2))))) <= eletmp->getPorteeMvt()) {
-                            state.getChars()->chgPosition(x1, y1, x2, y2);
+                            MoveCharAction *move = new MoveCharAction(x1, y1, x2, y2);
+                            move->apply(state);
+                            //state.getChars()->chgPosition(x1, y1, x2, y2);
                         } //else cout << "c est impossible pour un Tank de partir plus loin" << endl;
                     }
                 } else if (state.grid->getElement(x2, y2)->getTypeId() == 1) {
                     if ((int) (sqrt((((x1 - x2)*(x1 - x2))+((y1 - y2)*(y1 - y2))))) <= eletmp->getPorteeMvt()) {
-                        state.chars->chgPosition(x1, y1, x2, y2);
+                        MoveCharAction *move = new MoveCharAction(x1, y1, x2, y2);
+                    move->apply(state);
+                    actions.push(shared_ptr<MoveCharAction>(move));
+                        //state.chars->chgPosition(x1, y1, x2, y2);
                     }
                 }
             } else if (state.getChars()->getElement(x1, y1)->getTypeId() == 2) {
@@ -62,13 +73,21 @@ namespace engine {
                     } else {
 
                         if ((int) (sqrt((((x1 - x2)*(x1 - x2))+((y1 - y2)*(y1 - y2))))) <= eletmp->getPorteeMvt()) {
-                            state.chars->chgPosition(x1, y1, x2, y2);
+
+                            MoveCharAction *move = new MoveCharAction(x1, y1, x2, y2);
+                    move->apply(state);
+                    actions.push(shared_ptr<MoveCharAction>(move));
+                            //state.chars->chgPosition(x1, y1, x2, y2);
                         } //else cout << "c est impossible pour une infanterie de partir plus loin" << endl;
                     }
                 } else if (state.getGrid()->getElement(x2, y2)->getTypeId() == 1) {
 
                     if ((int) (sqrt((((x1 - x2)*(x1 - x2))+((y1 - y2)*(y1 - y2))))) <= eletmp->getPorteeMvt()) {
-                        state.chars->chgPosition(x1, y1, x2, y2);
+
+                        MoveCharAction *move = new MoveCharAction(x1, y1, x2, y2);
+                    move->apply(state);
+                    actions.push(shared_ptr<MoveCharAction>(move));
+                        //state.chars->chgPosition(x1, y1, x2, y2);
 
                     }
                 }

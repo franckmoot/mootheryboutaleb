@@ -21,7 +21,7 @@ namespace engine {
         return CommandTypeId::ATTAQUE;
     }
 
-    void AttaqueCharCommand::execute(state::State& state) {
+    void AttaqueCharCommand::execute(std::stack<std::shared_ptr<Action> >& actions,state::State& state) {
       
         if ((state.getChars()->getElement(x1, y1) != NULL) && (state.getChars()->getElement(x2, y2) != NULL)) {
 

@@ -9,6 +9,7 @@
 #include <fstream>
 #include <iostream>
 #include <string>
+#include <stack>
 #include "Engine.h"
 #include "state/State.h"
 #include "state/Element.h"
@@ -24,7 +25,7 @@ namespace engine {
         //this->currentState = new State;
         this->currentState.grid = new ElementTab();
         this->currentState.chars = new ElementChars();
-        this->currentState.joueur1 =new Joueur();
+        this->currentState.joueur1 = new Joueur();
         this->currentState.joueur2 = new Joueur();
 
 
@@ -34,17 +35,25 @@ namespace engine {
         currentCommands.push_back(unique_ptr<Command> (cmd));
     }
 
-    void Engine::update() {
+    std::stack<std::shared_ptr<Action>> Engine::update() {
+
+        std::stack<std::shared_ptr<Action> > actions;
 
         for (auto& command : currentCommands) {
-            
-           
-            command->execute(currentState);
-           
+            command->execute(actions, currentState);
         }
-       
         currentCommands.clear();
-     
+        return actions;
+
+    }
+
+    void Engine::undo(std::stack<std::shared_ptr<Action> >& actions) {
+
+        while(!actions.empty()) {
+            actions.top()->undo(currentState);
+            actions.pop();
+        }
+
     }
 
     const state::State& Engine::getState() const {

@@ -21,8 +21,10 @@ namespace engine {
     CapturCharCommand::CapturCharCommand(int x, int y) : x(x), y(y) {
 
     }
+    
 
-    void CapturCharCommand::execute(state::State& state) {
+    
+    void CapturCharCommand::execute(std::stack<std::shared_ptr<Action> >& actions,state::State& state) {
         if (state.grid->getElement(x, y)->getTypeId() == 1) {
             if ((state.chars->getElement(x, y)->getTypeId() == 2)) {
                 if (state.chars->getElement(x, y)->getJoueur() != state.grid->getElement(x, y)->getJoueur()) {

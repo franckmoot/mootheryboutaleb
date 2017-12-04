@@ -3,6 +3,7 @@
 #define __ENGINE__H
 
 #include "engine/CommandTypeId.h"
+#include "engine/Action.h"
 #include "engine/Command.h"
 #include "engine/LoadCommand.h"
 #include "engine/MoveCharCommand.h"
@@ -11,4 +12,5 @@
 #include "engine/CapturCharCommand.h"
 #include "engine/CreateCharCommand.h"
 #include "engine/EarnMoney.h"
+#include "engine/MoveCharAction.h"
 #endif

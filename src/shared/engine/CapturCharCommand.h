@@ -2,7 +2,12 @@
 #ifndef ENGINE__CAPTURCHARCOMMAND__H
 #define ENGINE__CAPTURCHARCOMMAND__H
 
+#include <stack>
+#include <memory>
 
+namespace engine {
+  class Action;
+};
 namespace state {
   class State;
 };
@@ -11,6 +16,7 @@ namespace engine {
 }
 
 #include "CommandTypeId.h"
+#include "Action.h"
 #include "Command.h"
 
 namespace engine {
@@ -24,7 +30,7 @@ namespace engine {
     // Operations
   public:
     CommandTypeId getTypeId () const;
-    void execute (state::State& state);
+    void execute (std::stack<std::shared_ptr<Action>>& actions, state::State& state);
     CapturCharCommand (int x, int y);
     // Setters and Getters
   };

@@ -91,12 +91,13 @@ namespace ai {
 
     void HeuristicAI::run(engine::Engine& engine, int joueur) {
         std::vector<std::unique_ptr < engine::Command>>list;
+        std::stack<std::shared_ptr<Action> > actions;
         mt19937 mt_rand(time(0));
         int h;
                 if (joueur == 1) {
 
             EarnMoney *E = new EarnMoney(joueur);
-            E->execute(engine.currentState);
+            E->execute(actions,engine.currentState);
             std::vector<std::unique_ptr<engine::Command> > l4;
             BatimentCommands(engine.currentState, 1, l4);
             h = (int) (mt_rand() % l4.size());
@@ -107,7 +108,7 @@ namespace ai {
 
 
             EarnMoney *E = new EarnMoney(joueur);
-            E->execute(engine.currentState);
+            E->execute(actions,engine.currentState);
             std::vector<std::unique_ptr<engine::Command> > l4;
             BatimentCommands(engine.currentState, joueur, l4);
             h = (int) (mt_rand() % l4.size());

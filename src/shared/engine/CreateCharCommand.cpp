@@ -21,7 +21,7 @@ namespace engine {
         return CommandTypeId::ATTAQUE;
     }
 
-    void CreateCharCommand::execute(state::State& state) {
+    void CreateCharCommand::execute(std::stack<std::shared_ptr<Action> >& actions,state::State& state) {
 
         if ((state.grid->getElement(x, y)->getTypeId() == 1)&& (state.chars->getElement(x, y) == NULL)&& (joueur == 1)) {
             if (elementId == state::INFANTERIE) {
