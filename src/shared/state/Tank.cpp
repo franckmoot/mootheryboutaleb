@@ -5,9 +5,9 @@
 namespace state{
     Tank::Tank(){
          this->pdv=40;
-        this->attaque=20;
+        this->attaque=15;
         this->porteeMvt=4;
-        this->porteeAtq=6;
+        this->porteeAtq=5;
     }
 
     int Tank::diffUnite() {
