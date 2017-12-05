@@ -29,10 +29,13 @@ namespace engine {
         if ((state.grid->getElement(x, y)->getTypeId() == 1)&& (state.chars->getElement(x, y) == NULL)&& (joueur == 1)) {
             if (elementId == state::INFANTERIE) {
                 if (state.joueur1->getMoney() > 800) {
-
+                    cout<<"je vais creer une infanterie joueur 1"<<endl;
                     CreateInfanterieAction *newinf = new CreateInfanterieAction(x, y, joueur);
+                    cout<<"je vais creer une infanterie joueur 1"<<endl;
                     newinf->apply(state);
+                    cout<<"je vais apply"<<endl;
                     actions.push(shared_ptr<CreateInfanterieAction>(newinf));
+                    
                     // Infanterie *infanterietmp = new Infanterie();
                     // infanterietmp->setJoueur(joueur);
                     // state.chars->setElementXY(infanterietmp, x, y);

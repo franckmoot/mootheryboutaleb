@@ -22,9 +22,12 @@ namespace engine {
     }
 
     void CreateInfanterieAction::apply(state::State& state) {
+        cout<<"je suis a la base de la creation"<<endl;
         Infanterie *infanterietmp = new Infanterie();
         infanterietmp->setJoueur(joueur);
+        cout<<"je suis a la base de la creation"<<endl;
         state.chars->setElementXY(infanterietmp, x, y);
+        cout<<"je suis a la base de la creation"<<endl;
     }
 
     void CreateInfanterieAction::undo(state::State& state) {

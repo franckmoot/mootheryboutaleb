@@ -189,8 +189,8 @@ void testengine() {
     //engine.addCommand(new engine::CreateCharCommand(INFANTERIE, 18, 14, 2));
 
     cout << "Deplacement des tank" << endl;
-    engine.addCommand(new engine::MoveCharCommand(2, 1, 3, 2));
-    engine.addCommand(new engine::MoveCharCommand(3, 2, 3, 5));
+    //engine.addCommand(new engine::MoveCharCommand(2, 1, 3, 2));
+    //engine.addCommand(new engine::MoveCharCommand(3, 2, 3, 5));
     //engine.addCommand(new engine::CapturCharCommand(3, 2));
 
     cout << "Deplacement infanterie" << endl;
@@ -199,13 +199,13 @@ void testengine() {
     //engine.addCommand(new engine::MoveCharCommand(17, 16, 18, 14));
     actions.push_back(engine.update());
     
-    cout<<actions[0].size()<<endl;
+    //cout<<actions[0].size()<<endl;
     
-    engine.undo(actions[0]);
-
+    //engine.undo(actions[0]);
+cout << "Deplacement " << endl;
     Layer surf(engine.getState());
     surf.initSurface();
-
+cout << "Deplacement " << endl;
     while (window.isOpen()) {
 
         // on gère les évènements
@@ -214,7 +214,7 @@ void testengine() {
             if (event.type == sf::Event::Closed)
                 window.close();
         }
-
+cout << "Deplacement " << endl;
         window.clear();
         window.draw(*(surf.surface));
         window.draw(*(surf.surfaceplayer));
