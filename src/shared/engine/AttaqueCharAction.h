@@ -20,14 +20,13 @@ namespace engine {
   public:
     int x1;
     int y1;
-    int joueur;
     int x2;
     int y2;
     // Operations
   public:
     void apply (state::State& state);
     void undo (state::State& state);
-    AttaqueCharAction (int x1, int y1, int joueur, int x2, int y2);
+    AttaqueCharAction (int x1, int y1, int x2, int y2);
     // Setters and Getters
   };
 
