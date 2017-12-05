@@ -21,4 +21,7 @@
 #include "engine/CreateHeliAction.h"
 #include "engine/KillTankAction.h"
 #include "engine/KillHeliAction.h"
+#include "engine/CapturQGAction.h"
+#include "engine/CapturAppartAction.h"
+#include "engine/CapturCaserneAction.h"
 #endif
