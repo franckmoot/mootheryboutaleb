@@ -180,7 +180,7 @@ void testengine() {
     sf::RenderWindow window(sf::VideoMode(640, 640), "Advance wars");
     engine::Engine engine;
 
-    std::stack<std::shared_ptr<Action> > actions;
+    std::vector<std::stack<std::shared_ptr<Action> >> actions;
     
     engine.addCommand(new engine::LoadCommand("res/map.csv"));
 
@@ -190,18 +190,18 @@ void testengine() {
 
     cout << "Deplacement des tank" << endl;
     engine.addCommand(new engine::MoveCharCommand(2, 1, 3, 2));
-    //engine.addCommand(new engine::MoveCharCommand(3, 2, 3, 5));
+    engine.addCommand(new engine::MoveCharCommand(3, 2, 3, 5));
     //engine.addCommand(new engine::CapturCharCommand(3, 2));
 
     cout << "Deplacement infanterie" << endl;
     //engine.addCommand(new engine::MoveCharCommand(18, 14, 17, 16));
     //engine.addCommand(new engine::CapturCharCommand(17, 16));
     //engine.addCommand(new engine::MoveCharCommand(17, 16, 18, 14));
-    actions=engine.update();
+    actions.push_back(engine.update());
     
-    cout<<actions.size()<<endl;
+    cout<<actions[0].size()<<endl;
     
-    engine.undo(actions);
+    engine.undo(actions[0]);
 
     Layer surf(engine.getState());
     surf.initSurface();

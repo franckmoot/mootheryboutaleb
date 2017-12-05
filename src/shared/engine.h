@@ -13,4 +13,9 @@
 #include "engine/CreateCharCommand.h"
 #include "engine/EarnMoney.h"
 #include "engine/MoveCharAction.h"
+#include "engine/CreateCharAction.h"
+#include "engine/KillCharAction.h"
+#include "engine/EarnMoneyAction.h"
+#include "engine/AttaqueCharAction.h"
+#include "engine/CapturCharAction.h"
 #endif

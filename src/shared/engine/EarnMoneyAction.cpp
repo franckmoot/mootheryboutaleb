@@ -1,0 +1,36 @@
+#include <iostream>
+#include <string>
+#include <vector>
+
+#include "state/Element.h"
+#include "state/State.h"
+#include "EarnMoneyAction.h"
+#include "state/State.h"
+#include "state/Element.h"
+#include "state/Champdebataille.h"
+#include "state/Batiment.h"
+#include "state/MobileElement.h"
+#include "state/Infanterie.h"
+#include "state/Tank.h"
+#include "state/Heli.h"
+#include "state/ChampdebatailleTypeId.h"
+#include "state/BatimentTypeId.h"
+#include <math.h>
+
+using namespace std;
+using namespace state;
+namespace engine {
+    EarnMoneyAction::EarnMoneyAction(int joueur) {
+
+    }
+
+    void EarnMoneyAction::apply(state::State& state) {
+
+    }
+
+    void EarnMoneyAction::undo(state::State& state) {
+
+    }
+
+
+}

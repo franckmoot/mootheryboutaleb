@@ -1,6 +1,7 @@
 #include <string>
 #include <iostream>
 #include "AttaqueCharCommand.h"
+#include "KillCharAction.h"
 #include "state/State.h"
 #include "state/Element.h"
 #include "state/MobileElement.h"
@@ -21,8 +22,8 @@ namespace engine {
         return CommandTypeId::ATTAQUE;
     }
 
-    void AttaqueCharCommand::execute(std::stack<std::shared_ptr<Action> >& actions,state::State& state) {
-      
+    void AttaqueCharCommand::execute(std::stack<std::shared_ptr<Action> >& actions, state::State& state) {
+
         if ((state.getChars()->getElement(x1, y1) != NULL) && (state.getChars()->getElement(x2, y2) != NULL)) {
 
             if (state.getChars()->getElement(x1, y1)->getJoueur() != state.getChars()->getElement(x2, y2)->getJoueur()) {
@@ -34,7 +35,10 @@ namespace engine {
                         if ((int) (sqrt((((x1 - x2)*(x1 - x2))+((y1 - y2)*(y1 - y2))))) <= eletmp->getPorteeAtq()) {
                             eletmp2->setPdv(eletmp2->getPdv() - eletmp->getAttaque());
                             if (eletmp2->getPdv() <= 0) {
-                                state.getChars()->killElement(x2, y2);
+                                KillCharAction *infmeur = new KillCharAction(x2, y2, INFANTERIE, state.chars->getElement(x2, y2)->getJoueur());
+                                infmeur->apply(state);
+                                actions.push(shared_ptr<KillCharAction>(infmeur));
+                                //state.getChars()->killElement(x2, y2);
                                 //cout << "notre element d'absice" << x2 << "et d'ordonnée" << y2 << "est mort" << endl;
                             }
                         } //else cout << "ta portée n'est pas suffisante" << endl;
@@ -43,7 +47,10 @@ namespace engine {
                         if ((int) (sqrt((((x1 - x2)*(x1 - x2))+((y1 - y2)*(y1 - y2))))) <= eletmp->getPorteeAtq()) {
                             eletmp2->setPdv(eletmp2->getPdv() - eletmp->getAttaque());
                             if (eletmp2->getPdv() <= 0) {
-                                state.getChars()->killElement(x2, y2);
+                                KillCharAction *helimeur = new KillCharAction(x2, y2, HELI, state.chars->getElement(x2, y2)->getJoueur());
+                                helimeur->apply(state);
+                                actions.push(shared_ptr<KillCharAction>(helimeur));
+                                //state.getChars()->killElement(x2, y2);
                                 //cout << "notre element d'absice" << x2 << "et d'ordonnée" << y2 << "est mort" << endl;
                             }
                         } //else cout << "ta portée n'est pas suffisante" << endl;
@@ -52,7 +59,10 @@ namespace engine {
                         if ((int) (sqrt((((x1 - x2)*(x1 - x2))+((y1 - y2)*(y1 - y2))))) <= eletmp->getPorteeAtq()) {
                             eletmp2->setPdv(eletmp2->getPdv() - eletmp->getAttaque());
                             if (eletmp2->getPdv() <= 0) {
-                                state.getChars()->killElement(x2, y2);
+                                KillCharAction *tankmeurt = new KillCharAction(x2, y2, TANK, state.chars->getElement(x2, y2)->getJoueur());
+                                tankmeurt->apply(state);
+                                actions.push(shared_ptr<KillCharAction>(tankmeurt));
+                                //state.getChars()->killElement(x2, y2);
                                 //cout << "notre element d'absice" << x2 << "et d'ordonnée" << y2 << "est mort" << endl;
                             }
                         } //else cout << "ta portée n'est pas suffisante" << endl;
@@ -63,8 +73,12 @@ namespace engine {
                         state::Infanterie* eletmp2 = (state::Infanterie*)(state.getChars()->getElement(x2, y2));
                         if ((int) (sqrt((((x1 - x2)*(x1 - x2))+((y1 - y2)*(y1 - y2))))) <= eletmp->getPorteeAtq()) {
                             eletmp2->setPdv(eletmp2->getPdv() - eletmp->getAttaque());
+
                             if (eletmp2->getPdv() <= 0) {
-                                state.chars->killElement(x2, y2);
+                                KillCharAction *infmeur = new KillCharAction(x2, y2, INFANTERIE, state.chars->getElement(x2, y2)->getJoueur());
+                                infmeur->apply(state);
+                                actions.push(shared_ptr<KillCharAction>(infmeur));
+                                //state.chars->killElement(x2, y2);
                                 //cout << "notre element d'absice" << x2 << "et d'ordonnée" << y2 << "est mort" << endl;
                             }
                         } //else cout << "ta portée n'est pas suffisante" << endl;
@@ -73,17 +87,22 @@ namespace engine {
                         if ((int) (sqrt((((x1 - x2)*(x1 - x2))+((y1 - y2)*(y1 - y2))))) <= eletmp->getPorteeAtq()) {
                             eletmp2->setPdv(eletmp2->getPdv() - eletmp->getAttaque());
                             if (eletmp2->getPdv() <= 0) {
-                                state.getChars()->killElement(x2, y2);
+                                KillCharAction *helimeur = new KillCharAction(x2, y2, HELI, state.chars->getElement(x2, y2)->getJoueur());
+                                helimeur->apply(state);
+                                actions.push(shared_ptr<KillCharAction>(helimeur));
+                                //state.getChars()->killElement(x2, y2);
                                 //cout << "notre element d'absice" << x2 << "et d'ordonnée" << y2 << "est mort" << endl;
                             }
                         } //else cout << "ta portée n'est pas suffisante" << endl;
-                    }
-                    else if (state.chars->getElement(x2, y2)->getTypeId() == 4) {
+                    } else if (state.chars->getElement(x2, y2)->getTypeId() == 4) {
                         state::Tank* eletmp2 = (state::Tank*)(state.getChars()->getElement(x2, y2));
                         if ((int) (sqrt((((x1 - x2)*(x1 - x2))+((y1 - y2)*(y1 - y2))))) <= eletmp->getPorteeAtq()) {
                             eletmp2->setPdv(eletmp2->getPdv() - eletmp->getAttaque());
                             if (eletmp2->getPdv() <= 0) {
-                                state.getChars()->killElement(x2, y2);
+                                KillCharAction *tankmeurt = new KillCharAction(x2, y2, TANK, state.chars->getElement(x2, y2)->getJoueur());
+                                tankmeurt->apply(state);
+                                actions.push(shared_ptr<KillCharAction>(tankmeurt));
+                                //state.getChars()->killElement(x2, y2);
                                 //cout << "notre element d'absice" << x2 << "et d'ordonnée" << y2 << "est mort" << endl;
                             }
                         } //else cout << "ta portée n'est pas suffisante" << endl;
@@ -95,7 +114,10 @@ namespace engine {
                         if ((int) (sqrt((((x1 - x2)*(x1 - x2))+((y1 - y2)*(y1 - y2))))) <= eletmp->getPorteeAtq()) {
                             eletmp2->setPdv(eletmp2->getPdv() - eletmp->getAttaque());
                             if (eletmp2->getPdv() <= 0) {
-                                state.chars->killElement(x2, y2);
+                                KillCharAction *infmeur = new KillCharAction(x2, y2, INFANTERIE, state.chars->getElement(x2, y2)->getJoueur());
+                                infmeur->apply(state);
+                                actions.push(shared_ptr<KillCharAction>(infmeur));
+                                //state.chars->killElement(x2, y2);
                                 //cout << "notre element d'absice" << x2 << "et d'ordonnée" << y2 << "est mort" << endl;
                             }
                         } //else cout << "ta portée n'est pas suffisante" << endl;
@@ -104,7 +126,10 @@ namespace engine {
                         if ((int) (sqrt((((x1 - x2)*(x1 - x2))+((y1 - y2)*(y1 - y2))))) <= eletmp->getPorteeAtq()) {
                             eletmp2->setPdv(eletmp2->getPdv() - eletmp->getAttaque());
                             if (eletmp2->getPdv() <= 0) {
-                                state.chars->killElement(x2, y2);
+                                KillCharAction *helimeur = new KillCharAction(x2, y2, HELI, state.chars->getElement(x2, y2)->getJoueur());
+                                helimeur->apply(state);
+                                actions.push(shared_ptr<KillCharAction>(helimeur));
+                                //state.chars->killElement(x2, y2);
                                 //cout << "notre element d'absice" << x2 << "et d'ordonnée" << y2 << "est mort" << endl;
                             }
                         } //else cout << "ta portée n'est pas suffisante" << endl;
@@ -113,7 +138,10 @@ namespace engine {
                         if ((int) (sqrt((((x1 - x2)*(x1 - x2))+((y1 - y2)*(y1 - y2))))) <= eletmp->getPorteeAtq()) {
                             eletmp2->setPdv(eletmp2->getPdv() - eletmp->getAttaque());
                             if (eletmp2->getPdv() <= 0) {
-                                state.chars->killElement(x2, y2);
+                                KillCharAction *tankmeurt = new KillCharAction(x2, y2, TANK, state.chars->getElement(x2, y2)->getJoueur());
+                                tankmeurt->apply(state);
+                                actions.push(shared_ptr<KillCharAction>(tankmeurt));
+                                // state.chars->killElement(x2, y2);
                                 //cout << "notre element d'absice" << x2 << "et d'ordonnée" << y2 << "est mort" << endl;
                             }
                         } //else cout << "ta portée n'est pas suffisante" << endl;
