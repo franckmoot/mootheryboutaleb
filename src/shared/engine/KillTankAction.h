@@ -10,7 +10,6 @@ namespace engine {
   class Action;
 }
 
-#include "state/TypeId.h"
 #include "Action.h"
 
 namespace engine {
@@ -21,13 +20,12 @@ namespace engine {
   public:
     int x;
     int y;
-    state::TypeId elementId;
     int joueur;
     // Operations
   public:
     void apply (state::State& state);
     void undo (state::State& state);
-    KillTankAction (int x, int y, state::TypeId elementId, int joueur);
+    KillTankAction (int x, int y, int joueur);
     // Setters and Getters
   };
 
