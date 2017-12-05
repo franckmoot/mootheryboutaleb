@@ -180,8 +180,8 @@ void testengine() {
     sf::RenderWindow window(sf::VideoMode(640, 640), "Advance wars");
     engine::Engine engine;
 
-    std::vector<std::stack<std::shared_ptr<Action> >> actions;
-    
+    std::vector<std::stack < std::shared_ptr<Action> >> actions;
+
     engine.addCommand(new engine::LoadCommand("res/map.csv"));
 
     cout << "Creation d'un tank dans les casernes" << endl;
@@ -198,14 +198,14 @@ void testengine() {
     //engine.addCommand(new engine::CapturCharCommand(17, 16));
     //engine.addCommand(new engine::MoveCharCommand(17, 16, 18, 14));
     actions.push_back(engine.update());
-    
+
     //cout<<actions[0].size()<<endl;
-    
+
     //engine.undo(actions[0]);
-cout << "Deplacement " << endl;
+    cout << "Deplacement " << endl;
     Layer surf(engine.getState());
     surf.initSurface();
-cout << "Deplacement " << endl;
+    cout << "Deplacement " << endl;
     while (window.isOpen()) {
 
         // on gère les évènements
@@ -214,7 +214,7 @@ cout << "Deplacement " << endl;
             if (event.type == sf::Event::Closed)
                 window.close();
         }
-cout << "Deplacement " << endl;
+        cout << "Deplacement " << endl;
         window.clear();
         window.draw(*(surf.surface));
         window.draw(*(surf.surfaceplayer));
@@ -354,9 +354,9 @@ void testheuristicAI() {
     Layer surf(engine.getState());
     surf.initSurface();
 
-     int joueur=0;
-     int joueur1=1;
-     int joueur2=2;
+    int joueur = 0;
+    int joueur1 = 1;
+    int joueur2 = 2;
     HeuristicAI test, test1;
 
 
@@ -369,20 +369,20 @@ void testheuristicAI() {
                 window.close();
         }
 
-         if (joueur % 2 == 0) {
-              cout << "JOUEUR1 joue::" << endl;
-              test.run( engine,joueur1);
+        if (joueur % 2 == 0) {
+            cout << "JOUEUR1 joue::" << endl;
+            test.run(engine, joueur1);
 
-              sf::sleep(sf::milliseconds(50));
-              surf.initSurface();
-          } else {
+            sf::sleep(sf::milliseconds(50));
+            surf.initSurface();
+        } else {
 
-              cout << "JOUEUR2 joue::" << endl;
-              test1.run( engine,joueur2);
-              sf::sleep(sf::milliseconds(50));
-              surf.initSurface();
-          }
-          joueur++;
+            cout << "JOUEUR2 joue::" << endl;
+            test1.run(engine, joueur2);
+            sf::sleep(sf::milliseconds(50));
+            surf.initSurface();
+        }
+        joueur++;
 
 
         window.clear();

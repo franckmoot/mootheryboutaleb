@@ -29,16 +29,13 @@ namespace engine {
         if ((state.grid->getElement(x, y)->getTypeId() == 1)&& (state.chars->getElement(x, y) == NULL)&& (joueur == 1)) {
             if (elementId == state::INFANTERIE) {
                 if (state.joueur1->getMoney() > 800) {
-                    cout<<"je vais creer une infanterie joueur 1"<<endl;
                     CreateInfanterieAction *newinf = new CreateInfanterieAction(x, y, joueur);
-                    cout<<"je vais creer une infanterie joueur 1"<<endl;
                     newinf->apply(state);
-                    cout<<"je vais apply"<<endl;
                     actions.push(shared_ptr<CreateInfanterieAction>(newinf));
-                    
-                     //Infanterie *infanterietmp = new Infanterie();
-                     //infanterietmp->setJoueur(joueur);
-                     //state.chars->setElementXY(infanterietmp, x, y);
+
+                    //Infanterie *infanterietmp = new Infanterie();
+                    //infanterietmp->setJoueur(joueur);
+                    //state.chars->setElementXY(infanterietmp, x, y);
                     state.joueur1->setMoney(state.joueur1->getMoney() - 800);
 
                 }
@@ -55,7 +52,7 @@ namespace engine {
                 }
             } else if (elementId == state::TANK) {
                 if (state.joueur1->getMoney() > 900) {
-                    
+
                     CreateTankAction *newtank = new CreateTankAction(x, y, joueur);
                     newtank->apply(state);
                     actions.push(shared_ptr<CreateTankAction>(newtank));
@@ -81,7 +78,7 @@ namespace engine {
                 }
             } else if (elementId == state::HELI) {
                 if (state.joueur2->getMoney() > 1000) {
-                    
+
                     CreateHeliAction *newheli = new CreateHeliAction(x, y, joueur);
                     newheli->apply(state);
                     actions.push(shared_ptr<CreateHeliAction>(newheli));
@@ -92,11 +89,11 @@ namespace engine {
                 }
             } else if (elementId == state::TANK) {
                 if (state.joueur2->getMoney() > 900) {
-                    
+
                     CreateTankAction *newtank = new CreateTankAction(x, y, joueur);
                     newtank->apply(state);
                     actions.push(shared_ptr<CreateTankAction>(newtank));
-                    
+
                     //Tank *T = new Tank();
                     //T->setJoueur(joueur);
                     //state.chars->setElementXY(T, x, y);

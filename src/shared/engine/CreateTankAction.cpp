@@ -17,11 +17,10 @@ using namespace std;
 using namespace state;
 namespace engine {
 
-    CreateTankAction::CreateTankAction(int x, int y,  int joueur):x(x),y(y),joueur(joueur) {
+    CreateTankAction::CreateTankAction(int x, int y, int joueur) : x(x), y(y), joueur(joueur) {
 
     }
 
-    
     void CreateTankAction::apply(state::State& state) {
         Tank *T = new Tank();
         T->setJoueur(joueur);
