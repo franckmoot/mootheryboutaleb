@@ -21,7 +21,7 @@ using namespace std;
 using namespace state;
 namespace engine {
 
-    KillTankAction::KillTankAction(int x, int y, state::TypeId elementId, int joueur) : x(x), y(y), elementId(elementId), joueur(joueur) {
+    KillTankAction::KillTankAction(int x, int y,  int joueur) : x(x), y(y),  joueur(joueur) {
 
     }
 

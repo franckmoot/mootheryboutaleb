@@ -1,6 +1,9 @@
 #include <string>
 #include <iostream>
 #include "AttaqueCharCommand.h"
+#include "KillHeliAction.h"
+#include "KillTankAction.h"
+#include "KillInfanterieAction.h"
 #include "state/State.h"
 #include "state/Element.h"
 #include "state/MobileElement.h"

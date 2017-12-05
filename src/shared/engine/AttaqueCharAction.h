@@ -10,6 +10,7 @@ namespace engine {
   class Action;
 }
 
+#include "state/TypeId.h"
 #include "Action.h"
 
 namespace engine {
@@ -18,15 +19,15 @@ namespace engine {
   class AttaqueCharAction : public engine::Action {
     // Attributes
   public:
-    int x1;
-    int y1;
-    int x2;
-    int y2;
+    int x;
+    int y;
+    state::TypeId elementId;
+    int joueur;
     // Operations
   public:
     void apply (state::State& state);
     void undo (state::State& state);
-    AttaqueCharAction (int x1, int y1, int x2, int y2);
+    AttaqueCharAction (int x, int y, state::TypeId elementId, int joueur);
     // Setters and Getters
   };
 
