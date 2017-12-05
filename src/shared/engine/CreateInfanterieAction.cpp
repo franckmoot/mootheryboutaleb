@@ -1,10 +1,9 @@
-
 #include <string>
 #include <vector>
 #include <fstream>
 #include <iostream>
 #include <string>
-#include "CreateHeliAction.h"
+#include "CreateInfanterieAction.h"
 #include "state/Element.h"
 #include "state/MobileElement.h"
 #include "state/Infanterie.h"
@@ -14,22 +13,21 @@
 #include "CreateCharCommand.h"
 #include "state/TypeId.h"
 
-
 using namespace std;
 using namespace state;
 namespace engine {
 
-    CreateHeliAction::CreateHeliAction(int x, int y, int joueur) {
+    CreateInfanterieAction::CreateInfanterieAction(int x, int y, int joueur) {
 
     }
 
-    void CreateHeliAction::apply(state::State& state) {
-        Heli *H = new Heli();
-        H->setJoueur(joueur);
-        state.chars->setElementXY(H, x, y);
+    void CreateInfanterieAction::apply(state::State& state) {
+        Infanterie *infanterietmp = new Infanterie();
+        infanterietmp->setJoueur(joueur);
+        state.chars->setElementXY(infanterietmp, x, y);
     }
 
-    void CreateHeliAction::undo(state::State& state) {
+    void CreateInfanterieAction::undo(state::State& state) {
         state.getChars()->killElement(x, y);
     }
 
