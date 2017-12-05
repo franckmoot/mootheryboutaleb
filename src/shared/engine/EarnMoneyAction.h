@@ -19,11 +19,12 @@ namespace engine {
     // Attributes
   public:
     int joueur;
+    int nbrBatiment;
     // Operations
   public:
     void apply (state::State& state);
     void undo (state::State& state);
-    EarnMoneyAction (int joueur);
+    EarnMoneyAction (int joueur, int nbrBatiment);
     // Setters and Getters
   };
 

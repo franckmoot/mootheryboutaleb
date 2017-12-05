@@ -23,6 +23,7 @@ namespace state {
     int getMoney ( );
     void setMoney (int money);
     void addMoney (int money);
+    void lessMoney (int money);
     // Setters and Getters
   };
 

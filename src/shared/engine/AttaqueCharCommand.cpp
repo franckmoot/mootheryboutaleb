@@ -10,6 +10,7 @@
 #include "state/Infanterie.h"
 #include "state/Tank.h"
 #include "state/Heli.h"
+#include "AttaqueCharAction.h"
 #include <math.h>
 
 using namespace std;
@@ -35,7 +36,10 @@ namespace engine {
                     if (state.getChars()->getElement(x2, y2)->getTypeId() == 2) {
                         state::Infanterie* eletmp2 = (state::Infanterie*)(state.getChars()->getElement(x2, y2));
                         if ((int) (sqrt((((x1 - x2)*(x1 - x2))+((y1 - y2)*(y1 - y2))))) <= eletmp->getPorteeAtq()) {
-                            eletmp2->setPdv(eletmp2->getPdv() - eletmp->getAttaque());
+                            AttaqueCharAction *A=new AttaqueCharAction(x1,y1,x2,y2);
+                            A->apply(state);
+                            actions.push(shared_ptr<AttaqueCharAction>(A));
+                            
                             if (eletmp2->getPdv() <= 0) {
                                 KillInfanterieAction *killinf = new KillInfanterieAction(x2, y2, state.getChars()->getElement(x2, y2)->getJoueur());
                                 killinf->apply(state);
@@ -49,7 +53,9 @@ namespace engine {
                     } else if (state.getChars()->getElement(x2, y2)->getTypeId() == 3) {
                         state::Heli* eletmp2 = (state::Heli*)(state.getChars()->getElement(x2, y2));
                         if ((int) (sqrt((((x1 - x2)*(x1 - x2))+((y1 - y2)*(y1 - y2))))) <= eletmp->getPorteeAtq()) {
-                            eletmp2->setPdv(eletmp2->getPdv() - eletmp->getAttaque());
+                            AttaqueCharAction *A=new AttaqueCharAction(x1,y1,x2,y2);
+                            A->apply(state);
+                            actions.push(shared_ptr<AttaqueCharAction>(A));
                             if (eletmp2->getPdv() <= 0) {
                                 KillHeliAction *killheli = new KillHeliAction(x2, y2, state.getChars()->getElement(x2, y2)->getJoueur());
                                 killheli->apply(state);
@@ -61,7 +67,9 @@ namespace engine {
                     } else if (state.getChars()->getElement(x2, y2)->getTypeId() == 4) {
                         state::Tank* eletmp2 = (state::Tank*)(state.getChars()->getElement(x2, y2));
                         if ((int) (sqrt((((x1 - x2)*(x1 - x2))+((y1 - y2)*(y1 - y2))))) <= eletmp->getPorteeAtq()) {
-                            eletmp2->setPdv(eletmp2->getPdv() - eletmp->getAttaque());
+                            AttaqueCharAction *A=new AttaqueCharAction(x1,y1,x2,y2);
+                            A->apply(state);
+                            actions.push(shared_ptr<AttaqueCharAction>(A));
                             if (eletmp2->getPdv() <= 0) {
                                 KillTankAction *killtank = new KillTankAction(x2, y2, state.getChars()->getElement(x2, y2)->getJoueur());
                                 killtank->apply(state);
@@ -76,7 +84,9 @@ namespace engine {
                     if (state.chars->getElement(x2, y2)->getTypeId() == 2) {
                         state::Infanterie* eletmp2 = (state::Infanterie*)(state.getChars()->getElement(x2, y2));
                         if ((int) (sqrt((((x1 - x2)*(x1 - x2))+((y1 - y2)*(y1 - y2))))) <= eletmp->getPorteeAtq()) {
-                            eletmp2->setPdv(eletmp2->getPdv() - eletmp->getAttaque());
+                            AttaqueCharAction *A=new AttaqueCharAction(x1,y1,x2,y2);
+                            A->apply(state);
+                            actions.push(shared_ptr<AttaqueCharAction>(A));
 
                             if (eletmp2->getPdv() <= 0) {
                                 KillInfanterieAction *killinf = new KillInfanterieAction(x2, y2, state.getChars()->getElement(x2, y2)->getJoueur());
@@ -89,7 +99,9 @@ namespace engine {
                     } else if (state.chars->getElement(x2, y2)->getTypeId() == 3) {
                         state::Heli* eletmp2 = (state::Heli*)(state.getChars()->getElement(x2, y2));
                         if ((int) (sqrt((((x1 - x2)*(x1 - x2))+((y1 - y2)*(y1 - y2))))) <= eletmp->getPorteeAtq()) {
-                            eletmp2->setPdv(eletmp2->getPdv() - eletmp->getAttaque());
+                            AttaqueCharAction *A=new AttaqueCharAction(x1,y1,x2,y2);
+                            A->apply(state);
+                            actions.push(shared_ptr<AttaqueCharAction>(A));
                             if (eletmp2->getPdv() <= 0) {
 
                                 KillHeliAction *killheli = new KillHeliAction(x2, y2, state.getChars()->getElement(x2, y2)->getJoueur());
@@ -102,7 +114,9 @@ namespace engine {
                     } else if (state.chars->getElement(x2, y2)->getTypeId() == 4) {
                         state::Tank* eletmp2 = (state::Tank*)(state.getChars()->getElement(x2, y2));
                         if ((int) (sqrt((((x1 - x2)*(x1 - x2))+((y1 - y2)*(y1 - y2))))) <= eletmp->getPorteeAtq()) {
-                            eletmp2->setPdv(eletmp2->getPdv() - eletmp->getAttaque());
+                            AttaqueCharAction *A=new AttaqueCharAction(x1,y1,x2,y2);
+                            A->apply(state);
+                            actions.push(shared_ptr<AttaqueCharAction>(A));
                             if (eletmp2->getPdv() <= 0) {
                                 KillTankAction *killtank = new KillTankAction(x2, y2, state.getChars()->getElement(x2, y2)->getJoueur());
                                 killtank->apply(state);
@@ -117,7 +131,9 @@ namespace engine {
                     if (state.getChars()->getElement(x2, y2)->getTypeId() == 2) {
                         state::Infanterie* eletmp2 = (state::Infanterie*)(state.getChars()->getElement(x2, y2));
                         if ((int) (sqrt((((x1 - x2)*(x1 - x2))+((y1 - y2)*(y1 - y2))))) <= eletmp->getPorteeAtq()) {
-                            eletmp2->setPdv(eletmp2->getPdv() - eletmp->getAttaque());
+                            AttaqueCharAction *A=new AttaqueCharAction(x1,y1,x2,y2);
+                            A->apply(state);
+                            actions.push(shared_ptr<AttaqueCharAction>(A));
                             if (eletmp2->getPdv() <= 0) {
                                 KillInfanterieAction *killinf = new KillInfanterieAction(x2, y2, state.getChars()->getElement(x2, y2)->getJoueur());
                                 killinf->apply(state);
@@ -129,7 +145,9 @@ namespace engine {
                     } else if (state.getChars()->getElement(x2, y2)->getTypeId() == 3) {
                         state::Heli* eletmp2 = (state::Heli*)(state.chars->getElement(x2, y2));
                         if ((int) (sqrt((((x1 - x2)*(x1 - x2))+((y1 - y2)*(y1 - y2))))) <= eletmp->getPorteeAtq()) {
-                            eletmp2->setPdv(eletmp2->getPdv() - eletmp->getAttaque());
+                            AttaqueCharAction *A=new AttaqueCharAction(x1,y1,x2,y2);
+                            A->apply(state);
+                            actions.push(shared_ptr<AttaqueCharAction>(A));
                             if (eletmp2->getPdv() <= 0) {
 
                                 KillHeliAction *killheli = new KillHeliAction(x2, y2, state.getChars()->getElement(x2, y2)->getJoueur());
@@ -142,7 +160,9 @@ namespace engine {
                     } else if (state.getChars()->getElement(x2, y2)->getTypeId() == 4) {
                         state::Tank* eletmp2 = (state::Tank*)(state.chars->getElement(x2, y2));
                         if ((int) (sqrt((((x1 - x2)*(x1 - x2))+((y1 - y2)*(y1 - y2))))) <= eletmp->getPorteeAtq()) {
-                            eletmp2->setPdv(eletmp2->getPdv() - eletmp->getAttaque());
+                           AttaqueCharAction *A=new AttaqueCharAction(x1,y1,x2,y2);
+                            A->apply(state);
+                            actions.push(shared_ptr<AttaqueCharAction>(A));
                             if (eletmp2->getPdv() <= 0) {
                                 KillTankAction *killtank = new KillTankAction(x2, y2, state.getChars()->getElement(x2, y2)->getJoueur());
                                 killtank->apply(state);

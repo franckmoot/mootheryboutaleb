@@ -18,5 +18,8 @@ namespace state {
         this->money=money;
     }
 
+    void Joueur::lessMoney(int money) {
+       this->money-=money; 
+    }
 
 }

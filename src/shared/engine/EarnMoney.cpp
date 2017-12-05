@@ -11,6 +11,7 @@
 #include "state/Heli.h"
 #include <math.h>
 #include "EarnMoney.h"
+#include "EarnMoneyAction.h"
 using namespace std;
 using namespace state;
 namespace engine {
@@ -25,7 +26,7 @@ namespace engine {
 
     void EarnMoney::execute(std::stack<std::shared_ptr<Action> >& actions,state::State& state) {
 
-        int batimentgains = 100;
+
         if (joueur == 1) {
             int nbrBatiment = 0;
             for (int j = 0; j < int(state.getGrid()->getHeight()); j++) {
@@ -36,7 +37,9 @@ namespace engine {
                     }
                 }
             }
-            state.joueur1->addMoney(nbrBatiment * batimentgains);
+            EarnMoneyAction *E=new EarnMoneyAction(joueur,nbrBatiment);
+            E->apply(state);
+            actions.push(shared_ptr<EarnMoneyAction>(E));
         } else if (joueur == 2) {
             int nbrBatiment = 0;
             for (int j = 0; j < int(state.getGrid()->getHeight()); j++) {
@@ -47,7 +50,9 @@ namespace engine {
                     }
                 }
             }
-            state.joueur2->addMoney(nbrBatiment * batimentgains);
+            EarnMoneyAction *E=new EarnMoneyAction(joueur,nbrBatiment);
+            E->apply(state);
+            actions.push(shared_ptr<EarnMoneyAction>(E));
         }
 
 
