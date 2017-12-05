@@ -19,7 +19,7 @@ using namespace std;
 using namespace state;
 namespace engine {
 
-    CreateHeliAction::CreateHeliAction(int x, int y, int joueur) {
+    CreateHeliAction::CreateHeliAction(int x, int y, int joueur):x(x),y(y),joueur(joueur) {
 
     }
 

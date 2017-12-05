@@ -17,7 +17,7 @@ using namespace std;
 using namespace state;
 namespace engine {
 
-    CreateInfanterieAction::CreateInfanterieAction(int x, int y, int joueur) {
+    CreateInfanterieAction::CreateInfanterieAction(int x, int y, int joueur):x(x),y(y),joueur(joueur) {
 
     }
 

@@ -36,9 +36,9 @@ namespace engine {
                     cout<<"je vais apply"<<endl;
                     actions.push(shared_ptr<CreateInfanterieAction>(newinf));
                     
-                    // Infanterie *infanterietmp = new Infanterie();
-                    // infanterietmp->setJoueur(joueur);
-                    // state.chars->setElementXY(infanterietmp, x, y);
+                     //Infanterie *infanterietmp = new Infanterie();
+                     //infanterietmp->setJoueur(joueur);
+                     //state.chars->setElementXY(infanterietmp, x, y);
                     state.joueur1->setMoney(state.joueur1->getMoney() - 800);
 
                 }
