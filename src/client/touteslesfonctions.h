@@ -43,6 +43,7 @@ void testengine();
 void testai();
 void testcommande();
 void testheuristicAI();
+void testdeep_ai();
 
 
     

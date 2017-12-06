@@ -372,13 +372,14 @@ void testheuristicAI() {
         if (joueur % 2 == 0) {
             cout << "JOUEUR1 joue::" << endl;
             test.run(engine, joueur1);
-
+            engine.update();
             sf::sleep(sf::milliseconds(50));
             surf.initSurface();
         } else {
 
             cout << "JOUEUR2 joue::" << endl;
             test1.run(engine, joueur2);
+            engine.update();
             sf::sleep(sf::milliseconds(50));
             surf.initSurface();
         }
@@ -392,4 +393,89 @@ void testheuristicAI() {
 
     }
 
+}
+
+void testdeep_ai() {
+
+
+    sf::RenderWindow window(sf::VideoMode(640, 640), "Advance wars");
+    engine::Engine engine;
+
+    std::vector<std::stack < std::shared_ptr<Action> >> actions;
+
+    engine.addCommand(new engine::LoadCommand("res/map.csv"));
+
+    engine.update();
+
+    Layer surf(engine.getState());
+    surf.initSurface();
+
+    int i = 0;
+    int joueur = 0;
+    int joueur1 = 1;
+    int joueur2 = 2;
+    HeuristicAI test, test1;
+
+    actions.push_back(engine.update());
+
+    //cout<<actions[0].size()<<endl;
+
+    //engine.undo(actions[0]);
+
+    while (window.isOpen()) {
+
+        // on gère les évènements
+        sf::Event event;
+        while (window.pollEvent(event)) {
+            if (event.type == sf::Event::Closed)
+                window.close();
+        }
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
+            if (joueur % 2 == 0) {
+                cout << "JOUEUR1 joue::" << endl;
+                test.run(engine, joueur1);
+                actions.push_back(engine.update());
+                sf::sleep(sf::milliseconds(50));
+                surf.initSurface();
+                joueur++;
+                i++;
+            } else {
+
+                cout << "JOUEUR2 joue::" << endl;
+                test1.run(engine, joueur2);
+                actions.push_back(engine.update());
+                sf::sleep(sf::milliseconds(50));
+                surf.initSurface();
+                joueur++;
+                i++;
+            }
+        }
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
+            if (joueur % 2 == 0) {
+                cout << "JOUEUR1 undo::" << endl;
+                if(i!=0) engine.undo(actions[i]);
+                sf::sleep(sf::milliseconds(50));
+                surf.initSurface();
+                joueur++;
+                i--;
+            } else {
+
+                cout << "JOUEUR2 undo::" << endl;
+                if(i!=0) engine.undo(actions[i]);
+                sf::sleep(sf::milliseconds(50));
+                surf.initSurface();
+                joueur++;
+                i++;
+            }
+        }
+
+
+        window.clear();
+        window.draw(*(surf.surface));
+        window.draw(*(surf.surfaceplayer));
+        window.display();
+
+    }
 }

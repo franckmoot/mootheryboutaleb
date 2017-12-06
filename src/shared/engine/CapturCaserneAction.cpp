@@ -14,16 +14,22 @@ using namespace state;
 
 namespace engine {
 
-    CapturCaserneAction::CapturCaserneAction(int x, int y, int joueur) {
+    CapturCaserneAction::CapturCaserneAction(int x, int y, int joueur): x(x), y(y), joueur(joueur) {
 
     }
 
     void CapturCaserneAction::apply(state::State& state) {
-
+        if (joueur == 1) {
+            state.grid->setElementXY(new state::Batiment(CASERNEROUGE), x, y);
+            state.grid->getElement(x, y)->setJoueur(joueur);
+        } else {
+            state.grid->setElementXY(new state::Batiment(CASERNEBLEU), x, y);
+            state.grid->getElement(x, y)->setJoueur(joueur);
+        }
     }
 
     void CapturCaserneAction::undo(state::State& state) {
-
+        state.grid->killElement(x, y);
     }
 
 

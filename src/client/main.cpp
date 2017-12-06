@@ -56,6 +56,10 @@ int main(int argc, char* argv[]) {
 
             testheuristicAI();
         }
+        else if (!s.compare("deep_ai")) {
+
+            testdeep_ai();
+        }
 
     }
 

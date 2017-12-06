@@ -14,16 +14,22 @@ using namespace state;
 
 namespace engine {
 
-    CapturAppartAction::CapturAppartAction(int x, int y, int joueur) {
+    CapturAppartAction::CapturAppartAction(int x, int y, int joueur): x(x), y(y), joueur(joueur) {
 
     }
 
     void CapturAppartAction::apply(state::State& state) {
-
+        if (joueur == 1) {
+            state.grid->setElementXY(new state::Batiment(APPARTROUGE), x, y);
+            state.grid->getElement(x, y)->setJoueur(joueur);
+        } else {
+            state.grid->setElementXY(new state::Batiment(APPARTBLEU), x, y);
+            state.grid->getElement(x, y)->setJoueur(joueur);
+        }
     }
 
     void CapturAppartAction::undo(state::State& state) {
-
+        state.grid->killElement(x, y);
     }
 
 

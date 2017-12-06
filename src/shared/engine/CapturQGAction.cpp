@@ -14,16 +14,23 @@ using namespace state;
 
 namespace engine {
 
-    CapturQGAction::CapturQGAction(int x, int y, int joueur) {
+    CapturQGAction::CapturQGAction(int x, int y, int joueur): x(x), y(y), joueur(joueur) {
 
     }
 
     void CapturQGAction::apply(state::State& state) {
 
+        if (joueur == 1) {
+            state.grid->setElementXY(new state::Batiment(QGROUGE), x, y);
+            state.grid->getElement(x, y)->setJoueur(joueur);
+        } else {
+            state.grid->setElementXY(new state::Batiment(QGBLEU), x, y);
+            state.grid->getElement(x, y)->setJoueur(joueur);
+        }
     }
 
     void CapturQGAction::undo(state::State& state) {
-
+        state.grid->killElement(x, y);
     }
 
 
