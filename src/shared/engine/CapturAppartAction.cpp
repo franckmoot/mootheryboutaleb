@@ -14,7 +14,7 @@ using namespace state;
 
 namespace engine {
 
-    CapturAppartAction::CapturAppartAction(int x, int y, int joueur): x(x), y(y), joueur(joueur) {
+    CapturAppartAction::CapturAppartAction(int x, int y, int joueur) : x(x), y(y), joueur(joueur) {
 
     }
 
@@ -23,7 +23,8 @@ namespace engine {
             state.grid->killElement(x, y);
             state.grid->setElementXY(new state::Batiment(APPARTROUGE), x, y);
             state.grid->getElement(x, y)->setJoueur(joueur);
-        } if (joueur==2){ 
+        }
+        if (joueur == 2) {
             state.grid->killElement(x, y);
             state.grid->setElementXY(new state::Batiment(APPARTBLEU), x, y);
             state.grid->getElement(x, y)->setJoueur(joueur);
@@ -35,7 +36,8 @@ namespace engine {
             state.grid->killElement(x, y);
             state.grid->setElementXY(new state::Batiment(APPARTBLEU), x, y);
             state.grid->getElement(x, y)->setJoueur(joueur);
-        } if (joueur==2){ 
+        }
+        if (joueur == 2) {
             state.grid->killElement(x, y);
             state.grid->setElementXY(new state::Batiment(APPARTROUGE), x, y);
             state.grid->getElement(x, y)->setJoueur(joueur);

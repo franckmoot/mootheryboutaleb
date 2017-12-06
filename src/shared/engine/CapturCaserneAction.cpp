@@ -14,7 +14,7 @@ using namespace state;
 
 namespace engine {
 
-    CapturCaserneAction::CapturCaserneAction(int x, int y, int joueur): x(x), y(y), joueur(joueur) {
+    CapturCaserneAction::CapturCaserneAction(int x, int y, int joueur) : x(x), y(y), joueur(joueur) {
 
     }
 
@@ -23,8 +23,8 @@ namespace engine {
             state.grid->killElement(x, y);
             state.grid->setElementXY(new state::Batiment(CASERNEROUGE), x, y);
             state.grid->getElement(x, y)->setJoueur(joueur);
-        } 
-        if (joueur==2){
+        }
+        if (joueur == 2) {
             state.grid->killElement(x, y);
             state.grid->setElementXY(new state::Batiment(CASERNEBLEU), x, y);
             state.grid->getElement(x, y)->setJoueur(joueur);
@@ -32,13 +32,14 @@ namespace engine {
     }
 
     void CapturCaserneAction::undo(state::State& state) {
-         if (joueur == 1) {
-             state.grid->killElement(x, y);
-            state.grid->setElementXY(new state::Batiment(APPARTBLEU), x, y);
-            state.grid->getElement(x, y)->setJoueur(joueur);
-        } if (joueur==2){ 
+        if (joueur == 1) {
             state.grid->killElement(x, y);
-            state.grid->setElementXY(new state::Batiment(APPARTROUGE), x, y);
+            state.grid->setElementXY(new state::Batiment(CASERNEBLEU), x, y);
+            state.grid->getElement(x, y)->setJoueur(joueur);
+        }
+        if (joueur == 2) {
+            state.grid->killElement(x, y);
+            state.grid->setElementXY(new state::Batiment(CASERNEROUGE), x, y);
             state.grid->getElement(x, y)->setJoueur(joueur);
         }
     }
