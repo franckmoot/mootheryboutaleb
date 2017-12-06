@@ -41,7 +41,7 @@ namespace engine {
 
             }
         } else if (state.chars->getElement(x1, y1)->getTypeId() == 3) {
-            state::Infanterie* eletmp = (state::Infanterie*)(state.getChars()->getElement(x1, y1));
+            state::Heli* eletmp = (state::Heli*)(state.getChars()->getElement(x1, y1));
             if (state.chars->getElement(x2, y2)->getTypeId() == 2) {
                 state::Infanterie* eletmp2 = (state::Infanterie*)(state.getChars()->getElement(x2, y2));
                 eletmp2->setPdv(eletmp2->getPdv() - eletmp->getAttaque());
@@ -60,7 +60,7 @@ namespace engine {
 
             }
         } else if (state.chars->getElement(x1, y1)->getTypeId() == 4) {
-            state::Infanterie* eletmp = (state::Infanterie*)(state.getChars()->getElement(x1, y1));
+            state::Tank* eletmp = (state::Tank*)(state.getChars()->getElement(x1, y1));
             if (state.getChars()->getElement(x2, y2)->getTypeId() == 2) {
                 state::Infanterie* eletmp2 = (state::Infanterie*)(state.getChars()->getElement(x2, y2));
                 eletmp2->setPdv(eletmp2->getPdv() - eletmp->getAttaque());
@@ -97,7 +97,7 @@ void AttaqueCharAction::undo(state::State& state) {
 
         }
     } else if (state.chars->getElement(x1, y1)->getTypeId() == 3) {
-        state::Infanterie* eletmp = (state::Infanterie*)(state.getChars()->getElement(x1, y1));
+        state::Heli* eletmp = (state::Heli*)(state.getChars()->getElement(x1, y1));
         if (state.chars->getElement(x2, y2)->getTypeId() == 2) {
             state::Infanterie* eletmp2 = (state::Infanterie*)(state.getChars()->getElement(x2, y2));
             eletmp2->setPdv(eletmp2->getPdv() + eletmp->getAttaque());
@@ -116,7 +116,7 @@ void AttaqueCharAction::undo(state::State& state) {
 
         }
     } else if (state.chars->getElement(x1, y1)->getTypeId() == 4) {
-        state::Infanterie* eletmp = (state::Infanterie*)(state.getChars()->getElement(x1, y1));
+        state::Tank* eletmp = (state::Tank*)(state.getChars()->getElement(x1, y1));
         if (state.getChars()->getElement(x2, y2)->getTypeId() == 2) {
             state::Infanterie* eletmp2 = (state::Infanterie*)(state.getChars()->getElement(x2, y2));
             eletmp2->setPdv(eletmp2->getPdv() + eletmp->getAttaque());
