@@ -40,7 +40,8 @@ namespace engine {
             EarnMoneyAction *E=new EarnMoneyAction(joueur,nbrBatiment);
             E->apply(state);
             actions.push(shared_ptr<EarnMoneyAction>(E));
-        } else if (joueur == 2) {
+        }
+         if (joueur == 2) {
             int nbrBatiment = 0;
             for (int j = 0; j < int(state.getGrid()->getHeight()); j++) {
                 for (int i = 0; i < int(state.getGrid()->getWidth()); i++) {

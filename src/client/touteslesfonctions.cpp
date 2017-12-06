@@ -452,9 +452,9 @@ void testdeep_ai() {
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
             if (joueur % 2 == 0) {
                 cout << "JOUEUR1 undo::" << endl;
-                //if(i!=0) engine.undo(actions[i]);
-                //sf::sleep(sf::milliseconds(50));
-                //surf.initSurface();
+                if(i!=0) engine.undo(actions[i]);
+                sf::sleep(sf::milliseconds(50));
+                surf.initSurface();
 
                 cout << "JOUEUR2 undo::" << endl;
                 if (actions.size() != 0) {

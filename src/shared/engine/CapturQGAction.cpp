@@ -23,16 +23,23 @@ namespace engine {
         if (joueur == 1) {
             state.grid->setElementXY(new state::Batiment(QGROUGE), x, y);
             state.grid->getElement(x, y)->setJoueur(joueur);
-        } else {
+        }
+        if (joueur==2){
             state.grid->setElementXY(new state::Batiment(QGBLEU), x, y);
             state.grid->getElement(x, y)->setJoueur(joueur);
         }
+        
     }
 
     void CapturQGAction::undo(state::State& state) {
-        state.grid->killElement(x, y);
+        if (joueur == 1) {
+            state.grid->setElementXY(new state::Batiment(APPARTBLEU), x, y);
+            state.grid->getElement(x, y)->setJoueur(joueur);
+        } if (joueur==2){ 
+            state.grid->setElementXY(new state::Batiment(APPARTROUGE), x, y);
+            state.grid->getElement(x, y)->setJoueur(joueur);
+        }
     }
-
 
 
 }

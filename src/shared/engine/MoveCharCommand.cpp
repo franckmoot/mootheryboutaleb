@@ -38,7 +38,7 @@ namespace engine {
                     MoveCharAction *move = new MoveCharAction(x1, y1, x2, y2);
                     move->apply(state);
                     actions.push(shared_ptr<MoveCharAction>(move));
-                    cout<< "oo"<<endl;
+                    cout << "oo" << endl;
                     //state.chars->chgPosition(x1, y1, x2, y2);
                 }
 
@@ -47,19 +47,23 @@ namespace engine {
                 if (state.getGrid()->getElement(x2, y2)->getTypeId() == 0) {
                     state::Champdebataille* eletmp2 = (state::Champdebataille*)(state.getGrid()->getElement(x2, y2));
                     if (eletmp2->getChampdeBatailleType() == 4 || eletmp2->getChampdeBatailleType() == 5) {
+                        //MoveCharAction *move = new MoveCharAction(x1, y1, x2, y2);
+                        //move->apply(state);
+                        //actions.push(shared_ptr<MoveCharAction>(move));
                         //cout << "c'est impossible de mettre un element mobile sur cet elment statique" << endl;
                     } else {
                         if ((int) (sqrt((((x1 - x2)*(x1 - x2))+((y1 - y2)*(y1 - y2))))) <= eletmp->getPorteeMvt()) {
                             MoveCharAction *move = new MoveCharAction(x1, y1, x2, y2);
                             move->apply(state);
+                            actions.push(shared_ptr<MoveCharAction>(move));
                             //state.getChars()->chgPosition(x1, y1, x2, y2);
                         } //else cout << "c est impossible pour un Tank de partir plus loin" << endl;
                     }
                 } else if (state.grid->getElement(x2, y2)->getTypeId() == 1) {
                     if ((int) (sqrt((((x1 - x2)*(x1 - x2))+((y1 - y2)*(y1 - y2))))) <= eletmp->getPorteeMvt()) {
                         MoveCharAction *move = new MoveCharAction(x1, y1, x2, y2);
-                    move->apply(state);
-                    actions.push(shared_ptr<MoveCharAction>(move));
+                        move->apply(state);
+                        actions.push(shared_ptr<MoveCharAction>(move));
                         //state.chars->chgPosition(x1, y1, x2, y2);
                     }
                 }
@@ -75,8 +79,8 @@ namespace engine {
                         if ((int) (sqrt((((x1 - x2)*(x1 - x2))+((y1 - y2)*(y1 - y2))))) <= eletmp->getPorteeMvt()) {
 
                             MoveCharAction *move = new MoveCharAction(x1, y1, x2, y2);
-                    move->apply(state);
-                    actions.push(shared_ptr<MoveCharAction>(move));
+                            move->apply(state);
+                            actions.push(shared_ptr<MoveCharAction>(move));
                             //state.chars->chgPosition(x1, y1, x2, y2);
                         } //else cout << "c est impossible pour une infanterie de partir plus loin" << endl;
                     }
@@ -85,8 +89,8 @@ namespace engine {
                     if ((int) (sqrt((((x1 - x2)*(x1 - x2))+((y1 - y2)*(y1 - y2))))) <= eletmp->getPorteeMvt()) {
 
                         MoveCharAction *move = new MoveCharAction(x1, y1, x2, y2);
-                    move->apply(state);
-                    actions.push(shared_ptr<MoveCharAction>(move));
+                        move->apply(state);
+                        actions.push(shared_ptr<MoveCharAction>(move));
                         //state.chars->chgPosition(x1, y1, x2, y2);
 
                     }

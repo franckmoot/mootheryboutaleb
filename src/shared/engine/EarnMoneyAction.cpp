@@ -36,5 +36,6 @@ namespace engine {
         if (joueur==1)state.joueur1->lessMoney(nbrBatiment * batimentgains);
         if (joueur==2)state.joueur2->lessMoney(nbrBatiment * batimentgains);
     }
+    
 
 }
