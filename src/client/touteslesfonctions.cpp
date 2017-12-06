@@ -445,7 +445,7 @@ void testdeep_ai() {
                 sf::sleep(sf::milliseconds(50));
                 surf.initSurface();
 
-                
+
             }
         }
 
@@ -455,14 +455,16 @@ void testdeep_ai() {
                 //if(i!=0) engine.undo(actions[i]);
                 //sf::sleep(sf::milliseconds(50));
                 //surf.initSurface();
-       
-                cout << "JOUEUR2 undo::" << endl;
-                engine.undo(actions.back());
-                actions.pop_back();
-                sf::sleep(sf::milliseconds(50));
-                surf.initSurface();
 
-                
+                cout << "JOUEUR2 undo::" << endl;
+                if (actions.size() != 0) {
+                    engine.undo(actions.back());
+                    actions.pop_back();
+                    sf::sleep(sf::milliseconds(50));
+                    surf.initSurface();
+                }
+
+
             }
         }
 
