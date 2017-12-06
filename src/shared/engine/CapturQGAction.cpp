@@ -21,10 +21,12 @@ namespace engine {
     void CapturQGAction::apply(state::State& state) {
 
         if (joueur == 1) {
+            state.grid->killElement(x, y);
             state.grid->setElementXY(new state::Batiment(QGROUGE), x, y);
             state.grid->getElement(x, y)->setJoueur(joueur);
         }
         if (joueur==2){
+            state.grid->killElement(x, y);
             state.grid->setElementXY(new state::Batiment(QGBLEU), x, y);
             state.grid->getElement(x, y)->setJoueur(joueur);
         }
@@ -32,10 +34,13 @@ namespace engine {
     }
 
     void CapturQGAction::undo(state::State& state) {
+        
         if (joueur == 1) {
+            state.grid->killElement(x, y);
             state.grid->setElementXY(new state::Batiment(APPARTBLEU), x, y);
             state.grid->getElement(x, y)->setJoueur(joueur);
-        } if (joueur==2){ 
+        } if (joueur==2){
+            state.grid->killElement(x, y);
             state.grid->setElementXY(new state::Batiment(APPARTROUGE), x, y);
             state.grid->getElement(x, y)->setJoueur(joueur);
         }
