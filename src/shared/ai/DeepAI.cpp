@@ -29,26 +29,29 @@ namespace ai {
     }
 
     int DeepAI::max(engine::Engine& engine, int joueur, int profondeur) {
-
-        std::vector<std::stack < std::shared_ptr<Action> >> actions;
-
+        int joueur2;
+        if(joueur==1) joueur2=2;
+        else if (joueur==2) joueur2=1;
+    
+        
         if (profondeur == 0) {
-            return engine.currentState.getscore(joueur);
+            return engine.currentState.getscore(joueur2);
         } else {
             for (int y = 0; y < int(engine.currentState.getChars()->getHeight()); y++) {
                 for (int x = 0; x < int(engine.currentState.getChars()->getWidth()); x++) {
                     if ((engine.currentState.getChars()->getElement(x, y)->getTypeId() == 2)&&(engine.currentState.getChars()->getElement(x, y)->getJoueur() == joueur)) {
                         std::vector<std::unique_ptr<engine::Command> > l0;
                         InfanterieCommands(engine.currentState, x, l0, y);
-                        int maxi = 0;
+                        int mini = 1000;
                         int l;
                         for (int i = 0; i < l0.size(); i++) {
+                             std::vector<std::stack < std::shared_ptr<Action> >> actions;
                             //l0[i]->execute(engine.currentState);
                             engine.addCommand(l0[i].release());
                             actions.push_back(engine.update());
                             int tmp = max(engine, joueur, profondeur - 1);
-                            if (tmp > maxi) {
-                                max = tmp;
+                            if (tmp <mini) {
+                                mini = tmp;
                                 l = i;
                             }
 
