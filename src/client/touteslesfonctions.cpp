@@ -445,7 +445,6 @@ void testdeep_ai() {
                 sf::sleep(sf::milliseconds(50));
                 surf.initSurface();
 
-
             }
         }
 

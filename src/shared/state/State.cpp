@@ -29,7 +29,6 @@ namespace state {
                 }
             }
         }
+        return nbrelement;
     }
-
-
 }

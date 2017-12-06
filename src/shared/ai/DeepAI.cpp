@@ -29,7 +29,9 @@ namespace ai {
     }
 
     int DeepAI::max(engine::Engine& engine, int joueur, int profondeur) {
-        
+
+        std::vector<std::stack < std::shared_ptr<Action> >> actions;
+
         if (profondeur == 0) {
             return engine.currentState.getscore(joueur);
         } else {
@@ -43,13 +45,16 @@ namespace ai {
                         for (int i = 0; i < l0.size(); i++) {
                             //l0[i]->execute(engine.currentState);
                             engine.addCommand(l0[i].release());
-                            engine.update();
+                            actions.push_back(engine.update());
                             int tmp = max(engine, joueur, profondeur - 1);
-                            if (tmp > maxi){
+                            if (tmp > maxi) {
                                 max = tmp;
-                                l=i;
+                                l = i;
                             }
+
                             //engine.undo();
+                            engine.undo(actions.back());
+                            actions.pop_back();
                         }
                         engine.addCommand(l0[l].release());
                         engine.update();
@@ -58,7 +63,6 @@ namespace ai {
             }
         }
     }
-
 
     void DeepAI::run(int joueur, engine::Engine& engine) {
 
