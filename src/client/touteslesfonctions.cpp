@@ -435,39 +435,34 @@ void testdeep_ai() {
             if (joueur % 2 == 0) {
                 cout << "JOUEUR1 joue::" << endl;
                 test.run(engine, joueur1);
-                actions.push_back(engine.update());
-                sf::sleep(sf::milliseconds(50));
-                surf.initSurface();
-                joueur++;
-                i++;
-            } else {
+                //actions.push_back(engine.update());
+                //sf::sleep(sf::milliseconds(50));
+                //surf.initSurface();
 
                 cout << "JOUEUR2 joue::" << endl;
                 test1.run(engine, joueur2);
                 actions.push_back(engine.update());
                 sf::sleep(sf::milliseconds(50));
                 surf.initSurface();
-                joueur++;
-                i++;
+
+                
             }
         }
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
             if (joueur % 2 == 0) {
                 cout << "JOUEUR1 undo::" << endl;
-                if(i!=0) engine.undo(actions[i]);
-                sf::sleep(sf::milliseconds(50));
-                surf.initSurface();
-                joueur++;
-                i--;
-            } else {
-
+                //if(i!=0) engine.undo(actions[i]);
+                //sf::sleep(sf::milliseconds(50));
+                //surf.initSurface();
+       
                 cout << "JOUEUR2 undo::" << endl;
-                if(i!=0) engine.undo(actions[i]);
+                engine.undo(actions.back());
+                actions.pop_back();
                 sf::sleep(sf::milliseconds(50));
                 surf.initSurface();
-                joueur++;
-                i++;
+
+                
             }
         }
 
