@@ -6,13 +6,12 @@
 
 #include "State.h"
 
-namespace state{
-        
+namespace state {
+
     State::State() {
 
     }
 
- 
     ElementChars* State::getChars() {
         return chars;
     }
@@ -21,8 +20,16 @@ namespace state{
         return grid;
     }
 
-  
-  
+    int State::getscore(int joueur) {
+        int nbrelement = 0;
+        for (int j = 0; j < int(chars->getHeight()); j++) {
+            for (int i = 0; i < int(chars->getWidth()); i++) {
+                if ((chars->getElement(i, j)->getTypeId() >= 2)&&(chars->getElement(i, j)->getJoueur() == joueur)) {
+                    nbrelement++;
+                }
+            }
+        }
+    }
 
-    
+
 }

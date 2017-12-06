@@ -29,6 +29,7 @@ namespace state {
     State ();
     ElementTab* getGrid ();
     ElementChars* getChars ();
+    int getscore (int joueur);
     // Setters and Getters
   };
 

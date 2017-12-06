@@ -12,4 +12,5 @@
 #include "ai/Pathheli.h"
 #include "ai/Pathtank.h"
 #include "ai/HeuristicAI.h"
+#include "ai/DeepAI.h"
 #endif

@@ -2,7 +2,7 @@
 #include "engine/AttaqueCharCommand.h"
 #include "engine/MoveCharCommand.h"
 #include "engine/CreateCharCommand.h"
-
+#include "AI.h"
 #include "RandomAI.h"
 #include "state/State.h"
 #include "state/State.h"
