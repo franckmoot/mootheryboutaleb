@@ -17,7 +17,7 @@ namespace engine {
   /// class CapturAppartAction - 
   class CapturAppartAction : public engine::Action {
     // Attributes
-  public:
+  private:
     int x;
     int y;
     int joueur;

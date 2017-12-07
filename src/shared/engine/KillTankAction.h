@@ -17,7 +17,7 @@ namespace engine {
   /// class KillTankAction - 
   class KillTankAction : public engine::Action {
     // Attributes
-  public:
+  private:
     int x;
     int y;
     int joueur;

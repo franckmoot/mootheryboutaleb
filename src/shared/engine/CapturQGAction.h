@@ -17,7 +17,7 @@ namespace engine {
   /// class CapturQGAction - 
   class CapturQGAction : public engine::Action {
     // Attributes
-  public:
+  private:
     int x;
     int y;
     int joueur;

@@ -19,7 +19,7 @@ namespace engine {
   class CreateInfanterieAction : public engine::Action {
     // Associations
     // Attributes
-  public:
+  private:
     int x;
     int y;
     int joueur;

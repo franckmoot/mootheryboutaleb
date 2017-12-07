@@ -17,7 +17,7 @@ namespace engine {
   /// class EarnMoneyAction - 
   class EarnMoneyAction : public engine::Action {
     // Attributes
-  public:
+  private:
     int joueur;
     int nbrBatiment;
     // Operations

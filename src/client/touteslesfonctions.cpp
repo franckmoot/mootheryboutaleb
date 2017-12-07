@@ -480,7 +480,7 @@ void testdeep_ai() {
             if (joueur % 2 == 0) {
                 cout << "JOUEUR1 joue::" << endl;
                 // test.run(engine, joueur1);
-                testai.run(1, engine, 4);
+                testai.run(1, engine, 1);
 
                 //actions.push_back(engine.update());
                 //sf::sleep(sf::milliseconds(50));
@@ -488,7 +488,7 @@ void testdeep_ai() {
 
                 cout << "JOUEUR2 joue::" << endl;
                 //test1.run(engine, joueur2);
-                testai2.run(2, engine, 4);
+                testai2.run(2, engine, 1);
                 //actions.push_back(engine.update());
                 sf::sleep(sf::milliseconds(50));
                 surf.initSurface();

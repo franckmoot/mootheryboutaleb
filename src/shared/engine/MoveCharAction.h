@@ -17,7 +17,7 @@ namespace engine {
   /// class MoveCharAction - 
   class MoveCharAction : public engine::Action {
     // Attributes
-  public:
+  private:
     int x1;
     int y1;
     int x2;

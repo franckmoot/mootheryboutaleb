@@ -17,7 +17,7 @@ namespace engine {
   /// class AttaqueCharAction - 
   class AttaqueCharAction : public engine::Action {
     // Attributes
-  public:
+  private:
     int x1;
     int y1;
     int x2;
