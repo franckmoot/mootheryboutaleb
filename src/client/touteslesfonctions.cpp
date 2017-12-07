@@ -367,6 +367,9 @@ void testheuristicAI() {
         // on gère les évènements
         sf::Event event;
         while (window.pollEvent(event)) {
+            
+            if (event.type == sf::Event::KeyPressed)
+            rollback = not(rollback);
             if (event.type == sf::Event::Closed)
                 window.close();
         }
@@ -418,16 +421,14 @@ void testheuristicAI() {
             }
 
         }
-
-        //if (engine.currentState.chars->getElement(17, 15);
-
-
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
-
-            rollback = not(rollback);
+        if(engine.currentState.grid->getElement(17,14)->getJoueur()==1){
+            cout<<"le joueur 1 à gagné"<<endl;
+        break;
         }
-
-
+        if(engine.currentState.grid->getElement(3,2)->getJoueur()==2){
+            cout<<"le joueur 2 à gagné"<<endl;
+        break;
+        }
 
         window.clear();
         window.draw(*(surf.surface));
