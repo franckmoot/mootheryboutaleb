@@ -20,7 +20,7 @@ namespace ai {
   public:
     void run (int joueur, engine::Engine& engine, int profondeur);
     DeepAI ();
-    int max (engine::Engine& engine, int joueur, int profondeur, int x, int y);
+    int min (engine::Engine& engine, int joueur, int profondeur, int x, int y);
     // Setters and Getters
   };
 

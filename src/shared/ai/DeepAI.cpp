@@ -28,7 +28,7 @@ namespace ai {
 
     }
 
-    int DeepAI::max(engine::Engine& engine, int joueur, int profondeur, int x, int y) {
+    int DeepAI::min(engine::Engine& engine, int joueur, int profondeur, int x, int y) {
         int joueur2;
         if (joueur == 1) joueur2 = 2;
         else if (joueur == 2) joueur2 = 1;
@@ -48,7 +48,7 @@ namespace ai {
                     //l0[i]->execute(engine.currentState);
                     engine.addCommand(l0[i].release());
                     actions.push_back(engine.update());
-                    int tmp = max(engine, joueur, profondeur - 1,eletmp->getX(),eletmp->getY());
+                    int tmp = min(engine, joueur, profondeur - 1,eletmp->getX(),eletmp->getY());
                     if (tmp < mini) {
                         mini = tmp;
                         l = i;
@@ -72,7 +72,7 @@ namespace ai {
                     //l0[i]->execute(engine.currentState);
                     engine.addCommand(l0[i].release());
                     actions.push_back(engine.update());
-                    int tmp = max(engine, joueur, profondeur - 1,eletmp->getX(),eletmp->getY());
+                    int tmp = min(engine, joueur, profondeur - 1,eletmp->getX(),eletmp->getY());
                     if (tmp < mini) {
                         mini = tmp;
                         l = i;
@@ -96,7 +96,7 @@ namespace ai {
                     //l0[i]->execute(engine.currentState);
                     engine.addCommand(l0[i].release());
                     actions.push_back(engine.update());
-                    int tmp = max(engine, joueur, profondeur - 1,eletmp->getX(),eletmp->getY());
+                    int tmp = min(engine, joueur, profondeur - 1,eletmp->getX(),eletmp->getY());
                     if (tmp < mini) {
                         mini = tmp;
                         l = i;
@@ -125,7 +125,7 @@ void DeepAI::run(int joueur, engine::Engine& engine,int profondeur) {
 
                 if (engine.currentState.getChars()->getElement(i, j) != NULL) {
 
-                        max(engine,joueur,profondeur,i,j);
+                        min(engine,joueur,profondeur,i,j);
 
 
                         }
