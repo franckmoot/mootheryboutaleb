@@ -450,8 +450,8 @@ void testdeep_ai() {
 
     engine.update();
 
-    //Layer surf(engine.getState());
-    //surf.initSurface();
+    Layer surf(engine.getState());
+    surf.initSurface();
 
     int i = 0;
     int joueur = 0;
@@ -490,7 +490,7 @@ void testdeep_ai() {
                 testai2.run(2, engine, 4);
                 //actions.push_back(engine.update());
                 sf::sleep(sf::milliseconds(50));
-                //surf.initSurface();
+                surf.initSurface();
 
             }
         }
@@ -516,8 +516,8 @@ void testdeep_ai() {
          */
 
         window.clear();
-        //window.draw(*(surf.surface));
-        //window.draw(*(surf.surfaceplayer));
+        window.draw(*(surf.surface));
+        window.draw(*(surf.surfaceplayer));
         window.display();
 
     }
