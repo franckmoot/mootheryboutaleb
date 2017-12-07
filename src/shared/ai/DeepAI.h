@@ -18,9 +18,9 @@ namespace ai {
   class DeepAI : public ai::AI {
     // Operations
   public:
-    void run (int joueur, engine::Engine& engine);
+    void run (int joueur, engine::Engine& engine, int profondeur);
     DeepAI ();
-    int max (engine::Engine& engine, int joueur, int profondeur);
+    int max (engine::Engine& engine, int joueur, int profondeur, int x, int y);
     // Setters and Getters
   };
 
