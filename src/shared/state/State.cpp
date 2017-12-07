@@ -5,7 +5,7 @@
  */
 
 #include "State.h"
-
+using namespace std;
 namespace state {
 
     State::State() {
@@ -21,9 +21,10 @@ namespace state {
     }
 
     int State::getscore(int joueur) {
-        int nbrelement = 0;
+        int nbrelement = 1;
         for (int j = 0; j < int(chars->getHeight()); j++) {
             for (int i = 0; i < int(chars->getWidth()); i++) {
+                std::cout<<"je fais ça"<<std::endl;
                 if ((chars->getElement(i, j)->getTypeId() >= 2)&&(chars->getElement(i, j)->getJoueur() == joueur)) {
                     nbrelement++;
                 }
