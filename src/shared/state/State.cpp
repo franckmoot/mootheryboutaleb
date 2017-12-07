@@ -24,10 +24,9 @@ namespace state {
         int nbrelement = 1;
         for (int j = 0; j < int(chars->getHeight()); j++) {
             for (int i = 0; i < int(chars->getWidth()); i++) {
-<<<<<<< HEAD
-=======
+
                 //cout<<"je fais ça"<<endl;
->>>>>>> baaa88c89bc7b1b73e9cf995f3b3ea20a0106015
+
                 if ((chars->getElement(i, j)->getTypeId() >= 2)&&(chars->getElement(i, j)->getJoueur() == joueur)) {
                     nbrelement++;
                 }
