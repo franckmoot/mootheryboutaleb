@@ -359,7 +359,8 @@ void testheuristicAI() {
     int joueur1 = 1;
     int joueur2 = 2;
     HeuristicAI test, test1;
-
+    bool rollback = false;
+    std::vector<std::stack < std::shared_ptr<Action> >> actions;
 
     while (window.isOpen()) {
 
@@ -370,21 +371,62 @@ void testheuristicAI() {
                 window.close();
         }
 
-        if (joueur % 2 == 0) {
-            cout << "JOUEUR1 joue::" << endl;
-            test.run(engine, joueur1);
-            engine.update();
-            sf::sleep(sf::milliseconds(50));
-            surf.initSurface();
-        } else {
+        if (rollback == false) {
+            if (joueur % 2 == 0) {
+                cout << "JOUEUR1 joue::" << endl;
+                test.run(engine, joueur1);
+                actions.push_back(engine.update());
+                sf::sleep(sf::milliseconds(50));
+                surf.initSurface();
+                joueur++;
 
-            cout << "JOUEUR2 joue::" << endl;
-            test1.run(engine, joueur2);
-            engine.update();
-            sf::sleep(sf::milliseconds(50));
-            surf.initSurface();
+            }
+
+            if (joueur % 2 == 1) {
+                cout << "JOUEUR2 joue::" << endl;
+                test1.run(engine, joueur2);
+                actions.push_back(engine.update());
+                sf::sleep(sf::milliseconds(50));
+                surf.initSurface();
+                joueur++;
+
+            }
         }
-        joueur++;
+
+        if (rollback == true) {
+            if (actions.size() != 0) {
+                if (joueur % 2 == 1) {
+                    cout << "JOUEUR1 undo::" << endl;
+                    engine.undo(actions.back());
+                    actions.pop_back();
+                    surf.initSurface();
+                    sf::sleep(sf::milliseconds(50));
+                    joueur--;
+                }
+                if (actions.size() != 0) {
+
+                    if (joueur % 2 == 0) {
+                        cout << "JOUEUR2 undo::" << endl;
+                        engine.undo(actions.back());
+                        actions.pop_back();
+                        sf::sleep(sf::milliseconds(50));
+                        surf.initSurface();
+                        joueur--;
+                    }
+
+                }
+            }
+
+        }
+
+        //if (engine.currentState.chars->getElement(17, 15);
+
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
+
+            rollback = not(rollback);
+        }
+
 
 
         window.clear();
@@ -436,16 +478,16 @@ void testdeep_ai() {
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
             if (joueur % 2 == 0) {
                 cout << "JOUEUR1 joue::" << endl;
-               // test.run(engine, joueur1);
-                testai.run(1,engine,4);
-                        
+                // test.run(engine, joueur1);
+                testai.run(1, engine, 4);
+
                 //actions.push_back(engine.update());
                 //sf::sleep(sf::milliseconds(50));
                 //surf.initSurface();
 
                 cout << "JOUEUR2 joue::" << endl;
                 //test1.run(engine, joueur2);
-                testai2.run(2,engine,4);
+                testai2.run(2, engine, 4);
                 //actions.push_back(engine.update());
                 sf::sleep(sf::milliseconds(50));
                 //surf.initSurface();
@@ -471,7 +513,7 @@ void testdeep_ai() {
 
             }
         }
-*/
+         */
 
         window.clear();
         //window.draw(*(surf.surface));
