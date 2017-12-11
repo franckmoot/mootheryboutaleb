@@ -58,7 +58,24 @@ int main(int argc, char* argv[]) {
         }
         else if (!s.compare("deep_ai")) {
 
-            testdeep_ai();
+            //testdeep_ai();
+        }
+        else if (!s.compare("rollback")) {
+
+            testrollback();
+        }
+        else if (!s.compare("thread")) {
+
+            testthread();
+        }
+        
+        else if (!s.compare("record")) {
+
+            
+        }
+        else if (!s.compare("play")) {
+
+            
         }
 
     }

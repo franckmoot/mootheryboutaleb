@@ -43,7 +43,7 @@ namespace ai {
                     InfanterieCommands(engine.currentState, x, l0, y);
                     int mini = 1000;
                     int l;
-                    for (int i = 0; i < l0.size(); i++) {
+                    for (size_t i = 0; i < l0.size(); i++) {
                         std::vector<std::stack < std::shared_ptr<Action> >> actions;
                         //l0[i]->execute(engine.currentState);
                         engine.addCommand(l0[i].release());
@@ -68,7 +68,7 @@ namespace ai {
                     HeliCommands(engine.currentState, x, l0, y);
                     int mini = 1000;
                     int l;
-                    for (int i = 0; i < l0.size(); i++) {
+                    for (size_t i = 0; i < l0.size(); i++) {
                         std::vector<std::stack < std::shared_ptr<Action> >> actions;
                         //l0[i]->execute(engine.currentState);
                         engine.addCommand(l0[i].release());
@@ -93,7 +93,7 @@ namespace ai {
                     TankCommands(engine.currentState, x, l0, y);
                     int mini = 1000;
                     int l;
-                    for (int i = 0; i < l0.size(); i++) {
+                    for (size_t i = 0; i < l0.size(); i++) {
                         std::vector<std::stack < std::shared_ptr<Action> >> actions;
                         //l0[i]->execute(engine.currentState);
                         engine.addCommand(l0[i].release());

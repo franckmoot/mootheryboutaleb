@@ -31,11 +31,7 @@ namespace engine {
                 if (state.joueur1->getMoney() > 800) {
                     CreateInfanterieAction *newinf = new CreateInfanterieAction(x, y, joueur);
                     newinf->apply(state);
-                    actions.push(shared_ptr<CreateInfanterieAction>(newinf));
-
-                    //Infanterie *infanterietmp = new Infanterie();
-                    //infanterietmp->setJoueur(joueur);
-                    //state.chars->setElementXY(infanterietmp, x, y);
+                    actions.push(shared_ptr<CreateInfanterieAction>(newinf));                
                     state.joueur1->setMoney(state.joueur1->getMoney() - 800);
 
                 }
@@ -44,10 +40,7 @@ namespace engine {
 
                     CreateHeliAction *newheli = new CreateHeliAction(x, y, joueur);
                     newheli->apply(state);
-                    actions.push(shared_ptr<CreateHeliAction>(newheli));
-                    //Heli *H = new Heli();
-                    //H->setJoueur(joueur);
-                    //state.chars->setElementXY(H, x, y);
+                    actions.push(shared_ptr<CreateHeliAction>(newheli));                                      
                     state.joueur1->setMoney(state.joueur1->getMoney() - 1000);
                 }
             } else if (elementId == state::TANK) {
@@ -56,9 +49,6 @@ namespace engine {
                     CreateTankAction *newtank = new CreateTankAction(x, y, joueur);
                     newtank->apply(state);
                     actions.push(shared_ptr<CreateTankAction>(newtank));
-                    //Tank *T = new Tank();
-                    //T->setJoueur(joueur);
-                    //state.chars->setElementXY(T, x, y);
                     state.joueur1->setMoney(state.joueur1->getMoney() - 900);
                 }
             }
@@ -71,9 +61,6 @@ namespace engine {
                     CreateInfanterieAction *newinf = new CreateInfanterieAction(x, y, joueur);
                     newinf->apply(state);
                     actions.push(shared_ptr<CreateInfanterieAction>(newinf));
-                    //Infanterie *infanterietmp = new Infanterie();
-                    //infanterietmp->setJoueur(joueur);
-                    //state.chars->setElementXY(infanterietmp, x, y);
                     state.joueur2->setMoney(state.joueur2->getMoney() - 800);
                 }
             } else if (elementId == state::HELI) {
@@ -82,9 +69,6 @@ namespace engine {
                     CreateHeliAction *newheli = new CreateHeliAction(x, y, joueur);
                     newheli->apply(state);
                     actions.push(shared_ptr<CreateHeliAction>(newheli));
-                    //Heli *H = new Heli();
-                    //H->setJoueur(joueur);
-                    //state.chars->setElementXY(H, x, y);
                     state.joueur2->setMoney(state.joueur2->getMoney() - 1000);
                 }
             } else if (elementId == state::TANK) {
@@ -93,16 +77,9 @@ namespace engine {
                     CreateTankAction *newtank = new CreateTankAction(x, y, joueur);
                     newtank->apply(state);
                     actions.push(shared_ptr<CreateTankAction>(newtank));
-
-                    //Tank *T = new Tank();
-                    //T->setJoueur(joueur);
-                    //state.chars->setElementXY(T, x, y);
                     state.joueur2->setMoney(state.joueur2->getMoney() - 900);
                 }
             }
-
-
-
         }
     }
 }

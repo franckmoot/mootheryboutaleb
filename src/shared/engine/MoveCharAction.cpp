@@ -32,13 +32,11 @@ namespace engine {
     void MoveCharAction::apply(state::State& state) {
 
        state.chars->chgPosition(x1, y1, x2, y2);
-       cout<<"je bouge"<<endl;
     }
     
     void MoveCharAction::undo(state::State& state) {
 
         state.chars->chgPosition(x2, y2, x1, y1);
-        cout<<"je reviens"<<endl;
     }
 
     

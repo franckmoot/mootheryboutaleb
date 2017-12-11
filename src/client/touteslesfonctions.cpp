@@ -359,7 +359,6 @@ void testheuristicAI() {
     int joueur1 = 1;
     int joueur2 = 2;
     HeuristicAI test, test1;
-    bool rollback = false;
     std::vector<std::stack < std::shared_ptr<Action> >> actions;
 
     while (window.isOpen()) {
@@ -367,67 +366,39 @@ void testheuristicAI() {
         // on gère les évènements
         sf::Event event;
         while (window.pollEvent(event)) {
-            
-            if (event.type == sf::Event::KeyPressed)
-            rollback = not(rollback);
+
             if (event.type == sf::Event::Closed)
                 window.close();
         }
 
-        if (rollback == false) {
-            if (joueur % 2 == 0) {
-                cout << "JOUEUR1 joue::" << endl;
-                test.run(engine, joueur1);
-                actions.push_back(engine.update());
-                sf::sleep(sf::milliseconds(50));
-                surf.initSurface();
-                joueur++;
 
-            }
-
-            if (joueur % 2 == 1) {
-                cout << "JOUEUR2 joue::" << endl;
-                test1.run(engine, joueur2);
-                actions.push_back(engine.update());
-                sf::sleep(sf::milliseconds(50));
-                surf.initSurface();
-                joueur++;
-
-            }
-        }
-
-        if (rollback == true) {
-            if (actions.size() != 0) {
-                if (joueur % 2 == 1) {
-                    cout << "JOUEUR1 undo::" << endl;
-                    engine.undo(actions.back());
-                    actions.pop_back();
-                    surf.initSurface();
-                    sf::sleep(sf::milliseconds(50));
-                    joueur--;
-                }
-                if (actions.size() != 0) {
-
-                    if (joueur % 2 == 0) {
-                        cout << "JOUEUR2 undo::" << endl;
-                        engine.undo(actions.back());
-                        actions.pop_back();
-                        sf::sleep(sf::milliseconds(50));
-                        surf.initSurface();
-                        joueur--;
-                    }
-
-                }
-            }
+        if (joueur % 2 == 0) {
+            cout << "JOUEUR1 joue::" << endl;
+            test.run(engine, joueur1);
+            engine.update();
+            sf::sleep(sf::milliseconds(50));
+            surf.initSurface();
+            joueur++;
 
         }
-        if(engine.currentState.grid->getElement(17,14)->getJoueur()==1){
-            cout<<"le joueur 1 à gagné"<<endl;
-        break;
+
+        if (joueur % 2 == 1) {
+            cout << "JOUEUR2 joue::" << endl;
+            test1.run(engine, joueur2);
+            engine.update();
+            sf::sleep(sf::milliseconds(50));
+            surf.initSurface();
+            joueur++;
+
         }
-        if(engine.currentState.grid->getElement(3,2)->getJoueur()==2){
-            cout<<"le joueur 2 à gagné"<<endl;
-        break;
+
+        if (engine.currentState.grid->getElement(17, 14)->getJoueur() == 1) {
+            cout << "le joueur 1 à gagné" << endl;
+            break;
+        }
+        if (engine.currentState.grid->getElement(3, 2)->getJoueur() == 2) {
+            cout << "le joueur 2 à gagné" << endl;
+            break;
         }
 
         window.clear();
@@ -453,11 +424,7 @@ void testdeep_ai() {
 
     Layer surf(engine.getState());
     surf.initSurface();
-
-    int i = 0;
     int joueur = 0;
-    int joueur1 = 1;
-    int joueur2 = 2;
     HeuristicAI test, test1;
     DeepAI testai, testai2;
 
@@ -522,4 +489,165 @@ void testdeep_ai() {
         window.display();
 
     }
+}
+
+void testrollback() {
+
+
+    sf::RenderWindow window(sf::VideoMode(640, 640), "Advance wars");
+    engine::Engine engine;
+
+    engine.addCommand(new engine::LoadCommand("res/map.csv"));
+
+    engine.update();
+
+    Layer surf(engine.getState());
+    surf.initSurface();
+
+    int joueur = 0;
+    int joueur1 = 1;
+    int joueur2 = 2;
+    HeuristicAI test, test1;
+    bool rollback = false;
+    std::vector<std::stack < std::shared_ptr<Action> >> actions;
+
+    while (window.isOpen()) {
+
+        // on gère les évènements
+        sf::Event event;
+        while (window.pollEvent(event)) {
+
+            if (event.type == sf::Event::KeyPressed)
+                rollback = not(rollback);
+            if (event.type == sf::Event::Closed)
+                window.close();
+        }
+
+        if (rollback == false) {
+            if (joueur % 2 == 0) {
+                cout << "JOUEUR1 joue::" << endl;
+                test.run(engine, joueur1);
+                actions.push_back(engine.update());
+                sf::sleep(sf::milliseconds(50));
+                surf.initSurface();
+                joueur++;
+
+            }
+
+            if (joueur % 2 == 1) {
+                cout << "JOUEUR2 joue::" << endl;
+                test1.run(engine, joueur2);
+                actions.push_back(engine.update());
+                sf::sleep(sf::milliseconds(50));
+                surf.initSurface();
+                joueur++;
+
+            }
+        }
+
+        if (rollback == true) {
+            if (actions.size() != 0) {
+                if (joueur % 2 == 1) {
+                    cout << "JOUEUR1 undo::" << endl;
+                    engine.undo(actions.back());
+                    actions.pop_back();
+                    surf.initSurface();
+                    sf::sleep(sf::milliseconds(50));
+                    joueur--;
+                }
+                if (actions.size() != 0) {
+
+                    if (joueur % 2 == 0) {
+                        cout << "JOUEUR2 undo::" << endl;
+                        engine.undo(actions.back());
+                        actions.pop_back();
+                        sf::sleep(sf::milliseconds(50));
+                        surf.initSurface();
+                        joueur--;
+                    }
+
+                }
+            }
+
+        }
+        if (engine.currentState.grid->getElement(17, 14)->getJoueur() == 1) {
+            cout << "le joueur 1 à gagné" << endl;
+            break;
+        }
+        if (engine.currentState.grid->getElement(3, 2)->getJoueur() == 2) {
+            cout << "le joueur 2 à gagné" << endl;
+            break;
+        }
+
+        window.clear();
+        window.draw(*(surf.surface));
+        window.draw(*(surf.surfaceplayer));
+        window.display();
+
+    }
+
+}
+
+void testthread(){
+    
+    sf::RenderWindow window(sf::VideoMode(640, 640), "Advance wars");
+    engine::Engine engine;
+
+    engine.addCommand(new engine::LoadCommand("res/map.csv"));
+    engine.update();
+
+    Layer surf(engine.getState());
+    surf.initSurface();
+
+    int joueur = 0;
+    int joueur1 = 1;
+    int joueur2 = 2;
+    HeuristicAI test, test1;
+
+    while (window.isOpen()) {
+
+        // on gère les évènements
+        sf::Event event;
+        while (window.pollEvent(event)) {
+
+            if (event.type == sf::Event::Closed)
+                window.close();
+        }
+
+        if (joueur % 2 == 0) {
+            cout << "JOUEUR1 joue::" << endl;
+            test.run(engine, joueur1);
+            engine.update();
+            sf::sleep(sf::milliseconds(50));
+            surf.initSurface();
+            joueur++;
+        }
+
+        if (joueur % 2 == 1) {
+            cout << "JOUEUR2 joue::" << endl;
+            test1.run(engine, joueur2);
+            engine.update();
+            sf::sleep(sf::milliseconds(50));
+            surf.initSurface();
+            joueur++;
+        }
+
+        if (engine.currentState.grid->getElement(17, 14)->getJoueur() == 1) {
+            cout << "le joueur 1 à gagné" << endl;
+            break;
+        }
+        
+        if (engine.currentState.grid->getElement(1, 4)->getJoueur() == 2) {
+            cout << "le joueur 2 à gagné" << endl;
+            break;
+        }
+
+        window.clear();
+        window.draw(*(surf.surface));
+        window.draw(*(surf.surfaceplayer));
+        window.display();
+
+    }
+    
+    
 }

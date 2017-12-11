@@ -44,6 +44,8 @@ void testai();
 void testcommande();
 void testheuristicAI();
 void testdeep_ai();
+void testrollback();
+void testthread();
 
 
     
