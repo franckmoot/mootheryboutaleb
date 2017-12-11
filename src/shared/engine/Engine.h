@@ -34,6 +34,7 @@ namespace engine {
     std::stack<std::shared_ptr<Action>> update ();
     const state::State& getState () const;
     void undo (std::stack<std::shared_ptr<Action>>& actions);
+    void run ();
     // Setters and Getters
   };
 

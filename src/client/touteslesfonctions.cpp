@@ -603,6 +603,8 @@ void testthread(){
     int joueur1 = 1;
     int joueur2 = 2;
     HeuristicAI test, test1;
+    
+    //pthread engineThread(&Engine::run,&engine);
 
     while (window.isOpen()) {
 

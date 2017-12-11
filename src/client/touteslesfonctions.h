@@ -5,6 +5,7 @@
 #include <vector>
 #include <fstream>
 #include <sstream>
+#include <pthread.h>
 #include "render/CharsTileSet.h"
 #include "render/GridTileSet.h"
 #include "render/Tile.h"
