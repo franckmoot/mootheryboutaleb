@@ -4,6 +4,7 @@
 
 #include <stack>
 #include <memory>
+#include <json/json.h>
 
 namespace engine {
   class Action;
@@ -25,6 +26,7 @@ namespace engine {
     Command ();
     virtual CommandTypeId getTypeId () const = 0;
     virtual void execute (std::stack<std::shared_ptr<Action>>& actions, state::State& state) = 0;
+    virtual void serialise (Json::Value& out) const = 0;
     // Setters and Getters
   };
 

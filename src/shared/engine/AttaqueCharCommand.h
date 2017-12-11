@@ -4,6 +4,7 @@
 
 #include <stack>
 #include <memory>
+#include <json/json.h>
 
 namespace engine {
   class Action;
@@ -34,6 +35,7 @@ namespace engine {
     CommandTypeId getTypeId () const;
     void execute (std::stack<std::shared_ptr<Action>>& actions, state::State& state);
     AttaqueCharCommand (int x1, int y1, int x2, int y2);
+    void serialise (Json::Value& out) const;
     // Setters and Getters
   };
 

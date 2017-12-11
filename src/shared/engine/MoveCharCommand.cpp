@@ -95,6 +95,11 @@ namespace engine {
 
     }
 
+    void MoveCharCommand::serialise(Json::Value& out) const {
+
+    }
+
+
 }
 
 

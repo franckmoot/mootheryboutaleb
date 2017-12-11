@@ -38,40 +38,34 @@ namespace engine {
                             CapturQGAction *newQG = new CapturQGAction(x, y, 1);
                             newQG->apply(state);
                             actions.push(shared_ptr<CapturQGAction>(newQG));
-                            //state.grid->setElementXY(new state::Batiment(QGROUGE), x, y);
-                            //state.grid->getElement(x,y)->setJoueur(1);
+
                         } else if (typebatiment == state::QGROUGE) {
 
                             CapturQGAction *newQG = new CapturQGAction(x, y, 2);
                             newQG->apply(state);
                             actions.push(shared_ptr<CapturQGAction>(newQG));
-                            //state.grid->setElementXY(new state::Batiment(QGBLEU), x, y);
-                            //state.grid->getElement(x, y)->setJoueur(2);
+
                         } else if (typebatiment == state::CASERNEBLEU) {
-                            
+
                             CapturCaserneAction *newCaserne = new CapturCaserneAction(x, y, 1);
                             newCaserne->apply(state);
                             actions.push(shared_ptr<CapturCaserneAction>(newCaserne));
-                            //state.grid->setElementXY(new state::Batiment(CASERNEROUGE), x, y);
-                            //state.grid->getElement(x, y)->setJoueur(1);
+
                         } else if (typebatiment == state::CASERNEROUGE) {
                             CapturCaserneAction *newCaserne = new CapturCaserneAction(x, y, 2);
                             newCaserne->apply(state);
                             actions.push(shared_ptr<CapturCaserneAction>(newCaserne));
-                            //state.grid->setElementXY(new state::Batiment(CASERNEBLEU), x, y);
-                            //state.grid->getElement(x, y)->setJoueur(2);
+
                         } else if (typebatiment == state::APPARTBLEU) {
                             CapturAppartAction *newAppart = new CapturAppartAction(x, y, 1);
                             newAppart->apply(state);
                             actions.push(shared_ptr<CapturAppartAction>(newAppart));
-                            //state.grid->setElementXY(new state::Batiment(APPARTROUGE), x, y);
-                            //state.grid->getElement(x, y)->setJoueur(1);
+
                         } else if (typebatiment == state::APPARTROUGE) {
                             CapturAppartAction *newAppart = new CapturAppartAction(x, y, 2);
                             newAppart->apply(state);
                             actions.push(shared_ptr<CapturAppartAction>(newAppart));
-                            //state.grid->setElementXY(new state::Batiment(APPARTBLEU), x, y);
-                            //state.grid->getElement(x, y)->setJoueur(2);
+
                         }
                     }
                 }
@@ -82,6 +76,9 @@ namespace engine {
 
     }
 
+    void CapturCharCommand::serialise(Json::Value& out) const {
+
+    }
 
 
 

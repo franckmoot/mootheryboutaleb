@@ -5,6 +5,7 @@
 #include <string>
 #include <stack>
 #include <memory>
+#include <json/json.h>
 
 namespace engine {
   class Action;
@@ -32,6 +33,7 @@ namespace engine {
     CommandTypeId getTypeId () const;
     void execute (std::stack<std::shared_ptr<Action>>& actions, state::State& state);
     LoadCommand (const char* f);
+    void serialise (Json::Value& out) const;
     // Setters and Getters
     const std::string& getFilename() const;
     void setFilename(const std::string& filename);

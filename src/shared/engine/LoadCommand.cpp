@@ -108,6 +108,11 @@ namespace engine {
     CommandTypeId LoadCommand::getTypeId() const {
         return CommandTypeId::LOAD;
     }
+    
+    void LoadCommand::serialise(Json::Value& out) const {
 
+    }
+
+    
 }
 

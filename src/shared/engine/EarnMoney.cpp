@@ -24,7 +24,7 @@ namespace engine {
         return CommandTypeId::EARNMONEY;
     }
 
-    void EarnMoney::execute(std::stack<std::shared_ptr<Action> >& actions,state::State& state) {
+    void EarnMoney::execute(std::stack<std::shared_ptr<Action> >& actions, state::State& state) {
 
 
         if (joueur == 1) {
@@ -37,11 +37,11 @@ namespace engine {
                     }
                 }
             }
-            EarnMoneyAction *E=new EarnMoneyAction(joueur,nbrBatiment);
+            EarnMoneyAction *E = new EarnMoneyAction(joueur, nbrBatiment);
             E->apply(state);
             actions.push(shared_ptr<EarnMoneyAction>(E));
         }
-         if (joueur == 2) {
+        if (joueur == 2) {
             int nbrBatiment = 0;
             for (int j = 0; j < int(state.getGrid()->getHeight()); j++) {
                 for (int i = 0; i < int(state.getGrid()->getWidth()); i++) {
@@ -51,14 +51,15 @@ namespace engine {
                     }
                 }
             }
-            EarnMoneyAction *E=new EarnMoneyAction(joueur,nbrBatiment);
+            EarnMoneyAction *E = new EarnMoneyAction(joueur, nbrBatiment);
             E->apply(state);
             actions.push(shared_ptr<EarnMoneyAction>(E));
         }
 
+    }
 
-
-
+    void EarnMoney::serialise(Json::Value& out) const {
 
     }
+
 }

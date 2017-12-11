@@ -4,6 +4,7 @@
 
 #include <stack>
 #include <memory>
+#include <json/json.h>
 
 namespace engine {
   class Action;
@@ -32,6 +33,7 @@ namespace engine {
     CommandTypeId getTypeId () const;
     void execute (std::stack<std::shared_ptr<Action>>& actions, state::State& state);
     CapturCharCommand (int x, int y);
+    void serialise (Json::Value& out) const;
     // Setters and Getters
   };
 
