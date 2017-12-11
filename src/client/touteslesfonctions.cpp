@@ -603,9 +603,9 @@ void testthread(){
     int joueur1 = 1;
     int joueur2 = 2;
     HeuristicAI test, test1;
-    
-    //pthread engineThread(&Engine::run,&engine);
-
+   
+    thread engineThread(&Engine::run,&engine);
+  
     while (window.isOpen()) {
 
         // on gère les évènements
@@ -616,10 +616,10 @@ void testthread(){
                 window.close();
         }
 
+        engine.lockEngine.lock();
         if (joueur % 2 == 0) {
             cout << "JOUEUR1 joue::" << endl;
             test.run(engine, joueur1);
-            engine.update();
             sf::sleep(sf::milliseconds(50));
             surf.initSurface();
             joueur++;
@@ -628,7 +628,6 @@ void testthread(){
         if (joueur % 2 == 1) {
             cout << "JOUEUR2 joue::" << endl;
             test1.run(engine, joueur2);
-            engine.update();
             sf::sleep(sf::milliseconds(50));
             surf.initSurface();
             joueur++;
@@ -648,8 +647,9 @@ void testthread(){
         window.draw(*(surf.surface));
         window.draw(*(surf.surfaceplayer));
         window.display();
-
+        engine.lockEngine.unlock();
     }
     
+//    pthread_join(threadEngine,NULL);
     
 }

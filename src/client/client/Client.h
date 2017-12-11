@@ -2,7 +2,6 @@
 #ifndef CLIENT__CLIENT__H
 #define CLIENT__CLIENT__H
 
-#include <mutex>
 
 namespace engine {
   class Engine;
@@ -23,7 +22,6 @@ namespace client {
   public:
     engine::Engine engine;
     ai::HeuristicAI heuristic;
-    mutable std::mutex enginemutex;
     // Operations
   public:
     Client ();

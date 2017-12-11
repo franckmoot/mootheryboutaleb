@@ -4,6 +4,7 @@
 
 #include <vector>
 #include <memory>
+#include <mutex>
 #include <stack>
 
 namespace state {
@@ -27,6 +28,7 @@ namespace engine {
   public:
     state::State currentState;
     std::vector<std::unique_ptr<Command> > currentCommands;
+    std::mutex lockEngine;
     // Operations
   public:
     Engine ();

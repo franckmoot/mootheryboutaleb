@@ -49,7 +49,7 @@ namespace engine {
 
     void Engine::undo(std::stack<std::shared_ptr<Action> >& actions) {
 
-        while(!actions.empty()) {
+        while (!actions.empty()) {
             actions.top()->undo(currentState);
             actions.pop();
         }
@@ -59,6 +59,15 @@ namespace engine {
     const state::State& Engine::getState() const {
         return currentState;
     }
+
+    void Engine::run() {
+        while (1) {
+            lockEngine.lock();          
+            this->update();
+            lockEngine.unlock();
+        }
+    }
+
 
 }
 

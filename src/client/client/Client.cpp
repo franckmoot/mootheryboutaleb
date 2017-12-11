@@ -16,16 +16,7 @@ namespace client {
 
     void Client::engineUdapting() {
 
-     /*   cout << "JOUEUR1 joue::" << endl;
-        heuristic.run(engine, 1);
-        engine.update();
-      
-        
-        cout << "JOUEUR1 joue::" << endl;
-        heuristic.run(engine, 2);
-        engine.update();*/
-      
-
+   
     }
 
     void Client::engineUdapted() {
@@ -35,9 +26,6 @@ namespace client {
     }
 
     void Client::run() {
-
-      /*  this->engineUdapting();
-        this->engineUdapted();*/
 
     }
 
