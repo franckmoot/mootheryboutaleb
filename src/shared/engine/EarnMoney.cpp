@@ -59,6 +59,8 @@ namespace engine {
     }
 
     void EarnMoney::serialise(Json::Value& out) const {
+        out["Command"]=getTypeId();
+        out["joueur"]=joueur;
 
     }
 

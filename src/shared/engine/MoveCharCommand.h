@@ -13,6 +13,7 @@ namespace state {
   class State;
 };
 namespace engine {
+  class MoveCharCommand;
   class Command;
 }
 
@@ -36,6 +37,7 @@ namespace engine {
     MoveCharCommand (int x1, int y1, int x2, int y2);
     void execute (std::stack<std::shared_ptr<Action>>& actions, state::State& state);
     void serialise (Json::Value& out) const;
+    MoveCharCommand* deserialise (Json::Value& in);
     // Setters and Getters
   };
 

@@ -169,7 +169,13 @@ namespace engine {
     }
 
     void AttaqueCharCommand::serialise(Json::Value& out) const {
-
+        out["Command"]=getTypeId();
+        out["x1"]=x1;
+        out["y1"]=y1;
+        out["x2"]=x2;
+        out["y2"]=y2;
+        
+        
     }
 
 

@@ -77,9 +77,11 @@ namespace engine {
     }
 
     void CapturCharCommand::serialise(Json::Value& out) const {
+        out ["Command"]=getTypeId();
+        out["x"]=x;
+        out["y"]=y;
 
     }
-
 
 
 }
