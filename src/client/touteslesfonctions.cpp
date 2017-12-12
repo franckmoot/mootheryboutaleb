@@ -16,6 +16,9 @@
 #include "engine/CreateCharCommand.h"
 #include "ai/Pathinf.h"
 #include "ai/DeepAI.h"
+#include <fstream>
+#include <iostream>
+#include <string>
 
 
 using namespace std;
@@ -652,4 +655,17 @@ void testthread(){
     
 //    pthread_join(threadEngine,NULL);
     
+}
+
+void testjson(){
+    MoveCharCommand *M=new MoveCharCommand(2,6,2,7);
+    Json::Value AM;
+    std::string output;
+    Json::StyledWriter writer;
+    M->serialise(AM); 
+    output=writer.write(AM); 
+   std::ofstream file( "replay.txt", std::ios_base::app );
+   file<<output;
+   
+   
 }

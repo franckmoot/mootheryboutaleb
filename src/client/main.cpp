@@ -70,7 +70,7 @@ int main(int argc, char* argv[]) {
         }
         
         else if (!s.compare("record")) {
-
+            testjson();
             
         }
         else if (!s.compare("play")) {
