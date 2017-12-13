@@ -5,6 +5,7 @@
 #include <vector>
 #include <memory>
 #include <mutex>
+#include <json/json.h>
 #include <stack>
 
 namespace state {
@@ -29,6 +30,7 @@ namespace engine {
     state::State currentState;
     std::vector<std::unique_ptr<Command> > currentCommands;
     std::mutex lockEngine;
+    Json::Value record;
     // Operations
   public:
     Engine ();
@@ -37,6 +39,7 @@ namespace engine {
     const state::State& getState () const;
     void undo (std::stack<std::shared_ptr<Action>>& actions);
     void run ();
+    void updaterecord ();
     // Setters and Getters
   };
 

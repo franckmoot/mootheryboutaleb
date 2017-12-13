@@ -378,7 +378,7 @@ void testheuristicAI() {
         if (joueur % 2 == 0) {
             cout << "JOUEUR1 joue::" << endl;
             test.run(engine, joueur1);
-            engine.update();
+            engine.updaterecord();
             sf::sleep(sf::milliseconds(50));
             surf.initSurface();
             joueur++;
@@ -388,7 +388,7 @@ void testheuristicAI() {
         if (joueur % 2 == 1) {
             cout << "JOUEUR2 joue::" << endl;
             test1.run(engine, joueur2);
-            engine.update();
+            engine.updaterecord();
             sf::sleep(sf::milliseconds(50));
             surf.initSurface();
             joueur++;
