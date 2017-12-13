@@ -16,6 +16,7 @@
 #include "engine/CreateCharCommand.h"
 #include "ai/Pathinf.h"
 #include "ai/DeepAI.h"
+#include "engine/CreateHeliAction.h"
 #include <fstream>
 #include <iostream>
 #include <string>
@@ -658,14 +659,49 @@ void testthread(){
 }
 
 void testjson(){
-    MoveCharCommand *M=new MoveCharCommand(2,6,2,7);
+    
+    
+    /*MoveCharCommand *M=new MoveCharCommand(2,6,2,7);
     Json::Value AM;
     std::string output;
     Json::StyledWriter writer;
     M->serialise(AM); 
     output=writer.write(AM); 
    std::ofstream file( "replay.txt", std::ios_base::app );
-   file<<output;
+   file<<output;*/
+    
+    Json::Value AA;
+       std::stack<std::shared_ptr<Action> >  actions;
+    sf::RenderWindow window(sf::VideoMode(640, 640), "Advance wars");
+    engine::Engine engine;
+
+    engine.addCommand(new engine::LoadCommand("res/map.csv"));
+
+    engine.update();
+
+    Layer surf(engine.getState());
+    surf.initSurface();
+    engine.addCommand(new engine::CreateCharCommand(HELI,2,1,1));
+engine.update();
+     engine::MoveCharCommand deplacementHeli(0,0,0,0);
+     deplacementHeli.deserialise(AA)->execute(actions,engine.currentState );
+    
+    while (window.isOpen()) {
+
+        // on gère les évènements
+        sf::Event event;
+        while (window.pollEvent(event)) {
+
+            if (event.type == sf::Event::Closed)
+                window.close();
+        }
+        
+        window.clear();
+        window.draw(*(surf.surface));
+        window.draw(*(surf.surfaceplayer));
+        window.display();
+        
+    }
    
    
 }
