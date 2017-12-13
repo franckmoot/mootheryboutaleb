@@ -29,6 +29,8 @@ namespace engine {
         this->currentState.joueur2 = new Joueur();
         
 
+        
+        
 
     }
 
