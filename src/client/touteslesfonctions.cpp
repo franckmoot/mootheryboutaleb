@@ -411,12 +411,21 @@ void testheuristicAI() {
         window.display();
 
     }
+<<<<<<< HEAD
               std::string output;
             Json::StyledWriter writer;
            output= writer.write(engine.record);
              std::ofstream file( "replay.txt", std::ios_base::app );
             file<<output;
 
+=======
+    std::string output;
+    Json::StyledWriter writer;
+    output = writer.write(engine.record);
+    std::ofstream file("replay.txt", std::ios_base::app);
+    file << output;
+   
+>>>>>>> d1b48e2bc9f7408e793be95d0b446ede29da3c0c
 }
 
 void testdeep_ai() {
