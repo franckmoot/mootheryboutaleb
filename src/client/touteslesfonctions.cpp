@@ -641,12 +641,11 @@ void testjson() {
    file<<output;*/
     Json::Reader reader;
     Json::Value obj;
-    int i = 0;
     int joueur = 0;
     HeuristicAI test, test1;
     int joueur1 = 1;
     int joueur2 = 2;
-    ifstream ifs("replay.txt");
+    ifstream ifs("res/replay.txt");
     reader.parse(ifs, obj); // reader can also read strings
 
     std::stack<std::shared_ptr<Action> > actions;
