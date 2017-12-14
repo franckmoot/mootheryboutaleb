@@ -592,8 +592,8 @@ void testrollback() {
 
 }
 
-void testthread(){
-    
+void testthread() {
+
     sf::RenderWindow window(sf::VideoMode(640, 640), "Advance wars");
     engine::Engine engine;
 
@@ -607,9 +607,9 @@ void testthread(){
     int joueur1 = 1;
     int joueur2 = 2;
     HeuristicAI test, test1;
-   
-    thread engineThread(&Engine::run,&engine);
-  
+
+    thread engineThread(&Engine::run, &engine);
+
     while (window.isOpen()) {
 
         // on gère les évènements
@@ -641,7 +641,7 @@ void testthread(){
             cout << "le joueur 1 à gagné" << endl;
             break;
         }
-        
+
         if (engine.currentState.grid->getElement(1, 4)->getJoueur() == 2) {
             cout << "le joueur 2 à gagné" << endl;
             break;
@@ -653,14 +653,14 @@ void testthread(){
         window.display();
         engine.lockEngine.unlock();
     }
-    
-//    pthread_join(threadEngine,NULL);
-    
+
+    //    pthread_join(threadEngine,NULL);
+
 }
 
-void testjson(){
-    
-    
+void testjson() {
+
+
     /*MoveCharCommand *M=new MoveCharCommand(2,6,2,7);
     Json::Value AM;
     std::string output;
@@ -669,9 +669,9 @@ void testjson(){
     output=writer.write(AM); 
    std::ofstream file( "replay.txt", std::ios_base::app );
    file<<output;*/
-    
+
     Json::Value AA;
-       std::stack<std::shared_ptr<Action> >  actions;
+    std::stack<std::shared_ptr<Action> > actions;
     sf::RenderWindow window(sf::VideoMode(640, 640), "Advance wars");
     engine::Engine engine;
 
@@ -681,11 +681,16 @@ void testjson(){
 
     Layer surf(engine.getState());
     surf.initSurface();
-    engine.addCommand(new engine::CreateCharCommand(HELI,2,1,1));
-engine.update();
-     engine::MoveCharCommand deplacementHeli(0,0,0,0);
-     deplacementHeli.deserialise(AA)->execute(actions,engine.currentState );
-    
+
+    Heli *helitmp = new Heli();
+    helitmp->setJoueur(1);
+    engine.currentState.chars->setElementXY(helitmp, 2, 2);
+
+    engine.update();
+    surf.initSurface();
+    engine::MoveCharCommand deplacementHeli(0, 0, 0, 0);
+    deplacementHeli.deserialise(AA)->execute(actions, engine.currentState);
+    //surf.initSurface();
     while (window.isOpen()) {
 
         // on gère les évènements
@@ -694,14 +699,15 @@ engine.update();
 
             if (event.type == sf::Event::Closed)
                 window.close();
+
         }
-        
+
         window.clear();
         window.draw(*(surf.surface));
         window.draw(*(surf.surfaceplayer));
         window.display();
-        
+
     }
-   
-   
+
+
 }
