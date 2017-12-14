@@ -33,8 +33,8 @@ int main(int argc, char* argv[]) {
         } else if (!s.compare("record")) {
             testrecord();
 
-}
+        }
     }
 
-return 0;
+    return 0;
 }
