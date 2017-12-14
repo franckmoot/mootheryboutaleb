@@ -27,10 +27,10 @@ namespace engine {
         this->currentState.chars = new ElementChars();
         this->currentState.joueur1 = new Joueur();
         this->currentState.joueur2 = new Joueur();
+        
 
-
-
-
+        
+        
 
     }
 
@@ -43,8 +43,8 @@ namespace engine {
         std::stack<std::shared_ptr<Action> > actions;
 
         for (auto& command : currentCommands) {
-
-
+            
+            
             command->execute(actions, currentState);
         }
         currentCommands.clear();
@@ -53,22 +53,22 @@ namespace engine {
     }
 
     void Engine::updaterecord() {
-        Json::Value H;
-
+        Json::Value a;
         std::stack<std::shared_ptr<Action> > actions;
-        for (auto& command : currentCommands) {
-            Json::Value a;
-            command->serialise(a);
-            H.append(a);
+        for (auto& command : currentCommands) {           
 
+            command->serialise(a); 
+            record.append(a);
             command->execute(actions, currentState);
         }
-        record.append(H);
+        
         currentCommands.clear();
-
-
+       
+        
+        
 
     }
+
 
     void Engine::undo(std::stack<std::shared_ptr<Action> >& actions) {
 
@@ -85,7 +85,7 @@ namespace engine {
 
     void Engine::run() {
         while (1) {
-            lockEngine.lock();
+            lockEngine.lock();          
             this->update();
             lockEngine.unlock();
         }

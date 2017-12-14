@@ -411,15 +411,16 @@ void testheuristicAI() {
         window.display();
 
     }
-    std::string output;
-    Json::StyledWriter writer;
-    output = writer.write(engine.record);
-    std::ofstream file("replay.txt", std::ios_base::app);
-    file << output;
+              std::string output;
+            Json::StyledWriter writer;
+           output= writer.write(engine.record);
+             std::ofstream file( "replay.txt", std::ios_base::app );
+            file<<output;
 
 }
 
 void testdeep_ai() {
+
 
     sf::RenderWindow window(sf::VideoMode(640, 640), "Advance wars");
     engine::Engine engine;
@@ -438,6 +439,10 @@ void testdeep_ai() {
 
     actions.push_back(engine.update());
 
+    //cout<<actions[0].size()<<endl;
+
+    //engine.undo(actions[0]);
+
     while (window.isOpen()) {
 
         // on gère les évènements
@@ -453,15 +458,39 @@ void testdeep_ai() {
                 // test.run(engine, joueur1);
                 testai.run(1, engine, 1);
 
+                //actions.push_back(engine.update());
+                //sf::sleep(sf::milliseconds(50));
+                //surf.initSurface();
+
                 cout << "JOUEUR2 joue::" << endl;
-
+                //test1.run(engine, joueur2);
                 testai2.run(2, engine, 1);
-
+                //actions.push_back(engine.update());
                 sf::sleep(sf::milliseconds(50));
                 surf.initSurface();
 
             }
         }
+
+        /*if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
+            if (joueur % 2 == 0) {
+                cout << "JOUEUR1 undo::" << endl;
+                if(i!=0) engine.undo(actions[i]);
+                sf::sleep(sf::milliseconds(50));
+                surf.initSurface();
+
+                cout << "JOUEUR2 undo::" << endl;
+                if (actions.size() != 0) {
+                    engine.undo(actions.back());
+                    actions.pop_back();
+                    sf::sleep(sf::milliseconds(50));
+                    surf.initSurface();
+                }
+
+
+            }
+        }
+         */
 
         window.clear();
         window.draw(*(surf.surface));
@@ -656,15 +685,15 @@ void testjson() {
    // cout <<obj[1]<<endl;
     cout <<obj[2].<<"\n\n\n"<<obj.size()<<endl;
     //objfils=obj[2];
-     */
-
+    */
+    
     Json::Value obj;
     ifstream file("replay.txt");
     file >> obj;
-    cout << obj[2] << endl;
-
+    cout<<obj[3]<<endl;
+    
     //cout <<objfils[0]<<"\n"<<endl;
-
+    
     std::stack<std::shared_ptr<Action> > actions;
     sf::RenderWindow window(sf::VideoMode(640, 640), "Advance wars");
     engine::Engine engine;
@@ -685,12 +714,12 @@ void testjson() {
     engine::MoveCharCommand deplacementHeli(0, 0, 0, 0);
     deplacementHeli.deserialise(obj)->execute(actions, engine.currentState);
     surf.initSurface();
-
-    sf::sleep(sf::milliseconds(50));
-
-    /* engine::MoveCharCommand deplacementHeli2(0, 0, 0, 0);
-     deplacementHeli2.deserialise(obj)->execute(actions, engine.currentState);
-     surf.initSurface();*/
+    
+     sf::sleep(sf::milliseconds(50));
+    
+   /* engine::MoveCharCommand deplacementHeli2(0, 0, 0, 0);
+    deplacementHeli2.deserialise(obj)->execute(actions, engine.currentState);
+    surf.initSurface();*/
     while (window.isOpen()) {
 
         // on gère les évènements
