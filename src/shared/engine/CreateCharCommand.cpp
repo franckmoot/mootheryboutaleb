@@ -21,7 +21,7 @@ namespace engine {
     }
 
     CommandTypeId CreateCharCommand::getTypeId() const {
-        return CommandTypeId::ATTAQUE;
+        return CommandTypeId::CREATE;
     }
 
     void CreateCharCommand::execute(std::stack<std::shared_ptr<Action> >& actions, state::State& state) {
@@ -83,7 +83,11 @@ namespace engine {
         }
     }
         void CreateCharCommand::serialise(Json::Value& out) const {
-            
+        out["Command"]=getTypeId();
+        out["x"]=x;
+        out["y"]=y;
+        out["TypeId"]=elementId;
+        out["joueur"]=joueur;
     }
 
 }
