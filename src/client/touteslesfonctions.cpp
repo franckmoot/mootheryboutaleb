@@ -233,7 +233,6 @@ void testengine() {
          if (monde.chars->getElement(0, 1) == NULL)cout << "L'infanterie se n'est plus en position 0 " << endl;
          if (monde.chars->getElement(1, 1)->getTypeId() == 2) cout << "L'infanterie est en position 1 " << endl;
          cout << "" << endl;
-
          if (monde.chars->getElement(10, 1)->getTypeId() == 3) cout << "L'heli est en position 10 " << endl;
          engine::MoveCharCommand deplacementheli(10, 11);
          deplacementheli.execute(monde);
@@ -241,7 +240,6 @@ void testengine() {
          if (monde.chars->getElement(10, 1) == NULL)cout << "L'heli n'est plus en position 10 " << endl;
          if (monde.chars->getElement(11, 1)->getTypeId() == 3) cout << "L'heli est en position 11 " << endl;
          cout << "" << endl;
-
          if (monde.chars->getElement(20, 1)->getTypeId() == 4) cout << "Le tank est en position 0 " << endl;
          engine::MoveCharCommand deplacementtank(20, 21);
          deplacementtank.execute(monde);
@@ -251,7 +249,6 @@ void testengine() {
          cout << "" << endl;
          // if(monde.chars->getElement(1,1)==NULL)
          //if(monde.chars->getElement(50,1)->getTypeId()==4){
-
          Tank* tanktmp = (Tank*) (monde.chars->getElement(50, 1));
          cout << "Le tank a : " << tanktmp->getPdv() << "point de vie et appartient au joueur : " << tanktmp->getJoueur() << endl;
          Infanterie* inftmp = (Infanterie*) (monde.chars->getElement(1, 1));
@@ -260,7 +257,6 @@ void testengine() {
          infAttaqueTank.execute(monde);
          cout << "Le tank a : " << tanktmp->getPdv() << "point de vie apres l'attaque " << endl;
          cout << "" << endl;
-
          cout << "Le tank a : " << tanktmp->getPdv() << "point de vie et appartient au joueur : " << tanktmp->getJoueur() << endl;
          Infanterie* inftmp2 = (Infanterie*) (monde.chars->getElement(30, 1));
          cout << "L'infanterie a : " << inftmp->getAttaque() << "point d'attaque et appartient au joueur : " << inftmp2->getJoueur() << endl;
@@ -268,7 +264,6 @@ void testengine() {
          infAttaqueTank2.execute(monde);
          cout << "Le tank a : " << tanktmp->getPdv() << "point de vie apres l'attaque " << endl;
          cout << "" << endl;
-
          cout << "Le tank a : " << tanktmp->getPdv() << "point de vie et appartient au joueur : " << tanktmp->getJoueur() << endl;
          Heli* helitmp = (Heli*) (monde.chars->getElement(11, 1));
          cout << "L''heli a : " << helitmp->getAttaque() << "point d'attaque et appartient au joueur : " << helitmp->getJoueur() << endl;
@@ -279,7 +274,6 @@ void testengine() {
          if (monde.chars->getElement(50, 1) == NULL)cout << "Le tank n'existe plus" << endl;
          //Heli* helitmp =(Heli*)(monde.chars->getElement(10,1));
          cout << "" << endl;
-
          cout << "L'infanteire a : " << inftmp2->getPdv() << "point de vie et appartient au joueur : " << inftmp2->getJoueur() << endl;
          cout << "L''heli a : " << helitmp->getAttaque() << "point d'attaque et appartient au joueur : " << helitmp->getJoueur() << endl;
          engine::AttaqueCharCommand heliAttaqueInf2(11, 30);
@@ -649,7 +643,6 @@ void testjson() {
     Json::Value obj;
     Json::Value objfils;
      ifstream ifs("replay.txt");
-
     reader.parse(ifs, obj); // reader can also read strings
    // cout <<obj<<endl;
    // cout <<obj[0]<<endl;
