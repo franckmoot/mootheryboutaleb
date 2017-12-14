@@ -105,15 +105,12 @@ namespace engine {
     }
 
     MoveCharCommand* MoveCharCommand::deserialise(Json::Value& in) {
-       // if(in["Command"].asInt()==getTypeId()){
+
             x1 = in.get("x1",0).asInt();
             y1 = in.get("y1",0).asInt();
             x2 = in.get("x2",0).asInt();
             y2 = in.get("y2",0).asInt();
             
-            cout <<"x1: "<<x1<<"\ty1: "<<y1<<"\tx2: "<<x2<<"\ty2: "<<y2<<endl;
-      //  }
-        
         return new MoveCharCommand(x1, y1, x2, y2);
     }
 

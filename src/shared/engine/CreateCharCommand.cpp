@@ -91,4 +91,13 @@ namespace engine {
 
     }
 
+    CreateCharCommand* CreateCharCommand::deserialise(Json::Value& in) {
+            elementId =(state::TypeId)in.get("elementId",0).asInt();
+            x = in.get("x",0).asInt();
+            y = in.get("y",0).asInt();
+            joueur= in.get("joueur",0).asInt();
+            
+        return new CreateCharCommand(elementId, x, y, joueur);
+    }
+
 }

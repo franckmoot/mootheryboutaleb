@@ -13,6 +13,7 @@ namespace state {
   class State;
 };
 namespace engine {
+  class CapturCharCommand;
   class Command;
 }
 
@@ -34,6 +35,7 @@ namespace engine {
     void execute (std::stack<std::shared_ptr<Action>>& actions, state::State& state);
     CapturCharCommand (int x, int y);
     void serialise (Json::Value& out) const;
+    CapturCharCommand* deserialise (Json::Value& in);
     // Setters and Getters
   };
 

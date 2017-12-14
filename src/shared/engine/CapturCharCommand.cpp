@@ -81,7 +81,13 @@ namespace engine {
         out["x"]=x;
         out["y"]=y;
     }
+    CapturCharCommand* CapturCharCommand::deserialise(Json::Value& in) {
+            x = in.get("x",0).asInt();
+            y = in.get("y",0).asInt();
 
+            
+        return new CapturCharCommand(x, y);
+    }
 
 }
 

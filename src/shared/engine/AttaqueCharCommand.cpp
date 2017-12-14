@@ -177,6 +177,14 @@ namespace engine {
         
     }
 
+    AttaqueCharCommand* AttaqueCharCommand::deserialise(Json::Value& in) {
+                x1 = in.get("x1",0).asInt();
+            y1 = in.get("y1",0).asInt();
+            x2 = in.get("x2",0).asInt();
+            y2 = in.get("y2",0).asInt();
+            
+        return new AttaqueCharCommand(x1, y1, x2, y2);
+    }
 
 }
 
