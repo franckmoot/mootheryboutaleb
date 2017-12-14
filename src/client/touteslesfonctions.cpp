@@ -233,7 +233,6 @@ void testengine() {
          if (monde.chars->getElement(0, 1) == NULL)cout << "L'infanterie se n'est plus en position 0 " << endl;
          if (monde.chars->getElement(1, 1)->getTypeId() == 2) cout << "L'infanterie est en position 1 " << endl;
          cout << "" << endl;
-
          if (monde.chars->getElement(10, 1)->getTypeId() == 3) cout << "L'heli est en position 10 " << endl;
          engine::MoveCharCommand deplacementheli(10, 11);
          deplacementheli.execute(monde);
@@ -241,7 +240,6 @@ void testengine() {
          if (monde.chars->getElement(10, 1) == NULL)cout << "L'heli n'est plus en position 10 " << endl;
          if (monde.chars->getElement(11, 1)->getTypeId() == 3) cout << "L'heli est en position 11 " << endl;
          cout << "" << endl;
-
          if (monde.chars->getElement(20, 1)->getTypeId() == 4) cout << "Le tank est en position 0 " << endl;
          engine::MoveCharCommand deplacementtank(20, 21);
          deplacementtank.execute(monde);
@@ -251,7 +249,6 @@ void testengine() {
          cout << "" << endl;
          // if(monde.chars->getElement(1,1)==NULL)
          //if(monde.chars->getElement(50,1)->getTypeId()==4){
-
          Tank* tanktmp = (Tank*) (monde.chars->getElement(50, 1));
          cout << "Le tank a : " << tanktmp->getPdv() << "point de vie et appartient au joueur : " << tanktmp->getJoueur() << endl;
          Infanterie* inftmp = (Infanterie*) (monde.chars->getElement(1, 1));
@@ -260,7 +257,6 @@ void testengine() {
          infAttaqueTank.execute(monde);
          cout << "Le tank a : " << tanktmp->getPdv() << "point de vie apres l'attaque " << endl;
          cout << "" << endl;
-
          cout << "Le tank a : " << tanktmp->getPdv() << "point de vie et appartient au joueur : " << tanktmp->getJoueur() << endl;
          Infanterie* inftmp2 = (Infanterie*) (monde.chars->getElement(30, 1));
          cout << "L'infanterie a : " << inftmp->getAttaque() << "point d'attaque et appartient au joueur : " << inftmp2->getJoueur() << endl;
@@ -268,7 +264,6 @@ void testengine() {
          infAttaqueTank2.execute(monde);
          cout << "Le tank a : " << tanktmp->getPdv() << "point de vie apres l'attaque " << endl;
          cout << "" << endl;
-
          cout << "Le tank a : " << tanktmp->getPdv() << "point de vie et appartient au joueur : " << tanktmp->getJoueur() << endl;
          Heli* helitmp = (Heli*) (monde.chars->getElement(11, 1));
          cout << "L''heli a : " << helitmp->getAttaque() << "point d'attaque et appartient au joueur : " << helitmp->getJoueur() << endl;
@@ -279,7 +274,6 @@ void testengine() {
          if (monde.chars->getElement(50, 1) == NULL)cout << "Le tank n'existe plus" << endl;
          //Heli* helitmp =(Heli*)(monde.chars->getElement(10,1));
          cout << "" << endl;
-
          cout << "L'infanteire a : " << inftmp2->getPdv() << "point de vie et appartient au joueur : " << inftmp2->getJoueur() << endl;
          cout << "L''heli a : " << helitmp->getAttaque() << "point d'attaque et appartient au joueur : " << helitmp->getJoueur() << endl;
          engine::AttaqueCharCommand heliAttaqueInf2(11, 30);
@@ -411,25 +405,15 @@ void testheuristicAI() {
         window.display();
 
     }
-<<<<<<< HEAD
-              std::string output;
-            Json::StyledWriter writer;
-           output= writer.write(engine.record);
-             std::ofstream file( "replay.txt", std::ios_base::app );
-            file<<output;
-
-=======
     std::string output;
     Json::StyledWriter writer;
     output = writer.write(engine.record);
     std::ofstream file("replay.txt", std::ios_base::app);
     file << output;
    
->>>>>>> d1b48e2bc9f7408e793be95d0b446ede29da3c0c
 }
 
 void testdeep_ai() {
-
 
     sf::RenderWindow window(sf::VideoMode(640, 640), "Advance wars");
     engine::Engine engine;
@@ -448,10 +432,6 @@ void testdeep_ai() {
 
     actions.push_back(engine.update());
 
-    //cout<<actions[0].size()<<endl;
-
-    //engine.undo(actions[0]);
-
     while (window.isOpen()) {
 
         // on gère les évènements
@@ -467,39 +447,15 @@ void testdeep_ai() {
                 // test.run(engine, joueur1);
                 testai.run(1, engine, 1);
 
-                //actions.push_back(engine.update());
-                //sf::sleep(sf::milliseconds(50));
-                //surf.initSurface();
-
                 cout << "JOUEUR2 joue::" << endl;
-                //test1.run(engine, joueur2);
+
                 testai2.run(2, engine, 1);
-                //actions.push_back(engine.update());
+
                 sf::sleep(sf::milliseconds(50));
                 surf.initSurface();
 
             }
         }
-
-        /*if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-            if (joueur % 2 == 0) {
-                cout << "JOUEUR1 undo::" << endl;
-                if(i!=0) engine.undo(actions[i]);
-                sf::sleep(sf::milliseconds(50));
-                surf.initSurface();
-
-                cout << "JOUEUR2 undo::" << endl;
-                if (actions.size() != 0) {
-                    engine.undo(actions.back());
-                    actions.pop_back();
-                    sf::sleep(sf::milliseconds(50));
-                    surf.initSurface();
-                }
-
-
-            }
-        }
-         */
 
         window.clear();
         window.draw(*(surf.surface));
@@ -687,22 +643,21 @@ void testjson() {
     Json::Value obj;
     Json::Value objfils;
      ifstream ifs("replay.txt");
-
     reader.parse(ifs, obj); // reader can also read strings
    // cout <<obj<<endl;
    // cout <<obj[0]<<endl;
    // cout <<obj[1]<<endl;
     cout <<obj[2].<<"\n\n\n"<<obj.size()<<endl;
     //objfils=obj[2];
-    */
-    
+     */
+
     Json::Value obj;
     ifstream file("replay.txt");
     file >> obj;
-    cout<<obj[3]<<endl;
-    
+    cout << obj[2] << endl;
+
     //cout <<objfils[0]<<"\n"<<endl;
-    
+
     std::stack<std::shared_ptr<Action> > actions;
     sf::RenderWindow window(sf::VideoMode(640, 640), "Advance wars");
     engine::Engine engine;
@@ -723,12 +678,12 @@ void testjson() {
     engine::MoveCharCommand deplacementHeli(0, 0, 0, 0);
     deplacementHeli.deserialise(obj)->execute(actions, engine.currentState);
     surf.initSurface();
-    
-     sf::sleep(sf::milliseconds(50));
-    
-   /* engine::MoveCharCommand deplacementHeli2(0, 0, 0, 0);
-    deplacementHeli2.deserialise(obj)->execute(actions, engine.currentState);
-    surf.initSurface();*/
+
+    sf::sleep(sf::milliseconds(50));
+
+    /* engine::MoveCharCommand deplacementHeli2(0, 0, 0, 0);
+     deplacementHeli2.deserialise(obj)->execute(actions, engine.currentState);
+     surf.initSurface();*/
     while (window.isOpen()) {
 
         // on gère les évènements
