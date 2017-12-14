@@ -15,6 +15,11 @@
 #include "state/Element.h"
 #include "state/ElementTab.h"
 #include "state/ElementChars.h"
+#include "MoveCharCommand.h"
+#include "AttaqueCharCommand.h"
+#include "CapturCharCommand.h"
+#include "CreateCharCommand.h"
+#include "EarnMoney.h"
 
 using namespace std;
 using namespace state;
@@ -66,7 +71,40 @@ namespace engine {
         record.append(H);
         currentCommands.clear();
 
+    }
 
+    void Engine::updatePlay(Json::Value& obj) {
+        std::stack<std::shared_ptr<Action> > actions;
+        cout<<"erreur"<<endl;
+        for (int i = 0; i < (int) obj.size(); i++) {
+
+            if (obj["Type"].asString() == "Move") {
+                MoveCharCommand *move = new MoveCharCommand(0, 0, 0, 0);
+                move->deserialise(obj);
+                move->execute(actions, currentState);
+            } 
+            else if (obj["Type"].asString() == "Attaque") {
+                AttaqueCharCommand *attaque = new AttaqueCharCommand(0, 0, 0, 0);
+                attaque->deserialise(obj);
+                attaque->execute(actions, currentState);
+            } 
+            else if (obj["Type"].asString() == "Capture") {
+                CapturCharCommand *capture = new CapturCharCommand(0, 0);
+                capture->deserialise(obj);
+                capture->execute(actions, currentState);
+            } 
+            else if (obj["Type"].asString() == "Create"){
+                CreateCharCommand *create = new CreateCharCommand((state::TypeId)0, 0, 0, 0);
+                create->deserialise(obj);
+                create->execute(actions, currentState);
+            } 
+            else if (obj["Type"].asString() == "EarnMoney") {
+                EarnMoney *earn = new EarnMoney(0);
+                earn->deserialise(obj);
+                earn->execute(actions, currentState);
+            }
+
+        }
 
     }
 

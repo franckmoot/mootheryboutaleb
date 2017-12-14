@@ -169,20 +169,20 @@ namespace engine {
     }
 
     void AttaqueCharCommand::serialise(Json::Value& out) const {
-        out["type"] = CommandTypeId::ATTAQUE;
+        out["type"] = "Attaque";
         out["x1"] = x1;
         out["y1"] = y1;
         out["x2"] = x2;
         out["y2"] = y2;
-        
+
     }
 
     AttaqueCharCommand* AttaqueCharCommand::deserialise(Json::Value& in) {
-                x1 = in.get("x1",0).asInt();
-            y1 = in.get("y1",0).asInt();
-            x2 = in.get("x2",0).asInt();
-            y2 = in.get("y2",0).asInt();
-            
+        x1 = in["x1"].asInt();
+        y1 = in["y1"].asInt();
+        x2 = in["x2"].asInt();
+        y2 = in["y2"].asInt();
+
         return new AttaqueCharCommand(x1, y1, x2, y2);
     }
 

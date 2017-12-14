@@ -65,7 +65,7 @@ namespace engine {
     }
 
     EarnMoney* EarnMoney::deserialise(Json::Value& in) {
-           joueur = in.get("joueur",0).asInt();
+           joueur = in["joueur"].asInt();
 
             
         return new EarnMoney(joueur);

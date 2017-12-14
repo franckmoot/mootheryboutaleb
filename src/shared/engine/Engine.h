@@ -40,6 +40,7 @@ namespace engine {
     void undo (std::stack<std::shared_ptr<Action>>& actions);
     void run ();
     void updaterecord ();
+    void updatePlay (Json::Value& obj);
     // Setters and Getters
   };
 

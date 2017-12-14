@@ -83,7 +83,7 @@ namespace engine {
         }
     }
         void CreateCharCommand::serialise(Json::Value& out) const {
-        out["type"]=CommandTypeId::CREATE;
+        out["type"]="Create";
         out["x"]=x;
         out["y"]=y;
         out["TypeId"]=elementId;
@@ -92,10 +92,10 @@ namespace engine {
     }
 
     CreateCharCommand* CreateCharCommand::deserialise(Json::Value& in) {
-            elementId =(state::TypeId)in.get("elementId",0).asInt();
-            x = in.get("x",0).asInt();
-            y = in.get("y",0).asInt();
-            joueur= in.get("joueur",0).asInt();
+            elementId =(state::TypeId)in["TypeId"].asInt();
+            x = in["x"].asInt();
+            y = in["y"].asInt();
+            joueur= in["joueur"].asInt();
             
         return new CreateCharCommand(elementId, x, y, joueur);
     }

@@ -410,7 +410,7 @@ void testheuristicAI() {
     output = writer.write(engine.record);
     std::ofstream file("replay.txt", std::ios_base::app);
     file << output;
-   
+
 }
 
 void testdeep_ai() {
@@ -639,24 +639,15 @@ void testjson() {
     output=writer.write(AM); 
    std::ofstream file( "replay.txt", std::ios_base::app );
    file<<output;*/
-    /*    Json::Reader reader;
+    Json::Reader reader;
     Json::Value obj;
-    Json::Value objfils;
-     ifstream ifs("replay.txt");
+    int i = 0;
+    int joueur = 0;
+    HeuristicAI test, test1;
+    int joueur1 = 1;
+    int joueur2 = 2;
+    ifstream ifs("replay.txt");
     reader.parse(ifs, obj); // reader can also read strings
-   // cout <<obj<<endl;
-   // cout <<obj[0]<<endl;
-   // cout <<obj[1]<<endl;
-    cout <<obj[2].<<"\n\n\n"<<obj.size()<<endl;
-    //objfils=obj[2];
-     */
-
-    Json::Value obj;
-    ifstream file("replay.txt");
-    file >> obj;
-    cout << obj[2] << endl;
-
-    //cout <<objfils[0]<<"\n"<<endl;
 
     std::stack<std::shared_ptr<Action> > actions;
     sf::RenderWindow window(sf::VideoMode(640, 640), "Advance wars");
@@ -669,21 +660,6 @@ void testjson() {
     Layer surf(engine.getState());
     surf.initSurface();
 
-    Heli *helitmp = new Heli();
-    helitmp->setJoueur(1);
-    engine.currentState.chars->setElementXY(helitmp, 2, 2);
-
-    engine.update();
-    surf.initSurface();
-    engine::MoveCharCommand deplacementHeli(0, 0, 0, 0);
-    deplacementHeli.deserialise(obj)->execute(actions, engine.currentState);
-    surf.initSurface();
-
-    sf::sleep(sf::milliseconds(50));
-
-    /* engine::MoveCharCommand deplacementHeli2(0, 0, 0, 0);
-     deplacementHeli2.deserialise(obj)->execute(actions, engine.currentState);
-     surf.initSurface();*/
     while (window.isOpen()) {
 
         // on gère les évènements
@@ -694,6 +670,37 @@ void testjson() {
                 window.close();
 
         }
+
+        if (joueur < int(obj.size())) {
+            if (joueur % 2 == 0) {
+                cout << "JOUEUR1 joue::" << endl;
+                test.run(engine, joueur1);
+                engine.updatePlay(obj[i]);
+                sf::sleep(sf::milliseconds(50));
+                surf.initSurface();
+                joueur++;
+            }
+
+            if (joueur % 2 == 1) {
+                cout << "JOUEUR2 joue::" << endl;
+                test1.run(engine, joueur2);
+                engine.updatePlay(obj[i]);
+                sf::sleep(sf::milliseconds(50));
+                surf.initSurface();
+                joueur++;
+            }
+        }
+
+        if (engine.currentState.grid->getElement(17, 14)->getJoueur() == 1) {
+            cout << "le joueur 1 à gagné" << endl;
+            break;
+        }
+
+        if (engine.currentState.grid->getElement(1, 4)->getJoueur() == 2) {
+            cout << "le joueur 2 à gagné" << endl;
+            break;
+        }
+
 
         window.clear();
         window.draw(*(surf.surface));

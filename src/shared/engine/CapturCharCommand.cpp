@@ -77,15 +77,16 @@ namespace engine {
     }
 
     void CapturCharCommand::serialise(Json::Value& out) const {
-        out["Command"]=CommandTypeId::CAPTUR;
-        out["x"]=x;
-        out["y"]=y;
+        out["Command"] = "Capture";
+        out["x"] = x;
+        out["y"] = y;
     }
-    CapturCharCommand* CapturCharCommand::deserialise(Json::Value& in) {
-            x = in.get("x",0).asInt();
-            y = in.get("y",0).asInt();
 
-            
+    CapturCharCommand* CapturCharCommand::deserialise(Json::Value& in) {
+        x = in["x"].asInt();
+        y = in["y"].asInt();
+
+
         return new CapturCharCommand(x, y);
     }
 
