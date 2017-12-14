@@ -77,11 +77,9 @@ namespace engine {
     }
 
     void CapturCharCommand::serialise(Json::Value& out) const {
-        Json::Value tmp;
-        tmp ["Command"]=CommandTypeId::CAPTUR;
-        tmp["x"]=x;
-        tmp["y"]=y;
-        out["Joueur"].append(tmp);
+        out["Command"]=CommandTypeId::CAPTUR;
+        out["x"]=x;
+        out["y"]=y;
     }
 
 

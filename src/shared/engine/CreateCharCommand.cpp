@@ -83,13 +83,11 @@ namespace engine {
         }
     }
         void CreateCharCommand::serialise(Json::Value& out) const {
-         Json::Value tmp;
-        tmp["type"]=CommandTypeId::CREATE;
-        tmp["x"]=x;
-        tmp["y"]=y;
-        tmp["TypeId"]=elementId;
-        tmp["joueur"]=joueur;
-        out["Joueur"].append(tmp);
+        out["type"]=CommandTypeId::CREATE;
+        out["x"]=x;
+        out["y"]=y;
+        out["TypeId"]=elementId;
+        out["joueur"]=joueur;
 
     }
 

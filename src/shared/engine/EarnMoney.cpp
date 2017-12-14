@@ -59,10 +59,8 @@ namespace engine {
     }
 
     void EarnMoney::serialise(Json::Value& out) const {
-        Json::Value tmp;
-        tmp["Command"]="EarnMoney";
-        tmp["joueur"]=joueur;
-        out["Joueur"].append(tmp);
+        out["Command"]="EarnMoney";
+        out["joueur"]=joueur;
 
     }
 

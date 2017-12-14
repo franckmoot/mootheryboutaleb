@@ -96,13 +96,11 @@ namespace engine {
     }
 
     void MoveCharCommand::serialise(Json::Value& out) const {      
-        Json::Value tmp;
-        tmp["type"] = CommandTypeId::MOVE;
-        tmp["x1"] = x1;
-        tmp["y1"] = y1;
-        tmp["x2"] = x2;
-        tmp["y2"] = y2;
-        out["Joueur"].append(tmp);
+        out["type"] = CommandTypeId::MOVE;
+        out["x1"] = x1;
+        out["y1"] = y1;
+        out["x2"] = x2;
+        out["y2"] = y2;
         
     }
 

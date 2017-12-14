@@ -58,10 +58,10 @@ namespace engine {
         for (auto& command : currentCommands) {           
 
             command->serialise(a); 
-            
+            record.append(a);
             command->execute(actions, currentState);
         }
-        record.append(a);
+        
         currentCommands.clear();
        
         
