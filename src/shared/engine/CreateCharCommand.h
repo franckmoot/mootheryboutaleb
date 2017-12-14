@@ -13,6 +13,7 @@ namespace state {
   class State;
 };
 namespace engine {
+  class CreateCharCommand;
   class Command;
 }
 
@@ -38,6 +39,7 @@ namespace engine {
     CommandTypeId getTypeId () const;
     void execute (std::stack<std::shared_ptr<Action>>& actions, state::State& state);
     void serialise (Json::Value& out) const;
+    CreateCharCommand* deserialise (Json::Value& in);
     // Setters and Getters
   };
 
