@@ -659,12 +659,9 @@ void testjson() {
 
     Layer surf(engine.getState());
     surf.initSurface();
-    //cout<<obj<<endl;
-    cout<<obj.size()<<endl;
-    Json::Value tmp = obj[0];
-    cout<<tmp<<endl;
-    cout<<tmp.size()<<endl;
-    cout<<tmp.get("type",0).asString()<<endl;
+    cout<<obj[1][0]<<endl;
+    cout<<obj[2][0]<<endl;
+   
     while (window.isOpen()) {
 
         // on gère les évènements
@@ -680,7 +677,7 @@ void testjson() {
             if (joueur % 2 == 0) {
                 cout << "JOUEUR1 joue::" << endl;
                 test.run(engine, joueur1);
-                engine.updatePlay(obj[i]);
+                engine.updatePlay(obj[joueur]);
                 sf::sleep(sf::milliseconds(50));
                 surf.initSurface();
                 joueur++;
@@ -689,7 +686,7 @@ void testjson() {
             if (joueur % 2 == 1) {
                 cout << "JOUEUR2 joue::" << endl;
                 test1.run(engine, joueur2);
-                engine.updatePlay(obj[i]);
+                engine.updatePlay(obj[joueur]);
                 sf::sleep(sf::milliseconds(50));
                 surf.initSurface();
                 joueur++;

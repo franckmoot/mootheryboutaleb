@@ -60,7 +60,7 @@ void testrecord() {
             joueur++;
 
         }
-        if (joueur == 20) break;
+        if (joueur == 40) break;
 
         if (engine.currentState.grid->getElement(17, 14)->getJoueur() == 1) {
             cout << "le joueur 1 à gagné" << endl;
@@ -71,6 +71,7 @@ void testrecord() {
             break;
         }
 
+        
 
     }
     std::string output;
