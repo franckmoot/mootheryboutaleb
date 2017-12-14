@@ -1,38 +1,34 @@
 #include <iostream>
 #include <string>
-#include <vector>
-#include <time.h>
 
 #include <vector>
 #include <fstream>
 #include <sstream>
-#include "touteslesfonctions.h"
-
-#include "state.h"
-#include "engine.h"
+#include <thread>
+#include "state/Batiment.h"
+#include "state/Champdebataille.h"
+#include "state/Element.h"
+#include "state/ElementChars.h"
+#include "state/ElementTab.h"
+#include "state/MobileElement.h"
+#include "state/StaticElement.h"
 #include "state/Infanterie.h"
-#include "ai/RandomAI.h"
-#include "ai/HeuristicAI.h"
-
-
+#include "state/Tank.h"
+#include "state/Heli.h"
+#include "state/State.h"
+#include "engine/Command.h"
+#include "engine/AttaqueCharCommand.h"
+#include "engine/LoadCommand.h"
+#include "engine/MoveCharCommand.h"
+#include "engine/CreateCharCommand.h"
+#include "touteslesfonctions.h"
 
 using namespace std;
 using namespace state;
-
 using namespace engine;
 using namespace ai;
-
-int main(int argc, char* argv[]) {
-
-    if (argc > 1) {
-        string s;
-        s = argv[1];
-
-        if (!s.compare("hello")) {
-            cout << "Bonjour le monde !" << endl;
-        } else if (!s.compare("record")) {
-
-                engine::Engine engine;
+void testrecord() {
+    engine::Engine engine;
 
     engine.addCommand(new engine::LoadCommand("res/map.csv"));
 
@@ -83,8 +79,4 @@ int main(int argc, char* argv[]) {
     std::ofstream file("replay.txt", std::ios_base::app);
     file << output;
 
-}
-    }
-
-return 0;
 }
