@@ -13,6 +13,7 @@ namespace state {
   class State;
 };
 namespace engine {
+  class EarnMoney;
   class Command;
 }
 
@@ -33,6 +34,7 @@ namespace engine {
     void execute (std::stack<std::shared_ptr<Action>>& actions, state::State& state);
     CommandTypeId getTypeId () const;
     void serialise (Json::Value& out) const;
+    EarnMoney* deserialise (Json::Value& in);
     // Setters and Getters
   };
 
