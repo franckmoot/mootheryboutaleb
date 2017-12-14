@@ -411,6 +411,11 @@ void testheuristicAI() {
         window.display();
 
     }
+              std::string output;
+            Json::StyledWriter writer;
+           output= writer.write(engine.record);
+             std::ofstream file( "replay.txt", std::ios_base::app );
+            file<<output;
 
 }
 
@@ -669,8 +674,26 @@ void testjson() {
     output=writer.write(AM); 
    std::ofstream file( "replay.txt", std::ios_base::app );
    file<<output;*/
+    /*    Json::Reader reader;
+    Json::Value obj;
+    Json::Value objfils;
+     ifstream ifs("replay.txt");
 
-    Json::Value AA;
+    reader.parse(ifs, obj); // reader can also read strings
+   // cout <<obj<<endl;
+   // cout <<obj[0]<<endl;
+   // cout <<obj[1]<<endl;
+    cout <<obj[2].<<"\n\n\n"<<obj.size()<<endl;
+    //objfils=obj[2];
+    */
+    
+    Json::Value obj;
+    ifstream file("replay.txt");
+    file >> obj;
+    cout<<obj[3]<<endl;
+    
+    //cout <<objfils[0]<<"\n"<<endl;
+    
     std::stack<std::shared_ptr<Action> > actions;
     sf::RenderWindow window(sf::VideoMode(640, 640), "Advance wars");
     engine::Engine engine;
@@ -689,8 +712,14 @@ void testjson() {
     engine.update();
     surf.initSurface();
     engine::MoveCharCommand deplacementHeli(0, 0, 0, 0);
-    deplacementHeli.deserialise(AA)->execute(actions, engine.currentState);
-    //surf.initSurface();
+    deplacementHeli.deserialise(obj)->execute(actions, engine.currentState);
+    surf.initSurface();
+    
+     sf::sleep(sf::milliseconds(50));
+    
+   /* engine::MoveCharCommand deplacementHeli2(0, 0, 0, 0);
+    deplacementHeli2.deserialise(obj)->execute(actions, engine.currentState);
+    surf.initSurface();*/
     while (window.isOpen()) {
 
         // on gère les évènements

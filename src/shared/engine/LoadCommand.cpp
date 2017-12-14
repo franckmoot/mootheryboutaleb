@@ -110,7 +110,6 @@ namespace engine {
     }
     
     void LoadCommand::serialise(Json::Value& out) const {
-
     }
 
     

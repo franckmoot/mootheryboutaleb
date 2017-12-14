@@ -53,20 +53,15 @@ namespace engine {
     }
 
     void Engine::updaterecord() {
-       
+        Json::Value a;
         std::stack<std::shared_ptr<Action> > actions;
-        for (auto& command : currentCommands) {
-            Json::Value a;            
-            std::string output;
-            Json::StyledWriter writer;
+        for (auto& command : currentCommands) {           
+
             command->serialise(a); 
-            record.append(a);
-            output=writer.write(record);
-            std::ofstream file( "replay.txt", std::ios_base::app );
-            file<<output;
-             command->execute(actions, currentState);
+            
+            command->execute(actions, currentState);
         }
-        
+        record.append(a);
         currentCommands.clear();
        
         

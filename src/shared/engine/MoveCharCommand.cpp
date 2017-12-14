@@ -96,22 +96,26 @@ namespace engine {
     }
 
     void MoveCharCommand::serialise(Json::Value& out) const {      
-        out["Command"] = getTypeId();
-        out["x1"] = x1;
-        out["y1"] = y1;
-        out["x2"] = x2;
-        out["y2"] = y2;
-        
+        Json::Value tmp;
+        tmp["type"] = CommandTypeId::MOVE;
+        tmp["x1"] = x1;
+        tmp["y1"] = y1;
+        tmp["x2"] = x2;
+        tmp["y2"] = y2;
+        out["Joueur"].append(tmp);
         
     }
 
     MoveCharCommand* MoveCharCommand::deserialise(Json::Value& in) {
-        if(in["Command"].asInt()==getTypeId()){
-            x1 = in["x1"].asInt();
-            y1 = in["y1"].asInt();
-            x2 = in["x2"].asInt();
-            y2 = in["y2"].asInt();
-        }
+       // if(in["Command"].asInt()==getTypeId()){
+            x1 = in.get("x1",0).asInt();
+            y1 = in.get("y1",0).asInt();
+            x2 = in.get("x2",0).asInt();
+            y2 = in.get("y2",0).asInt();
+            
+            cout <<"x1: "<<x1<<"\ty1: "<<y1<<"\tx2: "<<x2<<"\ty2: "<<y2<<endl;
+      //  }
+        
         return new MoveCharCommand(x1, y1, x2, y2);
     }
 
