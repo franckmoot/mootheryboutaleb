@@ -416,7 +416,7 @@ void testheuristicAI() {
     output = writer.write(engine.record);
     std::ofstream file("replay.txt", std::ios_base::app);
     file << output;
-
+   
 }
 
 void testdeep_ai() {
