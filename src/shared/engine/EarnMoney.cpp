@@ -59,7 +59,7 @@ namespace engine {
     }
 
     void EarnMoney::serialise(Json::Value& out) const {
-        out["Command"]="EarnMoney";
+        out["type"]="EarnMoney";
         out["joueur"]=joueur;
 
     }

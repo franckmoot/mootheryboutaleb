@@ -659,7 +659,12 @@ void testjson() {
 
     Layer surf(engine.getState());
     surf.initSurface();
-
+    //cout<<obj<<endl;
+    cout<<obj.size()<<endl;
+    Json::Value tmp = obj[0];
+    cout<<tmp<<endl;
+    cout<<tmp.size()<<endl;
+    cout<<tmp.get("type",0).asString()<<endl;
     while (window.isOpen()) {
 
         // on gère les évènements
