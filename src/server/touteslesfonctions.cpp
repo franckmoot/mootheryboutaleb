@@ -15,6 +15,8 @@
 #include "state/Infanterie.h"
 #include "state/Tank.h"
 #include "state/Heli.h"
+#include "engine/Engine.h"
+#include "ai/HeuristicAI.h"
 #include "state/State.h"
 #include "engine/Command.h"
 #include "engine/AttaqueCharCommand.h"
