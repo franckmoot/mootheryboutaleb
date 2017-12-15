@@ -76,10 +76,12 @@ void testrecord() {
         
 
     }
+    
     std::string output;
     Json::StyledWriter writer;
     output = writer.write(engine.record);
-    std::ofstream file("res/replay.txt", std::ios_base::app);
+    std::ofstream file("res/replay.txt"/*, std::ios_base::app*/);
+    
     file << output;
 
 }

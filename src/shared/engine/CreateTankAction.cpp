@@ -25,6 +25,7 @@ namespace engine {
         Tank *T = new Tank();
         T->setJoueur(joueur);
         state.chars->setElementXY(T, x, y);
+        cout<<"je cree un tank"<<endl;
     }
 
     void CreateTankAction::undo(state::State& state) {

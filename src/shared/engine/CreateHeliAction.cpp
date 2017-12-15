@@ -27,6 +27,7 @@ namespace engine {
         Heli *H = new Heli();
         H->setJoueur(joueur);
         state.chars->setElementXY(H, x, y);
+        cout<<"je cree un helicoptere"<<endl;
     }
 
     void CreateHeliAction::undo(state::State& state) {

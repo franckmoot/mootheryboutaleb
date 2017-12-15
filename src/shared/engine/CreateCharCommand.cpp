@@ -86,13 +86,14 @@ namespace engine {
         out["type"]="Create";
         out["x"]=x;
         out["y"]=y;
+        cout<<elementId<<endl;
         out["TypeId"]=elementId;
         out["joueur"]=joueur;
 
     }
 
     CreateCharCommand* CreateCharCommand::deserialise(Json::Value& in) {    
-            elementId =(state::TypeId)in["TypeId"].asInt();
+            elementId =(state::TypeId)in["TypeId"].asUInt64();
             x = in["x"].asInt();
             y = in["y"].asInt();
             joueur= in["joueur"].asInt();

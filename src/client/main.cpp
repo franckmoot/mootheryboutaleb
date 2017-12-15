@@ -51,31 +51,25 @@ int main(int argc, char* argv[]) {
         } else if (!s.compare("random_ai")) {
 
             testai();
-        }
-        else if (!s.compare("heuristic_ai")) {
+        } else if (!s.compare("heuristic_ai")) {
 
             testheuristicAI();
-        }
-        else if (!s.compare("deep_ai")) {
+        } else if (!s.compare("deep_ai")) {
 
             //testdeep_ai();
-        }
-        else if (!s.compare("rollback")) {
+        } else if (!s.compare("rollback")) {
 
             testrollback();
-        }
-        else if (!s.compare("thread")) {
+        } else if (!s.compare("thread")) {
 
             testthread();
         }
-        
         else if (!s.compare("record")) {
-            testjson();
-            
-        }
-        else if (!s.compare("play")) {
 
-            
+
+        } else if (!s.compare("play")) {
+            testjson();
+
         }
 
     }

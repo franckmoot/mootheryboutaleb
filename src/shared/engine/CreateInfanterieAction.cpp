@@ -25,6 +25,7 @@ namespace engine {
         Infanterie *infanterietmp = new Infanterie();
         infanterietmp->setJoueur(joueur);
         state.chars->setElementXY(infanterietmp, x, y);
+        cout<<"je cree une infanterie"<<endl;
     }
 
     void CreateInfanterieAction::undo(state::State& state) {
