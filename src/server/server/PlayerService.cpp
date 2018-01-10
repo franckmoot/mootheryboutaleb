@@ -1,53 +1,60 @@
 /** 
- * @file UserService.cpp
+ * @file PlayerService.cpp
  * @author Philippe-Henri Gosselin
  * @date 9 décembre 2015
  * @copyright CNRS
  */
 
-#include "UserService.hpp"
+#include "PlayerService.h"
+#include "Player.h"
+#include "ServiceException.h"
 
-UserService::UserService (UserDB& userDB) : AbstractService("/user"),
-    userDB(userDB) {
-    
-}
 
-HttpStatus UserService::get (Json::Value& out, int id) const {
-    const User* user = userDB.getUser(id);
-    if (!user)
-        throw ServiceException(HttpStatus::NOT_FOUND,"Invalid user id");
-    out["name"] = user->name;
-    out["age"] = user->age;
-    return HttpStatus::OK;
-}
+using namespace std;
 
-HttpStatus UserService::post (const Json::Value& in, int id) {
-    const User* user = userDB.getUser(id);
-    if (!user)
-        throw ServiceException(HttpStatus::NOT_FOUND,"Invalid user id");
-    unique_ptr<User> usermod (new User(*user));
-    if (in.isMember("name")) {
-        usermod->name = in["name"].asString();
+namespace server {
+
+    PlayerService(Game& game) : game(game) {
+
     }
-    if (in.isMember("age")) {
-        usermod->age = in["age"].asInt();
+
+    HttpStatus PlayerService::get(Json::Value& out, int id) const {
+        const Player* player = game.getPlayer(id);
+        if (!player)
+            throw ServiceException(HttpStatus::NOT_FOUND, "Invalid player id");
+        out["name"] = player->name;
+        return HttpStatus::OK;
+
     }
-    userDB.setUser(id,std::move(usermod));
-    return HttpStatus::NO_CONTENT;
-}
 
-HttpStatus UserService::put (Json::Value& out,const Json::Value& in) {
-    string name = in["name"].asString();
-    int age = in["age"].asInt();
-    out["id"] = userDB.addUser(make_unique<User>(name,age));
-    return HttpStatus::CREATED;
-}
+    HttpStatus PlayerService::post(const Json::Value& in, int id) {
+        const Player* player = game.getPlayer(id);
+        if (!player)
+            throw ServiceException(HttpStatus::NOT_FOUND, "Invalid player id");
+        unique_ptr<Player> usermod(new Player(*player));
+        if (in.isMember("name")) {
+            usermod->name = in["name"].asString();
+        }
+        game.setPlayer(id, std::move(usermod));
+        return HttpStatus::NO_CONTENT;
 
-HttpStatus UserService::remove (int id) {
-    const User* user = userDB.getUser(id);
-    if (!user)
-        throw ServiceException(HttpStatus::NOT_FOUND,"Invalid user id");
-    userDB.removeUser(id);
-    return HttpStatus::NO_CONTENT;
-}
+    }
 
+    HttpStatus PlayerService::put(Json::Value& out, const Json::Value& in) {
+        string name = in["name"].asString();
+
+        out["id"] = game.addPlayer(make_unique<Player>(name));
+        return HttpStatus::CREATED;
+
+    }
+
+    HttpStatus PlayerService::remove(int id) {
+
+        const Player* player = game.getPlayer(id);
+        if (!player)
+            throw ServiceException(HttpStatus::NOT_FOUND, "Invalid player id");
+        game.removePlayer(id);
+        return HttpStatus::NO_CONTENT;
+    }
+
+}

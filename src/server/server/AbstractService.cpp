@@ -5,36 +5,42 @@
  * @copyright CNRS
  */
 
-#include "AbstractService.hpp"
+#include "AbstractService.h"
+#include "ServiceException.h"
 
-AbstractService::AbstractService (const string& pattern) {
-    setPattern(pattern);
-}
+using namespace std;
 
-AbstractService::~AbstractService() {
-    
-}
+namespace server {
 
-const string& AbstractService::getPattern () const {
-    return pattern;
-}
+    AbstractService::AbstractService(const string& pattern) {
+        setPattern(pattern);
+    }
 
-void AbstractService::setPattern (const string& pattern) {
-    this->pattern = pattern;
-}
+    AbstractService::~AbstractService() {
 
-HttpStatus AbstractService::get (Json::Value& out, int id) const {
-    throw ServiceException(HttpStatus::NOT_IMPLEMENTED,"Non implanté");
-}
+    }
 
-HttpStatus AbstractService::post (const Json::Value& in, int id) {
-    throw ServiceException(HttpStatus::NOT_IMPLEMENTED,"Non implanté");
-}
+    const string& AbstractService::getPattern() const {
+        return pattern;
+    }
 
-HttpStatus AbstractService::put (Json::Value& out, const Json::Value& in) {
-    throw ServiceException(HttpStatus::NOT_IMPLEMENTED,"Non implanté");
-}
+    void AbstractService::setPattern(const string& pattern) {
+        this->pattern = pattern;
+    }
 
-HttpStatus AbstractService::remove (int id) {
-    throw ServiceException(HttpStatus::NOT_IMPLEMENTED,"Non implanté");
+    HttpStatus AbstractService::get(Json::Value& out, int id) const {
+        throw ServiceException(HttpStatus::NOT_IMPLEMENTED, "Non implanté");
+    }
+
+    HttpStatus AbstractService::post(const Json::Value& in, int id) {
+        throw ServiceException(HttpStatus::NOT_IMPLEMENTED, "Non implanté");
+    }
+
+    HttpStatus AbstractService::put(Json::Value& out, const Json::Value& in) {
+        throw ServiceException(HttpStatus::NOT_IMPLEMENTED, "Non implanté");
+    }
+
+    HttpStatus AbstractService::remove(int id) {
+        throw ServiceException(HttpStatus::NOT_IMPLEMENTED, "Non implanté");
+    }
 }

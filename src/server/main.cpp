@@ -7,7 +7,6 @@
 #include <fstream>
 #include <sstream>
 #include "touteslesfonctions.h"
-#include "server.h"
 #include "state.h"
 #include "engine.h"
 #include "state/Infanterie.h"

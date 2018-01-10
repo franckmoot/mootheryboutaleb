@@ -11,10 +11,10 @@ namespace server {
     // Attributes
   public:
     std::string name;
-    bool = true free;
+    bool free     = true;
     // Operations
   public:
-    User (string name, int age);
+    Player (std::string name);
     // Setters and Getters
   };
 

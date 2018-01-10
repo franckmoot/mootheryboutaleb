@@ -5,17 +5,21 @@
  * @copyright CNRS
  */
 
-#include "ServiceException.hpp"
+#include "ServiceException.h"
 
+using namespace std;
 
-ServiceException::ServiceException (HttpStatus status, string msg) 
-    : httpStatus(status),msg(msg) {    
-}
+namespace server {
 
-HttpStatus ServiceException::status () const {
-    return httpStatus;
-}
+    ServiceException::ServiceException(HttpStatus status, string msg) : httpStatus(status), msg(msg) {
+    }
 
-const char* ServiceException::what () const noexcept {
-    return msg.c_str();
+    HttpStatus ServiceException::status() const {
+        return httpStatus;
+    }
+
+    const char* ServiceException::what() const {
+        return msg.c_str();
+    }
+
 }

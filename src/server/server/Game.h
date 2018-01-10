@@ -3,6 +3,7 @@
 #define SERVER__GAME__H
 
 #include <vector>
+#include <memory>
 
 namespace server {
   class Player;
@@ -17,14 +18,18 @@ namespace server {
     // Associations
     // Attributes
   protected:
-    std::vector<Player> Players;
+    std::vector<Player> players;
     // Operations
   public:
     Game ();
     Player& player (int i);
+    const Player* getPlayer (int id) const;
+    int addPlayer (std::unique_ptr<Player> player);
+    void setPlayer (int id, std::unique_ptr<Player> player);
+    void removePlayer (int id);
     // Setters and Getters
     const std::vector<Player>& getPlayers() const;
-    void setPlayers(const std::vector<Player>& Players);
+    void setPlayers(const std::vector<Player>& players);
   };
 
 };

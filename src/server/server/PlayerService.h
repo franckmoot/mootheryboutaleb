@@ -5,8 +5,8 @@
 #include <json/json.h>
 
 namespace server {
-  class AbstractService;
   class Game;
+  class AbstractService;
 }
 
 #include "HttpStatus.h"
@@ -20,17 +20,17 @@ namespace server {
     // Associations
     // Attributes
   protected:
-    UserDB& userDB;
+    Game& game;
     // Operations
   public:
-    UserService (UserDB& userDB);
+    PlayerService (Game& game);
     HttpStatus get (Json::Value& out, int id) const;
     HttpStatus post (const Json::Value& in, int id);
     HttpStatus put (Json::Value& out, const Json::Value& in);
     HttpStatus remove (int id);
     // Setters and Getters
-    UserDB& getUserDB() const;
-    void setUserDB(const UserDB&& userDB);
+    Game& getGame() const;
+    void setGame(const Game&& game);
   };
 
 };
