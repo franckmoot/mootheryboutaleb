@@ -8,13 +8,14 @@
 #include "PlayerService.h"
 #include "Player.h"
 #include "ServiceException.h"
-
+#include "AbstractService.h"
+#include "Game.h"
 
 using namespace std;
 
 namespace server {
 
-    PlayerService(Game& game) : game(game) {
+    PlayerService::PlayerService(Game& game) : game(game) {
 
     }
 
