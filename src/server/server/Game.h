@@ -3,7 +3,6 @@
 #define SERVER__GAME__H
 
 #include <vector>
-#include <memory>
 
 namespace server {
   class Player;
@@ -22,11 +21,7 @@ namespace server {
     // Operations
   public:
     Game ();
-    Player& player (int i);
-    const Player* getPlayer (int id) const;
-    int addPlayer (std::unique_ptr<Player> player);
-    void setPlayer (int id, std::unique_ptr<Player> player);
-    void removePlayer (int id);
+    Player* player (int i);
     // Setters and Getters
     const std::vector<Player>& getPlayers() const;
     void setPlayers(const std::vector<Player>& players);
