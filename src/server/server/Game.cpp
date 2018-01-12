@@ -14,6 +14,16 @@ namespace server {
         Player *p=&(players[i]);
         return p;
     }
+        
+    void Game::addPlayer(Player* player) {
+        players.push_back(*player);
+    }
+    
+    void Game::removePlayer(int id) {
+        players.erase(players.begin()+ id);
+    }
+
+
 
 }
 

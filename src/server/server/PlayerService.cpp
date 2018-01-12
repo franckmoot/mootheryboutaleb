@@ -37,7 +37,8 @@ namespace server {
 
     HttpStatus PlayerService::put(Json::Value& out, const Json::Value& in) {
         string name = in["name"].asString();
-        out["id"] = game.player(make_unique<Player>(name));
+        Player *p=new Player(name);
+       // out["id"] = game.addPlayer(p);
         //out["id"] = game.addPlayer(unique_ptr<Player>(name));
         return HttpStatus::CREATED;
 
@@ -48,7 +49,7 @@ namespace server {
           const Player* player = game.player(id);
           if (!player)
               throw ServiceException(HttpStatus::NOT_FOUND, "Invalid player id");
-          //game.removePlayer(id);
+          game.removePlayer(id);
         return HttpStatus::NO_CONTENT;
     }
 

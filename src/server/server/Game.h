@@ -22,6 +22,8 @@ namespace server {
   public:
     Game ();
     Player* player (int i);
+    void addPlayer (Player* player);
+    void removePlayer (int id);
     // Setters and Getters
     const std::vector<Player>& getPlayers() const;
     void setPlayers(const std::vector<Player>& players);
