@@ -29,6 +29,7 @@ using namespace state;
 #define TOUTESLESFONCTIONS_H
 
 void testrecord();
+int testlisten(int argc, char *const *argv);
 
 #endif /* TOUTESLESFONCTIONS_H */
 

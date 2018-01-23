@@ -10,17 +10,19 @@ namespace server {
 
     }
 
-    Player* Game::player(int i) {
-        Player *p=&(players[i]);
-        return p;
+    Player& Game::player(int i) {
+        //Player *p = &(players[i]);
+        return players[i];
     }
-        
-    void Game::addPlayer(Player* player) {
-        players.push_back(*player);
+
+    void Game::addPlayer(Player player) {
+
+        players.push_back(player);
+
     }
-    
+
     void Game::removePlayer(int id) {
-        players.erase(players.begin()+ id);
+        players.erase(players.begin() + id);
     }
 
 

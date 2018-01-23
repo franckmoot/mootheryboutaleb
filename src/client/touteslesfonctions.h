@@ -48,6 +48,7 @@ void testdeep_ai();
 void testrollback();
 void testthread();
 void testjson();
+void testnetwork();
 
 
     

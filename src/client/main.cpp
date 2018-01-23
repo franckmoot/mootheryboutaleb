@@ -71,6 +71,10 @@ int main(int argc, char* argv[]) {
             testjson();
 
         }
+        else if (!s.compare("network")) {
+            testnetwork();
+
+        }
 
     }
 

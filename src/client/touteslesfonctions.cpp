@@ -20,6 +20,8 @@
 #include <fstream>
 #include <iostream>
 #include <string>
+#include <SFML/Network.hpp>
+#include <sstream>
 
 
 using namespace std;
@@ -27,6 +29,28 @@ using namespace state;
 using namespace render;
 using namespace engine;
 using namespace ai;
+
+void testnetwork() {
+
+    sf::Http::Request request;
+    request.setMethod(sf::Http::Request::Put);
+    request.setUri("/player");
+    request.setHttpVersion(1, 1);
+    request.setField("Content-Type", "application/x-www-form-urlencoded");
+    request.setBody("Franck");
+
+    sf::Http http("http://localhost/", 8080);
+    sf::Http::Response response = http.sendRequest(request);
+
+
+    if (response.getStatus() == 201) {
+        cout << "connexion reussi: statue : " + response.getBody() << endl;
+    } else {
+        cout << "probleme erreur : " + response.getStatus() << endl;
+    }
+   
+
+}
 
 void teststate() {
 
@@ -658,9 +682,9 @@ void testjson() {
 
     Layer surf(engine.getState());
     surf.initSurface();
-    cout<<obj[1][0]<<endl;
-    cout<<obj[2][0]<<endl;
-   
+    cout << obj[1][0] << endl;
+    cout << obj[2][0] << endl;
+
     while (window.isOpen()) {
 
         // on gère les évènements

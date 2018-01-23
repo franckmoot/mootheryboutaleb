@@ -10,7 +10,7 @@ using std::vector;
 #include "Player.h"
 #include "Game.h"
 
-template<class T,typename ... Args>
+template<class T, typename ... Args>
 std::unique_ptr<T> make_unique(Args ... args) {
     return std::unique_ptr<T>(new T(args ...));
 }

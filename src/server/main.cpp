@@ -32,6 +32,10 @@ int main(int argc, char* argv[]) {
         } else if (!s.compare("record")) {
             testrecord();
 
+
+        } else if (!s.compare("listen")) {
+            testlisten(argc,argv);
+
         }
     }
 

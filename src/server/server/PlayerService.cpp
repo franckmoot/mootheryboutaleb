@@ -4,6 +4,8 @@
 #include "AbstractService.h"
 #include "Game.h"
 #include "Game.hpp"
+#include <iostream>
+
 using namespace std;
 
 namespace server {
@@ -13,19 +15,22 @@ namespace server {
     }
 
     HttpStatus PlayerService::get(Json::Value& out, int id) const {
-        const Player* player = game.player(id);
+
+        Player *player = &(game.player(id));
+
         if (!player)
             throw ServiceException(HttpStatus::NOT_FOUND, "Invalid player id");
+
         out["name"] = player->name;
         return HttpStatus::OK;
 
     }
 
     HttpStatus PlayerService::post(const Json::Value& in, int id) {
-        const Player* player = game.player(id);
+        Player *player = &(game.player(id));
         if (!player)
             throw ServiceException(HttpStatus::NOT_FOUND, "Invalid player id");
-        
+
         Player* usermod;
         //std::unique_ptr<Player> usermod (new Player(*player));
         if (in.isMember("name")) {
@@ -37,19 +42,18 @@ namespace server {
 
     HttpStatus PlayerService::put(Json::Value& out, const Json::Value& in) {
         string name = in["name"].asString();
-        Player *p=new Player(name);
-       // out["id"] = game.addPlayer(p);
-        //out["id"] = game.addPlayer(unique_ptr<Player>(name));
+        Player player(name);
+        //out["id"] = game.addPlayer(player);
+        game.addPlayer(player);
         return HttpStatus::CREATED;
-
     }
 
     HttpStatus PlayerService::remove(int id) {
 
-          const Player* player = game.player(id);
-          if (!player)
-              throw ServiceException(HttpStatus::NOT_FOUND, "Invalid player id");
-          game.removePlayer(id);
+        Player *player = &(game.player(id));
+        if (!player)
+            throw ServiceException(HttpStatus::NOT_FOUND, "Invalid player id");
+        game.removePlayer(id);
         return HttpStatus::NO_CONTENT;
     }
 
